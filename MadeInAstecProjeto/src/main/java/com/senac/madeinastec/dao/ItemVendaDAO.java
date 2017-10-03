@@ -47,7 +47,7 @@ public class ItemVendaDAO {
     }
     
     //Lista itens de determinada venda
-    public List<ItemVenda> listarItemVenda(Venda venda, Produto produto){ //retorna todos itens
+    public List<ItemVenda> listarItemVenda(int codigovenda){ //retorna todos itens
         List<ItemVenda> lista = new ArrayList<>();
         System.out.println("Buscando produto na base de dados...");
         String query = "SELECT * FROM itemvenda WHERE codigovenda=?";
@@ -55,7 +55,7 @@ public class ItemVendaDAO {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1,"%"+venda.getCodigo()+"%");
+            preparedStatement.setString(1,"%"+codigovenda+"%");
             
             ResultSet rs = preparedStatement.executeQuery();
 

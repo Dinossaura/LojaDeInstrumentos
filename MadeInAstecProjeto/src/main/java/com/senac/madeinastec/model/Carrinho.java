@@ -16,6 +16,15 @@ public class Carrinho {
      private Cliente cliente;
      private Timestamp data;
      private Double valorTotal;
+     private Integer codigoempresa;
+     
+    public Integer getCodigoempresa() {
+        return codigoempresa;
+    }
+
+    public void setCodigoempresa(Integer codigoempresa) {
+        this.codigoempresa = codigoempresa;
+    }
 
     public Integer getCodigo() {
         return codigo;

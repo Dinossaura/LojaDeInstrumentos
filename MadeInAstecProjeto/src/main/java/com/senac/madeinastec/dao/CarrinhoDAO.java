@@ -22,7 +22,7 @@ public class CarrinhoDAO {
     ConexaoBanco conexaoBanco = new ConexaoBanco();
     Connection conn = conexaoBanco.createConnection();
     
-    public void inserirCarrinho(Carrinho carrinho){
+    public Integer inserirCarrinho(Carrinho carrinho){
          String query = " insert into carrinho(codigocliente, datacarrinho, valortotal)"
         + " values (?, ?, ?)";
         
@@ -34,9 +34,16 @@ public class CarrinhoDAO {
             preparedStatement.setDouble(3, carrinho.getValorTotal());
          
             preparedStatement.executeUpdate();
+
+            ResultSet  rs = preparedStatement.getGeneratedKeys();
+            rs.next();
+            int codigo = rs.getInt(1);
             preparedStatement.close();
+
+            return codigo;
         } catch (SQLException ex) {
             System.out.println("Erro ao salvar carrinho"+ex);
+            return null;
         }
     }
     

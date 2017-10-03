@@ -3,11 +3,11 @@ package com.senac.madeinastec.model;
 public class Produto {
     
     private Integer codigo;
-    private Empresa codigoempresa; //crud >> insert getCodigo();
+    private Integer codigoempresa; //crud >> insert getCodigo();
     private String nome;
     private String descricao;
-    private Categoria categoria;
-    private Fornecedor fornecedor;
+    private Integer categoria;
+    private Integer fornecedor;
     private Double precocompra;
     private Double precovenda;
     private Integer estoque;
@@ -20,11 +20,11 @@ public class Produto {
         this.codigo = codigo;
     }
 
-    public Empresa getCodigoempresa() {
+    public Integer getCodigoempresa() {
         return codigoempresa;
     }
 
-    public void setCodigoempresa(Empresa codigoempresa) {
+    public void setCodigoempresa(Integer codigoempresa) {
         this.codigoempresa = codigoempresa;
     }
 
@@ -44,19 +44,19 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Categoria getCategoria() {
+    public Integer getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(Integer categoria) {
         this.categoria = categoria;
     }
 
-    public Fornecedor getFornecedor() {
+    public Integer getCodigoFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
+    public void setCodigoFornecedor(Integer fornecedor) {
         this.fornecedor = fornecedor;
     }
 

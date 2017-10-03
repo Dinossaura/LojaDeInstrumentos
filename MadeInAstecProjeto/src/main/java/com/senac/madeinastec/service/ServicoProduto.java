@@ -46,9 +46,9 @@ public class ServicoProduto {
     }
 
 
-    public  List<Produto> procurarProduto(String nome) throws ProdutoException, DataSourceException {
+    public  List<Produto> procurarProduto(String nome, int codigoempresa) throws ProdutoException, DataSourceException {
         try {
-        return produtoDAO.listarProduto(nome);
+        return produtoDAO.listarProduto(nome, codigoempresa);
           
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve

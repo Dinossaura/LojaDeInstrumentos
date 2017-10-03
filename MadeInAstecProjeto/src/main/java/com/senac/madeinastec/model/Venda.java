@@ -21,7 +21,6 @@ public class Venda {
     private Empresa empresa; //crud >> insert getCodigo();
 
     
-    
     public Empresa getEmpresa() {
         return empresa;
     }

@@ -16,27 +16,23 @@ import java.util.logging.Logger;
 public class ProdutoDAO {
         ConexaoBanco conexaoBanco = new ConexaoBanco();    
         Connection conn = conexaoBanco.createConnection();
-        
+    //insere produto
     public void inserirProduto(Produto produto){
         System.out.println("Iniciando processo de inserção de produto...");
-        String query = "insert into produto (codigo, titulo, desenvolvedor, fornecedor, categoria,plataforma, genero, classificacao, preco, estoque) values (?,?,?,?,?,?,?,?,?,?);";
-        
+        String query = "insert into produtos (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque) values (?,?,?,?,?,?,?,?);";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setInt(1, produto.getCodigo());
-            preparedStatement.setObject(2, produto.getCodigoempresa());
-            preparedStatement.setString(3, produto.getNome());
-            preparedStatement.setString(4, produto.getDescricao());
-            preparedStatement.setObject(5, produto.getCategoria());
-            preparedStatement.setObject(6, produto.getFornecedor());
-            preparedStatement.setDouble(9, produto.getPrecovenda());
-            preparedStatement.setDouble(9, produto.getPrecocompra());
-            preparedStatement.setInt(10, produto.getEstoque());
+            preparedStatement.setInt(1, produto.getCodigoempresa());
+            preparedStatement.setString(2, produto.getNome());
+            preparedStatement.setString(3, produto.getDescricao());
+            preparedStatement.setInt(4, produto.getCodigoFornecedor());
+            preparedStatement.setInt(5, produto.getCategoria());
+            preparedStatement.setDouble(6, produto.getPrecocompra());
+            preparedStatement.setDouble(7, produto.getPrecovenda());
+            preparedStatement.setInt(8, produto.getEstoque());
             
-
-        
             preparedStatement.executeUpdate();
             preparedStatement.close();
             System.out.println("Produto inserido com sucesso.");
@@ -46,27 +42,27 @@ public class ProdutoDAO {
             System.out.println("Erro ao salvar produto");
         }
     }
-    
+    //atualiza produto
     public Produto updateProduto(Produto produto) throws Exception{
         System.out.println("Atualizando produto...");
-         String query = "UPDATE produto SET titulo=?, desenvolvedor=?, fornecedor=?, categoria=?, plataforma=?, genero=?, classificacao=?, preco=?, estoque=? WHERE codigo=?";
+         String query = "UPDATE produtos SET codigoempresa=?, nome=?, descricao=?, codigofornecedor=?, codigocategoria=?, precocompra=?, precovenda=?, estoque=? WHERE codigo=?";
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setInt(1, produto.getCodigo());
-            preparedStatement.setObject(2, produto.getCodigoempresa());
-            preparedStatement.setString(3, produto.getNome());
-            preparedStatement.setString(4, produto.getDescricao());
-            preparedStatement.setObject(5, produto.getCategoria());
-            preparedStatement.setObject(6, produto.getFornecedor());
+            preparedStatement.setInt(1, produto.getCodigoempresa());
+            preparedStatement.setString(2, produto.getNome());
+            preparedStatement.setString(3, produto.getDescricao());
+            preparedStatement.setInt(4, produto.getCodigoFornecedor());
+            preparedStatement.setInt(5, produto.getCategoria());
+            preparedStatement.setDouble(6, produto.getPrecocompra());
             preparedStatement.setDouble(9, produto.getPrecovenda());
-            preparedStatement.setDouble(9, produto.getPrecocompra());
-            preparedStatement.setInt(10, produto.getEstoque());
+            preparedStatement.setInt(9, produto.getEstoque());
+            preparedStatement.setInt(10, produto.getCodigo());
             
-                preparedStatement.executeUpdate();
-                preparedStatement.close();
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException ex) {
             System.out.println("Erro ao atualizar produto");
             throw new Exception("Erro ao atualizar produto", ex);
@@ -74,10 +70,10 @@ public class ProdutoDAO {
 
         return produto;
     }
-    
+    //atualiza estoque
     public void atualizarEstoque(int codigo, int estoque) throws Exception{
         System.out.println("Atualizando produto...");
-         String query = "UPDATE produto SET estoque=? WHERE codigo=?";
+         String query = "UPDATE produtos SET estoque=? WHERE codigo=?";
         
         
         try {
@@ -95,29 +91,37 @@ public class ProdutoDAO {
         }
     }
     
-    
-    public List<Produto> listarProduto(String titulo){ //retorna todos itens
+    //lista produtos
+    public List<Produto> listarProduto(String nome, int codigoempresa){ //retorna todos itens
         List<Produto> lista = new ArrayList<>();
         System.out.println("Buscando produto na base de dados...");
         String query = "";
         
-        if(titulo == ""){
-            query = "SELECT * FROM produto";
+        if(nome == ""){
+            query = "SELECT * FROM produtos";
         }else{
-            query = "SELECT * FROM produto WHERE titulo LIKE ?";
+            query = "SELECT * FROM produtos WHERE nome LIKE ? and codigoempresa = ?";
         }
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1,"%"+titulo+"%");
+            preparedStatement.setString(1,"%"+nome+"%");
+            preparedStatement.setString(1,"'"+codigoempresa+"'");
             
             ResultSet rs = preparedStatement.executeQuery();
 
             
                 while (rs.next()){
                     Produto produto = new Produto();
-                    produto.setCodigo(rs.getInt(2));
-                    produto.setEstoque(rs.getInt(11));
+                    produto.setCodigo(rs.getInt(1));
+                    produto.setCodigoempresa(rs.getInt(2));
+                    produto.setNome(rs.getString(3));
+                    produto.setDescricao(rs.getString(4));
+                    produto.setCodigoFornecedor(rs.getInt(5));
+                    produto.setCategoria(rs.getInt(6));
+                    produto.setPrecocompra(rs.getDouble(7));
+                    produto.setPrecovenda(rs.getDouble(8));
+                    produto.setEstoque(rs.getInt(9));
                     lista.add(produto);
                 }
 
@@ -129,11 +133,12 @@ public class ProdutoDAO {
     
     }
     
+    //encontra produto por código
     public Produto encontrarProduto(int codigo){//retorna um item
         List<Produto> lista = new ArrayList<>();
         Produto produto = new Produto();
         System.out.println("Buscando produto na base de dados...");
-        String query = "SELECT * FROM produto WHERE codigo=?";//addicionar o % %
+        String query = "SELECT * FROM produtos WHERE codigo=?";//addicionar o % %
         
         
         try {
@@ -157,10 +162,10 @@ public class ProdutoDAO {
         return produto;
     
     }
-    
-        public void deletarProduto(int codigo) throws Exception{
-            System.out.println("Deletando produto de codigo: "+codigo);
-            String query = "DELETE FROM produto WHERE codigo=?";
+    //
+    public void deletarProduto(int codigo) throws Exception{
+        System.out.println("Deletando produto de codigo: "+codigo);
+        String query = "DELETE FROM produtos WHERE codigo=?";
         
         
         try {

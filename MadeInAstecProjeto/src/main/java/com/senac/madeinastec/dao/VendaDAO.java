@@ -23,9 +23,8 @@ public class VendaDAO {
         Connection conn = conexaoBanco.createConnection();
         
     public Integer cadastrarVenda(Venda venda){
-                 String query = " insert into venda (idcliente, data, valorTotal )"
+                 String query = " insert into venda (codigocliente, datavenda, valortotal )"
         + " values (?, ?, ?)";
-        
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
