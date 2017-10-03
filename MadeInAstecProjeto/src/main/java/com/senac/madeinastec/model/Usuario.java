@@ -13,7 +13,7 @@ public class Usuario {
    private int codigo;
    private String nome;
    private int codigoEmpresa;
-   private int codigoperfil;
+   private String codigoperfil;
    private String login;
    private String senha;
 
@@ -41,11 +41,11 @@ public class Usuario {
         this.codigoEmpresa = codigoEmpresa;
     }
 
-    public int getcodigoPerfil() {
+    public String getcodigoPerfil() {
         return codigoperfil;
     }
 
-    public void setcodigoPerfil(int codigoperfil) {
+    public void setcodigoPerfil(String codigoperfil) {
         this.codigoperfil = codigoperfil;
     }
 
