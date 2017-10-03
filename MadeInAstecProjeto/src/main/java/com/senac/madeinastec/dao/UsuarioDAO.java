@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ProdutoDAO {
+public class UsuarioDAO {
         ConexaoBanco conexaoBanco = new ConexaoBanco();    
         Connection conn = conexaoBanco.createConnection();
         

@@ -18,8 +18,18 @@ public class Venda {
     private Cliente cliente;
     private Date data;
     private Double valorTotal;
-    
+    private Empresa empresa; //crud >> insert getCodigo();
 
+    
+    
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
+    }
+    
     public Integer getCodigo() {
         return codigo;
     }

@@ -14,10 +14,10 @@ import java.util.logging.Logger;
 public class ConexaoBanco {
     
     public Connection createConnection(){
-        String url = "jdbc:mysql://localhost:3306/xgamesproject";
+        String url = "jdbc:derby://localhost:1527/MadeinAstec";
         try {
-            Class.forName("com.mysql.jdbc.Driver").newInstance();
-            Connection conn = DriverManager.getConnection (url, "root", "110500");
+            Class.forName("com.derby.jdbc.Driver").newInstance();
+            Connection conn = DriverManager.getConnection (url, "Astec", "astec");
             System.out.println("conectado");
             
             return conn;

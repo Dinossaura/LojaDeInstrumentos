@@ -11,21 +11,17 @@ public class Cliente {
     private String cpf;
     private String rg;
     private String idade;
-    private String telefone1;
+    private String telefone;
     private String telefone2;
     private String email;
     private String bairro;
     private String cep;
     private String complemento;
-    private String logradouro;
+    private String endereco;
     private String numero;
     private String cidade;
     private String estado;
-
-    @Override
-    public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", sobrenome=" + sobrenome + ", sexo=" + sexo + ", cpf=" + cpf + ", rg=" + rg + ", idade=" + idade + ", telefone1=" + telefone1 + ", telefone2=" + telefone2 + ", email=" + email + ", bairro=" + bairro + ", cep=" + cep + ", complemento=" + complemento + ", logradouro=" + logradouro + ", numero=" + numero + ", cidade=" + cidade + ", estado=" + estado + '}';
-    }
+    private int empresa; 
 
     public Integer getId() {
         return id;
@@ -83,12 +79,12 @@ public class Cliente {
         this.idade = idade;
     }
 
-    public String getTelefone1() {
-        return telefone1;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setTelefone1(String telefone1) {
-        this.telefone1 = telefone1;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getTelefone2() {
@@ -131,12 +127,12 @@ public class Cliente {
         this.complemento = complemento;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public String getNumero() {
@@ -162,8 +158,14 @@ public class Cliente {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
+
+    public int getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(int empresa) {
+        this.empresa = empresa;
+    }
 
     
 }

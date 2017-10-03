@@ -64,17 +64,17 @@ public class ValidadorCliente {
                     + "sexo do cliente");
         }
         
-           if (cliente.getTelefone1()== null
-                || "".equals(cliente.getTelefone1())) {
+           if (cliente.getTelefone()== null
+                || "".equals(cliente.getTelefone())) {
             throw new ClienteException("É necessário informar pelo menos "
                     + "1 número de telefone do cliente");
         }
-           if(cliente.getTelefone1().length() < 13){
+           if(cliente.getTelefone().length() < 13){
                throw new ClienteException("Telefone incorreto, favor verificar!");
            }
 
-            if (cliente.getLogradouro()== null
-                || "".equals(cliente.getLogradouro())) {
+            if (cliente.getEndereco()== null
+                || "".equals(cliente.getEndereco())) {
             throw new ClienteException("É necessário informar o "
                     + "endereço do cliente");
         }

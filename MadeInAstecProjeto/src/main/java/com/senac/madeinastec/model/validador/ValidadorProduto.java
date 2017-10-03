@@ -17,10 +17,6 @@ public class ValidadorProduto {
         if(produto == null){
             throw new ProdutoException("Não foi informado um produto");
         }
-        
-         if(produto.getTitulo() == null || "".equals(produto.getTitulo())){
-            throw new ProdutoException("Não foi informado um título");
-        }
          
           if(produto.getCategoria() == null || "".equals(produto.getCategoria())){
             throw new ProdutoException("Não foi informada uma categoria");
@@ -36,15 +32,11 @@ public class ValidadorProduto {
             
             
                try {
-                if(String.valueOf(produto.getPreco())==null)
-                    throw new ProdutoException("Não foi informado o preço do produto");
+                if(String.valueOf(produto.getPrecocompra())==null)
+                    throw new ProdutoException("Não foi informado o preço de compra do produto");
         }  catch (NumberFormatException e) {
             throw new ProdutoException("É necessário digitar somente "
                     + "números para preço" + e);
-        }
-           
-           if(produto.getPlataforma()== null || "".equals(produto.getPlataforma())){
-            throw new ProdutoException("Não foi informada a plataforma do produto");
         }
             
     }

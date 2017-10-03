@@ -27,8 +27,8 @@ public class ClienteDAO {
 
     public void inserirCliente(Cliente cliente){
         
-         String query = " insert into cliente (nome, sobrenome, sexo, cpf, rg, idade, telefone1, telefone2, email,"
-                 + "bairro, cep, complemento, logradouro, numero, cidade, estado)"
+         String query = " insert into cliente (nome, sobrenome, sexo, cpf, rg, idade, telefone, telefone2, email,"
+                 + "endereco, numero, complemento, cep, cidade, estado, codigoempresa)"
         + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         
@@ -41,19 +41,16 @@ public class ClienteDAO {
             preparedStatement.setString(4, cliente.getCpf());
             preparedStatement.setString(5, cliente.getRg());            
             preparedStatement.setString(6, cliente.getIdade());
-            preparedStatement.setString(7, cliente.getTelefone1());
+            preparedStatement.setString(7, cliente.getTelefone());
             preparedStatement.setString(8, cliente.getTelefone2());
             preparedStatement.setString(9, cliente.getEmail());
-            preparedStatement.setString(10, cliente.getBairro());
-            preparedStatement.setString(11, cliente.getCep());
+            preparedStatement.setString(10, cliente.getEndereco());
+            preparedStatement.setString(11, cliente.getNumero());
             preparedStatement.setString(12, cliente.getComplemento());
-            preparedStatement.setString(13, cliente.getLogradouro());
-            preparedStatement.setString(14, cliente.getNumero());
-            preparedStatement.setString(15, cliente.getCidade());
-            preparedStatement.setString(16, cliente.getEstado());
-            
-           
-
+            preparedStatement.setString(13, cliente.getCep());
+            preparedStatement.setString(14, cliente.getCidade());
+            preparedStatement.setString(15, cliente.getEstado());
+            preparedStatement.setInt(16, cliente.getEmpresa());
         
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -64,30 +61,29 @@ public class ClienteDAO {
     
     public Cliente updateCliente(Cliente cliente) throws Exception{
         System.out.println("Iniciando processo de atualização de cliente...");
-         String query = "UPDATE cliente SET nome=?, sobrenome=?, sexo=?, cpf=?, rg=?, idade=?, telefone1=?, telefone2=?, email=?, "
-                 + "bairro=?,  cep=?, complemento=?, logradouro=?,  numero=?, cidade=?, estado=? WHERE idcliente=?";
+         String query = "UPDATE cliente SET nome=?, sobrenome=?, sexo=?, cpf=?, rg=?, idade=?, telefone=?, telefone2=?, email=?, "
+                 + "endereco=?,  numero=?, complemento=?, cidade=?,  estado=?, codigoempresa=?, cep=? WHERE idcliente=?";
         
         System.out.println(cliente.toString());
         try {
                 PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
                 preparedStatement.setString(1, cliente.getNome());
-                System.out.println(cliente.getNome());
                 preparedStatement.setString(2, cliente.getSobrenome());
                 preparedStatement.setString(3, cliente.getSexo());
                 preparedStatement.setString(4, cliente.getCpf());
                 preparedStatement.setString(5, cliente.getRg());            
                 preparedStatement.setString(6, cliente.getIdade());
-                preparedStatement.setString(7, cliente.getTelefone1());
+                preparedStatement.setString(7, cliente.getTelefone());
                 preparedStatement.setString(8, cliente.getTelefone2());
                 preparedStatement.setString(9, cliente.getEmail());
-                preparedStatement.setString(10, cliente.getBairro());
-                preparedStatement.setString(11, cliente.getCep());
+                preparedStatement.setString(10, cliente.getEndereco());
+                preparedStatement.setString(11, cliente.getNumero());
                 preparedStatement.setString(12, cliente.getComplemento());
-                preparedStatement.setString(13, cliente.getLogradouro());
-                preparedStatement.setString(14, cliente.getNumero());
-                preparedStatement.setString(15, cliente.getCidade());
-                preparedStatement.setString(16, cliente.getEstado());
+                preparedStatement.setString(13, cliente.getCidade());
+                preparedStatement.setString(14, cliente.getEstado());
+                preparedStatement.setInt(15, cliente.getEmpresa());
+                preparedStatement.setString(16, cliente.getCep());
                 preparedStatement.setInt(17, cliente.getId());
                 
                 
@@ -134,16 +130,16 @@ public class ClienteDAO {
                 cliente.setCpf(rs.getString(5));
                 cliente.setRg(rs.getString(6));            
                 cliente.setIdade(rs.getString(7));                
-                cliente.setTelefone1(rs.getString(8));
+                cliente.setTelefone(rs.getString(8));
                 cliente.setTelefone2(rs.getString(9));
                 cliente.setEmail(rs.getString(10));
-                cliente.setBairro(rs.getString(11));
-                cliente.setCep(rs.getString(12));
+                cliente.setEndereco(rs.getString(11));
+                cliente.setNumero(rs.getString(12));
                 cliente.setComplemento(rs.getString(13));
-                cliente.setLogradouro(rs.getString(14));
-                cliente.setNumero(rs.getString(15));
-                cliente.setCidade(rs.getString(16));
-                cliente.setEstado(rs.getString(17));
+                cliente.setCidade(rs.getString(14));
+                cliente.setEstado(rs.getString(15));
+                cliente.setEmpresa(rs.getInt(16));
+                cliente.setCep(rs.getString(17));
                 lista.add(cliente);
             }
             
@@ -178,16 +174,16 @@ public class ClienteDAO {
                 cliente.setCpf(rs.getString(5));
                 cliente.setRg(rs.getString(6));            
                 cliente.setIdade(rs.getString(7));                
-                cliente.setTelefone1(rs.getString(8));
+                cliente.setTelefone(rs.getString(8));
                 cliente.setTelefone2(rs.getString(9));
                 cliente.setEmail(rs.getString(10));
-                cliente.setBairro(rs.getString(11));
-                cliente.setCep(rs.getString(12));
+                cliente.setEndereco(rs.getString(11));
+                cliente.setNumero(rs.getString(12));
                 cliente.setComplemento(rs.getString(13));
-                cliente.setLogradouro(rs.getString(14));
-                cliente.setNumero(rs.getString(15));
-                cliente.setCidade(rs.getString(16));
-                cliente.setEstado(rs.getString(17));
+                cliente.setCidade(rs.getString(14));
+                cliente.setEstado(rs.getString(15));
+                cliente.setEmpresa(rs.getInt(16));
+                cliente.setCep(rs.getString(17));
             }
             
         } catch (SQLException ex) {

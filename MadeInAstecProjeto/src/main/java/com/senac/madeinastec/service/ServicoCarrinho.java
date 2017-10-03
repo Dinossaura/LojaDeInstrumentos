@@ -18,9 +18,6 @@ public class ServicoCarrinho {
     public static void cadastrarProdutonoCarrinho(Carrinho carrinho)
             throws Exception, CarrinhoException, DataSourceException{
 
-        //Chama o validador para verificar se produto pode ser inserido
-        ValidadorCarrinho.validar(carrinho);
-
         try {
             //Realiza a chamada de inserção na fonte de dados
            

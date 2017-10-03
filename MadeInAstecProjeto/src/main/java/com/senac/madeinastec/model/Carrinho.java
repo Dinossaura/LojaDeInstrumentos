@@ -4,26 +4,18 @@
  * and open the template in the editor.
  */
 package com.senac.madeinastec.model;
-
+import com.senac.madeinastec.model.Cliente;
+import java.sql.Timestamp;
+import java.util.Date;
 /**
  *
  * @author Magno
  */
 public class Carrinho {
-     private Integer id;
      private Integer codigo;
-     private String titulo;
-     private String plataforma;
-     private Double preco;
-     private Integer quantidade;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+     private Cliente cliente;
+     private Timestamp data;
+     private Double valorTotal;
 
     public Integer getCodigo() {
         return codigo;
@@ -33,38 +25,28 @@ public class Carrinho {
         this.codigo = codigo;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
-    public String getPlataforma() {
-        return plataforma;
+    public Timestamp getData() {
+        return data;
     }
 
-    public void setPlataforma(String plataforma) {
-        this.plataforma = plataforma;
+    public void setData(Timestamp data) {
+        this.data = data;
     }
 
-    public Double getPreco() {
-        return preco;
+    public Double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }  
      
 }

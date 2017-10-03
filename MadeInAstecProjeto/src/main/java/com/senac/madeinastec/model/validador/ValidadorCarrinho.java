@@ -14,14 +14,5 @@ import com.senac.madeinastec.model.Carrinho;
  */
 public class ValidadorCarrinho {
     //Realização da validação de negocio
-    public static void validar(Carrinho carrinho)throws Exception, CarrinhoException{
-        
-        if(carrinho == null){
-            throw new CarrinhoException("É preciso informar um produto para o carrinho!");
-        }
-        
-        if(carrinho.getQuantidade() == null || carrinho.getQuantidade() == 0){
-            throw new CarrinhoException("É preciso informar uma quantidade no carrinho!");
-        }
-    }
+   
 }
