@@ -23,8 +23,8 @@ public class CarrinhoDAO {
     Connection conn = conexaoBanco.createConnection();
     
     public Integer inserirCarrinho(Carrinho carrinho){
-         String query = " insert into carrinho(codigocliente, datacarrinho, valortotal)"
-        + " values (?, ?, ?)";
+         String query = " insert into carrinho(codigocliente, datacarrinho, valortotal, codigoempresa)"
+        + " values (?, ?, ?, ?)";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -32,7 +32,8 @@ public class CarrinhoDAO {
             preparedStatement.setInt(1, carrinho.getCliente().getId());
             preparedStatement.setTimestamp(2, carrinho.getData());
             preparedStatement.setDouble(3, carrinho.getValorTotal());
-         
+            preparedStatement.setInt(4, carrinho.getCodigoempresa());
+            
             preparedStatement.executeUpdate();
 
             ResultSet  rs = preparedStatement.getGeneratedKeys();

@@ -35,10 +35,10 @@ public class ServicoCarrinho {
     }
     
     //Cadastrar item no carrinho
-    public void cadastrarItemCarrinho(ItemCarrinho itemVenda, int codigo) throws DataSourceException, ItemCarrinhoException {
+    public void cadastrarItemCarrinho(ItemCarrinho itemcarrinho, int codigo) throws DataSourceException, ItemCarrinhoException {
             
         try {
-            itemVendaDAO.cadastrarItemCarrinho(itemVenda, codigo);
+            itemVendaDAO.cadastrarItemCarrinho(itemcarrinho, codigo);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);

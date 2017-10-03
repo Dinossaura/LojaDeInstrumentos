@@ -12,6 +12,16 @@ package com.senac.madeinastec.model;
 public class Fornecedor {
     private int codigo;
     private String nome;
+    private int codigoempresa;
+    
+    public int getCodigoempresa() {
+        return codigoempresa;
+    }
+
+    public void setCodigoempresa(int codigoempresa) {
+        this.codigoempresa = codigoempresa;
+    }
+   
 
     public int getCodigo() {
         return codigo;

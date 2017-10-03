@@ -20,14 +20,15 @@ public class FornecedorDAO {
         
     public void inserirFornecedor(Fornecedor fornecedor){
         System.out.println("Iniciando processo de inserção de fornecedor...");
-        String query = "insert into fornecedor (nome) values (?);";
+        String query = "insert into fornecedor (nome, codigoempresa) values (?, ?);";
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             preparedStatement.setString(1, fornecedor.getNome());
-        
+            preparedStatement.setInt(2, fornecedor.getCodigoempresa());
+            
             preparedStatement.executeUpdate();
             preparedStatement.close();
             System.out.println("Fornecedor inserido com sucesso.");
@@ -59,20 +60,29 @@ public class FornecedorDAO {
         return fornecedor;
     }
     
-    public List<Fornecedor> listarFornecedor(String nome){ //retorna todos itens
+    public List<Fornecedor> listarFornecedor(String nome, int codigoempresa){ //retorna todos itens
         List<Fornecedor> lista = new ArrayList<>();
         System.out.println("Buscando produto na base de dados...");
         String query = "";
+        boolean vazio = true;
         
         if(nome == ""){
-            query = "SELECT * FROM fornecedor";
+            vazio = true;
+            query = "SELECT * FROM fornecedor WHERE codigoempresa = ?";
         }else{
-            query = "SELECT * FROM fornecedor WHERE nome LIKE ?";
+            vazio = false;
+            query = "SELECT * FROM fornecedor WHERE nome LIKE ? and codigoempresa = ?";
         }
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1,"%"+nome+"%");
+            if(vazio = false){
+                preparedStatement.setString(1,"%"+nome+"%");
+                preparedStatement.setInt(2,codigoempresa);
+            }else{
+                preparedStatement.setInt(1,codigoempresa);
+            }
+            
             
             ResultSet rs = preparedStatement.executeQuery();
 

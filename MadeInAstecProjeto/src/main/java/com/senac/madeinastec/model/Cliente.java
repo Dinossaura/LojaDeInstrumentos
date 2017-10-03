@@ -21,7 +21,7 @@ public class Cliente {
     private String numero;
     private String cidade;
     private String estado;
-    private int empresa; 
+    private int codigoempresa; 
 
     public Integer getId() {
         return id;
@@ -160,11 +160,11 @@ public class Cliente {
     }
 
     public int getEmpresa() {
-        return empresa;
+        return codigoempresa;
     }
 
-    public void setEmpresa(int empresa) {
-        this.empresa = empresa;
+    public void setEmpresa(int codigoempresa) {
+        this.codigoempresa = codigoempresa;
     }
 
     
