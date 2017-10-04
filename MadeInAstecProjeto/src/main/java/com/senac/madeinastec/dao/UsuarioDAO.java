@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class UsuarioDAO {
+public class UsuarioDAO extends ConexaoBanco{
         ConexaoBanco conexaoBanco = new ConexaoBanco();    
         Connection conn = conexaoBanco.createConnection();
     //insere novo usuário
     public void inserirUsuario(Usuario usuario){
         System.out.println("Iniciando processo de inserção de Usuario...");
-        String query = "insert into produto (nome, login, senha, codigoperfil, codigoempresa) values (?,?,?,?,?);";
+        String query = "insert into usuarios (nome, login, senha, codigoperfil, codigoempresa) values (?,?,?,?,?)";
         
         
         try {
@@ -28,6 +28,8 @@ public class UsuarioDAO {
             preparedStatement.setString(1, usuario.getNome());
             preparedStatement.setString(2, usuario.getLogin());
             preparedStatement.setString(3, usuario.getSenha());
+            preparedStatement.setInt(4, usuario.getcodigoPerfil());
+            preparedStatement.setInt(5, usuario.getCodigoEmpresa());
         
             preparedStatement.executeUpdate();
             preparedStatement.close();

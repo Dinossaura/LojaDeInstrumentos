@@ -5,6 +5,7 @@
  */
 package com.senac.madeinastec.servlets;
 
+import com.senac.madeinastec.dao.UsuarioDAO;
 import com.senac.madeinastec.model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -47,9 +48,9 @@ public class CadastrarUsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int codigo ;
-        String nome = request.getParameter("nome");
-        int codigoEmpresa;
+        
+        String nome = request.getParameter("name");
+        int codigoEmpresa = 1;
         String codigoperfil = request.getParameter("perfil");
         String login= request.getParameter("login");
         String senha= request.getParameter("senha");
@@ -58,8 +59,11 @@ public class CadastrarUsuarioServlet extends HttpServlet {
         novoUsuario.setNome(nome);
         novoUsuario.setLogin(login);
         novoUsuario.setSenha(senha);
-        novoUsuario.setcodigoPerfil(codigoperfil);
+        novoUsuario.setCodigoEmpresa(codigoEmpresa);
+        novoUsuario.setcodigoPerfil(1);
         
+        UsuarioDAO usuario = new UsuarioDAO();
+        usuario.inserirUsuario(novoUsuario);
 
     }
 

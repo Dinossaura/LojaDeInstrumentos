@@ -64,9 +64,9 @@
                 <label for="perfil">Perfil</label>
                 <select class="form-control" name="perfil">
                     <option value="1">DIRETOR</option>
-                    <option value="1">GERENTE</option>
-                    <option value="1">VENDEDOR</option>
-                    <option value="1">ESTOQUISTA</option>
+                    <option value="2">GERENTE</option>
+                    <option value="3">VENDEDOR</option>
+                    <option value="4">ESTOQUISTA</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-default">Cadastrar</button>

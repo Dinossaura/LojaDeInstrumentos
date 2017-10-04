@@ -16,7 +16,7 @@ public class ConexaoBanco {
     public Connection createConnection(){
         String url = "jdbc:derby://localhost:1527/MadeinAstec";
         try {
-            Class.forName("com.derby.jdbc.Driver").newInstance();
+            Class.forName("org.apache.derby.jdbc.ClientDataSource").newInstance();
             Connection conn = DriverManager.getConnection (url, "Astec", "astec");
             System.out.println("conectado");
             
@@ -27,5 +27,6 @@ public class ConexaoBanco {
               System.out.println("Deu ruim" +e);
         } 
             return null;
-    }
+    }     
 }
+    
