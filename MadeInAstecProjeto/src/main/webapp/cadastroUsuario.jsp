@@ -70,6 +70,7 @@
                 </select>
             </div>
             <button type="submit" class="btn btn-default">Cadastrar</button>
+            <button type="submit" class="btn btn-default">&nbsp&nbsp&nbsp&nbsp Sair &nbsp&nbsp&nbsp&nbsp</button>
     </div>            
     
 </form>
