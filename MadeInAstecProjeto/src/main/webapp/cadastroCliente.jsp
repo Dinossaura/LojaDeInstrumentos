@@ -54,7 +54,7 @@
             </div>
             <div class="form-group">
                 <label for="desc">Sobrenome:</label>
-                <textarea class="form-control" rows="1" id="sobrenome"></textarea>
+                <input class="form-control" id="sobrenome">
             </div>
              <div class="form-group">
                 <label for="perfil">Perfil</label>
@@ -70,7 +70,7 @@
             </div><br><br>
             <div class="form-group">
                 <label for="desc">CPF:</label>
-                <input class="form-control" id="cpf"></textarea>
+                <input class="form-control" type="number" id="cpf"></textarea>
             </div>
             <div class="form-group">
                 <label for="desc">RG:</label>
@@ -78,7 +78,7 @@
             </div><br><br>
 			<div class="form-group">
                 <label for="desc">Telefone 1:</label>
-				 <input class="form-control" id="tel1">
+		<input class="form-control" id="tel1">
             </div>
             <div class="form-group">
                 <label for="desc">Telefone 2:</label>
