@@ -17,7 +17,7 @@
                 margin-bottom: 0;
             }
         </style>
-        <title>lalala</title>
+        <title>Cadastro de Usuários</title>
     </head>
 
     <body>
@@ -45,7 +45,7 @@
     </nav>
 </div>
 <div class="container">
-    <h1>Cadastro de usuários</h1>
+    <h1>Cadastro de Usuários</h1>
     <div class="well">
         <form class="form-inline" action="${pageContext.request.contextPath}/cadastro-usuario" method="post">
             <div class="form-group">
