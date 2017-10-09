@@ -77,8 +77,12 @@
                 <input class="form-control" type="number" id="rg">
             </div><br><br>
 			<div class="form-group">
-                <label for="desc">Telefone:</label>
-				 <input class="form-control" id="tel">
+                <label for="desc">Telefone 1:</label>
+				 <input class="form-control" id="tel1">
+            </div>
+            <div class="form-group">
+                <label for="desc">Telefone 2:</label>
+		<input class="form-control" id="tel2">
             </div>
             <div class="form-group">
                 <label for="desc">E-mail:</label>
