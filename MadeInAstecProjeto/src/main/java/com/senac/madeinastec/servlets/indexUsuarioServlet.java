@@ -8,7 +8,11 @@ package com.senac.madeinastec.servlets;
 import com.senac.madeinastec.dao.UsuarioDAO;
 import com.senac.madeinastec.model.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
+
+import java.util.ArrayList;
+
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,11 +21,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author victor.wdebaza
+ * @author Debaza
  */
-@WebServlet(name = "CadastrarUsuarioServlet", urlPatterns = {"/cadastro-usuario"})
-public class CadastrarUsuarioServlet extends HttpServlet {
+@WebServlet(name = "indexUsuarioServlet", urlPatterns = {"/usuarios"})
+public class indexUsuarioServlet extends HttpServlet {
 
+        
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -33,7 +38,19 @@ public class CadastrarUsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        List<Usuario> listaDeUsuarios = new ArrayList<>();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        listaDeUsuarios = usuarioDAO.listarUsuario("");
+        
+        
+        
+        
+        
+        request.setAttribute("listaUsuario", listaDeUsuarios);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("listagemUsuario.jsp");
+    dispatcher.forward(request, response);
+        
     }
 
     /**
@@ -47,24 +64,17 @@ public class CadastrarUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        
-        String nome = request.getParameter("name");
-        int codigoEmpresa = 1;
-        String codigoperfil = request.getParameter("perfil");
-        String login= request.getParameter("login");
-        String senha= request.getParameter("senha");
-        
-        Usuario novoUsuario = new Usuario();
-        novoUsuario.setNome(nome);
-        novoUsuario.setLogin(login);
-        novoUsuario.setSenha(senha);
-        novoUsuario.setCodigoEmpresa(codigoEmpresa);
-        novoUsuario.setcodigoPerfil(Integer.parseInt(codigoperfil));
-        
-        UsuarioDAO usuario = new UsuarioDAO();
-        usuario.inserirUsuario(novoUsuario);
-
+       
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
 }

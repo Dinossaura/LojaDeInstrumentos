@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c"  %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,39 +45,30 @@
     </nav>
 </div>
 <div class="container">
-    <h1>Cadastro de usuários</h1>
+    <h1>Listagem de usuários</h1>
     <div class="well">
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="nome">Nome: </label>
-                <input type="text" class="form-control" id="name">
-            </div>
-            <div class="form-group">
-                <label for="desc">Descrição:</label>
-                <textarea class="form-control" rows="1" id="dsc"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="desc">Descrição:</label>
-                <textarea class="form-control" rows="1" id="dsc"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="desc">Descrição:</label>
-                <textarea class="form-control" rows="1" id="dsc"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="desc">Descrição:</label>
-                <textarea class="form-control" rows="1" id="dsc"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="desc">Descrição:</label>
-                <textarea class="form-control" rows="1" id="dsc"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="desc">Descrição:</label>
-                <textarea class="form-control" rows="1" id="dsc"></textarea>
-            </div>
-            <button type="submit" class="btn btn-default">Cadastrar</button>
-        </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Usuario</th>
+                    <th>Senha</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${listaUsuario}" var="usuario">
+                <tr>
+                    <td><c:out value="${usuario.getNome()}" /></td>
+                    <td><c:out value="${usuario.getLogin()}" /></td>
+                    <td><c:out value="${usuario.getSenha()}" /></td>
+                </tr>
+                
+            </c:forEach>
+            </tbody>
+        </table>
+        
+
+
     </div>
 
 

@@ -71,7 +71,7 @@ public class UsuarioDAO extends ConexaoBanco{
         System.out.println("Buscando produto na base de dados...");
         String query = "";
         
-        if(nome == ""){
+        if("".equals(nome)){
             query = "SELECT * FROM usuarios";
         }else{
             query = "SELECT * FROM usuarios WHERE nome LIKE ?";
@@ -79,7 +79,7 @@ public class UsuarioDAO extends ConexaoBanco{
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1,"%"+nome+"%");
+            //preparedStatement.setString(1,"%"+nome+"%");
             
             ResultSet rs = preparedStatement.executeQuery();
 
