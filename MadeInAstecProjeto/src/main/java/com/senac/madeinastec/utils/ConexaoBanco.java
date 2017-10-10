@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author uriel.oliveira
+ * @author Magno Veras
  */
 public class ConexaoBanco {
     

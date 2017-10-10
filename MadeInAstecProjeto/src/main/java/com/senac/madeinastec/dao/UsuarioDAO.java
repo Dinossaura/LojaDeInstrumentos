@@ -100,23 +100,28 @@ public class UsuarioDAO extends ConexaoBanco{
     
     }
     //encontra usuário por código
-    public Usuario encontrarUsuario(int codigo){//retorna um item
+    public Usuario encontrarUsuario(String login, String senha, int empresa){//retorna um item
         List<Usuario> lista = new ArrayList<>();
         Usuario usuario = new Usuario();
         System.out.println("Buscando Usuário na base de dados...");
-        String query = "SELECT * FROM usuarios WHERE codigo=?";//addicionar o % %
+        String query = "SELECT * FROM usuarios WHERE login=? and senha=? and empresa=?";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setInt(1,codigo);
-                        
+            preparedStatement.setString(1,login);
+            preparedStatement.setString(2,senha);
+            preparedStatement.setInt(3, empresa);
+            
             ResultSet rs = preparedStatement.executeQuery();
             
             while (rs.next()){
                 usuario.setCodigo(rs.getInt(1));
                 usuario.setNome(rs.getString(2));
                 usuario.setLogin(rs.getString(3));
+                usuario.setSenha(rs.getString(4));
+                usuario.setcodigoPerfil(rs.getInt(5));
+                usuario.setCodigoEmpresa(rs.getInt(6));
                 lista.add(usuario);
             }
             
