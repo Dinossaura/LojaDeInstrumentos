@@ -12,6 +12,7 @@
     </head>
     <body>
         <jsp:include page="topo.jsp"/>
+        <jsp:include page="menu.jsp"/>
         
         <div class="container-fluid" id="login">
             <h3 class="text-center">LOGIN</h3>
