@@ -11,8 +11,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <jsp:include page="topo.jsp"/>
-        <jsp:include page="menu.jsp"/>
+        <jsp:include page="topo.jsp"/>        
         
         <div class="container-fluid" id="login">
             <h3 class="text-center">LOGIN</h3>
