@@ -21,7 +21,7 @@
     </head>
 
     <body>
-       <jsp:include page="menu.jsp"/>
+        <jsp:include page="menu.jsp"/>
         <div class="container">
             <h1>Cadastro de Clientes</h1>
             <div class="well">
@@ -119,14 +119,13 @@
 
 
 
-        </div>
-        <div class="footer">
-            <div class="jumbotron">
-                <div class="container text-center">
-                    <p>Made in Astec 2017</p>
+            <div class="footer">
+                <div class="jumbotron">
+                    <div class="text-center">
+                        <jsp:include page="rodape.jsp"/>
+                    </div>
                 </div>
             </div>
-        </div>
 
     </body>
 
