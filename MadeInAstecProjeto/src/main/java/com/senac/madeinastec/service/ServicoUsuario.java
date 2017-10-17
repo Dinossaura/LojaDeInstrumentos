@@ -50,7 +50,7 @@ public class ServicoUsuario {
     }
 
     //Realiza a pesquisa de um cliente por nome na fonte de dados
-    public List<Usuario> procurarUsuario(String nome) throws ClienteException, DataSourceException, Exception {
+    public List<Usuario> listarUsuarios(String nome) throws ClienteException, DataSourceException, Exception {
         try {
             return usuarioDAO.listarUsuario(nome);
             

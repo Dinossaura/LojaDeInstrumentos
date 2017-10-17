@@ -104,7 +104,7 @@ public class UsuarioDAO extends ConexaoBanco{
         List<Usuario> lista = new ArrayList<>();
         Usuario usuario = new Usuario();
         System.out.println("Buscando Usuário na base de dados...");
-        String query = "SELECT * FROM usuarios WHERE login=? and senha=? and empresa=?";
+        String query = "SELECT * FROM usuarios WHERE login=? and senha=? and codigoempresa=?";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -114,8 +114,8 @@ public class UsuarioDAO extends ConexaoBanco{
             preparedStatement.setInt(3, empresa);
             
             ResultSet rs = preparedStatement.executeQuery();
-            
-            while (rs.next()){
+            if(rs.next()){
+               while (rs.next()){
                 usuario.setCodigo(rs.getInt(1));
                 usuario.setNome(rs.getString(2));
                 usuario.setLogin(rs.getString(3));
@@ -123,11 +123,15 @@ public class UsuarioDAO extends ConexaoBanco{
                 usuario.setcodigoPerfil(rs.getInt(5));
                 usuario.setCodigoEmpresa(rs.getInt(6));
                 lista.add(usuario);
+                } 
+            }else{
+                return null;
             }
             
             System.out.println("Busca efetuada com sucesso");
         } catch (SQLException ex) {
             System.out.println("Erro ao buscar usuario"+ex);
+            
         }        
         return usuario;
     }

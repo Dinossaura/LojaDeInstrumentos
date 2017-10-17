@@ -18,6 +18,7 @@
         <title></title>
     </head>
     <body>
+        <jsp:include page="topo.jsp"/> 
         <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <div class="navbar-header">
