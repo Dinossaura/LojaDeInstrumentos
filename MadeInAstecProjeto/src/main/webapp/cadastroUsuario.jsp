@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-    <head>
+    <head>        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,29 +21,8 @@
     </head>
 
     <body>
-        <div class="header">
-            <div class="jumbotron">
-                <div class="container text-center">
-                    <h1>Made in Astec</h1>
-                    <p>Sistema de Gerenciamento de Vendas</p>
-                </div>
-            </div>
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Made in Astec </a>
-                    </div>
-                    <ul class="nav navbar-nav">
-                        <li><a href="#">Clientes</a></li>
-                        <li><a href="#">Produtos</a></li>
-                        <li><a href="#">Vendas</a></li>
-                        <li><a href="#">Relatórios</a></li>
-                        <li><a href="#">Usuários</a></li>
-                    </ul>
-                </div>
-        </div>
-    </nav>
-</div>
+        <jsp:include page="menu.jsp"/>
+            
 <div class="container">
     <h1>Cadastro de Usuários</h1>
     <div class="well">

@@ -25,11 +25,11 @@
                         <a class="navbar-brand" href="#">Made in Astec </a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Clientes</a></li>
-                        <li><a href="#">Produtos</a></li>
-                        <li><a href="#">Vendas</a></li>
-                        <li><a href="#">Relatórios</a></li>
-                        <li><a href="#">Usuários</a></li>
+                        <li><a href="cadastroCliente.jsp">Clientes</a></li>
+                        <li><a href="cadastroProduto.jsp">Produtos</a></li>
+                        <li><a href="venda.jsp">Vendas</a></li>
+                        <li><a href="relatorio.jsp">Relatórios</a></li>
+                        <li><a href="cadastroUsuario.jsp">Usuários</a></li>
                     </ul>
                 </div>
         </div>
