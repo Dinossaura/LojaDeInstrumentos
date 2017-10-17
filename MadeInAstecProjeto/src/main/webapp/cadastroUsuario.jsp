@@ -60,8 +60,8 @@
 </div>
 <div class="footer">
     <div class="jumbotron">
-        <div class="container text-center">
-            <p>Made in Astec 2017</p>
+        <div class="text-center">
+           <jsp:include page="rodape.jsp"/>
         </div>
     </div>
 </div>

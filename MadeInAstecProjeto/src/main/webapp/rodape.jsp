@@ -17,7 +17,7 @@
     </head>
     <body style="width: 100%">
         <div class="jumbotron">
-        <div class="container text-center">
+        <div class="text-center">
             <p>Made in Astec 2017</p>
         </div>
     </div>

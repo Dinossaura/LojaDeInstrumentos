@@ -21,6 +21,14 @@
     </head>
     <body>        
         <jsp:include page="menu.jsp"/>
+        
+        <div class="footer">
+    <div class="jumbotron">
+        <div class="text-center">
+           <jsp:include page="rodape.jsp"/>
+        </div>
+    </div>
+</div>
     </body>
-    <jsp:include page="rodape.jsp"/>
+    
 </html>
