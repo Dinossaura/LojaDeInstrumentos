@@ -30,13 +30,36 @@
                 border: 1px solid gray;
                 border-collapse: collapse;
             }
-            tr, th {
+            tr, th , td{
                 padding: 1px;
                 text-align: left;    
             }
             .sem{
-
                 border: none;
+            }
+            td:nth-child(7) button{
+                border:none;   
+                background: none;
+                text-decoration:underline;
+            }
+            td:nth-child(7) button:hover{
+                color:#000080;
+                border:none;   
+                background: none;
+                text-decoration:underline;
+            }
+
+            td:nth-child(8) button{
+                background: none;
+                text-decoration: underline;
+                border:none;   
+            }
+
+            td:nth-child(8) button:hover{
+                color:#000080;
+                border:none;   
+                background: none;
+                text-decoration:underline;
             }
         </style>
         <title>Consulta de Cliente</title>
@@ -81,9 +104,9 @@
             <table>
                 <caption>Lista de Clientes</caption>
                 <tr >
-                    <th class="com" style="width:30px">Nome</th>
+                    <th class="com" style="width:50px">Nome</th>
                     <th class="com"style="width:130px">Sobrenome</th> 
-                    <th class="com"style="width:100px">CPF</th>
+                    <th class="com"style="width:130px">CPF</th>
                     <th class="com"style="width:100px">Telefone</th>
                     <th class="com"style="width:150px">Cidade</th>
                     <th class="com"style="width:15px">Estado</th>
