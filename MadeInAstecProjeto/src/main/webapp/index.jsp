@@ -13,6 +13,6 @@
     <body>
         <jsp:include page="topo.jsp"/>        
         <jsp:include page="login.jsp"/>
-        
+        <jsp:include page="rodape.jsp"/>
     </body>
 </html>
