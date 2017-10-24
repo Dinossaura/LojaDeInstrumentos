@@ -41,7 +41,7 @@
                     </div><br>
                     <div class="form-group">
                         <label for="desc">Compra:</label>
-                        <input class="form-control" type="number" id="compra"></textarea>
+                        <input class="form-control" type="number" name="compra"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="desc">Venda:</label>
