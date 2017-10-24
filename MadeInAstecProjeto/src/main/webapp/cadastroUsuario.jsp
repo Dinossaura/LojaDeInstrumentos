@@ -23,19 +23,30 @@
                 </div>
                 <div class="form-group">
                     <label for="senha">Senha:</label>
-                    <input class="form-control" rows="1" name="senha"></input>
+                    <input type="password" class="form-control" rows="1" name="senha"></input>
                 </div>
                 <div class="form-group">
                     <label for="perfil">Perfil</label>
                     <select class="form-control" name="perfil">
-                        <option value="1">DIRETOR</option>
-                        <option value="2">GERENTE</option>
-                        <option value="3">VENDEDOR</option>
-                        <option value="4">ESTOQUISTA</option>
+                        <option value="1">Diretoria</option>
+                        <option value="2">Gerente Produtos/ Serviços</option>
+                        <option value="3">Gerente Vendas</option>
+                        <option value="4">Gerente TI</option>
+                        <option value="5">Funcionário Retaguarda</option>
+                        <option value="6">Vendedor</option>
+                        <option value="7">Suporte Técnico</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-default">Cadastrar</button>
-                <button type="submit" class="btn btn-default">&nbsp&nbsp&nbsp&nbsp Sair &nbsp&nbsp&nbsp&nbsp</button>
+                <div class="form-group">
+                    <label for="empresa">Perfil</label>
+                    <select class="form-control" name="empresa">
+                        <option value="1">Matriz - São Paulo</option>
+                        <option value="2">Filial - Porto Alegre</option>
+                        <option value="3">Filial - Recife</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">Salvar</button>
+                
             </form>
         </div>            
     </div>

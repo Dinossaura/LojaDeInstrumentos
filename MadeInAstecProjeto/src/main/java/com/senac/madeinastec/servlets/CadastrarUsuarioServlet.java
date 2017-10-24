@@ -7,13 +7,16 @@ package com.senac.madeinastec.servlets;
 
 import com.senac.madeinastec.dao.UsuarioDAO;
 import com.senac.madeinastec.model.Usuario;
+import com.senac.madeinastec.service.ServicoUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -33,7 +36,9 @@ public class CadastrarUsuarioServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+         RequestDispatcher dispatcher
+	    = request.getRequestDispatcher("/cadastroUsuario.jsp");
+        dispatcher.forward(request, response);
     }
 
     /**
@@ -47,10 +52,10 @@ public class CadastrarUsuarioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        HttpSession sessao = request.getSession();
         
         String nome = request.getParameter("name");
-        int codigoEmpresa = 1;
+        String codigoEmpresa = request.getParameter("empresa");
         String codigoperfil = request.getParameter("perfil");
         String login= request.getParameter("login");
         String senha= request.getParameter("senha");
@@ -59,11 +64,25 @@ public class CadastrarUsuarioServlet extends HttpServlet {
         novoUsuario.setNome(nome);
         novoUsuario.setLogin(login);
         novoUsuario.setSenha(senha);
-        novoUsuario.setCodigoEmpresa(codigoEmpresa);
+        novoUsuario.setCodigoEmpresa(Integer.parseInt(codigoEmpresa));
         novoUsuario.setcodigoPerfil(Integer.parseInt(codigoperfil));
         
-        UsuarioDAO usuario = new UsuarioDAO();
-        usuario.inserirUsuario(novoUsuario);
+        ServicoUsuario su = new ServicoUsuario();
+        try {
+            su.cadastrarUsuario(novoUsuario);
+            sessao.setAttribute("Usuario", novoUsuario);
+            response.sendRedirect(request.getContextPath() + "/cadastroUsuario.jsp");
+            System.out.println("Usuário Inserido com sucesso!");
+            
+        } catch (Exception e) {
+            request.setAttribute("mensagemErro", "Usuário não cadastrado");
+            RequestDispatcher dispatcher
+	      = request.getRequestDispatcher("/cadastroUsuario.jsp");
+            dispatcher.forward(request, response);
+            System.out.println("Erro na inserção de novo usuário!");
+        }
+        
+        
 
     }
 

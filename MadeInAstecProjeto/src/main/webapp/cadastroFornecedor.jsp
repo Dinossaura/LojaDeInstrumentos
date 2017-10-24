@@ -12,13 +12,20 @@
     <div class="container">
     <h1>Cadastro de Fornecedores</h1>
     <div class="well">
-        <form class="form-inline">
+        <form class="form-inline" action="${pageContext.request.contextPath}/cadastro-fornecedor" method="post">
             <div class="form-group">
-                <label for="nome">Fornecedor: </label>
-                <input type="text" rows class="form-control" id="fornecedor">
-            </div><br><br>
-	
-            <button type="submit" class="btn btn-default">Cadastrar</button>
+                <label for="fornecedor">Fornecedor: </label>
+                <input type="text" name="fornecedor" class="form-control" id="fornecedor">
+            </div>
+            <div class="form-group">
+                    <label for="empresa">Perfil</label>
+                    <select class="form-control" name="empresa">
+                        <option value="1">Matriz - São Paulo</option>
+                        <option value="2">Filial - Porto Alegre</option>
+                        <option value="3">Filial - Recife</option>
+                    </select>
+                </div>
+            <button type="submit" class="btn btn-default">Salvar</button>
 			
         </form>
     </div>

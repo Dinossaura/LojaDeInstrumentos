@@ -37,13 +37,13 @@ public class UsuarioDAO extends ConexaoBanco{
             
         } catch (SQLException ex) {
             System.out.println(ex);
-            System.out.println("Erro ao salvar produto");
+            System.out.println("Erro ao salvar Usuário");
         }
     }
     //altera usuário existente
     public Usuario updateUsuario(Usuario usuario) throws Exception{
-        System.out.println("Atualizando produto...");
-         String query = "UPDATE usuario SET nome=?, login=?, senha=?, codigoperfil=?, codigoempresa=? where codigo =?";
+        System.out.println("Atualizando Usuário...");
+         String query = "UPDATE usuarios SET nome=?, login=?, senha=?, codigoperfil=?, codigoempresa=? where codigo =?";
         
         
         try {

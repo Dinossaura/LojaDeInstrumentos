@@ -20,8 +20,7 @@ public class FornecedorDAO {
         
     public void inserirFornecedor(Fornecedor fornecedor){
         System.out.println("Iniciando processo de inserção de fornecedor...");
-        String query = "insert into fornecedor (nome, codigoempresa) values (?, ?);";
-        
+        String query = "insert into fornecedor (nome, codigoempresa) values (?, ?)";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -39,7 +38,7 @@ public class FornecedorDAO {
         }
     }
     
-    public Fornecedor updateProduto(Fornecedor fornecedor) throws Exception{
+    public Fornecedor atualizarFornecedor(Fornecedor fornecedor) throws Exception{
         System.out.println("Atualizando fornecedor...");
          String query = "UPDATE fornecedor SET nome=? WHERE codigo=?";
         
