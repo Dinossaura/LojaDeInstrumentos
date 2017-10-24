@@ -13,7 +13,7 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="nome">Fornecedor: </label>
-                    <input type="text" rows class="form-control" id="editarFornecedor">
+                    <input type="text" rows class="form-control" name="editarFornecedor">
                 </div><br><br>
 	
                 <button type="submit" class="btn btn-default">Atualizar</button>

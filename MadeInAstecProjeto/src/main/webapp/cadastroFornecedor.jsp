@@ -15,7 +15,7 @@
         <form class="form-inline">
             <div class="form-group">
                 <label for="nome">Fornecedor: </label>
-                <input type="text" rows class="form-control" id="fornecedor">
+                <input type="text" rows class="form-control" name="fornecedor">
             </div><br><br>
 	
             <button type="submit" class="btn btn-default">Cadastrar</button>

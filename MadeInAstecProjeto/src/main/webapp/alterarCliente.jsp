@@ -14,11 +14,11 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="nome">Nome: </label>
-                    <input type="text" class="form-control" id="editName">
+                    <input type="text" class="form-control" name="editName">
                 </div>
                 <div class="form-group">
                     <label for="desc">Sobrenome:</label>
-                    <textarea class="form-control" rows="1" id="editSobrenome"></textarea>
+                    <textarea class="form-control" rows="1" name="editSobrenome"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="perfil">Perfil</label>
@@ -29,35 +29,35 @@
                 </div>
                 <div class="form-group">
                     <label for="desc">Data Nascimento:</label>
-                    <input class="form-control" type="date" id="editDataNasc">
+                    <input class="form-control" type="date" name="editDataNasc">
                 </div><br><br>
                 <div class="form-group">
                     <label for="desc">CPF:</label>
-                    <input class="form-control" id="editCpf"></textarea>
+                    <input class="form-control" name="editCpf"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="desc">RG:</label>
-                    <input class="form-control" type="editNumber" id="rg">
+                    <input class="form-control" type="editNumber" name="rg">
                 </div><br><br>
 		<div class="form-group">
                     <label for="desc">Telefone:</label>
-                    <input class="form-control" id="editTel">
+                    <input class="form-control" name="editTel">
                 </div>
                 <div class="form-group">
                     <label for="desc">E-mail:</label>
-                    <input class="form-control" id="editEmail">
+                    <input class="form-control" name="editEmail">
                 </div>
 		<div class="form-group">
                     <label for="desc">Número:</label>
-                    <input class="form-control" id="editNumCasa">
+                    <input class="form-control" name="editNumCasa">
                 </div>
 		<div class="form-group">
                     <label for="desc">Complemento:</label>
-                    <input class="form-control" id="edit]Complemento">
+                    <input class="form-control" name="edit]Complemento">
                 </div>
 		<div class="form-group">
                     <label for="desc">Cidade:</label>
-                    <input class="form-control" id="editCidade">
+                    <input class="form-control" name="editCidade">
             </div>
 			<div class="form-group">
                 <label for="perfil">Estado</label>
