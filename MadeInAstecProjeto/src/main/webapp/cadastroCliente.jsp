@@ -11,7 +11,7 @@
         <div class="container">
             <h1>Cadastro de Clientes</h1>
             <div class="well">
-                <form class="form-inline">
+                <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-cliente" method="post">
                     <div class="form-group">
                         <label for="nome">Nome: </label>
                         <input type="text" class="form-control" name="name">
@@ -60,6 +60,14 @@
                         <label for="desc">Complemento:</label>
                         <input class="form-control" name="complemento">
                     </div>
+                    <div class="form-group" >
+                        <label for="desc">Endereço:</label>
+                        <input class="form-control" name="endereco">
+                    </div>
+                    <div class="form-group" >
+                        <label for="desc">CEP:</label>
+                        <input class="form-control" name="cep">
+                    </div>
                     <div class="form-group">
                         <label for="desc">Cidade:</label>
                         <input class="form-control" name="cidade">
@@ -67,36 +75,45 @@
                     <div class="form-group">
                         <label for="perfil">Estado</label>
                         <select class="form-control" name="estados">
-                            <option value="1">Acre</option>
-                            <option value="2">Alagoas</option>
-                            <option value="3">Amapá</option>
-                            <option value="4">Amazonas</option>
-                            <option value="5">Bahia</option>
-                            <option value="6">Ceará</option>
-                            <option value="7">Distrito Federal</option>
-                            <option value="8">Espírito Santo</option>
-                            <option value="9">Goiás</option>
-                            <option value="10">Maranhão</option>
-                            <option value="11">Mato Grosso</option>
-                            <option value="12">Mato Grosso do Sul</option>
-                            <option value="13">Minas Gerais</option>
-                            <option value="14">Pará</option>
-                            <option value="15">Paraíba</option>
-                            <option value="16">Paraná</option>
-                            <option value="17">Pernambuco</option>
-                            <option value="18">Piauí</option>
-                            <option value="19">Rio de Janeiro</option>
-                            <option value="20">Rio Grande do Norte</option>
-                            <option value="21">Rio Gramnde do Sul</option>
-                            <option value="22">Rondonia</option>
-                            <option value="23">Rorâima</option>
-                            <option value="24">Santa Catarina</option>
-                            <option value="25">São Paulo</option>
-                            <option value="26">Sergipe</option>
-                            <option value="27">Tocantins</option>
+                            <option value="Ac">Acre</option>
+                            <option value="Al">Alagoas</option>
+                            <option value="Ap">Amapá</option>
+                            <option value="Am">Amazonas</option>
+                            <option value="Ba">Bahia</option>
+                            <option value="Ce">Ceará</option>
+                            <option value="Df">Distrito Federal</option>
+                            <option value="Es">Espírito Santo</option>
+                            <option value="Go">Goiás</option>
+                            <option value="Ma">Maranhão</option>
+                            <option value="Mt">Mato Grosso</option>
+                            <option value="Ms">Mato Grosso do Sul</option>
+                            <option value="Mg">Minas Gerais</option>
+                            <option value="Pa">Pará</option>
+                            <option value="Pb">Paraíba</option>
+                            <option value="Pr">Paraná</option>
+                            <option value="Pe">Pernambuco</option>
+                            <option value="Pi">Piauí</option>
+                            <option value="Rj">Rio de Janeiro</option>
+                            <option value="Rn">Rio Grande do Norte</option>
+                            <option value="Rs">Rio Gramnde do Sul</option>
+                            <option value="Ro">Rondonia</option>
+                            <option value="Rr">Rorâima</option>
+                            <option value="Sc">Santa Catarina</option>
+                            <option value="Sp">São Paulo</option>
+                            <option value="Sg">Sergipe</option>
+                            <option value="To">Tocantins</option>
 
                         </select>
                     </div><br><br>
+
+                    <div class="form-group">
+                        <label for="empresa">Perfil</label>
+                        <select class="form-control" name="empresa">
+                            <option value="1">Matriz - São Paulo</option>
+                            <option value="2">Filial - Porto Alegre</option>
+                            <option value="3">Filial - Recife</option>
+                        </select>
+                    </div>
 
                     <button type="submit" class="btn btn-default">Cadastrar</button> 
 

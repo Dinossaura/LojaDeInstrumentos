@@ -27,7 +27,7 @@ public class ClienteDAO {
 
     public void inserirCliente(Cliente cliente){
         
-         String query = " insert into cliente (nome, sobrenome, sexo, cpf, rg, idade, telefone, telefone2, email,"
+         String query = " insert into clientes (nome, sobrenome, sexo, cpf, rg, idade, telefone, telefone2, email,"
                  + "endereco, numero, complemento, cep, cidade, estado, codigoempresa)"
         + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
@@ -40,7 +40,7 @@ public class ClienteDAO {
             preparedStatement.setString(3, cliente.getSexo());
             preparedStatement.setString(4, cliente.getCpf());
             preparedStatement.setString(5, cliente.getRg());            
-            preparedStatement.setString(6, cliente.getIdade());
+            preparedStatement.setInt(6, Integer.parseInt(cliente.getIdade()));
             preparedStatement.setString(7, cliente.getTelefone());
             preparedStatement.setString(8, cliente.getTelefone2());
             preparedStatement.setString(9, cliente.getEmail());

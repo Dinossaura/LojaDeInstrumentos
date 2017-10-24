@@ -11,7 +11,7 @@
         <div class="container">
             <h1>Cadastro de Produtos</h1>
             <div class="well">
-                <form class="form-inline">
+                <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-cliente" method="post>
                     <div class="form-group">
                         <label for="nome">Produto: </label>
                         <input type="text" class="form-control" name="prod">

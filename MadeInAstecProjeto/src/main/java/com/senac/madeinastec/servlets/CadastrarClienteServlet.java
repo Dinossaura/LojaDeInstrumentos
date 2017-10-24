@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Debaza
  */
-@WebServlet(name = "CadastrarClienteServlet", urlPatterns = {"/CadastrarCliente"})
+@WebServlet(name = "CadastrarClienteServlet", urlPatterns = {"/cadastrar-cliente"})
 public class CadastrarClienteServlet extends HttpServlet {
     
     @Override
@@ -59,7 +59,7 @@ public class CadastrarClienteServlet extends HttpServlet {
         String nome = request.getParameter("name");
         String sobrenome = request.getParameter("sobrenome");
         String sexo = request.getParameter("sexo");
-        String dataNasc = request.getParameter("dataNasc");
+        String dataNasc = "19";
         String cpf = request.getParameter("cpf");
         String rg = request.getParameter("rg");
         String tel1 = request.getParameter("tel1");
@@ -67,21 +67,35 @@ public class CadastrarClienteServlet extends HttpServlet {
         String email = request.getParameter("email");
         String numCasa = request.getParameter("numCasa");
         String complemento = request.getParameter("complemento");
+        String end = request.getParameter("endereco");
         String cidade = request.getParameter("cidade");
+        String cep = request.getParameter("cep");
+        String estado = request.getParameter("estados");
+        String empresa = request.getParameter("empresa");
         
         Cliente novoCliente = new Cliente();
+         
+         int s = Integer.parseInt(sexo);
+         if(s == 1){
+          novoCliente.setSexo("Masculino");  
+        }else{
+             novoCliente.setSexo("Feminino");
+         }
         novoCliente.setNome(nome);
         novoCliente.setSobrenome(sobrenome);
         novoCliente.setCpf(cpf);
-        novoCliente.setSexo(sexo);
         novoCliente.setIdade(dataNasc);
         novoCliente.setRg(rg);
         novoCliente.setTelefone(tel1);
         novoCliente.setTelefone2(tel2);
         novoCliente.setEmail(email);
         novoCliente.setNumero(numCasa);
+        novoCliente.setEndereco(end);
         novoCliente.setComplemento(complemento);
         novoCliente.setCidade(cidade);
+        novoCliente.setCep(cep);
+        novoCliente.setEstado(estado);
+        novoCliente.setEmpresa(Integer.parseInt(empresa));
         
         ClienteDAO clientedao = new ClienteDAO();
         clientedao.inserirCliente(novoCliente);
@@ -89,7 +103,7 @@ public class CadastrarClienteServlet extends HttpServlet {
         HttpSession sessao = request.getSession();
         sessao.setAttribute("cliente", novoCliente);
         
-        response.sendRedirect(request.getContextPath() + "/CadastrarCliente");
+        response.sendRedirect(request.getContextPath() + "/cadastroCliente.jsp");
         
     }
     
