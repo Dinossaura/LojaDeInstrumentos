@@ -14,27 +14,27 @@
                 <form class="form-inline">
                     <div class="form-group">
                         <label for="nome">Produto: </label>
-                        <input type="text" class="form-control" id="prod">
+                        <input type="text" class="form-control" name="prod">
                     </div>
                     <div class="form-group">
                         <label for="desc">Descrição:</label>
-                        <textarea class="form-control" rows="1" id="dscProd"></textarea>
+                        <textarea class="form-control" rows="1" name="dscProd"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="desc">Categoria:</label>
-                        <textarea class="form-control" rows="1" id="categ"></textarea>
+                        <textarea class="form-control" rows="1" name="categ"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="desc">Cód.Empresa:</label>
-                        <input class="form-control" id="codE"></textarea>
+                        <input class="form-control" name="codE"></textarea>
                     </div><br><br>
                     <div class="form-group">
                         <label for="desc">Cod.Fornecedor:</label>
-                        <input class="form-control" id="codF"></textarea>
+                        <input class="form-control" name="codF"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="desc">Estoque:</label>
-                        <input class="form-control" type="number" id="estoque"></textarea>
+                        <input class="form-control" type="number" name="estoque"></textarea>
                     </div><br><br>
                     <div class="form-group">
                         <label for="desc">Preços:</label>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="desc">Venda:</label>
-                        <input class="form-control"  id="venda"></textarea>
+                        <input class="form-control"  name="venda"></textarea>
                     </div><br><br>
                     <button type="submit" class="btn btn-default">Cadastrar</button>
 

@@ -6,7 +6,7 @@ public class Produto {
     private Integer codigoempresa; //crud >> insert getCodigo();
     private String nome;
     private String descricao;
-    private Integer categoria;
+    private String categoria; // estava integer(????)
     private Integer fornecedor;
     private Double precocompra;
     private Double precovenda;
@@ -44,11 +44,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Integer getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Integer categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 

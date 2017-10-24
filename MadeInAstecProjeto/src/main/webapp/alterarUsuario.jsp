@@ -14,20 +14,20 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="nome">Usuário: </label>
-                    <input type="text" class="form-control" id="editUsuario">
+                    <input type="text" class="form-control" name="editUsuario">
                 </div>
 
                 <div class="form-group">
                     <label for="desc">Senha:</label>
-                    <input class="form-control" id="editSenha">
+                    <input class="form-control" name="editSenha">
                 </div>
                 <div class="form-group">
                     <label for="desc">Função:</label>
-                    <input class="form-control" id="editFunc">
+                    <input class="form-control" name="editFunc">
                 </div>
                 <div class="form-group">
                     <label for="desc">Empresa:</label>
-                    <input class="form-control"  id="editUsuarioEmp">
+                    <input class="form-control"  name="editUsuarioEmp">
                 </div><br><br>
 			
                 <button type="submit" class="btn btn-default">Atualizar</button>
