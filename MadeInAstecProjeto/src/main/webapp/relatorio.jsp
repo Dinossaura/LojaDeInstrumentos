@@ -10,6 +10,34 @@
 <html>
     <head>
         <title>Relatórios</title>
+        <style>
+            .com {
+                border: 2px solid gray;
+                border-collapse: collapse;
+            }
+            td.com{
+                border: 1px solid gray;
+                border-collapse: collapse;
+            }
+            tr, th , td{
+                padding: 1px;
+                text-align: left;    
+            }
+            .sem{
+                border: none;
+            }
+            td:nth-child(7) button{
+                border:none;   
+                background: none;
+                text-decoration:underline;
+            }
+            td:nth-child(8) button{
+                background: none;
+                text-decoration: underline;
+                border:none;   
+            }
+            
+        </style>
     </head>
 
     <body align="center"> 
