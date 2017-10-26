@@ -1,9 +1,3 @@
-<%-- 
-    Document   : topo.jsp
-    Created on : 10/10/2017, 08:59:23
-    Author     : magno
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

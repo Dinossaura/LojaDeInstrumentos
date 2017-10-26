@@ -1,0 +1,161 @@
+h1#cli{
+    text-align: center;
+    margin-left: 0;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+label{
+    margin-left: 10px;
+    font-size: 17px;    
+}
+
+label#cpf{
+    margin-left: 60px;
+}
+
+label#email{
+    margin-left: 0px;
+    margin-right: -387px;
+}
+
+label#tel{
+    margin-left: 55px;
+}
+
+label#tel2{
+    margin-left: -5px;
+}
+
+#nome{
+    width: 450px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 2px;
+}
+
+#sobrenome{
+    width: 450px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 2px;
+}
+
+#sexo{
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 9px;
+}
+
+#nasc{
+    width: 175px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 2px;
+}
+
+#cpf{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: -165px;
+}
+
+#rg{
+    width: 194px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 2px;
+}
+
+#tel1{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 12px;
+}
+
+#tel2{
+    width: 194px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: -159px;
+}
+
+#email{
+    width: 450px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: -2px;
+}
+
+#endereco{
+    width: 260px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 18px;
+}
+
+#numero{
+    width: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: -12px;
+    margin-left: 2px;
+}
+
+#complemento{
+    width: 450px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 2px;
+}
+
+#cep{
+    width: 260px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 16px;
+}
+
+#cidade{
+    width: 293px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 2px;
+}
+
+#estado{
+    width: 290px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#perfil{
+    width: 260px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+button{
+    margin-left: 661px;
+}
