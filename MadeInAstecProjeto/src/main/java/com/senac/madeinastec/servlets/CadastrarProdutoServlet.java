@@ -11,18 +11,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author Mayra Pereira
- */
+@WebServlet(name = "CadastrarProdutoServlet", urlPatterns = {"/cadastrar-produto"})
 public class CadastrarProdutoServlet extends HttpServlet {
 
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -33,9 +30,9 @@ public class CadastrarProdutoServlet extends HttpServlet {
         if (sessao.getAttribute("produto") != null) {
             request.setAttribute("produto", sessao.getAttribute("produto"));
             // Remove o atributo da sessao para usuario nao ficar preso na tela de resultados
-            sessao.removeAttribute("cliente");
+            sessao.removeAttribute("produto");
             
-            destino = "produto";
+            destino = "produtos";
         } else {
             destino = "cadastroProduto.jsp";
         }
@@ -52,7 +49,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
         String produto = request.getParameter("prod");
         String desc = request.getParameter("descProd");
         String cat = request.getParameter("categ");
-        String codE = request.getParameter("codE");
+        String codE = request.getParameter("empresa");
         String codF = request.getParameter("codF");
         String estoque = request.getParameter("estoque");
         String compra = request.getParameter("compra");
@@ -62,7 +59,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
         Produto p = new Produto();
         p.setNome(produto);
         p.setDescricao(desc);
-        p.setCategoria(cat);
+        p.setCategoria(Integer.parseInt(cat));
         p.setCodigoempresa(Integer.parseInt(codE));
         p.setCodigoFornecedor(Integer.parseInt(codF));
         p.setEstoque(Integer.parseInt(estoque));
@@ -71,6 +68,11 @@ public class CadastrarProdutoServlet extends HttpServlet {
         
         ProdutoDAO pDao = new ProdutoDAO();
         pDao.inserirProduto(p);
+        
+        HttpSession sessao = request.getSession();
+        sessao.setAttribute("produto", p);
+        
+        response.sendRedirect(request.getContextPath() + "/cadastroProduto.jsp");
         
     }
 

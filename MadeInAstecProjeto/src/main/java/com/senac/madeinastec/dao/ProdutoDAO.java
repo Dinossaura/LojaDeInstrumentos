@@ -28,7 +28,7 @@ public class ProdutoDAO {
             preparedStatement.setString(2, produto.getNome());
             preparedStatement.setString(3, produto.getDescricao());
             preparedStatement.setInt(4, produto.getCodigoFornecedor());
-            preparedStatement.setString(5, produto.getCategoria());
+            preparedStatement.setInt(5, produto.getCategoria());
             preparedStatement.setDouble(6, produto.getPrecocompra());
             preparedStatement.setDouble(7, produto.getPrecovenda());
             preparedStatement.setInt(8, produto.getEstoque());
@@ -55,7 +55,7 @@ public class ProdutoDAO {
             preparedStatement.setString(2, produto.getNome());
             preparedStatement.setString(3, produto.getDescricao());
             preparedStatement.setInt(4, produto.getCodigoFornecedor());
-            preparedStatement.setString(5, produto.getCategoria());
+            preparedStatement.setInt(5, produto.getCategoria());
             preparedStatement.setDouble(6, produto.getPrecocompra());
             preparedStatement.setDouble(9, produto.getPrecovenda());
             preparedStatement.setInt(9, produto.getEstoque());

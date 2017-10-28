@@ -40,7 +40,7 @@ CREATE TABLE Clientes (
     endereco VARCHAR(30) NOT NULL,
     numero VARCHAR(10) NOT NULL,
     complemento VARCHAR(20),
-    cidade VARCHAR(15) NOT NULL,
+    cidade VARCHAR(30) NOT NULL,
     estado VARCHAR(2) NOT NULL,
     codigoempresa INTEGER NOT NULL,
     cep VARCHAR(9) NOT NULL,

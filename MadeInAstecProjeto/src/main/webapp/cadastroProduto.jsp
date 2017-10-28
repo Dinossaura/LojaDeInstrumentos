@@ -12,7 +12,7 @@
         <div class="container">
             <h1 id="pro">Cadastro de Produtos</h1>
             <div class="well">
-                <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-cliente" method="post">
+                <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-produto" method="post">
 
                     <div class="form-group">
                         <label for="nome">Produto</label>
@@ -29,10 +29,16 @@
                         <textarea class="form-control" rows="1" name="categ" id="categoria"></textarea>
                     </div>
 
-                    <div class="form-group">
-                        <label for="desc" id="coE">Cod.Empresa</label>
-                        <input class="form-control" name="codE" id="codE"/>
+                     <div class="form-group">
+                        <label for="empresa">Perfil</label>
+                        <select class="form-control" name="empresa" id="perfil">
+                            <option value="1">Matriz - São Paulo</option>
+                            <option value="2">Filial - Porto Alegre</option>
+                            <option value="3">Filial - Recife</option>
+                        </select>
                     </div>
+                    
+                   
 
                     <div class="form-group">
                         <label for="desc">Cod.Fornecedor</label>
