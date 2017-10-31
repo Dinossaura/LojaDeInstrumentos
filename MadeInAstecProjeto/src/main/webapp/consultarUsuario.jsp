@@ -54,6 +54,7 @@
                         <td><c:out value="${usuario.getNome()}" /></td>
                         <td><c:out value="${usuario.getLogin()}" /></td>
                         <td><c:out value="${usuario.getSenha()}" /></td>
+                        <td><button class="editar-usuario">Editar</button></td>
                     </tr>
                     </c:forEach>
                 </tbody>

@@ -35,7 +35,7 @@ public class ConsultaFornecedorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
           RequestDispatcher dispatcher
-	    = request.getRequestDispatcher("/consultaFornecedor.jsp");
+	    = request.getRequestDispatcher("/consultarFornecedor.jsp");
     dispatcher.forward(request, response);
     }
 
