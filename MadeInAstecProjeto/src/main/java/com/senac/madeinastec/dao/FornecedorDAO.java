@@ -77,7 +77,7 @@ public class FornecedorDAO {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            if(vazio = false){
+            if(vazio != true){
                 preparedStatement.setString(1,"%"+nome+"%");
                 preparedStatement.setInt(2,codigoempresa);
             }else{
