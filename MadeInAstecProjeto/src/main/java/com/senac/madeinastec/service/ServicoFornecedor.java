@@ -11,6 +11,7 @@ import com.senac.madeinastec.exceptions.ClienteException;
 import com.senac.madeinastec.model.Fornecedor;
 import com.senac.madeinastec.model.validador.ValidadorFornecedor;
 import com.senac.madeinastec.exceptions.DataSourceException;
+import com.senac.madeinastec.exceptions.FornecedorException;
 import java.util.List;
 /**
  *
@@ -50,7 +51,7 @@ public class ServicoFornecedor {
     }
 
     //Realiza a pesquisa de um cliente por nome na fonte de dados
-    public List<Fornecedor> listarUsuarios(String nome, int codigoEmpresa) throws ClienteException, DataSourceException, Exception {
+    public List<Fornecedor> listarFornecedor(String nome, int codigoEmpresa) throws FornecedorException, DataSourceException, Exception {
         try {
             return fornecedorDAO.listarFornecedor(nome, codigoEmpresa);
             

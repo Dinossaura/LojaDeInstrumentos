@@ -63,6 +63,7 @@ public class LoginServlet extends HttpServlet {
         
         if (verifica != null){
             sessao.setAttribute("Usuario", usuario);
+            sessao.setAttribute("Empresa", empresa);
             response.sendRedirect(request.getContextPath() + "/menu.jsp");
             System.out.println("Nome " + verifica.getNome() + "/n" + "Senha " + verifica.getSenha());
         }else{

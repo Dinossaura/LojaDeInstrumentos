@@ -59,13 +59,15 @@ public class FornecedorDAO {
         return fornecedor;
     }
     
-    public List<Fornecedor> listarFornecedor(String nome, int codigoempresa){ //retorna todos itens
-        List<Fornecedor> lista = new ArrayList<>();
-        System.out.println("Buscando produto na base de dados...");
+    public ArrayList<Fornecedor> listarFornecedor(String nome, int codigoempresa){ //retorna todos itens
+        ArrayList<Fornecedor> lista = new ArrayList<>();
+        System.out.println("Buscando fornecedor na base de dados...");
         String query = "";
+        
+        //Variável vazio serve para verificar qual select deve ser usado
         boolean vazio = true;
         
-        if(nome == ""){
+        if(nome.length() == 0){
             vazio = true;
             query = "SELECT * FROM fornecedor WHERE codigoempresa = ?";
         }else{
@@ -90,6 +92,7 @@ public class FornecedorDAO {
                     Fornecedor fornecedor = new Fornecedor();
                     fornecedor.setCodigo(rs.getInt(1));
                     fornecedor.setNome(rs.getString(2));
+                    fornecedor.setCodigoempresa(rs.getInt(3));
                     lista.add(fornecedor);
                 }
 
