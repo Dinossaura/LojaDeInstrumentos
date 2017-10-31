@@ -23,29 +23,17 @@ public class CadastrarProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         String destino;
-        
-        HttpSession sessao = request.getSession();
-        if (sessao.getAttribute("produto") != null) {
-            request.setAttribute("produto", sessao.getAttribute("produto"));
-            // Remove o atributo da sessao para usuario nao ficar preso na tela de resultados
-            sessao.removeAttribute("produto");
-            
-            destino = "produtos";
-        } else {
-            destino = "cadastroProduto.jsp";
-        }
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
+
+          RequestDispatcher dispatcher
+	    = request.getRequestDispatcher("/cadastroProduto.jsp");
         dispatcher.forward(request, response);
-       
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String produto = request.getParameter("prod");
         String desc = request.getParameter("descProd");
         String cat = request.getParameter("categ");
@@ -54,8 +42,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
         String estoque = request.getParameter("estoque");
         String compra = request.getParameter("compra");
         String venda = request.getParameter("venda");
-        
-        
+
         Produto p = new Produto();
         p.setNome(produto);
         p.setDescricao(desc);
@@ -64,19 +51,15 @@ public class CadastrarProdutoServlet extends HttpServlet {
         p.setCodigoFornecedor(Integer.parseInt(codF));
         p.setEstoque(Integer.parseInt(estoque));
         p.setPrecocompra(Double.parseDouble(compra));
-        p.setPrecocompra(Double.parseDouble(venda));
-        
+        p.setPrecovenda(Double.parseDouble(venda));
+
         ProdutoDAO pDao = new ProdutoDAO();
         pDao.inserirProduto(p);
-        
+
         HttpSession sessao = request.getSession();
         sessao.setAttribute("produto", p);
-        
+
         response.sendRedirect(request.getContextPath() + "/cadastroProduto.jsp");
-        
+
     }
-
-    
-   
-
 }

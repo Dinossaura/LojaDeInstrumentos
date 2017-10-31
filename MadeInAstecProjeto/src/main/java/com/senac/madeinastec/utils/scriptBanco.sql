@@ -136,3 +136,5 @@ SELECT * FROM Perfil;
 
 SELECT * FROM clientes;
 
+select * from fornecedor
+
