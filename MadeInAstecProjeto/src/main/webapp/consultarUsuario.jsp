@@ -53,8 +53,12 @@
                     <tr>
                         <td><c:out value="${usuario.getNome()}" /></td>
                         <td><c:out value="${usuario.getLogin()}" /></td>
-                        <td><c:out value="${usuario.getSenha()}" /></td>
-                        <td><button class="editar-usuario">Editar</button></td>
+                        <td><c:out value="${usuario.getSenha()}" /></td>                        
+                        <td><form action="${pageContext.request.contextPath}/EditarUsuarioServlet" method="post" >
+                                <input type="hidden" name="idEscondido" value="${usuario.getCodigo()}"/>
+                                <button type="submit" class="editar">Editar</button>
+                                    
+                            </form></td>
                     </tr>
                     </c:forEach>
                 </tbody>

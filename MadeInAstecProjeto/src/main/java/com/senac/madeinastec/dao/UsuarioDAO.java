@@ -151,4 +151,41 @@ public class UsuarioDAO extends ConexaoBanco{
             throw new Exception("Erro ao deletar usuário", ex);
         }
     }
+    
+     public Usuario encontrarUmUsuario(int codigo){//retorna um item
+        List<Usuario> lista = new ArrayList<>();
+        Usuario usuario = new Usuario();
+        System.out.println("Buscando produto na base de dados...");
+        String query = "SELECT * FROM usuarios WHERE codigo=?";//addicionar o % %
+        
+        
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            
+            preparedStatement.setInt(1,codigo);
+            
+            
+                        
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            while (rs.next()){
+
+                //usuario.setCodigo(rs.getInt(codigo));
+                usuario.setLogin(rs.getString("login"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setCodigoEmpresa(rs.getInt("codigoempresa"));
+                usuario.setcodigoPerfil(rs.getInt("codigoperfil"));                
+                
+                
+                lista.add(usuario);
+            }
+            
+            System.out.println("Busca efetuada com sucesso");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao buscar produto"+ex);
+        }        
+        return usuario;
+    
+    }
 }

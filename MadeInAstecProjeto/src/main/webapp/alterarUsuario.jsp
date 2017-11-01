@@ -14,7 +14,7 @@
             <form class="form-inline">
                 <div class="form-group">
                     <label for="nome">Usuário: </label>
-                    <input type="text" class="form-control" name="editUsuario">
+                    <input type="text" class="form-control" name="editUsuario" value="${usuario.getNome()}">
                 </div>
 
                 <div class="form-group">
