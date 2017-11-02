@@ -11,6 +11,7 @@
 <html>
     <head>
         <title>Consulta de Fornecedores</title>
+        <script src="js/programa.js" type="text/javascript"></script>
     </head>
 
     <body align="center">
@@ -18,13 +19,13 @@
     <div class="container" align="center">
         <h3>Fornecedores</h3>
         <form class="form-control-static" action="${pageContext.request.contextPath}/fornecedor" method="post">
-            <div class="form-group" id="usuario">
+            <div class="form-group" id="nome">
                 <label for="Fornecedores">Nome:</label>
                 <input type="text" class="form-control" name="fornecedor" placeholder="Digite nome Fornecedor">
             </div>
             <button type="submit" class="btn btn-success center-block">Pesquisar</button>
         </form>
-        <table class="table col-md-8">
+        <table class="table  table-bordered table-hover col-md-8" id="tabelafornecedores">
             <thead>
                 <tr>
                     <th>#</th>
@@ -37,7 +38,7 @@
                 <c:forEach var="lista" items="${ListaFornecedores}">
                     <tr>
                         <td>#</td>
-                        <td><c:out value="${lista.codigo}" /></td>
+                        <td name="codigo"><c:out value="${lista.codigo}"/></td>
                         <td><c:out value="${lista.nome}" /></td>
                         <td><c:set var="empresa" scope="session" value="${lista.codigoempresa}"/>
                             <c:if test = "${empresa == 1}">
@@ -54,9 +55,15 @@
                     </tr>
                 </c:forEach>
             </tbody>
-            
-            
         </table>
+        <form class="form-control-static">
+            <div class="form-group" id="alterar">
+               <button type="submit" class="btn btn-success center-block">Alterar</button>
+            </div>
+            <div class="form-group" id="excluir">
+               <button type="submit" class="btn btn-danger center-block">Excluir</button>
+            </div>
+        </form>
     </div>            
     <jsp:include page="rodape.jsp"/>
 </body>

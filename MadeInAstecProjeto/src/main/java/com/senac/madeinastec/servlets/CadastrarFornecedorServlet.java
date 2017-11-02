@@ -36,7 +36,7 @@ public class CadastrarFornecedorServlet extends HttpServlet {
             throws ServletException, IOException {
           HttpSession sessao = request.getSession();
         
-        String fornecedor = request.getParameter("fornecedor");
+        String fornecedor = request.getParameter("fornecedor").toUpperCase();
         String empresa = request.getParameter("empresa");
         
         Fornecedor forne = new Fornecedor();
