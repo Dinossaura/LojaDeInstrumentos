@@ -21,12 +21,21 @@
 
                     <div class="form-group">
                         <label for="desc">Descrição</label>
-                        <textarea class="form-control" rows="1" name="dscProd" id="descricao"></textarea>
+                        <textarea class="form-control" rows="1" name="descProd" id="descricao"></textarea>
                     </div>
 
+                    
                     <div class="form-group">
-                        <label for="desc">Categoria</label>
-                        <textarea class="form-control" rows="1" name="categ" id="categoria"></textarea>
+                        <label for="empresa">Categoria</label>
+                        <select class="form-control" name="categ" id="categoria">
+                            <option value="1">Cordas</option>
+                            <option value="2">Sopro</option>
+                            <option value="3">Percussão</option>
+                            <option value="4">Áudio</option>
+                            <option value="5">Teclas</option>
+                            <option value="6">Acessórios</option>
+                            <option value="7">Outros</option>
+                        </select>
                     </div>
 
                      <div class="form-group">

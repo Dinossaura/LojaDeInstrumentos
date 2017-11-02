@@ -130,9 +130,6 @@ INSERT INTO Perfil (perfil) VALUES ('Funcionário Retaguarda');
 INSERT INTO Perfil (perfil) VALUES ('Vendedor');
 INSERT INTO Perfil (perfil) VALUES ('Suporte Técnico');
 
-SELECT * FROM Empresas;
+INSERT INTO CATEGORIA (nome) VALUES ('Cordas');
 
-SELECT * FROM Perfil;
-
-SELECT * FROM clientes;
-
+INSERT INTO FORNECEDOR (nome, codigoempresa) VALUES ('Gibson', 1);

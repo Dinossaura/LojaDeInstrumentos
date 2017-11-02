@@ -19,7 +19,7 @@ public class ProdutoDAO {
     //insere produto
     public void inserirProduto(Produto produto){
         System.out.println("Iniciando processo de inserção de produto...");
-        String query = "insert into produtos (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque) values (?,?,?,?,?,?,?,?);";
+        String query = "insert into produtos (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque) values (?,?,?,?,?,?,?,?)";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);

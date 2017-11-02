@@ -48,7 +48,7 @@ public class indexUsuarioServlet extends HttpServlet {
         
         
         request.setAttribute("listaUsuario", listaDeUsuarios);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("listagemUsuario.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("consultarUsuario.jsp");
     dispatcher.forward(request, response);
         
     }

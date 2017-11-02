@@ -62,6 +62,7 @@ public class ConsultaUsuarioServlet extends HttpServlet {
         String login = request.getParameter("usuario");
         String senha = request.getParameter("senha");
         String empresa = request.getParameter("empresa");
+     
         
         Usuario usuario = new Usuario();
         usuario.setLogin(login);
