@@ -59,7 +59,8 @@ public class CadastrarClienteServlet extends HttpServlet {
         String nome = request.getParameter("name");
         String sobrenome = request.getParameter("sobrenome");
         String sexo = request.getParameter("sexo");
-        String dataNasc = "19";
+        String dataNasc = request.getParameter("dataNasc");
+        System.out.println(request.getParameter("dataNasc"));
         String cpf = request.getParameter("cpf");
         String rg = request.getParameter("rg");
         String tel1 = request.getParameter("tel1");
