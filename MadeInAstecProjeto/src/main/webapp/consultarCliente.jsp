@@ -10,34 +10,34 @@
 <html>
     <head>
         <title>Consulta de Cliente</title>
-        <style>
-            .com {
-                border: 2px solid gray;
-                border-collapse: collapse;
-            }
-            td.com{
-                border: 1px solid gray;
-                border-collapse: collapse;
-            }
-            tr, th , td{
-                padding: 1px;
-                text-align: left;    
-            }
-            .sem{
-                border: none;
-            }
-            td:nth-child(7) button{
-                border:none;   
-                background: none;
-                text-decoration:underline;
-            }
-            td:nth-child(8) button{
-                background: none;
-                text-decoration: underline;
-                border:none;   
-            }
-            
-        </style>
+        <!--        <style>
+                    .com {
+                        border: 2px solid gray;
+                        border-collapse: collapse;
+                    }
+                    td.com{
+                        border: 1px solid gray;
+                        border-collapse: collapse;
+                    }
+                    tr, th , td{
+                        padding: 1px;
+                        text-align: left;    
+                    }
+                    .sem{
+                        border: none;
+                    }
+                    td:nth-child(7) button{
+                        border:none;   
+                        background: none;
+                        text-decoration:underline;
+                    }
+                    td:nth-child(8) button{
+                        background: none;
+                        text-decoration: underline;
+                        border:none;   
+                    }
+        
+                </style>-->
     </head>
 
     <body align="center">
@@ -45,62 +45,54 @@
         <div class="container" align="center">
             <h1>Consulta de Cliente</h1>
             <div class="well">
+                <form class="form-inline" action="${pageContext.request.contextPath}/cadastro-usuario" method="post">
+                    <div class="form-group">
+                        <label for="nome">Cliente: </label>
+                        <input type="text" class="form-control" name="cliente">
+                        <button type="submit" class="btn btn-default">Buscar</button>
+                    </div>
+                </form><br/>
+                <div class="tabela">
+                    <table class="table table-bordered table-responsive">
+                        <caption>Lista de Clientes</caption>
+                        <tr>
+                            <th >Nome</th>
+                            <th >Sobrenome</th> 
+                            <th >CPF</th>
+                            <th >Telefone</th>
+                            <th >Cidade</th>
+                            <th >Estado</th>
+                            <th >Editar</th>
+                            <th >Deletar</th>
+                        </tr>
+                        <c:forEach items="${listaClientes}" var="cliente">
+                            <tr>
+                                <td class=""><c:out value="${cliente.getNome()}" /></td>
+                                <td ><c:out value="${cliente.getSobrenome()}" /></td> 
+                                <td ><c:out value="${cliente.getCpf()}" /></td>
+                                <td ><c:out value="${cliente.getTelefone()}" /></td>
+                                <td ><c:out value="${cliente.getCidade()}" /></td>
+                                <td ><c:out value="${cliente.getEstado()}" /></td>
+                                <td>
+                                    <form action="${pageContext.request.contextPath}/editar-cliente" method="post" >
+                                        <input type="hidden" name="idEscondido" value="${cliente.getId()}"/>
+                                        <button style="margin-left: 30px" type="submit" class="btn btn-default">Editar</button>                                        
+                                </td>
+                                <td>
+                                    <form action="${pageContext.request.contextPath}/excluirCliente" method="post" >
+                                        <input type="hidden" name="idEscondido" value="${cliente.getId()}"/>
+                                        <button style="margin-left: 30px" type="submit" class="btn btn-warning">Excluir</button>                                       
+                                </td>                    
 
-            <form class="form-inline" action="${pageContext.request.contextPath}/cadastro-usuario" method="post">
-                <div class="form-group">
-                    <label for="nome">Cliente: </label>
-                    <input type="text" class="form-control" name="cliente">
-                    <button type="submit" class="btn btn-default">Buscar</button>
+
+                            </tr>
+                        </c:forEach>
+
+                    </table>
                 </div>
-            </form><br/>
-            <div class="tabela"style="width:800px">
-                <table>
-                    <caption>Lista de Clientes</caption>
-                    <tr >
-                        <th class="com" style="width:30px">Nome</th>
-                        <th class="com"style="width:130px">Sobrenome</th> 
-                        <th class="com"style="width:100px">CPF</th>
-                        <th class="com"style="width:100px">Telefone</th>
-                        <th class="com"style="width:150px">Cidade</th>
-                        <th class="com"style="width:15px">Estado</th>
-                    </tr>
-                    <tr>
-                        <td class="com">Vinícius </td>
-                        <td class="com">Ribeiro itoi</td> 
-                        <td class="com">000.000.000-00</td>
-                        <td class="com">(00)0000-0000</td>
-                        <td class="com">Itapecerica da Serra</td>
-                        <td class="com">SP</td>
-                        <td class="sem"><button type="submit" class="btn btn-default">Excluir</button></td>
-                        <td class="sem"><button type="submit" class="btn btn-default">Editar</button></td>
-                    </tr>
-                    <%-- EXEMPLO--%>
-                    <tr >
-                        <td class="com">João </td>
-                        <td class="com">da Silva</td> 
-                        <td class="com">000.000.000-00</td>
-                        <td class="com">(00)0000-0000</td>
-                        <td class="com">Rio de Janeiro</td>
-                        <td class="com">RJ</td>
-                        <td class="sem"><button type="submit" class="btn btn-default">Excluir</button></td>
-                        <td class="sem"><button type="submit" class="btn btn-default">Editar</button></td>
-                    </tr>
-                    <tr>
-                        <td class="com">Maria </td>
-                        <td class="com">Carvalho dos Santos</td> 
-                        <td class="com">000.000.000-00</td>
-                        <td class="com">(00)0000-0000</td>
-                        <td class="com">São Paulo</td>
-                        <td class="com">SP</td>
-                        <td class="sem"><button type="submit" class="btn btn-default">Excluir</button></td>
-                        <td class="sem"><button type="submit" class="btn btn-default">Editar</button></td>
-                    </tr>
-                    <%-- EXEMPLO--%>
-                </table>
-            </div>
             </div>
         </div>            
-    <jsp:include page="rodape.jsp"/>      
+        <jsp:include page="rodape.jsp"/>      
     </body>
 
 </html>
