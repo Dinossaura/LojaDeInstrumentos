@@ -63,12 +63,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
             Logger.getLogger(AlterarUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
-        
-       
-        
-        
-        
+         response.sendRedirect(request.getContextPath() + "/usuarios");
        
     }
     
