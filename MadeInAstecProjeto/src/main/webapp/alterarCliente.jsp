@@ -11,7 +11,8 @@
         <div class="container">
             <h1>Alterar Cliente</h1>
             <div class="well">
-                <form class="form-inline">
+                <form class="form-inline" action="${pageContext.request.contextPath}/AtualizarClienteServlet" method="post">
+                     <input type="hidden" name="idEscondido" value="${cliente.getId()}"/>
                     <div class="form-group">
                         <div class="form-group">
                             <label for="nome">Nome</label>
@@ -34,62 +35,62 @@
 
                         <div class="form-group">
                             <label for="desc">Nascimento</label>
-                            <input class="form-control" type="date" name="dataNasc" id="nasc" value="${cliente.getSobrenome()}">
+                            <input class="form-control" type="date" name="dataNasc" id="nasc" value="${cliente.getIdade()}">
                         </div>
 
                         <div class="form-group">
                             <label for="desc" id="cpf">CPF</label>
-                            <input class="form-control" type="text" name="cpf" id="cpf">
+                            <input class="form-control" type="text" name="cpf" id="cpf" value="${cliente.getCpf()}">
                         </div>
 
                         <div class="form-group">
                             <label for="desc">RG</label>
-                            <input class="form-control" type="text" name="rg" id="rg">
+                            <input class="form-control" type="text" name="rg" id="rg" value="${cliente.getRg()}">
                         </div>
 
                         <div class="form-group">
                             <label for="desc" id="email">E-mail</label>
-                            <input class="form-control" name="email" id="email">
+                            <input class="form-control" name="email" id="email" value="${cliente.getEmail()}">
                         </div>
 
                         <div class="form-group">
                             <label for="desc" id="tel">Tel 1</label>
-                            <input class="form-control" name="tel1" id="tel1">
+                            <input class="form-control" name="tel1" id="tel1" value="${cliente.getTelefone()}">
                         </div>
 
                         <div class="form-group">
                             <label for="desc" id="tel2">Tel 2</label>
-                            <input class="form-control" name="tel2" id="tel2">
+                            <input class="form-control" name="tel2" id="tel2" value="${cliente.getTelefone2()}">
                         </div>
 
                         <div class="form-group">
-                            <label for="desc" >End</label>
-                            <input class="form-control" name="endereco" id="endereco">
+                            <label for="desc" >Endereço</label>
+                            <input class="form-control" name="endereco" id="endereco" value="${cliente.getEndereco()}">
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Número</label>
-                            <input class="form-control" name="numCasa" id="numero">
+                            <input class="form-control" name="numCasa" id="numero" value="${cliente.getNumero()}">
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Complemento</label>
-                            <input class="form-control" name="complemento" id="complemento">
+                            <input class="form-control" name="complemento" id="complemento" value="${cliente.getComplemento()}">
                         </div>
 
                         <div class="form-group" >
                             <label for="desc">CEP</label>
-                            <input class="form-control" name="cep" id="cep">
+                            <input class="form-control" name="cep" id="cep" value="${cliente.getCep()}">
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Cidade</label>
-                            <input class="form-control" name="cidade" id="cidade">
+                            <input class="form-control" name="cidade" id="cidade" value="${cliente.getCidade()}">
                         </div>
 
                         <div class="form-group">
                             <label for="perfil">Estado</label>
-                            <select class="form-control" name="estados" id="estado">
+                            <select class="form-control" name="estados" id="estado" value="${cliente.getEstado()}">
                                 <option value="AC">Acre</option>
                                 <option value="AL">Alagoas</option>
                                 <option value="AP">Amapá</option>
@@ -120,19 +121,7 @@
 
                             </select>
                         </div>
-
-                        <div class="form-group">
-                            <label for="empresa">Perfil</label>
-                            <select class="form-control" name="empresa" id="perfil">
-                                <option value="1">Matriz - São Paulo</option>
-                                <option value="2">Filial - Porto Alegre</option>
-                                <option value="3">Filial - Recife</option>
-                            </select>
-                        </div>
-
-
-
-                        <button type="submit" class="btn btn-default">Atualizar</button>
+                        <button type="submit" class="btn btn-default" >Atualizar</button>
 
                 </form>
             </div>

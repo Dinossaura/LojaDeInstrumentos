@@ -33,30 +33,15 @@ public class EditarClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String destino;
-        
-         HttpSession sessao = request.getSession();
-        if (sessao.getAttribute("cliente") != null) {
-            request.setAttribute("cliente", sessao.getAttribute("cliente"));
-            // Remove o atributo da sessao para usuario nao ficar preso na tela de resultados           
-            
-            
-            destino = "alterarUsuario.jsp";
-        } else {
-            destino = "alterarCliente.jsp";
-        }
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher(destino);
-        dispatcher.forward(request, response);
-      
-        
+
     }
 
    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          String id = request.getParameter("idEscondido");
+        
+        String id = request.getParameter("idEscondido");
         
         ClienteDAO cd = new ClienteDAO();       
         Cliente cliente = new Cliente();
@@ -68,8 +53,10 @@ public class EditarClienteServlet extends HttpServlet {
         
         
         request.setAttribute("cliente", cliente);        
-       RequestDispatcher dispatcher = request.getRequestDispatcher("alterarCliente.jsp");
-        dispatcher.forward(request, response);        
+        RequestDispatcher dispatcher = request.getRequestDispatcher("alterarCliente.jsp");
+        dispatcher.forward(request, response); 
+        
+        
         
     }   
 

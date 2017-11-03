@@ -40,7 +40,7 @@ public class ClienteDAO {
             preparedStatement.setString(3, cliente.getSexo());
             preparedStatement.setString(4, cliente.getCpf());
             preparedStatement.setString(5, cliente.getRg());            
-            preparedStatement.setInt(6, Integer.parseInt(cliente.getIdade()));
+            preparedStatement.setString(6, cliente.getIdade());
             preparedStatement.setString(7, cliente.getTelefone());
             preparedStatement.setString(8, cliente.getTelefone2());
             preparedStatement.setString(9, cliente.getEmail());
@@ -61,8 +61,8 @@ public class ClienteDAO {
     
     public Cliente updateCliente(Cliente cliente) throws Exception{
         System.out.println("Iniciando processo de atualização de cliente...");
-         String query = "UPDATE cliente SET nome=?, sobrenome=?, sexo=?, cpf=?, rg=?, datanasc=?, telefone=?, telefone2=?, email=?, "
-                 + "endereco=?,  numero=?, complemento=?, cidade=?,  estado=?, codigoempresa=?, cep=? WHERE idcliente=?";
+         String query = "UPDATE clientes SET nome=?, sobrenome=?, sexo=?, cpf=?, rg=?, datanasc=?, telefone=?, telefone2=?, email=?, "
+                 + "endereco=?,  numero=?, complemento=?, cidade=?,  estado=?, codigoempresa=?, cep=? WHERE id=?";
         
         System.out.println(cliente.toString());
         try {
