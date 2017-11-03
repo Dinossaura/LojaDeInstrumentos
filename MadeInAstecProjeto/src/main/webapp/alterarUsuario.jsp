@@ -4,6 +4,8 @@
 <html>
     <head>
         <title>Alterar Usuário</title>
+        <title>Cadastro de Clientes</title>
+        <link href="css/alterarUsuario.css" rel="stylesheet">
     </head>
 
     <body>
@@ -19,15 +21,15 @@
 
                 <div class="form-group">
                     <label for="desc">Senha:</label>
-                    <input class="form-control" name="editSenha">
+                    <input class="form-control" name="editSenha" value="${usuario.getSenha()}">
                 </div>
                 <div class="form-group">
                     <label for="desc">Função:</label>
-                    <input class="form-control" name="editFunc">
+                    <input class="form-control" name="editFunc" value="${requestScope.funcao}">
                 </div>
                 <div class="form-group">
                     <label for="desc">Empresa:</label>
-                    <input class="form-control"  name="editUsuarioEmp">
+                    <input class="form-control"  name="editUsuarioEmp" value="${requestScope.empresa}">
                 </div><br><br>
 			
                 <button type="submit" class="btn btn-default">Atualizar</button>
