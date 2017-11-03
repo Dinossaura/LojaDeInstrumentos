@@ -27,7 +27,7 @@ public class ClienteDAO {
 
     public void inserirCliente(Cliente cliente){
         
-         String query = " insert into clientes (nome, sobrenome, sexo, cpf, rg, idade, telefone, telefone2, email,"
+         String query = " insert into clientes (nome, sobrenome, sexo, cpf, rg, datanasc, telefone, telefone2, email,"
                  + "endereco, numero, complemento, cep, cidade, estado, codigoempresa)"
         + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
@@ -40,7 +40,7 @@ public class ClienteDAO {
             preparedStatement.setString(3, cliente.getSexo());
             preparedStatement.setString(4, cliente.getCpf());
             preparedStatement.setString(5, cliente.getRg());            
-            preparedStatement.setInt(6, Integer.parseInt(cliente.getIdade()));
+            preparedStatement.setString(6, cliente.getIdade());
             preparedStatement.setString(7, cliente.getTelefone());
             preparedStatement.setString(8, cliente.getTelefone2());
             preparedStatement.setString(9, cliente.getEmail());
@@ -61,8 +61,8 @@ public class ClienteDAO {
     
     public Cliente updateCliente(Cliente cliente) throws Exception{
         System.out.println("Iniciando processo de atualização de cliente...");
-         String query = "UPDATE cliente SET nome=?, sobrenome=?, sexo=?, cpf=?, rg=?, idade=?, telefone=?, telefone2=?, email=?, "
-                 + "endereco=?,  numero=?, complemento=?, cidade=?,  estado=?, codigoempresa=?, cep=? WHERE idcliente=?";
+         String query = "UPDATE clientes SET nome=?, sobrenome=?, sexo=?, cpf=?, rg=?, datanasc=?, telefone=?, telefone2=?, email=?, "
+                 + "endereco=?,  numero=?, complemento=?, cidade=?,  estado=?, codigoempresa=?, cep=? WHERE id=?";
         
         System.out.println(cliente.toString());
         try {
@@ -129,7 +129,7 @@ public class ClienteDAO {
                 cliente.setSexo(rs.getString("sexo"));
                 cliente.setCpf(rs.getString("cpf"));
                 cliente.setRg(rs.getString("rg"));            
-                cliente.setIdade(rs.getString("idade"));                
+                cliente.setIdade(rs.getString("datanasc"));                
                 cliente.setTelefone(rs.getString("telefone"));
                 cliente.setTelefone2(rs.getString("telefone2"));
                 cliente.setEmail(rs.getString("email"));
@@ -161,6 +161,47 @@ public class ClienteDAO {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,cpf);
+         
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            System.out.println("Busca efetuada com sucesso");
+            
+            while (rs.next()){
+                cliente.setId(rs.getInt(1));
+                cliente.setNome(rs.getString(2));
+                cliente.setSobrenome(rs.getString(3));
+                cliente.setSexo(rs.getString(4));
+                cliente.setCpf(rs.getString(5));
+                cliente.setRg(rs.getString(6));            
+                cliente.setIdade(rs.getString(7));                
+                cliente.setTelefone(rs.getString(8));
+                cliente.setTelefone2(rs.getString(9));
+                cliente.setEmail(rs.getString(10));
+                cliente.setEndereco(rs.getString(11));
+                cliente.setNumero(rs.getString(12));
+                cliente.setComplemento(rs.getString(13));
+                cliente.setCidade(rs.getString(14));
+                cliente.setEstado(rs.getString(15));
+                cliente.setEmpresa(rs.getInt(16));
+                cliente.setCep(rs.getString(17));
+            }
+            
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao listar cliente", ex);
+        }
+
+        
+        return cliente;
+    }
+        public Cliente encontrarClientePorId(int id) throws Exception{
+        System.out.println("Iniciando listagem de cliente...");
+        
+        Cliente cliente = new Cliente();
+        String query = "SELECT * FROM clientes WHERE id=?";
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1,String.valueOf(id));
          
             ResultSet rs = preparedStatement.executeQuery();
             

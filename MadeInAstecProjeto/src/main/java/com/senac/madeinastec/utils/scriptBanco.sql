@@ -33,7 +33,7 @@ CREATE TABLE Clientes (
     sexo VARCHAR(15) NOT NULL,
     cpf VARCHAR(14) NOT NULL,
     rg VARCHAR(12) NOT NULL,
-    idade INTEGER,
+    datanasc VARCHAR(12),
     telefone VARCHAR(14),
     telefone2 VARCHAR(14),
     email VARCHAR(30),
