@@ -82,9 +82,7 @@
                                     <form action="${pageContext.request.contextPath}/excluirCliente" method="post" >
                                         <input type="hidden" name="idEscondido" value="${cliente.getId()}"/>
                                         <button style="margin-left: 30px" type="submit" class="btn btn-warning">Excluir</button>                                       
-                                </td>                    
-
-
+                                </td>   
                             </tr>
                         </c:forEach>
 

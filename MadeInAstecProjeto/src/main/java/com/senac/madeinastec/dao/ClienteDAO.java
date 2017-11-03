@@ -106,15 +106,15 @@ public class ClienteDAO {
         List<Cliente> lista = new ArrayList<>();
         String query = "";
         if(nome == ""){
-            query = "SELECT * FROM cliente";
+            query = "SELECT * FROM clientes";
         }else{
-            query = "SELECT * FROM cliente WHERE nome LIKE ?";
+            query = "SELECT * FROM clientes WHERE nome LIKE ?";
         }
          
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1,"%"+nome+"%");
+//            preparedStatement.setString(1,"%"+nome+"%");
          
             ResultSet rs = preparedStatement.executeQuery();
             
@@ -123,23 +123,23 @@ public class ClienteDAO {
             while (rs.next()){
                 Cliente cliente = new Cliente();
                 
-                cliente.setId(rs.getInt(1));
-                cliente.setNome(rs.getString(2));
-                cliente.setSobrenome(rs.getString(3));
-                cliente.setSexo(rs.getString(4));
-                cliente.setCpf(rs.getString(5));
-                cliente.setRg(rs.getString(6));            
-                cliente.setIdade(rs.getString(7));                
-                cliente.setTelefone(rs.getString(8));
-                cliente.setTelefone2(rs.getString(9));
-                cliente.setEmail(rs.getString(10));
-                cliente.setEndereco(rs.getString(11));
-                cliente.setNumero(rs.getString(12));
-                cliente.setComplemento(rs.getString(13));
-                cliente.setCidade(rs.getString(14));
-                cliente.setEstado(rs.getString(15));
-                cliente.setEmpresa(rs.getInt(16));
-                cliente.setCep(rs.getString(17));
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setSobrenome(rs.getString("sobrenome"));
+                cliente.setSexo(rs.getString("sexo"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setRg(rs.getString("rg"));            
+                cliente.setIdade(rs.getString("idade"));                
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setTelefone2(rs.getString("telefone2"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setNumero(rs.getString("numero"));
+                cliente.setComplemento(rs.getString("complemento"));
+                cliente.setCidade(rs.getString("cidade"));
+                cliente.setEstado(rs.getString("estado"));
+                cliente.setEmpresa(rs.getInt("codigoempresa"));
+                cliente.setCep(rs.getString("cep"));
                 lista.add(cliente);
             }
             
@@ -156,7 +156,7 @@ public class ClienteDAO {
         System.out.println("Iniciando listagem de cliente...");
         
         Cliente cliente = new Cliente();
-        String query = "SELECT * FROM cliente WHERE cpf=?";
+        String query = "SELECT * FROM clientes WHERE cpf=?";
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -196,8 +196,8 @@ public class ClienteDAO {
     
     
     public void deletarCliente(String cpf) throws Exception{
-        System.out.println("Deletando cliente de cpf: "+cpf);
-        String query = "DELETE FROM cliente WHERE cpf=?";
+        System.out.println("Deletando clientes de cpf: "+cpf);
+        String query = "DELETE FROM clientes WHERE cpf=?";
 
 
     try {
