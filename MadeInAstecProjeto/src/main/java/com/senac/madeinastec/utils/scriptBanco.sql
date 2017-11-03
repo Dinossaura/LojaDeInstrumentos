@@ -133,3 +133,5 @@ INSERT INTO Perfil (perfil) VALUES ('Suporte Técnico');
 INSERT INTO CATEGORIA (nome) VALUES ('Cordas');
 
 INSERT INTO FORNECEDOR (nome, codigoempresa) VALUES ('Gibson', 1);
+
+
