@@ -108,8 +108,10 @@ public class EditarUsuarioServlet extends HttpServlet {
                 break;
         }
         
-        
+        request.setAttribute("id", id);
         request.setAttribute("funcao", funcao);
+        request.setAttribute("codFunc", codFunc);
+        request.setAttribute("codEmpresa", codEmpresa);
         request.setAttribute("empresa", empresa);
         request.setAttribute("usuario", usuario);
         RequestDispatcher dispatcher = request.getRequestDispatcher("alterarUsuario.jsp");

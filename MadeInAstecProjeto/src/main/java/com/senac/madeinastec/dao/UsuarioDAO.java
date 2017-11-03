@@ -54,13 +54,13 @@ public class UsuarioDAO extends ConexaoBanco{
             preparedStatement.setString(3, usuario.getSenha());
             preparedStatement.setInt(4, usuario.getcodigoPerfil());
             preparedStatement.setInt(5, usuario.getCodigoEmpresa());
-            preparedStatement.setInt(5, usuario.getCodigo());
+            preparedStatement.setInt(6, usuario.getCodigo());// estava 5 aqui
             
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException ex) {
-            System.out.println("Erro ao atualizar produto");
-            throw new Exception("Erro ao atualizar produto", ex);
+            System.out.println("Erro ao atualizar usuario");
+            throw new Exception("Erro ao atualizar usuario", ex);
         }
 
         return usuario;
