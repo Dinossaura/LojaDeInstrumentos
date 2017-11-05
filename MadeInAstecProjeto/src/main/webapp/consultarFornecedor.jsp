@@ -18,25 +18,28 @@
     <jsp:include page="menu.jsp"/> 
     <div class="container" align="center">
         <h3>Fornecedores</h3>
-        <form class="form-control-static" action="${pageContext.request.contextPath}/fornecedor" method="post">
+        <form class="form-control-static" action="${pageContext.request.contextPath}/consultafornecedor" method="post">
             <div class="form-group" id="nome">
                 <label for="Fornecedores">Nome:</label>
                 <input type="text" class="form-control" name="fornecedor" placeholder="Digite nome Fornecedor">
             </div>
             <button type="submit" class="btn btn-success center-block">Pesquisar</button>
         </form>
-        <table class="table  table-bordered table-hover col-md-8" id="tabelafornecedores">
+        <form class="form-control-static" action="${pageContext.request.contextPath}/alterarfornecedor" method="post">
+        <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelafornecedores">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Código</th>
                     <th>Nome</th>
                     <th>Empresa</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>  
                 <c:forEach var="lista" items="${ListaFornecedores}">
                     <tr>
+                        
                         <td>#</td>
                         <td name="codigo"><c:out value="${lista.codigo}"/></td>
                         <td><c:out value="${lista.nome}" /></td>
@@ -51,19 +54,28 @@
                             <c:out value="Made in Astec - Recife" />
                             </c:if>
                         </td>
+                        <td>
+                          <div>
+                          <form class="form-control-static" action="${pageContext.request.contextPath}/alterarfornecedor" method="post">
+                            <div class="form-group" id="alterar">
+                                <button type="submit" name="codigofornecedor" value="${lista.codigo}" 
+                                        class="btn btn-success center-block">Alterar</button>
+                            </div>
+                          </form>
                             
+                          <form class="form-control-static" action="${pageContext.request.contextPath}/excluifornecedor" method="post">
+                             <div class="form-group" id="excluir">
+                                 <button type="submit" name="codigofornecedor" value="${lista.codigo}" 
+                                         class="btn btn-danger center-block">Excluir</button>
+                             </div>   
+                          </form>
+                          </div>
+                          
+                        </td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
-        <form class="form-control-static">
-            <div class="form-group" id="alterar">
-               <button type="submit" class="btn btn-success center-block">Alterar</button>
-            </div>
-            <div class="form-group" id="excluir">
-               <button type="submit" class="btn btn-danger center-block">Excluir</button>
-            </div>
-        </form>
     </div>            
     <jsp:include page="rodape.jsp"/>
 </body>

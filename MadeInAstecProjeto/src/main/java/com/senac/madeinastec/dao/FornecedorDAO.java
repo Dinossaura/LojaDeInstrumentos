@@ -38,25 +38,24 @@ public class FornecedorDAO {
         }
     }
     
-    public Fornecedor atualizarFornecedor(Fornecedor fornecedor) throws Exception{
+    public void atualizarFornecedor(String nome, int codigofornecedor, int codigoempresa) throws Exception{
         System.out.println("Atualizando fornecedor...");
-         String query = "UPDATE fornecedor SET nome=? WHERE codigo=?";
+         String query = "UPDATE fornecedor SET nome=? WHERE codigo=? and codigoempresa=?";
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1, fornecedor.getNome());
-            preparedStatement.setInt(2, fornecedor.getCodigo());
-            
+            preparedStatement.setString(1, nome);
+            preparedStatement.setInt(2, codigofornecedor);
+             preparedStatement.setInt(3, codigoempresa);
+             
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException ex) {
-            System.out.println("Erro ao atualizar produto");
-            throw new Exception("Erro ao atualizar produto", ex);
+            System.out.println("Erro ao atualizar fornecedor");
+            throw new Exception("Erro ao atualizar fornecedor", ex);
         }
-
-        return fornecedor;
     }
     
     public ArrayList<Fornecedor> listarFornecedor(String nome, int codigoempresa){ //retorna todos itens
@@ -105,19 +104,21 @@ public class FornecedorDAO {
     }
     
     //busca 1 fornecedor especificado por código
-    public Fornecedor encontrarFornecedor(int codigo){//retorna um item
+    public Fornecedor encontrarFornecedor(int codigo, int empresa){//retorna um item
         Fornecedor fornecedor = new Fornecedor();
         System.out.println("Buscando produto na base de dados...");
-        String query = "SELECT * FROM fornecedor WHERE codigo=?";//addicionar o % %
+        String query = "SELECT * FROM fornecedor WHERE codigo=? and codigoempresa=?";//addicionar o % %
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1,codigo);
+            preparedStatement.setInt(2,empresa);
             ResultSet rs = preparedStatement.executeQuery();
             
             while (rs.next()){
                 fornecedor.setCodigo(rs.getInt(1));
                 fornecedor.setNome(rs.getString(2));
+                fornecedor.setCodigoempresa(rs.getInt(3));
             }
             
             System.out.println("Busca efetuada com sucesso");

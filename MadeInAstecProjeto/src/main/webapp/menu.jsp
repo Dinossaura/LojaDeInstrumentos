@@ -34,8 +34,9 @@
                                 <a style="font-size: 20px" class="dropdown-toggle" data-toggle="dropdown" href="#">Usuários</a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroUsuario.jsp">Cadastrar</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="consultarUsuario.jsp">Consultar/Alterar</a></li>
-                                </ul>  
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="usuarios">Consultar/Alterar</a></li>
+                                </ul>
+                                
                             </li>
                             <li class="col-md-2 text-center dropdown">
                                 <a style="font-size: 20px" class="dropdown-toggle" data-toggle="dropdown" href="#">Fornecedores</a>
