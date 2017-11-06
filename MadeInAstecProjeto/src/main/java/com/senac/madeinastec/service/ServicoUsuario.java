@@ -36,12 +36,12 @@ public class ServicoUsuario {
     }
 
     //Atualiza um cliente na fonte de dados
-    public void atualizarUsuario(Usuario usuario) throws ClienteException, DataSourceException, Exception {
+    public void atualizarUsuario(int codigo, int codigoempresa, int codigoperfil, String nome, String login, String senha) throws ClienteException, DataSourceException, Exception {
         
         //ValidadorCliente.validar(cliente);
 
         try {
-            usuarioDAO.updateUsuario(usuario);
+            usuarioDAO.updateUsuario(codigo, codigoempresa, codigoperfil, nome, login, senha);
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão
@@ -51,9 +51,9 @@ public class ServicoUsuario {
     }
 
     //Realiza a pesquisa de um cliente por nome na fonte de dados
-    public List<Usuario> listarUsuarios(String nome) throws ClienteException, DataSourceException, Exception {
+    public List<Usuario> listarUsuarios(String nome, int empresa) throws ClienteException, DataSourceException, Exception {
         try {
-            return usuarioDAO.listarUsuario(nome);
+            return usuarioDAO.listarUsuario(nome, empresa);
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -63,9 +63,9 @@ public class ServicoUsuario {
     }
     
     //Pesquisa usuario especificado 
-    public Usuario retornaUsuario(Usuario usuario) throws ClienteException, DataSourceException{
+    public Usuario retornaUsuario(int codigousuario, int empresa) throws ClienteException, DataSourceException{
         try {
-            return usuarioDAO.encontrarUsuario(usuario.getLogin(), usuario.getSenha(), usuario.getCodigoEmpresa());
+            return usuarioDAO.encontrarUmUsuario(codigousuario, empresa);
             
         } catch (Exception e) {
             e.printStackTrace();

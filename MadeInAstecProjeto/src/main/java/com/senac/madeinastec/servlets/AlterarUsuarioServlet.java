@@ -7,6 +7,7 @@ package com.senac.madeinastec.servlets;
 
 import com.senac.madeinastec.dao.UsuarioDAO;
 import com.senac.madeinastec.model.Usuario;
+import com.senac.madeinastec.service.ServicoUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Mayra Pereira
  */
-@WebServlet(name = "AlterarUsuarioServlet", urlPatterns = {"/AlterarUsuarioServlet"})
+@WebServlet(name = "AlterarUsuarioServlet", urlPatterns = {"/alterarusuario"})
 public class AlterarUsuarioServlet extends HttpServlet {
 
     
@@ -31,7 +32,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-	    = request.getRequestDispatcher("/alterarUsuario.jsp");
+	    = request.getRequestDispatcher("/cadastroUsuario.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -40,7 +41,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String nome = request.getParameter("editUsuario");
+        /*String nome = request.getParameter("editUsuario");
         String login = request.getParameter("editLogin");
         String senha = request.getParameter("editSenha");
         String idUsuario = request.getParameter("idDoUsuario");
@@ -63,13 +64,64 @@ public class AlterarUsuarioServlet extends HttpServlet {
             Logger.getLogger(AlterarUsuarioServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-         response.sendRedirect(request.getContextPath() + "/usuarios");
+         response.sendRedirect(request.getContextPath() + "/usuarios");*/
+         //Instância Objeto Fornecedor
+         
+        Usuario usuario = new Usuario();
+        
+        //Instância serviço de servidor para efetuar consulta e ligação com FornecedorDAO
+        ServicoUsuario su = new ServicoUsuario();
+        
+        //Criação se sessão para retorno em tela
+        HttpSession sessao = request.getSession();
+        
+        //Para verificação se é alteração
+        String alteracao = "";
+        try {
+            alteracao = sessao.getAttribute("Altera").toString();
+        } catch (Exception e) {
+        }
+        
+        
+        if ((alteracao == null)||(alteracao.length() == 0)){
+              //Atribuição de valores digitados na tela de fornecedor e código da empresa
+            String codigoUsuario = request.getParameter("codigousuario");
+            String codigoempresa = (String) sessao.getAttribute("Empresa");
+            
+            try {
+            usuario = su.retornaUsuario(Integer.parseInt(codigoUsuario), Integer.parseInt(codigoempresa));
+            } catch (Exception e) {
+            }
+        
+            sessao.setAttribute("usu", usuario);
+            sessao.setAttribute("Altera", "alteracao");
+            response.sendRedirect(request.getContextPath() + "/cadastroUsuario.jsp");
+        }else{
+            Usuario u = new Usuario();
+            u = (Usuario) sessao.getAttribute("usu");
+            
+            //Recupera dados digitados na tela para alteração
+            String nomeUsuario = request.getParameter("nomeUsuario");
+            String loginUsuario = request.getParameter("loginUsuario");
+            String senhaUsuario = request.getParameter("senhaUsuario");
+            String perfilUsuario = request.getParameter("perfilUsuario");
+            
+            //Recupera dados não alteraveis da tela de consulta
+            int codigo = u.getCodigo();
+            int codigoempresa = u.getCodigoEmpresa();
+            
+            try {
+             usuario.setCodigo(codigo);
+             usuario.setCodigoEmpresa(codigoempresa);
+             usuario.setNome(nomeUsuario);
+             su.atualizarUsuario(codigo, codigoempresa, Integer.parseInt(perfilUsuario), nomeUsuario, loginUsuario, senhaUsuario);
+            } catch (Exception e) {
+            }
+            response.sendRedirect(request.getContextPath() + "/usuarios");
+            sessao.setAttribute("Altera", "");
+        }
+           
        
     }
     
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

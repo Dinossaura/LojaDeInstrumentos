@@ -41,7 +41,7 @@ public class UsuarioDAO extends ConexaoBanco{
         }
     }
     //altera usuário existente
-    public Usuario updateUsuario(Usuario usuario) throws Exception{
+    public void updateUsuario(int codigo, int codigoempresa, int codigoperfil, String nome, String login, String senha) throws Exception{
         System.out.println("Atualizando Usuário...");
          String query = "UPDATE usuarios SET nome=?, login=?, senha=?, codigoperfil=?, codigoempresa=? where codigo =?";
         
@@ -49,12 +49,12 @@ public class UsuarioDAO extends ConexaoBanco{
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1, usuario.getNome());
-            preparedStatement.setString(2, usuario.getLogin());
-            preparedStatement.setString(3, usuario.getSenha());
-            preparedStatement.setInt(4, usuario.getcodigoPerfil());
-            preparedStatement.setInt(5, usuario.getCodigoEmpresa());
-            preparedStatement.setInt(6, usuario.getCodigo());// estava 5 aqui
+            preparedStatement.setString(1, nome);
+            preparedStatement.setString(2, login);
+            preparedStatement.setString(3, senha);
+            preparedStatement.setInt(4, codigoperfil);
+            preparedStatement.setInt(5, codigoempresa);
+            preparedStatement.setInt(6, codigo);// estava 5 aqui
             
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -62,24 +62,31 @@ public class UsuarioDAO extends ConexaoBanco{
             System.out.println("Erro ao atualizar usuario");
             throw new Exception("Erro ao atualizar usuario", ex);
         }
-
-        return usuario;
     }  
     //lista usuários
-    public List<Usuario> listarUsuario(String nome){ //retorna todos itens
+    public List<Usuario> listarUsuario(String nome, int codigoempresa){ //retorna todos itens
         List<Usuario> lista = new ArrayList<>();
         System.out.println("Buscando produto na base de dados...");
         String query = "";
+        boolean vazio = false;
         
         if("".equals(nome)){
-            query = "SELECT * FROM usuarios";
+            vazio = true;
+            query = "SELECT * FROM usuarios WHERE codigoempresa=?";
         }else{
-            query = "SELECT * FROM usuarios WHERE nome LIKE ?";
+            vazio = false;
+            query = "SELECT * FROM usuarios WHERE nome LIKE ? and codigoempresa=?";
         }
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            //preparedStatement.setString(1,"%"+nome+"%");
+            if(vazio == true){
+                preparedStatement.setInt(1,codigoempresa);
+            }else{
+                preparedStatement.setString(1,"%"+nome+"%");
+                preparedStatement.setInt(2,codigoempresa);
+            }
+            
             
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -89,6 +96,8 @@ public class UsuarioDAO extends ConexaoBanco{
                 usuario.setNome(rs.getString(2));
                 usuario.setLogin(rs.getString(3));
                 usuario.setSenha(rs.getString(4));
+                usuario.setcodigoPerfil(rs.getInt(5));
+                usuario.setCodigoEmpresa(rs.getInt(6));
                 lista.add(usuario);
             }
 
@@ -152,18 +161,18 @@ public class UsuarioDAO extends ConexaoBanco{
         }
     }
     
-     public Usuario encontrarUmUsuario(int codigo){//retorna um item
+     public Usuario encontrarUmUsuario(int codigo, int codigoempresa){//retorna um item
         List<Usuario> lista = new ArrayList<>();
         Usuario usuario = new Usuario();
         System.out.println("Buscando produto na base de dados...");
-        String query = "SELECT * FROM usuarios WHERE codigo=?";//addicionar o % %
+        String query = "SELECT * FROM usuarios WHERE codigo=? and codigoempresa=?";//addicionar o % %
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             preparedStatement.setInt(1,codigo);
-            
+            preparedStatement.setInt(2,codigoempresa);
             
                         
             ResultSet rs = preparedStatement.executeQuery();
@@ -171,6 +180,7 @@ public class UsuarioDAO extends ConexaoBanco{
             while (rs.next()){
 
                 //usuario.setCodigo(rs.getInt(codigo));
+                usuario.setCodigo(rs.getInt("codigo"));
                 usuario.setLogin(rs.getString("login"));
                 usuario.setNome(rs.getString("nome"));
                 usuario.setSenha(rs.getString("senha"));

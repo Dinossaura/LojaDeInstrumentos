@@ -61,7 +61,7 @@ public class EditarUsuarioServlet extends HttpServlet {
 
         UsuarioDAO user = new UsuarioDAO();
         Usuario usuario = new Usuario();
-        usuario = user.encontrarUmUsuario(Integer.parseInt(id));
+        //usuario = user.encontrarUmUsuario(Integer.parseInt(id));
         
         
         //Fiz essas condições para pegar os valores em String empresa e função ao invés dos ID's

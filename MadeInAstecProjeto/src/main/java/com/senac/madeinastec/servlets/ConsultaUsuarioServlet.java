@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author victor.wdebaza
  */
-@WebServlet(name = "ConsultaUsuarioServlet", urlPatterns = {"/consulta-usuario"})
+@WebServlet(name = "ConsultaUsuarioServlet", urlPatterns = {"/consultausuario"})
 public class ConsultaUsuarioServlet extends HttpServlet {
 
     /**
@@ -71,7 +71,7 @@ public class ConsultaUsuarioServlet extends HttpServlet {
         
         try {
             ServicoUsuario servicoUsuario = new ServicoUsuario();
-            u = servicoUsuario.retornaUsuario(usuario);
+            u = servicoUsuario.retornaUsuario(usuario.getCodigo(), Integer.parseInt(empresa));
             
         } catch (Exception e) {
         }

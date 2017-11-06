@@ -25,7 +25,6 @@
             </div>
             <button type="submit" class="btn btn-success center-block">Pesquisar</button>
         </form>
-        <form class="form-control-static" action="${pageContext.request.contextPath}/alterarfornecedor" method="post">
         <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelafornecedores">
             <thead>
                 <tr>

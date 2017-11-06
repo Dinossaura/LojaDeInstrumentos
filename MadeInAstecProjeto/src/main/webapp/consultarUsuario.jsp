@@ -1,51 +1,33 @@
+<%@page import="com.senac.madeinastec.model.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Consulta Usuário</title>
-        <style>
-            .com {
-                border: 2px solid gray;
-                border-collapse: collapse;
-            }
-            td.com{
-                border: 1px solid gray;
-                border-collapse: collapse;
-            }
-            tr, th , td{
-                padding: 1px;
-                text-align: left;    
-            }
-            .sem{
-                border: none;
-            }
-            td:nth-child(7) button{
-                border:none;   
-                background: none;
-                text-decoration:underline;
-            }
-            
-            td:nth-child(8) button{
-                background: none;
-                text-decoration: underline;
-                border:none;   
-            }
-            
-        </style>
+        <title>Consulta de Usuários</title>
     </head>
 
-    <body>
+    <body align="center">
         <jsp:include page="menu.jsp"/>
-        <div class="container">
-            <h1>Listagem de usuários</h1>
-            <div class="well">
-                <table class="table table-bordered">
+        <div class="container" align="center">
+            <h3>Usuários</h3>
+            <form class="form-control-static" action="${pageContext.request.contextPath}/consultausuariostotais" method="post">
+                <div class="form-group" id="nome">
+                    <label for="Usuarios">Nome:</label>
+                    <input type="text" class="form-control" name="usuarios" placeholder="Digite nome Usuário">
+                </div>
+                
+                <button type="submit" class="btn btn-success center-block">Pesquisar</button>
+            </form>
+            <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelausuarios">
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>Usuario</th>
+                            <th>Login</th>
                             <th>Senha</th>
+                            <th>Perfil</th>
+                            <th>Empresa</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                 <tbody>
@@ -53,17 +35,63 @@
                     <tr>
                         <td><c:out value="${usuario.getNome()}" /></td>
                         <td><c:out value="${usuario.getLogin()}" /></td>
-                        <td><c:out value="${usuario.getSenha()}" /></td>                        
-                        <td><form action="${pageContext.request.contextPath}/EditarUsuarioServlet" method="post" >
-                                <input type="hidden" name="idEscondido" value="${usuario.getCodigo()}"/>
-                                <button type="submit" class="editar">Editar</button>
-                                    
-                            </form></td>
+                        <td><c:out value="${usuario.getSenha()}" /></td>
+                        <td><c:set var="perfil" scope="session" value="${usuario.getcodigoPerfil()}"/>
+                            <c:if test = "${perfil == 1}">
+                                <c:out value="Diretoria" />
+                            </c:if>
+                            <c:if test = "${perfil == 2}">
+                                <c:out value="Gerente Produtos/ Serviços" />
+                            </c:if>
+                            <c:if test = "${perfil == 3}">
+                                <c:out value="Gerente Vendas" />
+                            </c:if>
+                            <c:if test = "${perfil == 4}">
+                                <c:out value="Gerente TI" />
+                            </c:if>
+                            <c:if test = "${perfil == 5}">
+                                <c:out value="Funcionário Retaguarda" />
+                            </c:if>
+                            <c:if test = "${perfil == 6}">
+                                <c:out value="Vendedor" />
+                            </c:if>
+                            <c:if test = "${perfil == 7}">
+                                <c:out value="Suporte Técnico" />
+                            </c:if>
+                        </td>
+                        <td><c:set var="empresa" scope="session" value="${usuario.getCodigoEmpresa()}"/>
+                            <c:if test = "${empresa == 1}">
+                            <c:out value="Made in Astec - Filial" />
+                            </c:if>
+                            <c:if test = "${empresa == 2}">
+                            <c:out value="Made in Astec - Porto Alegre" />
+                            </c:if>
+                            <c:if test = "${empresa == 3}">
+                            <c:out value="Made in Astec - Recife" />
+                            </c:if>
+                        </td>
+                        <td>
+                          <div>
+                          <form class="form-control-static" action="${pageContext.request.contextPath}/alterarusuario" method="post">
+                            <div class="form-group" id="alterar">
+                                <button type="submit" name="codigousuario" value="${usuario.getCodigo()}" 
+                                        class="btn btn-success center-block">Alterar</button>
+                            </div>
+                          </form>
+                            
+                          <form class="form-control-static" action="${pageContext.request.contextPath}/excluirusuario" method="post">
+                             <div class="form-group" id="excluir">
+                                 <button type="submit" name="codigousuario" value="${usuario.getCodigo()}" 
+                                         class="btn btn-danger center-block">Excluir</button>
+                             </div>   
+                          </form>
+                          </div>
+                          
+                        </td>
                     </tr>
                     </c:forEach>
                 </tbody>
                 </table>
-            </div>
         </div>
     <jsp:include page="rodape.jsp"/>
     </body>

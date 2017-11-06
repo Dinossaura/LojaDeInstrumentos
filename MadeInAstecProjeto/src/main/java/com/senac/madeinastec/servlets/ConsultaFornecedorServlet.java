@@ -34,6 +34,18 @@ public class ConsultaFornecedorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+          HttpSession sessao = request.getSession();  
+          ArrayList<Fornecedor> Lista = new ArrayList();
+          ServicoFornecedor sf = new ServicoFornecedor();
+          String codigoempresa = (String) sessao.getAttribute("Empresa");
+          
+          try {
+            Lista = (ArrayList<Fornecedor>) sf.listarFornecedor("", Integer.parseInt(codigoempresa));
+        } catch (Exception e) {
+        }
+        
+          sessao.setAttribute("ListaFornecedores", Lista);
+          
           RequestDispatcher dispatcher
 	    = request.getRequestDispatcher("/consultarFornecedor.jsp");
     dispatcher.forward(request, response);
