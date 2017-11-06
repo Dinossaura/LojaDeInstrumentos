@@ -63,7 +63,7 @@
                             </div>
                           </form>
                             
-                          <form class="form-control-static" action="${pageContext.request.contextPath}/excluifornecedor" method="post">
+                          <form class="form-control-static" action="${pageContext.request.contextPath}/excluirfornecedor" method="post">
                              <div class="form-group" id="excluir">
                                  <button type="submit" name="codigofornecedor" value="${lista.codigo}" 
                                          class="btn btn-danger center-block">Excluir</button>

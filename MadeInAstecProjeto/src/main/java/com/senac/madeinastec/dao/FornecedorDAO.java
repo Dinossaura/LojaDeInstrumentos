@@ -129,15 +129,16 @@ public class FornecedorDAO {
     
     }
     
-        public void deletarfornecedor(int codigo) throws Exception{
+        public void deletarfornecedor(int codigo, int codigoempresa) throws Exception{
             System.out.println("Deletando fornecedor codigo: "+codigo);
-            String query = "DELETE FROM fornecedor WHERE codigo=?";
+            String query = "DELETE FROM fornecedor WHERE codigo=? and codigoempresa=?";
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             
-            preparedStatement.setInt(1, codigo);            
+            preparedStatement.setInt(1, codigo); 
+            preparedStatement.setInt(2, codigoempresa);
             preparedStatement.execute();
             
             System.out.println("Fornecedor deletado");
