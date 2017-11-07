@@ -65,22 +65,22 @@
                 <c:otherwise>
                     <div class="form-group">
                            <label for="nome">Nome*</label>
-                        <input type="text" class="form-control" name="nomeUsuario" value="${usu.getNome()}"/>
+                        <input type="text" class="form-control" name="nomeUsuario" value="${usu.getNome()}" id="nomeUsu"/>
                     </div>
 
                     <div class="form-group">
                         <label for="login">LOGIN*</label>
-                        <input class="form-control" rows="1" name="loginUsuario" value="${usu.getLogin()}"/>
+                        <input class="form-control" rows="1" name="loginUsuario" value="${usu.getLogin()}" id="loginUsu"/>
                     </div>
 
                     <div class="form-group">
                         <label for="senha">Senha*</label>
-                        <input type="password" class="form-control" rows="1" name="senhaUsuario" value="${usu.getSenha()}"/>
+                        <input type="password" class="form-control" rows="1" name="senhaUsuario" value="${usu.getSenha()}" id="senha"/>
                     </div>
 
                     <div class="form-group">
                         <label for="perfil">Perfil*</label>
-                        <select class="form-control" name="perfilUsuario">
+                        <select class="form-control" name="perfilUsuario" id="perfilUsu">
                             <c:if test="${usu.getcodigoPerfil() == 1}">
                                 <option value="1">Diretoria</option>
                             </c:if>
@@ -107,7 +107,7 @@
 
                     <div class="form-group">
                         <label for="empresa">Empresa*</label>
-                        <select class="form-control" name="empresaUsuario">
+                        <select class="form-control" name="empresaUsuario" id="empresaUsu">
                             <c:if test="${usu.getCodigoEmpresa() == 1}">
                                 <option value="1">Matriz - São Paulo</option>
                             </c:if>

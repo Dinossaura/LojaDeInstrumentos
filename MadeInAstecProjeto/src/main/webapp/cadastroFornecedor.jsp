@@ -28,11 +28,11 @@
             <c:choose>
                 <c:when test = "${empty Altera}">
                     <label for="fornecedor">Fornecedor*</label>
-                    <input type="text" name="fornecedor" class="form-control" id="fornecedo"> 
+                    <input type="text" name="fornecedor" class="form-control" id="fornecedor"> 
                 </c:when>
                 <c:otherwise>
                     <label for="fornecedor">Fornecedor*</label>
-                    <input type="text" name="fornecedor" class="form-control" value="${for.nome}"> 
+                    <input type="text" name="fornecedor" class="form-control" value="${for.nome}" id="fornecedor"> 
                 </c:otherwise>
             </c:choose>
         </div>
@@ -65,10 +65,12 @@
                 </c:otherwise>
             </c:choose>
         </div>
-        <div class="form-group">
-            <label>(*)Campos Obrigatórios</label>
-        </div>
+        
         <button type="submit" class="btn btn-default" id="botaoForn">Salvar</button>
+        <div class="form-group">
+            <label id="mensagem">(*)Campos Obrigatórios</label>
+        </div>
+        
         <c:if test="${not empty mensagemErroCampos}">
             <label><c:out value="${mensagemErroCampos}"/></label>
         </c:if>

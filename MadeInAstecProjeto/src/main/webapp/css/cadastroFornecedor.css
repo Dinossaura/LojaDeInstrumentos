@@ -6,8 +6,8 @@ h1#for{
     font-size: 40px;
 }
 
-#fornecedo{
-    width: 230px;
+#fornecedor{
+    width: 300px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -23,5 +23,5 @@ h1#for{
 }
 
 #botaoForn{
-    margin-left: 350px;
+    margin-left: 250px;
 }
