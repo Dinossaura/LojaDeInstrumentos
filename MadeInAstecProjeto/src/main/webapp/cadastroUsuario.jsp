@@ -60,9 +60,7 @@
                             <option value="3">Filial - Recife</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>(*)Campos Obrigatórios</label>
-                    </div>
+                    
                 </c:when>
                 <c:otherwise>
                     <div class="form-group">
@@ -121,18 +119,12 @@
                             </c:if>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>(*)Campos Obrigatórios</label>
-                    </div>
+                    
                 </c:otherwise>
             </c:choose>
-                    <button type="submit" class="btn btn-default" id="botaoUsu">Salvar</button>
-                    <c:if test="${not empty mensagemErroCampos}">
-                        <label><c:out value="${mensagemErroCampos}"/></label>
-                    </c:if>
-                    <c:if test="${empty mensagemErroCampos}">
-                    <label><c:out value="${mensagemErroCampos}"/></label>
-                    </c:if>
+                    <button type="submit" class="btn btn-default" id="botaoUsu">Salvar</button><br>
+                    <label id="mensagem">(*)Campos Obrigatórios</label>
+
                 </form>
             </div>            
         </div>

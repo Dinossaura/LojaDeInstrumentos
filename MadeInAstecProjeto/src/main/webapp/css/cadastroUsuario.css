@@ -7,7 +7,7 @@ h1#usu{
 }
 
 #nomeUsu{
-    width: 230px;
+    width: 250px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -15,15 +15,15 @@ h1#usu{
 }
 
 #loginUsu{
-    width: 230px;
+    width: 250px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 27px;
 }
 
 #senha{
-    width: 230px;
+    width: 250px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -31,15 +31,15 @@ h1#usu{
 }
 
 #perfilUsu{
-    width: 230px;
+    width: 250px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 15px;
 }
 
 #empresaUsu{
-    width: 230px;
+    width: 250px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -47,5 +47,10 @@ h1#usu{
 }
 
 #botaoUsu{
-    margin-left: 200px;
+    margin-left: 265px;
+}
+
+#mensagem{
+    font-size: 12px;
+    margin-right: 20px;
 }

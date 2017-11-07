@@ -15,17 +15,17 @@
                 <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-cliente" method="post">
                     
                     <div class="form-group">
-                        <label for="nome">Nome</label>
+                        <label for="nome">Nome*</label>
                         <input type="text" class="form-control" name="name" id="nome">
                     </div>
                     
                     <div class="form-group">
-                        <label for="desc">Sobrenome</label>
+                        <label for="desc">Sobrenome*</label>
                         <input class="form-control" name="sobrenome" id="sobrenome">
                     </div>                   
                                         
                     <div class="form-group">
-                        <label for="perfil">Sexo</label>
+                        <label for="perfil">Sexo*</label>
                         <select class="form-control" name="sexo" id="sexo">
                             <option value="1">MASCULINO</option>
                             <option value="2">FEMININO</option>
@@ -39,12 +39,12 @@
                     </div>
                                         
                     <div class="form-group">
-                        <label for="desc" id="cpf">CPF</label>
+                        <label for="desc" id="cpf">CPF*</label>
                         <input class="form-control" type="text" name="cpf" id="cpf">
                     </div>
                     
                     <div class="form-group">
-                        <label for="desc">RG</label>
+                        <label for="desc" id="rgl">RG*</label>
                         <input class="form-control" type="text" name="rg" id="rg">
                     </div>
                     
@@ -64,12 +64,12 @@
                     </div>
                                        
                     <div class="form-group">
-                        <label for="desc" >End</label>
+                        <label for="desc" >End*</label>
                         <input class="form-control" name="endereco" id="endereco">
                     </div>
                     
                     <div class="form-group">
-                        <label for="desc">Número</label>
+                        <label for="desc">Número*</label>
                         <input class="form-control" name="numCasa" id="numero">
                     </div>
                     
@@ -79,17 +79,17 @@
                     </div>
                     
                     <div class="form-group" >
-                        <label for="desc">CEP</label>
+                        <label for="desc">CEP*</label>
                         <input class="form-control" name="cep" id="cep">
                     </div>
                     
                     <div class="form-group">
-                        <label for="desc">Cidade</label>
+                        <label for="desc">Cidade*</label>
                         <input class="form-control" name="cidade" id="cidade">
                     </div>
                     
                     <div class="form-group">
-                        <label for="perfil">Estado</label>
+                        <label for="perfil">Estado*</label>
                         <select class="form-control" name="estados" id="estado">
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
@@ -131,7 +131,8 @@
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-default">Cadastrar</button> 
+                    <button type="submit" class="btn btn-default">Cadastrar</button><br>
+                    <label id="mensagem">(*)Campos Obrigatórios</label>
 
                 </form>
             </div>
