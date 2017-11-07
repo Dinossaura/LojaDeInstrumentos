@@ -133,6 +133,14 @@
                     <c:if test="${empty mensagemErroCampos}">
                     <label><c:out value="${mensagemErroCampos}"/></label>
                     </c:if>
+                    <c:if test="${not empty usuarioexiste}">
+                        <label><c:out value="${usuarioexiste}"/></label>
+                    </c:if>
+                    <c:if test="${empty usuarioexiste}">
+                        <label><c:out value="${usuarioexiste}"/></label>
+                    </c:if>
+        </form>
+        </div>
                 </form>
             </div>            
         </div>

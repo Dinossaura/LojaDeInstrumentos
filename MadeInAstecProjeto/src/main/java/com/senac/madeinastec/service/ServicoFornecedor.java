@@ -62,10 +62,21 @@ public class ServicoFornecedor {
         }
     }
     
-    //Pesquisa usuario especificado 
+    //Pesquisa fornecedor especificado por codigo
     public Fornecedor retornaFornecedor(int codigofornecedor, int codigoempresa) throws ClienteException, DataSourceException{
         try {
             return fornecedorDAO.encontrarFornecedor(codigofornecedor, codigoempresa);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+    
+    //Pesquisa fornecedor especificado por nome
+    public boolean retornafornecedorNome(String nome, int codigoempresa) throws ClienteException, DataSourceException{
+        try {
+            return fornecedorDAO.encontrarFornecedorNome(nome, codigoempresa);
             
         } catch (Exception e) {
             e.printStackTrace();

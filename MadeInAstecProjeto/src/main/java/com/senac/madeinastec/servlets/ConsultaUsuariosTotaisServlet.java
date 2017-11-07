@@ -56,7 +56,7 @@ public class ConsultaUsuariosTotaisServlet extends HttpServlet {
         HttpSession sessao = request.getSession();
         
         //Atribuição de valores digitados na tela de fornecedor e código da empresa
-        String usuario = request.getParameter("usuarios");
+        String usuario = request.getParameter("usuarios").toUpperCase();
         String codigoempresa = (String) sessao.getAttribute("Empresa");
         
         try {

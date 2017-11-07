@@ -144,6 +144,40 @@ public class UsuarioDAO extends ConexaoBanco{
         }        
         return usuario;
     }
+    
+    //encontra usuário por nome
+    public boolean encontrarUsuarioNome(String login, int empresa){//retorna um boolean
+        Usuario usuario = new Usuario();
+        boolean verifica = false;
+        System.out.println("Buscando Usuário na base de dados...");
+        String query = "SELECT * FROM usuarios WHERE login=? and codigoempresa=?";
+        
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            
+            preparedStatement.setString(1,login);
+            preparedStatement.setInt(2, empresa);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+           
+            while (rs.next()){
+                usuario.setCodigo(rs.getInt(1));
+                usuario.setNome(rs.getString(2));
+                usuario.setLogin(rs.getString(3));
+                usuario.setSenha(rs.getString(4));
+                usuario.setcodigoPerfil(rs.getInt(5));
+                usuario.setCodigoEmpresa(rs.getInt(6));
+                verifica = true;
+            } 
+          
+            System.out.println("Busca efetuada com sucesso");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao buscar usuario"+ex);
+            
+        }        
+        return verifica;
+    }
+    
     //deletar usuário
     public void deletarUsuario(int codigo, int codigoempresa) throws Exception{
         System.out.println("Deletando de codigo: "+codigo);

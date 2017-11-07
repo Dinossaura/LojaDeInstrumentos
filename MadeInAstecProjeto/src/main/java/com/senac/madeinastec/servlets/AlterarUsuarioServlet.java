@@ -101,8 +101,8 @@ public class AlterarUsuarioServlet extends HttpServlet {
             u = (Usuario) sessao.getAttribute("usu");
             
             //Recupera dados digitados na tela para alteração
-            String nomeUsuario = request.getParameter("nomeUsuario");
-            String loginUsuario = request.getParameter("loginUsuario");
+            String nomeUsuario = request.getParameter("nomeUsuario").toUpperCase();
+            String loginUsuario = request.getParameter("loginUsuario").toUpperCase();
             String senhaUsuario = request.getParameter("senhaUsuario");
             String perfilUsuario = request.getParameter("perfilUsuario");
             

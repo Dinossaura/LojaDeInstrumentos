@@ -46,27 +46,47 @@ public class CadastrarFornecedorServlet extends HttpServlet {
 	      = request.getRequestDispatcher("/cadastroFornecedor.jsp");
             dispatcher.forward(request, response);
         }else{
-          sessao.setAttribute("mensagemErroCampos", "");
-          Fornecedor forne = new Fornecedor();
-        forne.setNome(fornecedor);
-        forne.setCodigoempresa(Integer.parseInt(empresa));
-     
-        ServicoFornecedor sf = new ServicoFornecedor();
-        try {
-            sf.cadastrarFornecedor(forne);
-            sessao.setAttribute("Fornecedor", forne);
-            response.sendRedirect(request.getContextPath() + "/cadastroFornecedor.jsp");
-            System.out.println("Fornecedor Inserido com sucesso!");
+            ServicoFornecedor sf = new ServicoFornecedor();
+            boolean fexiste = false;
+            try {
+                fexiste = sf.retornafornecedorNome(fornecedor, Integer.parseInt(empresa));
+            } catch (Exception e) {
+            }
             
-        } catch (Exception e) {
-            request.setAttribute("mensagemErro", "Fornecedor não cadastrado");
-            RequestDispatcher dispatcher
-	      = request.getRequestDispatcher("/cadastroFornecedor.jsp");
-            dispatcher.forward(request, response);
-            System.out.println("Erro na inserção de novo fornecedor!");
-        }  
-        }
+            //Verifica se já existe fornecedor na tabela
+            if(!fexiste){
+                sessao.setAttribute("mensagemErroCampos", "");
+                Fornecedor forne = new Fornecedor();
+                forne.setNome(fornecedor);
+                forne.setCodigoempresa(Integer.parseInt(empresa));
+                
+                //Cadastra novo fornecedor na tabela
+                try {
+                    sf.cadastrarFornecedor(forne);
+                    sessao.setAttribute("Fornecedor", forne);
+                    sessao.setAttribute("fornecedorexiste", "");
+                    response.sendRedirect(request.getContextPath() + "/cadastroFornecedor.jsp");
+                    System.out.println("Fornecedor Inserido com sucesso!");
+            
+                } catch (Exception e) {
+                request.setAttribute("mensagemErro", "Fornecedor não cadastrado");
+                sessao.setAttribute("fornecedorexiste", "");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/cadastroFornecedor.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("Erro na inserção de novo fornecedor!");
+                }     
+            }else{
+                sessao.setAttribute("fornecedorexiste", "Fornecedor já existe!");
+                request.setAttribute("fornecedorexiste", "Fornecedor já existe!");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/cadastroFornecedor.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("Erro na inserção de novo fornecedor!");
+            }
         
+       }
+          
         
     }
 

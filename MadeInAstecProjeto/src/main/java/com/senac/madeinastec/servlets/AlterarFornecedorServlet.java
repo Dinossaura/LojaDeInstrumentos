@@ -75,7 +75,7 @@ public class AlterarFornecedorServlet extends HttpServlet {
         }else{
             Fornecedor f = new Fornecedor();
             f = (Fornecedor) sessao.getAttribute("for");
-            String nomeFornecedor = request.getParameter("fornecedor");
+            String nomeFornecedor = request.getParameter("fornecedor").toUpperCase();
             int codigo = f.getCodigo();
             int codigoempresa = f.getCodigoempresa();
             

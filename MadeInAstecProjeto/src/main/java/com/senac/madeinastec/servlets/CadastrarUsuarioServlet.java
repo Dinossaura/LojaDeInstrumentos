@@ -54,10 +54,10 @@ public class CadastrarUsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
         
-        String nome = request.getParameter("name");
+        String nome = request.getParameter("name").toUpperCase();
         String codigoEmpresa = request.getParameter("empresa");
         String codigoperfil = request.getParameter("perfil");
-        String login= request.getParameter("login");
+        String login= request.getParameter("login").toUpperCase();
         String senha= request.getParameter("senha");
         
         //if para verificação de campos obrigatórios
@@ -74,21 +74,40 @@ public class CadastrarUsuarioServlet extends HttpServlet {
             novoUsuario.setSenha(senha);
             novoUsuario.setCodigoEmpresa(Integer.parseInt(codigoEmpresa));
             novoUsuario.setcodigoPerfil(Integer.parseInt(codigoperfil));
-        
+            
             ServicoUsuario su = new ServicoUsuario();
+            
+            boolean uexiste = false;//Verifica se login de usuário já existe
             try {
+                uexiste = su.retornaUsuario(novoUsuario.getLogin(), novoUsuario.getCodigoEmpresa());
+            } catch (Exception e) {
+            }
+            
+            if(!uexiste){
+               try {
                 su.cadastrarUsuario(novoUsuario);
                 sessao.setAttribute("Usuario", novoUsuario);
+                sessao.setAttribute("usuarioexiste", "");
                 response.sendRedirect(request.getContextPath() + "/cadastroUsuario.jsp");
                 System.out.println("Usuário Inserido com sucesso!");
             
-            } catch (Exception e) {
+               } catch (Exception e) {
+                   sessao.setAttribute("usuarioexiste", "");
                 request.setAttribute("mensagemErro", "Usuário não cadastrado");
                 RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/cadastroUsuario.jsp");
                 dispatcher.forward(request, response);
                 System.out.println("Erro na inserção de novo usuário!");
+                } 
+            }else{
+                sessao.setAttribute("usuarioexiste", "Usuário já existe!");
+                request.setAttribute("usuarioexiste", "Usuário já existe!");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/cadastroUsuario.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("Erro na inserção de novo fornecedor!");
             }
+            
         }
         
         

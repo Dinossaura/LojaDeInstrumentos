@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
         ServicoUsuario su = new ServicoUsuario();
         HttpSession sessao = request.getSession();
         
-        String usuario = request.getParameter("usuario");
+        String usuario = request.getParameter("usuario").toUpperCase();
         String senha = request.getParameter("senha");
         String empresa = request.getParameter("empresa");
         
@@ -65,6 +65,7 @@ public class LoginServlet extends HttpServlet {
             try {
                 verifica = su.retornaUsuarioLogin(u.getLogin(), u.getSenha(), u.getCodigoEmpresa()); 
             } catch (Exception e) {
+                
             
             }
         

@@ -60,7 +60,7 @@
                     <select class="form-control" name="empresa" id="perfilFor">
                         <option value="1">Matriz - São Paulo</option>
                         <option value="2">Filial - Porto Alegre</option>
-                        <option value="3">Filial - Pernambuco</option>
+                        <option value="3">Filial - Recife</option>
                     </select>
                 </c:otherwise>
             </c:choose>
@@ -74,6 +74,12 @@
         </c:if>
         <c:if test="${empty mensagemErroCampos}">
             <label><c:out value="${mensagemErroCampos}"/></label>
+        </c:if>
+        <c:if test="${not empty fornecedorexiste}">
+            <label><c:out value="${fornecedorexiste}"/></label>
+        </c:if>
+        <c:if test="${empty fornecedorexiste}">
+            <label><c:out value="${fornecedorexiste}"/></label>
         </c:if>
         </form>
         </div>

@@ -129,6 +129,33 @@ public class FornecedorDAO {
     
     }
     
+    //busca 1 fornecedor especificado por nome
+    public boolean encontrarFornecedorNome(String nome, int empresa){//retorna um item
+        Fornecedor fornecedor = new Fornecedor();
+        System.out.println("Buscando produto na base de dados...");
+        String query = "SELECT * FROM fornecedor WHERE nome=? and codigoempresa=?";//addicionar o % %
+        boolean verifica = false;
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1,nome);
+            preparedStatement.setInt(2,empresa);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            while (rs.next()){
+                fornecedor.setCodigo(rs.getInt(1));
+                fornecedor.setNome(rs.getString(2));
+                fornecedor.setCodigoempresa(rs.getInt(3));
+                verifica = true;
+            }
+            
+            System.out.println("Busca efetuada com sucesso");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao buscar fornecedor"+ex);
+        }        
+        return verifica;
+    
+    }
+    
         public void deletarfornecedor(int codigo, int codigoempresa) throws Exception{
             System.out.println("Deletando fornecedor codigo: "+codigo);
             String query = "DELETE FROM fornecedor WHERE codigo=? and codigoempresa=?";
