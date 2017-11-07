@@ -15,18 +15,18 @@
                 <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-produto" method="post">
 
                     <div class="form-group">
-                        <label for="nome">Produto</label>
+                        <label for="nome">Produto*</label>
                         <input type="text" class="form-control" name="prod" id="produto"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="desc">Descrição</label>
+                        <label for="desc">Descrição*</label>
                         <textarea class="form-control" rows="1" name="descProd" id="descricao"></textarea>
                     </div>
 
                     
                     <div class="form-group">
-                        <label for="empresa">Categoria</label>
+                        <label for="empresa">Categoria*</label>
                         <select class="form-control" name="categ" id="categoria">
                             <option value="1">Cordas</option>
                             <option value="2">Sopro</option>
@@ -39,8 +39,8 @@
                     </div>
 
                      <div class="form-group">
-                        <label for="empresa">Perfil</label>
-                        <select class="form-control" name="empresa" id="perfil">
+                         <label for="empresa" id="perfilLab">Perfil*</label>
+                        <select class="form-control" name="empresa" id="perfilProduto">
                             <option value="1">Matriz - São Paulo</option>
                             <option value="2">Filial - Porto Alegre</option>
                             <option value="3">Filial - Recife</option>
@@ -50,19 +50,19 @@
                    
 
                     <div class="form-group">
-                        <label for="desc">Cod.Fornecedor</label>
+                        <label for="desc">Cod.Fornecedor*</label>
                         <input class="form-control" name="codF" id="codF"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="desc">Estoque</label>
+                        <label for="desc">Estoque*</label>
                         <input class="form-control" type="number" name="estoque" id="estoque"/>
                     </div>
                     
                     <hr id="linha"> <!--Linha de separação-->                       
                     
                     </br><div class="form-group" id="preco">
-                        <label for="desc">Preços</label>
+                        <label for="desc">Preços*</label>
                     </div></br>
 
                     <div class="form-group">
@@ -74,8 +74,9 @@
                         <label for="desc">Venda</label>
                         <input class="form-control"  name="venda" id="venda"/>
                     </div>
-
+                                        
                     <button type="submit" class="btn btn-default" id="botao">Cadastrar</button>
+                    <label id="mensagem">(*)Campos Obrigatórios</label>
 
                 </form>
             </div>

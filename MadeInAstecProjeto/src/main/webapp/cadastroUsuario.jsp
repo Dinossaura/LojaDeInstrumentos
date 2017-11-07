@@ -60,9 +60,7 @@
                             <option value="3">Filial - Recife</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>(*)Campos Obrigatórios</label>
-                    </div>
+                    
                 </c:when>
                 <c:otherwise>
                     <div class="form-group">
@@ -121,9 +119,7 @@
                             </c:if>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>(*)Campos Obrigatórios</label>
-                    </div>
+                    
                 </c:otherwise>
             </c:choose>
                     <button type="submit" class="btn btn-default" id="botaoUsu">Salvar</button>
@@ -139,8 +135,8 @@
                     <c:if test="${empty usuarioexiste}">
                         <label><c:out value="${usuarioexiste}"/></label>
                     </c:if>
-        </form>
-        </div>
+                    <label id="mensagem">(*)Campos Obrigatórios</label>
+            </div> 
                 </form>
             </div>            
         </div>

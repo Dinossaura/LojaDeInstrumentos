@@ -12,7 +12,11 @@ label{
 }
 
 label#cpf{
-    margin-left: 60px;
+    margin-left: 60px;    
+}
+
+label#rgl{
+    margin-left: -9px;
 }
 
 label#email{
@@ -29,7 +33,7 @@ label#tel2{
 }
 
 #nome{
-    width: 450px;
+    width: 445px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -37,7 +41,7 @@ label#tel2{
 }
 
 #sobrenome{
-    width: 450px;
+    width: 445px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -53,7 +57,7 @@ label#tel2{
 }
 
 #nasc{
-    width: 175px;
+    width: 169px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -61,15 +65,15 @@ label#tel2{
 }
 
 #cpf{
-    width: 200px;
+    width: 190px;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-right: 10px;
+    margin-right: 25px;
     margin-left: -165px;
 }
 
 #rg{
-    width: 194px;
+    width: 198px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -77,27 +81,27 @@ label#tel2{
 }
 
 #tel1{
-    width: 200px;
+    width: 190px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 12px;
+    margin-left: 16px;
 }
 
 #tel2{
-    width: 194px;
+    width: 198px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: -159px;
+    margin-left: -162px;
 }
 
 #email{
-    width: 450px;
+    width: 448px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: -2px;
+    margin-left: 4px;
 }
 
 #endereco{
@@ -105,11 +109,11 @@ label#tel2{
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 18px;
+    margin-left: 16px;
 }
 
 #numero{
-    width: 100px;
+    width: 88px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: -12px;
@@ -125,15 +129,15 @@ label#tel2{
 }
 
 #cep{
-    width: 260px;
+    width: 255px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 16px;
+    margin-left: 14px;
 }
 
 #cidade{
-    width: 293px;
+    width: 280px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -153,9 +157,14 @@ label#tel2{
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 12px;
 }
 
 button{
     margin-left: 661px;
+}
+
+#mensagem{
+    font-size: 12px;
+    margin-right: 20px;
 }
