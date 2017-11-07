@@ -74,10 +74,10 @@ public class ServicoUsuario {
     }
 
     //Exclui o cliente com ID informado do mock
-    public void excluirUsuario(int codigo) throws ClienteException, DataSourceException, Exception {
+    public void excluirUsuario(int codigo, int  codigoempresa) throws ClienteException, DataSourceException, Exception {
         try {
             //Solicita ao DAO a exclusão do cliente informado
-            usuarioDAO.deletarUsuario(codigo);
+            usuarioDAO.deletarUsuario(codigo, codigoempresa);
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão

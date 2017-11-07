@@ -49,9 +49,10 @@ public class indexUsuarioServlet extends HttpServlet {
         listaDeUsuarios = usuarioDAO.listarUsuario("", Integer.parseInt(codigoempresa));        
         
         
-        request.setAttribute("listaUsuario", listaDeUsuarios);
+        /*request.setAttribute("listaUsuario", listaDeUsuarios);
+        request.setAttribute("verificaconsulta", "consulta");
         RequestDispatcher dispatcher = request.getRequestDispatcher("consultarUsuario.jsp");
-    dispatcher.forward(request, response);
+    dispatcher.forward(request, response);*/
         
     }
 

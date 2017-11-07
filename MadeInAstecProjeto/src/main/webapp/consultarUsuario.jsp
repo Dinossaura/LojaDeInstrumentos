@@ -67,7 +67,7 @@
                             <c:out value="Made in Astec - Porto Alegre" />
                             </c:if>
                             <c:if test = "${empresa == 3}">
-                            <c:out value="Made in Astec - Recife" />
+                            <c:out value="Made in Astec - Pernambuco" />
                             </c:if>
                         </td>
                         <td>

@@ -32,7 +32,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher
-	    = request.getRequestDispatcher("/cadastroUsuario.jsp");
+	    = request.getRequestDispatcher("/consultarUsuario.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -117,7 +117,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
              su.atualizarUsuario(codigo, codigoempresa, Integer.parseInt(perfilUsuario), nomeUsuario, loginUsuario, senhaUsuario);
             } catch (Exception e) {
             }
-            response.sendRedirect(request.getContextPath() + "/usuarios");
+            response.sendRedirect(request.getContextPath() + "/consultarUsuario.jsp");
             sessao.setAttribute("Altera", "");
         }
            

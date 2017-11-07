@@ -145,14 +145,15 @@ public class UsuarioDAO extends ConexaoBanco{
         return usuario;
     }
     //deletar usuário
-    public void deletarUsuario(int codigo) throws Exception{
+    public void deletarUsuario(int codigo, int codigoempresa) throws Exception{
         System.out.println("Deletando de codigo: "+codigo);
-        String query = "DELETE FROM usuario WHERE codigo=?";
+        String query = "DELETE FROM USUARIOS WHERE codigo=? and codigoempresa=?";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             
-            preparedStatement.setInt(1, codigo);            
+            preparedStatement.setInt(1, codigo);
+            preparedStatement.setInt(2, codigoempresa);  
             preparedStatement.execute();
             
             System.out.println("Usuário deletado");
