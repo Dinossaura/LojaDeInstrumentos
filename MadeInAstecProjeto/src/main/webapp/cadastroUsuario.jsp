@@ -25,22 +25,22 @@
             <c:choose>
                 <c:when test = "${empty Altera}">
                     <div class="form-group">
-                        <label for="nome">Nome</label>
+                        <label for="nome">Nome*</label>
                         <input type="text" class="form-control" name="name" id="nomeUsu"/>
                     </div>
-
+     
                     <div class="form-group">
-                        <label for="login">LOGIN</label>
+                        <label for="login">LOGIN*</label>
                         <input class="form-control" rows="1" name="login" id="loginUsu"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="senha">Senha</label>
+                        <label for="senha">Senha*</label>
                         <input type="password" class="form-control" rows="1" name="senha" id="senha"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="perfil">Perfil</label>
+                        <label for="perfil">Perfil*</label>
                         <select class="form-control" name="perfil" id="perfilUsu">
                             <option value="1">Diretoria</option>
                             <option value="2">Gerente Produtos/ Serviços</option>
@@ -53,32 +53,35 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="empresa">Empresa</label>
+                        <label for="empresa">Empresa*</label>
                         <select class="form-control" name="empresa" id="empresaUsu">
                             <option value="1">Matriz - São Paulo</option>
                             <option value="2">Filial - Porto Alegre</option>
                             <option value="3">Filial - Recife</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label>(*)Campos Obrigatórios</label>
+                    </div>
                 </c:when>
                 <c:otherwise>
                     <div class="form-group">
-                           <label for="nome">Nome</label>
+                           <label for="nome">Nome*</label>
                         <input type="text" class="form-control" name="nomeUsuario" value="${usu.getNome()}"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="login">LOGIN</label>
+                        <label for="login">LOGIN*</label>
                         <input class="form-control" rows="1" name="loginUsuario" value="${usu.getLogin()}"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="senha">Senha</label>
+                        <label for="senha">Senha*</label>
                         <input type="password" class="form-control" rows="1" name="senhaUsuario" value="${usu.getSenha()}"/>
                     </div>
 
                     <div class="form-group">
-                        <label for="perfil">Perfil</label>
+                        <label for="perfil">Perfil*</label>
                         <select class="form-control" name="perfilUsuario">
                             <c:if test="${usu.getcodigoPerfil() == 1}">
                                 <option value="1">Diretoria</option>
@@ -105,7 +108,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="empresa">Empresa</label>
+                        <label for="empresa">Empresa*</label>
                         <select class="form-control" name="empresaUsuario">
                             <c:if test="${usu.getCodigoEmpresa() == 1}">
                                 <option value="1">Matriz - São Paulo</option>
@@ -117,6 +120,9 @@
                                 <option value="3">Filial - Recife</option>
                             </c:if>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>(*)Campos Obrigatórios</label>
                     </div>
                 </c:otherwise>
             </c:choose>

@@ -27,11 +27,11 @@
         <div class="form-group">
             <c:choose>
                 <c:when test = "${empty Altera}">
-                    <label for="fornecedor">Fornecedor</label>
+                    <label for="fornecedor">Fornecedor*</label>
                     <input type="text" name="fornecedor" class="form-control" id="fornecedo"> 
                 </c:when>
                 <c:otherwise>
-                    <label for="fornecedor">Fornecedor</label>
+                    <label for="fornecedor">Fornecedor*</label>
                     <input type="text" name="fornecedor" class="form-control" value="${for.nome}"> 
                 </c:otherwise>
             </c:choose>
@@ -50,22 +50,24 @@
                     <c:if test="codigoempresa == 3">
                         <c:set var="nomeempresa" value="Matriz - Recife"/>
                     </c:if>
-                    <label for="empresa">Perfil</label>
+                    <label for="empresa">Perfil*</label>
                     <select class="form-control" name="empresa" id="perfilFor">
                         <option><c:out value="${nomeempresa}"/></option>
                     </select>
                 </c:when>
                 <c:otherwise>
-                    <label for="empresa">Perfil</label>
+                    <label for="empresa">Perfil*</label>
                     <select class="form-control" name="empresa" id="perfilFor">
                         <option value="1">Matriz - São Paulo</option>
                         <option value="2">Filial - Porto Alegre</option>
-                        <option value="3">Filial - Recife</option>
+                        <option value="3">Filial - Pernambuco</option>
                     </select>
                 </c:otherwise>
             </c:choose>
         </div>
-            
+        <div class="form-group">
+            <label>(*)Campos Obrigatórios</label>
+        </div>
         <button type="submit" class="btn btn-default" id="botaoForn">Salvar</button>
         </form>
         </div>
