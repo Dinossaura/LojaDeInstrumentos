@@ -167,7 +167,7 @@ public class UsuarioDAO extends ConexaoBanco{
         Usuario usuario = new Usuario();
         System.out.println("Buscando produto na base de dados...");
         String query = "SELECT * FROM usuarios WHERE codigo=? and codigoempresa=?";//addicionar o % %
-        
+        boolean verifica = false;//Variável verifica a existência do usuário
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -179,7 +179,6 @@ public class UsuarioDAO extends ConexaoBanco{
             ResultSet rs = preparedStatement.executeQuery();
             
             while (rs.next()){
-
                 //usuario.setCodigo(rs.getInt(codigo));
                 usuario.setCodigo(rs.getInt("codigo"));
                 usuario.setLogin(rs.getString("login"));
@@ -188,15 +187,23 @@ public class UsuarioDAO extends ConexaoBanco{
                 usuario.setCodigoEmpresa(rs.getInt("codigoempresa"));
                 usuario.setcodigoPerfil(rs.getInt("codigoperfil"));                
                 
-                
                 lista.add(usuario);
+                verifica = true;
+                System.out.println("Busca efetuada com sucesso");
             }
             
-            System.out.println("Busca efetuada com sucesso");
+            
         } catch (SQLException ex) {
             System.out.println("Erro ao buscar produto"+ex);
-        }        
+        }
+        
+        if(verifica == false){
+            usuario = null;
+        }
+        
         return usuario;
     
     }
+     
+     
 }

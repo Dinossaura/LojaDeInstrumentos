@@ -3,7 +3,7 @@
     Created on : 16/10/2017, 14:45:32
     Author     : magno
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,6 +32,12 @@
                     </select>
                 </div>
                 <button type="submit" class="btn btn-success center-block">Entrar</button>
+                <c:if test="${not empty erro}">
+                    <label><c:out value="${erro}"/></label>
+                </c:if>
+                <c:if test="${empty erro}">
+                    <label><c:out value="${erro}"/></label>
+                </c:if>
             </form>
                 
         </div>

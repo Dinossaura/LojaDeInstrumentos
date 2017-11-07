@@ -72,6 +72,17 @@ public class ServicoUsuario {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
+    
+    //Pesquisa usuario por login e senha 
+    public Usuario retornaUsuarioLogin(String login, String senha, int empresa) throws ClienteException, DataSourceException{
+        try {
+            return usuarioDAO.encontrarUsuario(login, senha, empresa);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
 
     //Exclui o cliente com ID informado do mock
     public void excluirUsuario(int codigo, int  codigoempresa) throws ClienteException, DataSourceException, Exception {

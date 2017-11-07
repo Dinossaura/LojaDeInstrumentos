@@ -54,25 +54,36 @@ public class LoginServlet extends HttpServlet {
         u.setSenha(senha);
         u.setCodigoEmpresa(Integer.parseInt(empresa));
         
-        try {
+        if((usuario.length() == 0)||(senha.length()==0)||(empresa.length()==0)){
+            sessao.setAttribute("erro", "Verifique usuário ou senha!");
             
-            verifica = su.retornaUsuario(u.getCodigo(), u.getCodigoEmpresa()); 
-        } catch (Exception e) {
+            request.setAttribute("errologin", "Verifique usuário ou senha");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
+        }else{
+            try {
+                verifica = su.retornaUsuarioLogin(u.getLogin(), u.getSenha(), u.getCodigoEmpresa()); 
+            } catch (Exception e) {
             
+            }
+        
+            if (verifica != null) {
+                sessao.setAttribute("Usuario", usuario);
+                sessao.setAttribute("Empresa", empresa);
+                response.sendRedirect(request.getContextPath() + "/menu.jsp");
+                System.out.println("Nome " + verifica.getNome() + "/n" + "Senha " + verifica.getSenha());
+                sessao.setAttribute("erro", "");
+            }else{
+                sessao.setAttribute("erro", "Verifique usuário ou senha!");
+                request.setAttribute("errologin", "Verifique usuário ou senha!");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/index.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("Usuário não encontrado!");
+            }
         }
         
-        if (verifica != null){
-            sessao.setAttribute("Usuario", usuario);
-            sessao.setAttribute("Empresa", empresa);
-            response.sendRedirect(request.getContextPath() + "/menu.jsp");
-            System.out.println("Nome " + verifica.getNome() + "/n" + "Senha " + verifica.getSenha());
-        }else{
-            request.setAttribute("mensagemErro", "Usuário ou senha inválido");
-            RequestDispatcher dispatcher
-	      = request.getRequestDispatcher("/index.jsp");
-            dispatcher.forward(request, response);
-            System.out.println("Usuário não encontrado!");
-        }
         
         
     }
