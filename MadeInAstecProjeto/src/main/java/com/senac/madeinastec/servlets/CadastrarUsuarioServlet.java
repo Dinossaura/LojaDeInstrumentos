@@ -60,27 +60,38 @@ public class CadastrarUsuarioServlet extends HttpServlet {
         String login= request.getParameter("login");
         String senha= request.getParameter("senha");
         
-        Usuario novoUsuario = new Usuario();
-        novoUsuario.setNome(nome);
-        novoUsuario.setLogin(login);
-        novoUsuario.setSenha(senha);
-        novoUsuario.setCodigoEmpresa(Integer.parseInt(codigoEmpresa));
-        novoUsuario.setcodigoPerfil(Integer.parseInt(codigoperfil));
-        
-        ServicoUsuario su = new ServicoUsuario();
-        try {
-            su.cadastrarUsuario(novoUsuario);
-            sessao.setAttribute("Usuario", novoUsuario);
-            response.sendRedirect(request.getContextPath() + "/cadastroUsuario.jsp");
-            System.out.println("Usuário Inserido com sucesso!");
-            
-        } catch (Exception e) {
-            request.setAttribute("mensagemErro", "Usuário não cadastrado");
+        //if para verificação de campos obrigatórios
+        if((nome.length()== 0)||(codigoEmpresa.length()==0)||(codigoperfil.length()==0)||(login.length()==0)||(senha.length()==0)){
+            sessao.setAttribute("mensagemErroCampos", "Verifique campos obrigatórios!");
             RequestDispatcher dispatcher
 	      = request.getRequestDispatcher("/cadastroUsuario.jsp");
-            dispatcher.forward(request, response);
-            System.out.println("Erro na inserção de novo usuário!");
+            dispatcher.forward(request, response);    
+        }else{
+            sessao.setAttribute("mensagemErroCampos", "");
+            Usuario novoUsuario = new Usuario();
+            novoUsuario.setNome(nome);
+            novoUsuario.setLogin(login);
+            novoUsuario.setSenha(senha);
+            novoUsuario.setCodigoEmpresa(Integer.parseInt(codigoEmpresa));
+            novoUsuario.setcodigoPerfil(Integer.parseInt(codigoperfil));
+        
+            ServicoUsuario su = new ServicoUsuario();
+            try {
+                su.cadastrarUsuario(novoUsuario);
+                sessao.setAttribute("Usuario", novoUsuario);
+                response.sendRedirect(request.getContextPath() + "/cadastroUsuario.jsp");
+                System.out.println("Usuário Inserido com sucesso!");
+            
+            } catch (Exception e) {
+                request.setAttribute("mensagemErro", "Usuário não cadastrado");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/cadastroUsuario.jsp");
+                dispatcher.forward(request, response);
+                System.out.println("Erro na inserção de novo usuário!");
+            }
         }
+        
+        
         
         
 

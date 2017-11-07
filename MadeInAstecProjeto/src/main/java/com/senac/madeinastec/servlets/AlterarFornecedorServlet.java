@@ -78,15 +78,26 @@ public class AlterarFornecedorServlet extends HttpServlet {
             String nomeFornecedor = request.getParameter("fornecedor");
             int codigo = f.getCodigo();
             int codigoempresa = f.getCodigoempresa();
-            try {
-             fornecedor.setCodigo(codigo);
-             fornecedor.setCodigoempresa(codigoempresa);
-             fornecedor.setNome(nomeFornecedor);
-             sf.atualizarFornecedor(fornecedor.getNome(), fornecedor.getCodigo(), fornecedor.getCodigoempresa());
-            } catch (Exception e) {
+            
+            //Verifica campos obrigatórios
+            if((nomeFornecedor.length() == 0)||(String.valueOf(codigoempresa).length() == 0)){
+                sessao.setAttribute("mensagemErroCampos", "Verifique campos obrigatórios!");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/cadastroFornecedor.jsp");
+                dispatcher.forward(request, response);
+            }else{
+                sessao.setAttribute("mensagemErroCampos", "");
+                try {
+                fornecedor.setCodigo(codigo);
+                fornecedor.setCodigoempresa(codigoempresa);
+                fornecedor.setNome(nomeFornecedor);
+                sf.atualizarFornecedor(fornecedor.getNome(), fornecedor.getCodigo(), fornecedor.getCodigoempresa());
+                } catch (Exception e) {
+                }
+                response.sendRedirect(request.getContextPath() + "/consultarFornecedor.jsp");
+                sessao.setAttribute("Altera", "");  
             }
-            response.sendRedirect(request.getContextPath() + "/consultarFornecedor.jsp");
-            sessao.setAttribute("Altera", "");
+            
         }
            
         

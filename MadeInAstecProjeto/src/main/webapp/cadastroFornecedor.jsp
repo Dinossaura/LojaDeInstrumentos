@@ -69,6 +69,12 @@
             <label>(*)Campos Obrigatórios</label>
         </div>
         <button type="submit" class="btn btn-default" id="botaoForn">Salvar</button>
+        <c:if test="${not empty mensagemErroCampos}">
+            <label><c:out value="${mensagemErroCampos}"/></label>
+        </c:if>
+        <c:if test="${empty mensagemErroCampos}">
+            <label><c:out value="${mensagemErroCampos}"/></label>
+        </c:if>
         </form>
         </div>
         <jsp:include page="rodape.jsp"/>

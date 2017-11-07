@@ -39,7 +39,15 @@ public class CadastrarFornecedorServlet extends HttpServlet {
         String fornecedor = request.getParameter("fornecedor").toUpperCase();
         String empresa = request.getParameter("empresa");
         
-        Fornecedor forne = new Fornecedor();
+        //Verifica se campos obrigatórios foram digitados
+        if((fornecedor.length() <= 0)||(empresa.length() <= 0)){
+            sessao.setAttribute("mensagemErroCampos", "Verifique campos obrigatórios!");
+            RequestDispatcher dispatcher
+	      = request.getRequestDispatcher("/cadastroFornecedor.jsp");
+            dispatcher.forward(request, response);
+        }else{
+          sessao.setAttribute("mensagemErroCampos", "");
+          Fornecedor forne = new Fornecedor();
         forne.setNome(fornecedor);
         forne.setCodigoempresa(Integer.parseInt(empresa));
      
@@ -56,7 +64,9 @@ public class CadastrarFornecedorServlet extends HttpServlet {
 	      = request.getRequestDispatcher("/cadastroFornecedor.jsp");
             dispatcher.forward(request, response);
             System.out.println("Erro na inserção de novo fornecedor!");
+        }  
         }
+        
         
     }
 

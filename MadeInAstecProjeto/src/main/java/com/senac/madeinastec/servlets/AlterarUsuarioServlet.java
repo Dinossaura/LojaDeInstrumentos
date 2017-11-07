@@ -110,15 +110,25 @@ public class AlterarUsuarioServlet extends HttpServlet {
             int codigo = u.getCodigo();
             int codigoempresa = u.getCodigoEmpresa();
             
-            try {
-             usuario.setCodigo(codigo);
-             usuario.setCodigoEmpresa(codigoempresa);
-             usuario.setNome(nomeUsuario);
-             su.atualizarUsuario(codigo, codigoempresa, Integer.parseInt(perfilUsuario), nomeUsuario, loginUsuario, senhaUsuario);
-            } catch (Exception e) {
+           //if para verificação de campos obrigatórios
+            if((nomeUsuario.length()== 0)||(String.valueOf(codigoempresa).length())==0||(perfilUsuario.length()==0)||(loginUsuario.length()==0)||(senhaUsuario.length()==0)){
+                sessao.setAttribute("mensagemErroCampos", "Verifique campos obrigatórios!");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/cadastroUsuario.jsp");
+                dispatcher.forward(request, response);  
+            }else{
+                sessao.setAttribute("mensagemErroCampos", "");
+                 try {
+                    usuario.setCodigo(codigo);
+                    usuario.setCodigoEmpresa(codigoempresa);
+                    usuario.setNome(nomeUsuario);
+                    su.atualizarUsuario(codigo, codigoempresa, Integer.parseInt(perfilUsuario), nomeUsuario, loginUsuario, senhaUsuario);
+                 } catch (Exception e) {
+                 }
+                response.sendRedirect(request.getContextPath() + "/consultarUsuario.jsp");
+                sessao.setAttribute("Altera", "");
             }
-            response.sendRedirect(request.getContextPath() + "/consultarUsuario.jsp");
-            sessao.setAttribute("Altera", "");
+           
         }
            
        
