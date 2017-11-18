@@ -20,13 +20,20 @@ public class FornecedorDAO {
         
     public void inserirFornecedor(Fornecedor fornecedor){
         System.out.println("Iniciando processo de inserção de fornecedor...");
-        String query = "insert into fornecedor (nome, codigoempresa) values (?, ?)";
+        String query = "insert into fornecedor (nome, codigoempresa, endereco, numero, complemento, " +
+                                              " cidade, estado, telefone) values (?, ?, ?, ?, ?, ?, ?)";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             preparedStatement.setString(1, fornecedor.getNome());
             preparedStatement.setInt(2, fornecedor.getCodigoempresa());
+            preparedStatement.setString(3, fornecedor.getEndereco());
+            preparedStatement.setString(4, fornecedor.getNumero());
+            preparedStatement.setString(5, fornecedor.getComplemento());
+            preparedStatement.setString(6, fornecedor.getCidade());
+            preparedStatement.setString(7, fornecedor.getEstado());
+            preparedStatement.setString(8, fornecedor.getTelefone());
             
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -38,17 +45,28 @@ public class FornecedorDAO {
         }
     }
     
-    public void atualizarFornecedor(String nome, int codigofornecedor, int codigoempresa) throws Exception{
+    public void atualizarFornecedor(String nome, String endereco, String numero, String complemento,
+                                    String cidade, String estado, String telefone,
+                                    int codigofornecedor, int codigoempresa) throws Exception{
         System.out.println("Atualizando fornecedor...");
-         String query = "UPDATE fornecedor SET nome=? WHERE codigo=? and codigoempresa=?";
+         String query = "UPDATE fornecedor SET nome=?, endereco=?, numero=?,"
+                 + "                           complemento=?, cidade=?, estado=?,"
+                 + "                           telefone=?"
+                 + "     WHERE codigo=? and codigoempresa=?";
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             preparedStatement.setString(1, nome);
-            preparedStatement.setInt(2, codigofornecedor);
-             preparedStatement.setInt(3, codigoempresa);
+            preparedStatement.setString(2, endereco);
+            preparedStatement.setString(3, numero);
+            preparedStatement.setString(4, complemento);
+            preparedStatement.setString(5, cidade);
+            preparedStatement.setString(6, estado);
+            preparedStatement.setString(7, telefone);
+            preparedStatement.setInt(8, codigofornecedor);
+            preparedStatement.setInt(9, codigoempresa);
              
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -91,7 +109,13 @@ public class FornecedorDAO {
                     Fornecedor fornecedor = new Fornecedor();
                     fornecedor.setCodigo(rs.getInt(1));
                     fornecedor.setNome(rs.getString(2));
-                    fornecedor.setCodigoempresa(rs.getInt(3));
+                    fornecedor.setEndereco(rs.getString(3));
+                    fornecedor.setNumero(rs.getString(4));
+                    fornecedor.setComplemento(rs.getString(5));
+                    fornecedor.setCidade(rs.getString(6));
+                    fornecedor.setEstado(rs.getString(7));
+                    fornecedor.setTelefone(rs.getString(8));
+                    fornecedor.setCodigoempresa(rs.getInt(9));
                     lista.add(fornecedor);
                 }
 
@@ -118,7 +142,13 @@ public class FornecedorDAO {
             while (rs.next()){
                 fornecedor.setCodigo(rs.getInt(1));
                 fornecedor.setNome(rs.getString(2));
-                fornecedor.setCodigoempresa(rs.getInt(3));
+                fornecedor.setEndereco(rs.getString(3));
+                fornecedor.setNumero(rs.getString(4));
+                fornecedor.setComplemento(rs.getString(5));
+                fornecedor.setCidade(rs.getString(6));
+                fornecedor.setEstado(rs.getString(7));
+                fornecedor.setTelefone(rs.getString(8));
+                fornecedor.setCodigoempresa(rs.getInt(9));
             }
             
             System.out.println("Busca efetuada com sucesso");
@@ -144,6 +174,12 @@ public class FornecedorDAO {
             while (rs.next()){
                 fornecedor.setCodigo(rs.getInt(1));
                 fornecedor.setNome(rs.getString(2));
+                fornecedor.setEndereco(rs.getString(3));
+                fornecedor.setNumero(rs.getString(4));
+                fornecedor.setComplemento(rs.getString(5));
+                fornecedor.setCidade(rs.getString(6));
+                fornecedor.setEstado(rs.getString(7));
+                fornecedor.setTelefone(rs.getString(8));
                 fornecedor.setCodigoempresa(rs.getInt(3));
                 verifica = true;
             }

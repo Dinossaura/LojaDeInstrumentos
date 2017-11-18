@@ -28,19 +28,27 @@ public class CadastrarFornecedorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+          request.setCharacterEncoding("UTF-8");
           HttpSession sessao = request.getSession();
         
         String fornecedor = request.getParameter("fornecedor").toUpperCase();
         String empresa = request.getParameter("empresa");
+        String endereco = request.getParameter("endereco");
+        String numero = request.getParameter("numero");
+        String complemento = request.getParameter("complemento");
+        String cidade = request.getParameter("cidade");
+        String estado = request.getParameter("estados");
+        String telefone = request.getParameter("telefone");
         
-        //Verifica se campos obrigatórios foram digitados
-        if((fornecedor.length() <= 0)||(empresa.length() <= 0)){
+        //Verifica se campos obrigatórios foram digitados na tela de cadastro ou alteração
+        if((fornecedor.length() <= 0)||(empresa.length() <= 0)||(endereco.length() <= 0)||(numero.length() <= 0)||
+                (cidade.length() == 0)||(estado.length() == 0)){
             sessao.setAttribute("mensagemErroCampos", "Verifique campos obrigatórios!");
             RequestDispatcher dispatcher
 	      = request.getRequestDispatcher("/cadastroFornecedor.jsp");
@@ -59,6 +67,12 @@ public class CadastrarFornecedorServlet extends HttpServlet {
                 Fornecedor forne = new Fornecedor();
                 forne.setNome(fornecedor);
                 forne.setCodigoempresa(Integer.parseInt(empresa));
+                forne.setEndereco(endereco);
+                forne.setNumero(numero);
+                forne.setComplemento(complemento);
+                forne.setCidade(cidade);
+                forne.setEstado(estado);
+                forne.setTelefone(telefone);
                 
                 //Cadastra novo fornecedor na tabela
                 try {
@@ -69,12 +83,12 @@ public class CadastrarFornecedorServlet extends HttpServlet {
                     System.out.println("Fornecedor Inserido com sucesso!");
             
                 } catch (Exception e) {
-                request.setAttribute("mensagemErro", "Fornecedor não cadastrado");
-                sessao.setAttribute("fornecedorexiste", "");
-                RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/cadastroFornecedor.jsp");
-                dispatcher.forward(request, response);
-                System.out.println("Erro na inserção de novo fornecedor!");
+                    request.setAttribute("mensagemErro", "Fornecedor não cadastrado");
+                    sessao.setAttribute("fornecedorexiste", "");
+                    RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/cadastroFornecedor.jsp");
+                    dispatcher.forward(request, response);
+                    System.out.println("Erro na inserção de novo fornecedor!");
                 }     
             }else{
                 sessao.setAttribute("fornecedorexiste", "Fornecedor já existe!");

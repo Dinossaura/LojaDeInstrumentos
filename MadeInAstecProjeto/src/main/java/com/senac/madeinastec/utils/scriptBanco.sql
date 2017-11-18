@@ -60,6 +60,12 @@ CREATE TABLE Carrinho (
 CREATE TABLE Fornecedor (
     codigo INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     nome VARCHAR(30) NOT NULL,
+    endereco VARCHAR(50) NOT NULL,
+    numero varchar(10) NOT NULL,
+    complemento varchar (50),
+    cidade varchar (30),
+    estado varchar (2),
+    telefone VARCHAR (14),
     codigoempresa INTEGER NOT NULL,
     CONSTRAINT primary_keyfor PRIMARY KEY (codigo),
     CONSTRAINT foreign_keyforn FOREIGN KEY (codigoempresa) REFERENCES Empresas(codigo)
@@ -132,8 +138,11 @@ INSERT INTO Perfil (perfil) VALUES ('Suporte Técnico');
 
 INSERT INTO CATEGORIA (nome) VALUES ('Cordas');
 
-INSERT INTO FORNECEDOR (nome, codigoempresa) VALUES ('Gibson', 1);
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) 
+                VALUES ('Gibson', 1, 'Rua Quararibéia', '199', 'São Paulo', 'SP', '(11)5555-3333');
 
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa)
+                VALUES ('ADMINISTRADOR', 'ADMIN', 'admin', 1, 1);
 
 
 

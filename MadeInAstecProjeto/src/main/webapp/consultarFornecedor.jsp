@@ -32,6 +32,12 @@
                     <th>Código</th>
                     <th>Nome</th>
                     <th>Empresa</th>
+                    <th>Endereço</th>
+                    <th>Número</th>
+                    <th>Complemento</th>
+                    <th>Cidade</th>
+                    <th>Estado</th>
+                    <th>Telefone</th>
                     <th>Ação</th>
                 </tr>
             </thead>
@@ -53,6 +59,12 @@
                             <c:out value="Made in Astec - Recife" />
                             </c:if>
                         </td>
+                        <td><c:out value="${lista.endereco}"/></td>
+                        <td><c:out value="${lista.numero}"/></td>
+                        <td><c:out value="${lista.complemento}"/></td>
+                        <td><c:out value="${lista.cidade}"/></td>
+                        <td><c:out value="${lista.estado}"/></td>
+                        <td><c:out value="${lista.telefone}"/></td>
                         <td>
                           <div>
                           <form class="form-control-static" action="${pageContext.request.contextPath}/alterarfornecedor" method="post">

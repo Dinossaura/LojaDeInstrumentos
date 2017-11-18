@@ -11,7 +11,15 @@
         <jsp:include page="menu.jsp"/>
 
         <div class="container">
-            <h1 id="usu">Cadastro de Usuários</h1>
+            <c:choose>
+                <c:when test = "${empty Altera}">
+                    <h1 id="usu">Cadastro de Usuários</h1>
+                </c:when>
+                <c:otherwise>
+                    <h1 id="usu">Alteração de Usuários</h1>
+                </c:otherwise>
+            </c:choose>
+            
             <div class="well">
                 <c:choose>
                 <c:when test = "${empty Altera}">
@@ -135,6 +143,7 @@
                     <c:if test="${empty usuarioexiste}">
                         <label><c:out value="${usuarioexiste}"/></label>
                     </c:if>
+                    
                     <label id="mensagem">(*)Campos Obrigatórios</label>
             </div> 
                 </form>

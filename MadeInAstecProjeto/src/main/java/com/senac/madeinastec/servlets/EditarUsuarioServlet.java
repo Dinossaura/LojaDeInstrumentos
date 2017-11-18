@@ -28,7 +28,7 @@ public class EditarUsuarioServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String destino;
-
+        request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
         if (sessao.getAttribute("usuario") != null) {
             request.setAttribute("usuario", sessao.getAttribute("usuario"));

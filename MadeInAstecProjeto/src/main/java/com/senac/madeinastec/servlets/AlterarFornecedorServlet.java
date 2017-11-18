@@ -49,6 +49,7 @@ public class AlterarFornecedorServlet extends HttpServlet {
         ServicoFornecedor sf = new ServicoFornecedor();
         
         //Criação se sessão para retorno em tela
+        request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
         
         //Para verificação se é alteração
@@ -58,11 +59,11 @@ public class AlterarFornecedorServlet extends HttpServlet {
         } catch (Exception e) {
         }
         
-        
         if ((alteracao == null)||(alteracao.length() == 0)){
               //Atribuição de valores digitados na tela de fornecedor e código da empresa
             String codigoFornecedor = request.getParameter("codigofornecedor");
             String codigoempresa = (String) sessao.getAttribute("Empresa");
+            
             
             try {
             fornecedor = sf.retornaFornecedor(Integer.parseInt(codigoFornecedor), Integer.parseInt(codigoempresa));
@@ -72,30 +73,47 @@ public class AlterarFornecedorServlet extends HttpServlet {
             sessao.setAttribute("for", fornecedor);
             sessao.setAttribute("Altera", "alteracao");
             response.sendRedirect(request.getContextPath() + "/cadastroFornecedor.jsp");
+            
         }else{
             Fornecedor f = new Fornecedor();
             f = (Fornecedor) sessao.getAttribute("for");
             String nomeFornecedor = request.getParameter("fornecedor").toUpperCase();
+            String endereco = request.getParameter("endereco");
+            String numero = request.getParameter("numero");
+            String complemento = request.getParameter("complemento");
+            String cidade = request.getParameter("cidade");
+            String estado = request.getParameter("estados");
+            String telefone = request.getParameter("telefone");
             int codigo = f.getCodigo();
-            int codigoempresa = f.getCodigoempresa();
-            
+            String codigoempresa = (String) sessao.getAttribute("Empresa");
+        
             //Verifica campos obrigatórios
-            if((nomeFornecedor.length() == 0)||(String.valueOf(codigoempresa).length() == 0)){
+            if((nomeFornecedor.length() == 0)||(String.valueOf(codigoempresa).length() == 0)||(endereco.length() == 0)||
+                    (numero.length() == 0)||(cidade.length() == 0)||(estado.length() == 0)){
                 sessao.setAttribute("mensagemErroCampos", "Verifique campos obrigatórios!");
                 RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/cadastroFornecedor.jsp");
                 dispatcher.forward(request, response);
             }else{
                 sessao.setAttribute("mensagemErroCampos", "");
+                
                 try {
                 fornecedor.setCodigo(codigo);
-                fornecedor.setCodigoempresa(codigoempresa);
+                fornecedor.setCodigoempresa(Integer.parseInt(codigoempresa));
                 fornecedor.setNome(nomeFornecedor);
-                sf.atualizarFornecedor(fornecedor.getNome(), fornecedor.getCodigo(), fornecedor.getCodigoempresa());
+                fornecedor.setEndereco(endereco);
+                fornecedor.setNumero(numero);
+                fornecedor.setComplemento(complemento);
+                fornecedor.setCidade(cidade);
+                fornecedor.setEstado(estado);
+                fornecedor.setTelefone(telefone);
+                sf.atualizarFornecedor(fornecedor.getNome(), fornecedor.getEndereco(), fornecedor.getNumero(),
+                        fornecedor.getComplemento(), fornecedor.getCidade(), fornecedor.getEstado(), fornecedor.getTelefone(),
+                        fornecedor.getCodigo(), fornecedor.getCodigoempresa());
                 } catch (Exception e) {
                 }
                 response.sendRedirect(request.getContextPath() + "/consultarFornecedor.jsp");
-                sessao.setAttribute("Altera", "");  
+                sessao.removeAttribute("Altera");
             }
             
         }

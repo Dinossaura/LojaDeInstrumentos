@@ -36,12 +36,12 @@ public class ServicoFornecedor {
     }
 
     //Atualiza um cliente na fonte de dados
-    public void atualizarFornecedor(String fornecedor, int codigofornecedor, int codigoempresa) throws ClienteException, DataSourceException, Exception {
+    public void atualizarFornecedor(String fornecedor, String endereco, String numero, String complemento,
+                                    String cidade, String estado, String telefone, int codigofornecedor, int codigoempresa) throws ClienteException, DataSourceException, Exception {
         
         //ValidadorCliente.validar(cliente);
-
         try {
-            fornecedorDAO.atualizarFornecedor(fornecedor, codigofornecedor, codigoempresa);
+            fornecedorDAO.atualizarFornecedor(fornecedor, endereco, numero, complemento, cidade, estado, telefone, codigofornecedor, codigoempresa);
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão

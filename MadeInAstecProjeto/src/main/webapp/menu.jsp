@@ -6,6 +6,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% HttpSession sessao = request.getSession(); %>
 <!DOCTYPE html>
 <html>
     <body>
@@ -33,7 +34,7 @@
                             <li class="col-md-2 text-center dropdown">
                                 <a style="font-size: 20px" class="dropdown-toggle" data-toggle="dropdown" href="#">Usuários</a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroUsuario.jsp">Cadastrar</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroUsuario.jsp" id="cadastrarusuarios">Cadastrar</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="consultarUsuario.jsp">Consultar/Alterar</a></li>
                                 </ul>
                                 
@@ -41,7 +42,7 @@
                             <li class="col-md-2 text-center dropdown">
                                 <a style="font-size: 20px" class="dropdown-toggle" data-toggle="dropdown" href="#">Fornecedores</a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroFornecedor.jsp">Cadastrar</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroFornecedor.jsp" id="cadastrarfornecedores">Cadastrar</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="consultarFornecedor.jsp">Consultar/Alterar</a></li>
                                 </ul>
                             </li>

@@ -73,6 +73,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
         ServicoUsuario su = new ServicoUsuario();
         
         //Criação se sessão para retorno em tela
+        request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
         
         //Para verificação se é alteração
@@ -81,7 +82,6 @@ public class AlterarUsuarioServlet extends HttpServlet {
             alteracao = sessao.getAttribute("Altera").toString();
         } catch (Exception e) {
         }
-        
         
         if ((alteracao == null)||(alteracao.length() == 0)){
               //Atribuição de valores digitados na tela de fornecedor e código da empresa
@@ -96,6 +96,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
             sessao.setAttribute("usu", usuario);
             sessao.setAttribute("Altera", "alteracao");
             response.sendRedirect(request.getContextPath() + "/cadastroUsuario.jsp");
+           
         }else{
             Usuario u = new Usuario();
             u = (Usuario) sessao.getAttribute("usu");
@@ -118,6 +119,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
                 dispatcher.forward(request, response);  
             }else{
                 sessao.setAttribute("mensagemErroCampos", "");
+                
                  try {
                     usuario.setCodigo(codigo);
                     usuario.setCodigoEmpresa(codigoempresa);
@@ -126,7 +128,7 @@ public class AlterarUsuarioServlet extends HttpServlet {
                  } catch (Exception e) {
                  }
                 response.sendRedirect(request.getContextPath() + "/consultarUsuario.jsp");
-                sessao.setAttribute("Altera", "");
+                sessao.removeAttribute("Altera");
             }
            
         }
