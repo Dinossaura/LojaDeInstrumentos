@@ -5,7 +5,16 @@
 <html>
 
     <head>
-        <title>Cadastro de Fornecedores</title>
+        <c:choose>
+            <c:when test = "${empty Altera}">
+                <title>Cadastro de Fornecedores</title>
+            </c:when>
+            <c:otherwise>
+                <title>Alteração de Fornecedores</title>   
+            </c:otherwise>
+        </c:choose>
+       
+        
         <link href="css/cadastroFornecedor.css" rel="stylesheet">
     </head>
 

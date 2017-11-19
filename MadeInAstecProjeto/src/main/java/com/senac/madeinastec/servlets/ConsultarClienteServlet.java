@@ -35,7 +35,7 @@ public class ConsultarClienteServlet extends HttpServlet {
         List<Cliente> clientes = new ArrayList<>();
         ClienteDAO cd = new ClienteDAO();
         try {
-            clientes = cd.listarCliente("");
+            //clientes = cd.listarCliente("");
         } catch (Exception ex) {
             Logger.getLogger(ConsultarClienteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

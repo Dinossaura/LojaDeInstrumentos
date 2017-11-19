@@ -48,9 +48,9 @@ public class ServicoCliente {
     }
 
     //Realiza a pesquisa de um cliente por nome na fonte de dados
-    public List<Cliente> procurarCliente(String nome) throws ClienteException, DataSourceException, Exception {
+    public List<Cliente> procurarCliente(String nome, int codigoempresa) throws ClienteException, DataSourceException, Exception {
         try {
-            return clienteDAO.listarCliente(nome);
+            return clienteDAO.listarCliente(nome, codigoempresa);
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,12 +60,12 @@ public class ServicoCliente {
     }
     
     //Realiza a pesquisa de um cliente por nome na fonte de dados
-    public Cliente obterClientePorCpf(String cpf) throws ClienteException, DataSourceException, Exception {
+    public Cliente obterClientePorCpf(String cpf, int codigoempresa) throws ClienteException, DataSourceException, Exception {
         try {
-            if (cpf == null || "".equals(cpf)) {
-                throw new Exception("Campo nome vazio!");
+            if (cpf.length() == 0) {
+                throw new Exception("Campo cpf vazio!");
             } else {
-                return clienteDAO.encontrarClientePorCpf(cpf);
+                return clienteDAO.encontrarClientePorCpf(cpf, codigoempresa);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,10 +74,10 @@ public class ServicoCliente {
     }
 
     //Exclui o cliente com ID informado do mock
-    public void excluirCliente(String cpf) throws ClienteException, DataSourceException, Exception {
+    public void excluirCliente(String cpf, int codigoempresa) throws ClienteException, DataSourceException, Exception {
         try {
             //Solicita ao DAO a exclusão do cliente informado
-            clienteDAO.deletarCliente(cpf);
+            clienteDAO.deletarCliente(cpf, codigoempresa);
         } catch (Exception e) {
             //Imprime qualquer erro técnico no console e devolve
             //uma exceção e uma mensagem amigável a camada de visão

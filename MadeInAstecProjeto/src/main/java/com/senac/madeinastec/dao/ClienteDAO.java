@@ -61,8 +61,8 @@ public class ClienteDAO {
     
     public Cliente updateCliente(Cliente cliente) throws Exception{
         System.out.println("Iniciando processo de atualização de cliente...");
-         String query = "UPDATE clientes SET nome=?, sobrenome=?, sexo=?, cpf=?, rg=?, datanasc=?, telefone=?, telefone2=?, email=?, "
-                 + "endereco=?,  numero=?, complemento=?, cidade=?,  estado=?, codigoempresa=?, cep=? WHERE id=?";
+         String query = "UPDATE clientes SET nome=?, sobrenome=?, sexo=?, rg=?, datanasc=?, telefone=?, telefone2=?, email=?, "
+                 + "endereco=?,  numero=?, complemento=?, cidade=?,  estado=?, codigoempresa=?, cep=? WHERE cpf=?";
         
         System.out.println(cliente.toString());
         try {
@@ -71,23 +71,21 @@ public class ClienteDAO {
                 preparedStatement.setString(1, cliente.getNome());
                 preparedStatement.setString(2, cliente.getSobrenome());
                 preparedStatement.setString(3, cliente.getSexo());
-                preparedStatement.setString(4, cliente.getCpf());
-                preparedStatement.setString(5, cliente.getRg());            
-                preparedStatement.setString(6, cliente.getIdade());
-                preparedStatement.setString(7, cliente.getTelefone());
-                preparedStatement.setString(8, cliente.getTelefone2());
-                preparedStatement.setString(9, cliente.getEmail());
-                preparedStatement.setString(10, cliente.getEndereco());
-                preparedStatement.setString(11, cliente.getNumero());
-                preparedStatement.setString(12, cliente.getComplemento());
-                preparedStatement.setString(13, cliente.getCidade());
-                preparedStatement.setString(14, cliente.getEstado());
-                preparedStatement.setInt(15, cliente.getEmpresa());
-                preparedStatement.setString(16, cliente.getCep());
-                preparedStatement.setInt(17, cliente.getId());
+                preparedStatement.setString(4, cliente.getRg());            
+                preparedStatement.setString(5, cliente.getIdade());
+                preparedStatement.setString(6, cliente.getTelefone());
+                preparedStatement.setString(7, cliente.getTelefone2());
+                preparedStatement.setString(8, cliente.getEmail());
+                preparedStatement.setString(9, cliente.getEndereco());
+                preparedStatement.setString(10, cliente.getNumero());
+                preparedStatement.setString(11, cliente.getComplemento());
+                preparedStatement.setString(12, cliente.getCidade());
+                preparedStatement.setString(13, cliente.getEstado());
+                preparedStatement.setInt(14, cliente.getEmpresa());
+                preparedStatement.setString(15, cliente.getCep());
+                preparedStatement.setString(16, cliente.getCpf());
                 
-                
-                System.out.println("id: "+cliente.getId());
+                System.out.println("cpf: "+cliente.getCpf());
                 
                 preparedStatement.executeUpdate();
                 preparedStatement.close();
@@ -100,26 +98,33 @@ public class ClienteDAO {
     
     }
     
-    public List<Cliente> listarCliente(String nome) throws Exception{
+    public List<Cliente> listarCliente(String nome, int codigoempresa) throws Exception{
         System.out.println("Iniciando listagem de cliente...");
-       
         List<Cliente> lista = new ArrayList<>();
         String query = "";
-        if(nome == ""){
-            query = "SELECT * FROM clientes";
+        
+        boolean vazio = true;
+              
+        if(nome.length() == 0){
+            vazio = true;
+            query = "SELECT * FROM clientes WHERE codigoempresa=?";
         }else{
-            query = "SELECT * FROM clientes WHERE nome LIKE ?";
+            vazio = false;
+            query = "SELECT * FROM clientes WHERE nome LIKE ? and codigoempresa = ?";
         }
          
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-//            preparedStatement.setString(1,"%"+nome+"%");
-         
+//          
+            if(vazio != true){
+                preparedStatement.setString(1,"%"+nome+"%");
+                preparedStatement.setInt(2,codigoempresa);
+            }else{
+                preparedStatement.setInt(1,codigoempresa);
+            }
+            
             ResultSet rs = preparedStatement.executeQuery();
-            
-            System.out.println("Busca efetuada com sucesso");
-            
             while (rs.next()){
                 Cliente cliente = new Cliente();
                 
@@ -152,16 +157,17 @@ public class ClienteDAO {
     
     }
     
-    public Cliente encontrarClientePorCpf(String cpf) throws Exception{
+    public Cliente encontrarClientePorCpf(String cpf, int codigoempresa) throws Exception{
         System.out.println("Iniciando listagem de cliente...");
         
         Cliente cliente = new Cliente();
-        String query = "SELECT * FROM clientes WHERE cpf=?";
+        String query = "SELECT * FROM clientes WHERE cpf=? and codigoempresa=?";
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,cpf);
-         
+            preparedStatement.setInt(2,codigoempresa);
+            
             ResultSet rs = preparedStatement.executeQuery();
             
             System.out.println("Busca efetuada com sucesso");
@@ -236,15 +242,16 @@ public class ClienteDAO {
     }
     
     
-    public void deletarCliente(String cpf) throws Exception{
+    public void deletarCliente(String cpf, int codigoempresa) throws Exception{
         System.out.println("Deletando clientes de cpf: "+cpf);
-        String query = "DELETE FROM clientes WHERE cpf=?";
+        String query = "DELETE FROM clientes WHERE cpf=? and codigoempresa=?";
 
 
     try {
         PreparedStatement preparedStatement = conn.prepareStatement(query);
         preparedStatement.setString(1, cpf);
-
+        preparedStatement.setInt(2, codigoempresa);
+        
         preparedStatement.execute();
         System.out.println("Cliente deletado");
     } catch (SQLException ex) {
