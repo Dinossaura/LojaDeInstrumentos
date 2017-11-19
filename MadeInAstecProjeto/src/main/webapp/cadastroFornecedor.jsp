@@ -14,7 +14,46 @@
             </c:otherwise>
         </c:choose>
        
-        
+        <script type="text/javascript">
+            function fMasc(objeto, mascara) {
+                obj = objeto
+                masc = mascara
+                setTimeout("fMascEx()", 1)
+            }
+            function fMascEx() {
+            obj.value = masc(obj.value)
+            }
+            function mTel(tel) {
+                tel = tel.replace(/\D/g, "")
+                tel = tel.replace(/^(\d)/, "($1")
+                tel = tel.replace(/(.{3})(\d)/, "$1)$2")
+                if (tel.length == 9) {
+                    tel = tel.replace(/(.{1})$/, "-$1")
+                } else if (tel.length == 10) {
+                    tel = tel.replace(/(.{2})$/, "-$1")
+                } else if (tel.length == 11) {
+                    tel = tel.replace(/(.{3})$/, "-$1")
+                } else if (tel.length == 12) {
+                    tel = tel.replace(/(.{4})$/, "-$1")
+                } else if (tel.length > 12) {
+                    tel = tel.replace(/(.{4})$/, "-$1")
+                }
+                return tel;
+            }
+            function mNum(num) {
+                num = num.replace(/\D/g, "")
+                return num
+            }
+            function checarTelefone() {
+                if (document.forms[0].telefone.value == ""
+                        || document.forms[0].telefone.value.indexOf('-') == -1)
+                {
+                    alert("Por favor, informe um Telefone válido!");
+                    return false;
+                }
+            }
+            
+        </script>
         <link href="css/cadastroFornecedor.css" rel="stylesheet">
     </head>
 
@@ -93,7 +132,7 @@
                    </div>
                    <div class="form-group">
                         <label for="numero">Número*</label>
-                        <input type="text" name="numero" class="form-control" value="${for.numero}" id="numero">
+                        <input type="text" name="numero" class="form-control" value="${for.numero}" id="numero" onkeydown="javascript: fMasc(this, mNum)" maxlength="6">
                    </div>
                    <div class="form-group">
                         <label for="complemento">Complemento</label>
@@ -111,7 +150,7 @@
                    </div>
                    <div class="form-group">
                         <label for="telefone">Telefone</label>
-                        <input type="text" name="telefone" class="form-control" value="${for.telefone}" id="telefone">
+                        <input type="text" name="telefone" class="form-control" value="${for.telefone}" id="telefone" onblur="checarTelefone();" onkeydown="javascript: fMasc(this, mTel);" maxlength="14" placeholder="Ex (00)0000-0000">
                    </div>
                 </c:when>
                 <c:otherwise>
@@ -121,7 +160,7 @@
                    </div>
                    <div class="form-group">
                         <label for="numero">Número*</label>
-                        <input type="text" name="numero" class="form-control" id="numero">
+                        <input type="text" name="numero" class="form-control" id="numero" onkeydown="javascript: fMasc(this, mNum)" maxlength="6">
                    </div>
                    <div class="form-group">
                         <label for="complemento">Complemento</label>
@@ -165,7 +204,7 @@
                    </div>
                    <div class="form-group">
                         <label for="estado">Telefone</label>
-                        <input type="text" name="telefone" class="form-control" id="telefone">
+                        <input type="text" name="telefone" class="form-control" id="telefone" onblur="checarTelefone();" onkeydown="javascript: fMasc(this, mTel);" maxlength="14" placeholder="Ex (00)0000-0000">
                    </div>
                 </c:otherwise>
             </c:choose>
