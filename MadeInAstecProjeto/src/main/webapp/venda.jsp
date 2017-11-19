@@ -21,14 +21,79 @@
     </head>
     <body>        
         <jsp:include page="menu.jsp"/>
-        
-        <div class="footer">
-    <div class="jumbotron">
-        <div class="text-center">
-           <jsp:include page="rodape.jsp"/>
+
+        <div class="container" align="center">
+            <h3>Venda</h3>
+            <form class="form-control-static" action="${pageContext.request.contextPath}/(nome da servlet de consultar cliente)" method="post">
+                <div class="form-group" id="nome">
+                    <label for="CPF">Pesquisar Cliente:</label>
+                    <input type="text" class="form-control" name="cpfCliente" placeholder="Digite o CPF do Cliente"><br><br>
+
+                    <button type="submit" class="btn btn-success center-block">Pesquisar</button>
+                </div>
         </div>
-    </div>
-</div>
+
+        <div>
+            <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaClientes">
+                <thead>
+                    <tr>
+                        <th>CPF</th>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+            </table>
+        </div><br><br><br><br><br><br>
+
+        <div class="container" align="center">
+
+            <form class="form-control-static" action="${pageContext.request.contextPath}/(nome da servlet de consultar produto)" method="post">
+                <div class="form-group" id="nome">
+                    <label for="Prod">Produdo:</label>
+                    <input type="text" class="form-control" name="nomeProd" placeholder="Digite o nome do Produto"><br><br>
+
+                    <button type="submit" class="btn btn-success center-block">Pesquisar</button>
+                </div>
+
+        </div>
+        <div>
+            <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaProdutos">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Estoque</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+
+        <div>
+            <button type="submit" class="btn btn-success center-block">Adicionar</button>
+        </div><br><br>
+        <div>
+            <button type="submit" class="btn btn-success center-block">Retirar</button>
+        </div>
+                
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </body>
-    
+
 </html>
