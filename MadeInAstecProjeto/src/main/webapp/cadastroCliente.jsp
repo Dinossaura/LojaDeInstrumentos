@@ -95,7 +95,7 @@
                         || document.forms[0].email.value.indexOf('@') == -1
                         || document.forms[0].email.value.indexOf('.') == -1)
                 {
-                    alert("Por favor, informe um E-MAIL válido!");
+                    alert("Por favor, informe um E-mail válido!");
                     return false;
                 }
             }
@@ -280,16 +280,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="empresa">Perfil</label>
-                                <select class="form-control" name="empresa" id="perfil">
+                                <label for="empresa" id="perfilCliLab">Empresa*</label>
+                                <select class="form-control" name="empresa" id="perfilCli">
                                     <option value="1">Matriz - São Paulo</option>
                                     <option value="2">Filial - Porto Alegre</option>
                                     <option value="3">Filial - Recife</option>
                                 </select>
                             </div>
-
-                            <button type="submit" class="btn btn-default" name="submit">Cadastrar</button><br>
+                            
                             <label id="mensagem">(*)Campos Obrigatórios</label>
+
+                            <button type="submit" class="btn btn-default" name="submit" id="botaoSalvarCli">Cadastrar</button><br>
 
                         </form>
                     </div>
@@ -303,12 +304,12 @@
 
                             <div class="form-group">
                                 <label for="nome">Nome*</label>
-                                <input type="text" class="form-control" value="${cli.nome}" name="nome" id="nome">
+                                <input type="text" class="form-control" value="${cli.nome}" name="nome" id="nome" onblur="checarNome();" onkeydown="javascript: fMasc(this, soLetras);">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Sobrenome*</label>
-                                <input class="form-control" name="sobrenome" value="${cli.sobrenome}" id="sobrenome">
+                                <input class="form-control" name="sobrenome" value="${cli.sobrenome}" id="sobrenome" onkeydown="javascript: fMasc(this, soLetras);">
                             </div>                   
 
                             <div class="form-group">
@@ -333,37 +334,37 @@
 
                             <div class="form-group">
                                 <label for="desc" id="cpf">CPF*</label>
-                                <input class="form-control" type="text" name="cpf" value="${cli.cpf}" id="cpf">
+                                <input class="form-control" type="text" name="cpf" value="${cli.cpf}" id="cpf" onblur="checarCPF()();" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc" id="rgl">RG*</label>
-                                <input class="form-control" type="text" name="rg" value="${cli.rg}" id="rg">
+                                <input class="form-control" type="text" name="rg" value="${cli.rg}" id="rg" onblur="checarRG()();" onkeydown="javascript: fMasc(this, mRG);" maxlength="12" placeholder="Ex 00.000.000-0">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc" id="email">E-mail</label>
-                                <input class="form-control" name="email"  value="${cli.email}" id="email">
+                                <input class="form-control" name="email"  value="${cli.email}" id="email" onblur="checarEmail();"  maxlength="60" placeholder="Ex exemplo@email.com">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc" id="tel">Tel 1</label>
-                                <input class="form-control" name="tel1" value="${cli.telefone}" id="tel1">
+                                <input class="form-control" name="tel1" value="${cli.telefone}" id="tel1" onblur="checarTelefone1();" onkeydown="javascript: fMasc(this, mTel);" maxlength="14" placeholder="Ex (00)0000-0000">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc" id="tel2">Tel 2</label>
-                                <input class="form-control" name="tel2" value="${cli.telefone2}" id="tel2">
+                                <input class="form-control" name="tel2" value="${cli.telefone2}" id="tel2" onblur="checarTelefone2();" onkeydown="javascript: fMasc(this, mTel);" maxlength="14" placeholder="Ex (00)00000-0000">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc" >End*</label>
-                                <input class="form-control" name="endereco" value="${cli.endereco}" id="endereco">
+                                <input class="form-control" name="endereco" value="${cli.endereco}" id="endereco" onkeydown="javascript: fMasc(this, soLetras);">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Número*</label>
-                                <input class="form-control" name="numCasa" value="${cli.numero}" id="numero">
+                                <input class="form-control" name="numCasa" value="${cli.numero}" id="numero" onkeydown="javascript: fMasc(this, mNum)" maxlength="6">
                             </div>
 
                             <div class="form-group">
@@ -373,12 +374,12 @@
 
                             <div class="form-group" >
                                 <label for="desc">CEP*</label>
-                                <input class="form-control" name="cep" value="${cli.cep}" id="cep">
+                                <input class="form-control" name="cep" value="${cli.cep}" id="cep" onblur="checarCEP();" onkeypress="return MM_formtCep(event, this, '#####-###');" maxlength="9" placeholder="Ex 00000-000">
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Cidade*</label>
-                                <input class="form-control" name="cidade" value="${cli.cidade}" id="cidade">
+                                <input class="form-control" name="cidade" value="${cli.cidade}" id="cidade" onkeydown="javascript: fMasc(this, soLetras);">
                             </div>
 
                             <div class="form-group">
@@ -401,14 +402,17 @@
                                 <c:if test="${codigoempresa == 3}">
                                     <c:set var="nomeempresa" value="Matriz - Recife"/>
                                 </c:if>
-                                <label for="empresa">Empresa*</label>
-                                <select class="form-control" name="empresa" id="perfilFor">
+                                
+                                <label for="empresa" id="perfilCliLab">Empresa*</label>
+                                <select class="form-control" name="empresa" id="perfilCli">
                                     <option><c:out value="${nomeempresa}"/></option>
                                 </select>
+                                
+                                <label id="mensagem">(*)Campos Obrigatórios</label>
                             </div>
 
                             <button type="submit" class="btn btn-default">Salvar</button><br>
-                            <label id="mensagem">(*)Campos Obrigatórios</label>
+                            
                         </form>
                     </div>
                 </div>        

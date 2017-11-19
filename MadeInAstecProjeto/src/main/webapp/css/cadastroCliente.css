@@ -121,11 +121,11 @@ label#tel2{
 }
 
 #complemento{
-    width: 450px;
+    width: 445px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 2px;
+    margin-left: 7px;
 }
 
 #cep{
@@ -137,34 +137,42 @@ label#tel2{
 }
 
 #cidade{
-    width: 280px;
+    width: 260px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 2px;
+    margin-left: 15px;
 }
 
 #estado{
-    width: 290px;
+    width: 298px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
     margin-left: 10px;
 }
 
-#perfil{
-    width: 260px;
+#perfilCli{
+    width: 254px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 12px;
+    margin-left: -2px;
+}
+
+#perfilCliLab{
+    margin-left: -10px;
 }
 
 button{
-    margin-left: 661px;
+    margin-left: 516px;
 }
 
 #mensagem{
     font-size: 12px;
     margin-right: 20px;
+}
+
+#botaoSalvarCli{
+    margin-left: 496px;
 }
