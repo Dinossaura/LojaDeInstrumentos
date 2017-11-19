@@ -5,6 +5,22 @@
     <head>
         <title>Cadastro de Produtos</title>
         <link href="css/cadastroProduto.css" rel="stylesheet">
+
+        <script type="text/javascript">
+            function fMasc(objeto, mascara) {
+                obj = objeto
+                masc = mascara
+                setTimeout("fMascEx()", 1)
+            }
+            function fMascEx() {
+                obj.value = masc(obj.value)
+            }
+            function mNum(num) {
+                num = num.replace(/\D/g, "")
+                return num
+            }
+
+        </script>
     </head>
 
     <body>
@@ -24,7 +40,7 @@
                         <textarea class="form-control" rows="1" name="descProd" id="descricao"></textarea>
                     </div>
 
-                    
+
                     <div class="form-group">
                         <label for="empresa">Categoria*</label>
                         <select class="form-control" name="categ" id="categoria">
@@ -38,43 +54,43 @@
                         </select>
                     </div>
 
-                     <div class="form-group">
-                         <label for="empresa" id="perfilLab">Perfil*</label>
+                    <div class="form-group">
+                        <label for="empresa" id="perfilLab">Perfil*</label>
                         <select class="form-control" name="empresa" id="perfilProduto">
                             <option value="1">Matriz - São Paulo</option>
                             <option value="2">Filial - Porto Alegre</option>
                             <option value="3">Filial - Recife</option>
                         </select>
                     </div>
-                    
-                   
+
+
 
                     <div class="form-group">
                         <label for="desc">Cod.Fornecedor*</label>
-                        <input class="form-control" name="codF" id="codF"/>
+                        <input class="form-control" name="codF" id="codF" onkeydown="javascript: fMasc(this, mNum)" maxlength="4"/>
                     </div>
 
                     <div class="form-group">
                         <label for="desc">Estoque*</label>
-                        <input class="form-control" type="number" name="estoque" id="estoque"/>
+                        <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="6"/>
                     </div>
-                    
+
                     <hr id="linha"> <!--Linha de separação-->                       
-                    
+
                     </br><div class="form-group" id="preco">
                         <label for="desc">Preços*</label>
                     </div></br>
 
                     <div class="form-group">
                         <label for="desc" id="labCom">Compra</label>
-                        <input class="form-control" type="number" name="compra" id="compra"/>
+                        <input class="form-control" type="number" name="compra" id="compra" onkeydown="javascript: fMasc(this, moeda);" maxlength="14"/>
                     </div>
 
                     <div class="form-group">
                         <label for="desc">Venda</label>
-                        <input class="form-control"  name="venda" id="venda"/>
+                        <input class="form-control"  name="venda" id="venda" onkeydown="javascript: fMasc(this, mValor);" maxlength="14"/>
                     </div>
-                                        
+
                     <button type="submit" class="btn btn-default" id="botao">Cadastrar</button>
                     <label id="mensagem">(*)Campos Obrigatórios</label>
 
