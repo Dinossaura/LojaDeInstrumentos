@@ -7,7 +7,7 @@ h1#for{
 }
 
 #fornecedor{
-    width: 250px;
+    width: 270px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -15,17 +15,69 @@ h1#for{
 }
 
 #perfilFor{
-    width: 250px;
+    width: 200px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
     margin-left: 10px;
 }
 
-#numero{
-    width: 150px;
+#numeroFor{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 18px;
+}
+
+#complementoFor{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#enderecoFor{
+    width: 270px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 25px;
+}
+
+#cidadeFor{
+    width: 270px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 45px;
+}
+
+#estadosFor{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 25px;
+}
+
+#telefoneFor{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 36px;
 }
 
 #botaoForn{
-    margin-left: 250px;
+    margin-left: 250px;    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 827px;
+}
+
+#telLabFor{
+    margin-left: 30px;
 }

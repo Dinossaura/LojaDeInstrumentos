@@ -12,7 +12,7 @@
                 <title>Alteração de Clientes</title>
             </c:otherwise>
         </c:choose>
-                
+
         <script type="text/javascript">
             function fMasc(objeto, mascara) {
                 obj = objeto
@@ -99,7 +99,7 @@
                     return false;
                 }
             }
-                       
+
             function checarTelefone1() {
                 if (document.forms[0].tel1.value == ""
                         || document.forms[0].tel1.value.indexOf('-') == -1)
@@ -108,7 +108,7 @@
                     return false;
                 }
             }
-            
+
             function checarTelefone2() {
                 if (document.forms[0].tel2.value == ""
                         || document.forms[0].tel2.value.indexOf('-') == -1)
@@ -117,7 +117,7 @@
                     return false;
                 }
             }
-            
+
             function checarRG() {
                 if (document.forms[0].rg.value == ""
                         || document.forms[0].rg.value.indexOf('-') == -1)
@@ -126,7 +126,7 @@
                     return false;
                 }
             }
-            
+
             function checarCPF() {
                 if (document.forms[0].cpf.value == ""
                         || document.forms[0].cpf.value.indexOf('-') == -1)
@@ -135,7 +135,7 @@
                     return false;
                 }
             }
-            
+
             function checarCEP() {
                 if (document.forms[0].cep.value == ""
                         || document.forms[0].cep.value.indexOf('-') == -1)
@@ -144,9 +144,13 @@
                     return false;
                 }
             }
-            
-            
-                        
+
+            function soLetras(v) {
+                return v.replace(/\d/g, "") //Remove tudo o que não é Letra
+            }
+
+
+
         </script>
 
         <link href="css/cadastroCliente.css" rel="stylesheet">
@@ -164,12 +168,12 @@
                             <div class="form-group">
                                 <form method="post" action="" onSubmit="return (verifica())" name="frmEnvia"/>
                                 <label for="nome">Nome*</label>
-                                <input type="text" class="form-control" name="name" id="nome" onblur="checarNome();">
+                                <input type="text" class="form-control" name="name" id="nome" onblur="checarNome();" onkeydown="javascript: fMasc(this, soLetras);" >
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Sobrenome*</label>
-                                <input class="form-control" name="sobrenome" id="sobrenome">
+                                <input class="form-control" name="sobrenome" id="sobrenome" onkeydown="javascript: fMasc(this, soLetras);">
                             </div>                   
 
                             <div class="form-group">
@@ -218,7 +222,7 @@
 
                             <div class="form-group">
                                 <label for="desc" >End*</label>
-                                <input class="form-control" name="endereco" id="endereco">
+                                <input class="form-control" name="endereco" id="endereco" onkeydown="javascript: fMasc(this, soLetras);">
                             </div>
 
                             <div class="form-group">
@@ -228,7 +232,7 @@
 
                             <div class="form-group">
                                 <label for="desc">Complemento</label>
-                                <input class="form-control" name="complemento" id="complemento">
+                                <input class="form-control" name="complemento" id="complemento" onkeydown="javascript: fMasc(this, soLetras);">
                             </div>
 
                             <div class="form-group" >
@@ -238,7 +242,7 @@
 
                             <div class="form-group">
                                 <label for="desc">Cidade*</label>
-                                <input class="form-control" name="cidade" id="cidade">
+                                <input class="form-control" name="cidade" id="cidade" onkeydown="javascript: fMasc(this, soLetras);">
                             </div>
 
                             <div class="form-group">
