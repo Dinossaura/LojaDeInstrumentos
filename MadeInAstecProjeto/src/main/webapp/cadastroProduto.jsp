@@ -19,6 +19,9 @@
                 num = num.replace(/\D/g, "")
                 return num
             }
+            function mCompra(n) {
+                return "R$ " + n.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
+            }
 
         </script>
     </head>
@@ -83,7 +86,7 @@
 
                     <div class="form-group">
                         <label for="desc" id="labCom">Compra</label>
-                        <input class="form-control" type="number" name="compra" id="compra" onkeydown="javascript: fMasc(this, moeda);" maxlength="14"/>
+                        <input class="form-control" name="compra" id="compra" onkeydown="javascript: fMasc(this, mCompra);"/>
                     </div>
 
                     <div class="form-group">

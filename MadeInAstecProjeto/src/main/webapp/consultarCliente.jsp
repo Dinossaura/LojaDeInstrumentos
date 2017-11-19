@@ -73,7 +73,7 @@
                             <tr>
                                 <td><c:out value="${cliente.nome} ${cliente.sobrenome} "  /></td>
                                 <td><c:out value="${cliente.sexo}" /></td>
-                                <td name=""><c:out value="${cliente.cpf}" /></td>
+                                <td><c:out value="${cliente.cpf}" /></td>
                                 <td><c:out value="${cliente.rg}" /></td>
                                 <td><c:out value="${cliente.idade}" /></td>
                                 <td><c:out value="${cliente.telefone}" /></td>
