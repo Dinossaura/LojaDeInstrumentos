@@ -24,7 +24,7 @@
 
         <div class="container" align="center">
             <h3>Venda</h3>
-            <form class="form-control-static" action="${pageContext.request.contextPath}/venda.jsp" method="post">
+            <form class="form-control-static" action="${pageContext.request.contextPath}/ConsultaClientesVendaServlet" method="post">
                 <div class="form-group" id="cliente">
                     <label for="CPF">Cliente</label>
                     <input type="text" class="form-control" name="cpfCliente" placeholder="Digite o CPF do Cliente"><br><br>
