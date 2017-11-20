@@ -5,6 +5,7 @@
 <html>
 
     <head>
+        <link href="css/cadastroFornecedor.css" rel="stylesheet">
         <c:choose>
             <c:when test = "${empty Altera}">
                 <title>Cadastro de Fornecedores</title>
@@ -14,8 +15,51 @@
             </c:otherwise>
         </c:choose>
        
+        <script type="text/javascript">
+            function fMasc(objeto, mascara) {
+                obj = objeto
+                masc = mascara
+                setTimeout("fMascEx()", 1)
+            }
+            function fMascEx() {
+            obj.value = masc(obj.value)
+            }
+            function mTel(tel) {
+                tel = tel.replace(/\D/g, "")
+                tel = tel.replace(/^(\d)/, "($1")
+                tel = tel.replace(/(.{3})(\d)/, "$1)$2")
+                if (tel.length == 9) {
+                    tel = tel.replace(/(.{1})$/, "-$1")
+                } else if (tel.length == 10) {
+                    tel = tel.replace(/(.{2})$/, "-$1")
+                } else if (tel.length == 11) {
+                    tel = tel.replace(/(.{3})$/, "-$1")
+                } else if (tel.length == 12) {
+                    tel = tel.replace(/(.{4})$/, "-$1")
+                } else if (tel.length > 12) {
+                    tel = tel.replace(/(.{4})$/, "-$1")
+                }
+                return tel;
+            }
+            function mNum(num) {
+                num = num.replace(/\D/g, "")
+                return num
+            }
+            function checarTelefone() {
+                if (document.forms[0].telefone.value == ""
+                        || document.forms[0].telefone.value.indexOf('-') == -1)
+                {
+                    alert("Por favor, informe um Telefone válido!");
+                    return false;
+                }
+            }
+            
+            function soLetras(v) {
+                return v.replace(/\d/g, "") //Remove tudo o que não é Letra
+            }
+            
+        </script>
         
-        <link href="css/cadastroFornecedor.css" rel="stylesheet">
     </head>
 
     <body>
@@ -87,53 +131,65 @@
         <div class="form-group">
             <c:choose>
                 <c:when test="${not empty Altera}">
+                    
                    <div class="form-group">
                         <label for="endereco">Endereço*</label>
-                        <input type="text" name="endereco" class="form-control" value="${for.endereco}" id="endereco">
+                        <input type="text" name="endereco" class="form-control" value="${for.endereco}" id="enderecoFor" onkeydown="javascript: fMasc(this, soLetras);">
                    </div>
+                   
                    <div class="form-group">
                         <label for="numero">Número*</label>
-                        <input type="text" name="numero" class="form-control" value="${for.numero}" id="numero">
+                        <input type="text" name="numero" class="form-control" value="${for.numero}" id="numeroFor" onkeydown="javascript: fMasc(this, mNum)" maxlength="6">
                    </div>
+                   
                    <div class="form-group">
                         <label for="complemento">Complemento</label>
-                        <input type="text" name="complemento" class="form-control" value="${for.complemento}" id="complemento">
+                        <input type="text" name="complemento" class="form-control" value="${for.complemento}" id="complementoFor" onkeydown="javascript: fMasc(this, soLetras);">
                    </div>
+                   
                    <div class="form-group">
                         <label for="cidade">Cidade*</label>
-                        <input type="text" name="cidade" class="form-control" value="${for.cidade}" id="cidade">
+                        <input type="text" name="cidade" class="form-control" value="${for.cidade}" id="cidadeFor" onkeydown="javascript: fMasc(this, soLetras);">
                    </div>
+                   
                    <div class="form-group"> 
                         <label for="estado">Estado*</label>
-                        <select class="form-control" name="estados" id="estados">
+                        <select class="form-control" name="estados" id="estadosFor">
                             <option value="${for.estado}"><c:out value="${for.estado}" /></option>
                         </select>
                    </div>
+                        
                    <div class="form-group">
-                        <label for="telefone">Telefone</label>
-                        <input type="text" name="telefone" class="form-control" value="${for.telefone}" id="telefone">
+                        <label for="telefone" id="telLabFor">Telefone</label>
+                        <input type="text" name="telefone" class="form-control" value="${for.telefone}" id="telefoneFor" onblur="checarTelefone();" onkeydown="javascript: fMasc(this, mTel);" maxlength="14" placeholder="Ex (00)0000-0000">
                    </div>
+                   
                 </c:when>
                 <c:otherwise>
+                    
                     <div class="form-group">
                         <label for="endereco">Endereço*</label>
-                        <input type="text" name="endereco" class="form-control" id="endereco">
+                        <input type="text" name="endereco" class="form-control" id="enderecoFor" onkeydown="javascript: fMasc(this, soLetras);">
                    </div>
+                    
                    <div class="form-group">
                         <label for="numero">Número*</label>
-                        <input type="text" name="numero" class="form-control" id="numero">
+                        <input type="text" name="numero" class="form-control" id="numeroFor" onkeydown="javascript: fMasc(this, mNum)" maxlength="6">
                    </div>
+                    
                    <div class="form-group">
                         <label for="complemento">Complemento</label>
-                        <input type="text" name="complemento" class="form-control" id="complemento">
+                        <input type="text" name="complemento" class="form-control" id="complementoFor" onkeydown="javascript: fMasc(this, soLetras);">
                    </div>
+                    
                    <div class="form-group">
                         <label for="cidade">Cidade*</label>
-                        <input type="text" name="cidade" class="form-control" id="cidade">
+                        <input type="text" name="cidade" class="form-control" id="cidadeFor" onkeydown="javascript: fMasc(this, soLetras);">
                    </div>
+                    
                    <div class="form-group"> 
                         <label for="estado">Estado*</label>
-                        <select class="form-control" name="estados" id="estados">
+                        <select class="form-control" name="estados" id="estadosFor">
                             <option value="AC">Acre</option>
                             <option value="AL">Alagoas</option>
                             <option value="AP">Amapá</option>
@@ -163,18 +219,21 @@
                             <option value="TO">Tocantins</option>
                         </select>
                    </div>
+                    
                    <div class="form-group">
-                        <label for="estado">Telefone</label>
-                        <input type="text" name="telefone" class="form-control" id="telefone">
+                        <label for="estado" id="telLabFor">Telefone</label>
+                        <input type="text" name="telefone" class="form-control" id="telefoneFor" onblur="checarTelefone();" onkeydown="javascript: fMasc(this, mTel);" maxlength="14" placeholder="Ex (00)0000-0000">
                    </div>
+                   
                 </c:otherwise>
             </c:choose>
         </div>
         
-        <button type="submit" class="btn btn-default" id="botaoForn">Salvar</button>
         <div class="form-group">
             <label id="mensagem">(*)Campos Obrigatórios</label>
         </div>
+                    
+        <button type="submit" class="btn btn-default" id="botaoForn">Salvar</button>
         
         <!--Variáveis vem do Servlet para verificação de campos -->
         <c:if test="${not empty mensagemErroCampos}">

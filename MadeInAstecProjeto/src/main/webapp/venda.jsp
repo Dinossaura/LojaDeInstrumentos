@@ -21,14 +21,121 @@
     </head>
     <body>        
         <jsp:include page="menu.jsp"/>
-        
-        <div class="footer">
-    <div class="jumbotron">
-        <div class="text-center">
-           <jsp:include page="rodape.jsp"/>
+
+        <div class="container" align="center">
+            <h3>Venda</h3>
+            <form class="form-control-static" action="${pageContext.request.contextPath}/venda.jsp" method="post">
+                <div class="form-group" id="cliente">
+                    <label for="CPF">Cliente</label>
+                    <input type="text" class="form-control" name="cpfCliente" placeholder="Digite o CPF do Cliente"><br><br>
+
+                </div>
+                <button type="submit" class="btn btn-success center-block">Pesquisar</button>
+            </form>
+
+
+
+            <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaClientes">
+                <thead>
+                    <tr>
+                        <th>CPF</th>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <c:forEach items="${ListaClientes}" var="cliente">
+                    <tr>
+                        <td><c:out value="${cliente.cpf}" /></td>
+                        <td><c:out value="${cliente.nome}" /></td>
+                        <td><c:out value="${cliente.sobrenome}" /></td>
+                        <td><c:out value="${cliente.telefone}" /></td>
+
+                        <td>
+                            <div>
+                                <form class="form-control-static" action="${pageContext.request.contextPath}/FazerFuncaoDoBotao" method="post" >
+                                    <div class="form-group">
+                                        <button type="submit" name="cpfcliente" value="${cliente.cpf}" 
+                                                class="btn btn-success center-block">Adicionar</button>
+                                    </div>
+                                </form>                              
+
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
+
+
+            </table>
+        </div><br><br><br><br><br><br>
+
+        <div class="container" align="center">
+
+            <form class="form-control-static" action="${pageContext.request.contextPath}/(nome da servlet de consultar produto)" method="post">
+                <div class="form-group" id="produto">
+                    <label for="Prod">Produdo</label>
+                    <input type="text" class="form-control" name="nomeProd" placeholder="Digite o nome do Produto"><br><br>
+
+                </div>
+                <button type="submit" class="btn btn-success center-block">Pesquisar</button>
+            </form>
+
+            <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaProdutos">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Estoque</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <c:forEach items="${ListaProduto}" var="produto">
+                    <tr>
+                        <td><c:out value="${produto.produto}" /></td>
+                        <td><c:out value="${produto.categoria}" /></td>
+                        <td><c:out value="${produto.estoque}" /></td>
+                        <td><c:out value="${produto.preco}" /></td>
+
+                        <td>
+                            <div>
+                                <form class="form-control-static" action="${pageContext.request.contextPath}/FazerFuncaoDoBotao" method="post" >
+                                    <div class="form-group">
+                                        <button type="submit" name="nomeproduto" value="${cliente.cpf}" 
+                                                class="btn btn-success center-block">Adicionar</button>
+                                    </div>
+                                </form>                              
+
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
-    </div>
-</div>
+
+
+        <div>
+            <button type="submit" class="btn btn-success center-block">Adicionar</button>
+        </div><br><br>
+        <div>
+            <button type="submit" class="btn btn-success center-block">Retirar</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <jsp:include page="rodape.jsp"/>
     </body>
-    
+
 </html>

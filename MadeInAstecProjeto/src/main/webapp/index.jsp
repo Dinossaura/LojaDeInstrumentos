@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP Page</title>
+        <title>Login</title>
     </head>
     <body>
         <jsp:include page="topo.jsp"/>        
