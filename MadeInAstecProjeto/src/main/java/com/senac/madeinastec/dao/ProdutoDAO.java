@@ -97,16 +97,24 @@ public class ProdutoDAO {
         System.out.println("Buscando produto na base de dados...");
         String query = "";
         
-        if(nome == ""){
-            query = "SELECT * FROM produtos";
+        boolean vazio = true;
+        
+        if(nome.length() == 0){
+            vazio = true;
+            query = "SELECT * FROM produtos WHERE codigoempresa = ?";
         }else{
+            vazio = false;
             query = "SELECT * FROM produtos WHERE nome LIKE ? and codigoempresa = ?";
         }
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1,"%"+nome+"%");
-            preparedStatement.setString(1,"'"+codigoempresa+"'");
+            if(vazio != true){
+                preparedStatement.setString(1,"%"+nome+"%");
+                preparedStatement.setInt(2,codigoempresa);
+            }else{
+                preparedStatement.setInt(1,codigoempresa);
+            }
             
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -118,6 +126,7 @@ public class ProdutoDAO {
                     produto.setNome(rs.getString(3));
                     produto.setDescricao(rs.getString(4));
                     produto.setCodigoFornecedor(rs.getInt(5));
+                    produto.setCategoria(rs.getInt(6));
                     produto.setPrecocompra(rs.getDouble(7));
                     produto.setPrecovenda(rs.getDouble(8));
                     produto.setEstoque(rs.getInt(9));

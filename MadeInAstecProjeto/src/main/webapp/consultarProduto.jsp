@@ -10,92 +10,85 @@
 <html>
     <head> 
         <title>Consulta de Produtos</title>
-        <style>
-            .com {
-                border: 2px solid gray;
-                border-collapse: collapse;
-            }
-            td.com{
-                border: 1px solid gray;
-                border-collapse: collapse;
-            }
-            tr, th , td{
-                padding: 1px;
-                text-align: left;    
-            }
-            .sem{
-                border: none;
-            }
-            td:nth-child(7) button{
-                border:none;   
-                background: none;
-                text-decoration:underline;
-            }
-            td:nth-child(8) button{
-                background: none;
-                text-decoration: underline;
-                border:none;   
-            }
-            
-        </style>
+       
     </head>
 
     <body align="center">
-    <jsp:include page="menu.jsp"/>    
-    <div class="container" align="center">
-        <h1>Consulta de Produtos</h1>
-        <div class="well">
+        <jsp:include page="menu.jsp"/>    
+        <div class="container" align="center">
+            <h3>Consulta de Produtos</h3>
+            <!--<div class="well">-->
 
-        <form class="form-inline" action="${pageContext.request.contextPath}/cadastro-usuario" method="post">
-            <div class="form-group">
-                <label for="nome">Produto: </label>
-                <input type="text" class="form-control" name="cliente">
-                <button type="submit" class="btn btn-default">Buscar</button>
-            </div>
-        </form><br/>
-        <div class="tabela"style="width:800px">
-            <table>
-                <caption>Lista de Produtos</caption>
-                <tr >
-                    <th class="com" style="width:100px">Produto</th>
-                    <th class="com" style="width:75px">Marca</th>
-                    <th class="com"style="width:75px">Categoria</th>
-                    <th class="com"style="width:30px">Qtd.Estoq.</th>
-                    <th class="com"style="width:15px">Preço</th>
-                </tr>
-                <tr >
-                    <td class="com">Flauta Transversal</td>
-                    <td class="com">Yamaha</td>
-                    <td class="com">Instrumento</td>
-                    <td class="com">07</td>
-                    <td class="com">5799,00</td>
-                    <td class="sem"><button type="exluir" class="btn btn-default">Excluir</button></td>
-                    <td class="sem"><button type="editar" class="btn btn-default">Editar</button></td>
-                </tr>
-                <%-- EXEMPLO--%>
-                <tr >
-                    <td class="com">Viola de Arco</td>
-                    <td class="com">Eagle</td>
-                    <td class="com">Instrumento</td>
-                    <td class="com">03</td>
-                    <td class="com">750,00</td>
-                    <td class="sem"><button type="exluir" class="btn btn-default">Excluir</button></td>
-                    <td class="sem"><button type="editar" class="btn btn-default">Editar</button></td>
-                </tr>
-                <tr >
-                    <td class="com">violão elétrico</td>
-                    <td class="com">Fender</td>
-                    <td class="com">Instrumento</td>
-                    <td class="com">15</td>
-                    <td class="com">1250,00</td>
-                    <td class="sem"><button type="exluir" class="btn btn-default">Excluir</button></td>
-                    <td class="sem"><button type="editar" class="btn btn-default">Editar</button></td>
-                </tr>
-                <%-- EXEMPLO--%>
+            <form class="form-control-static" action="${pageContext.request.contextPath}/consultaprodutos" method="post">
+                <div class="form-group">
+                    <label for="nome">Produto: </label>
+                    <input type="text" class="form-control" name="produto" placeholder="Digite nome Produto">
+                </div>
+                <button type="submit" class="btn btn-default">Pesquisar</button>
+            </form>
+            <div class="tabela">
+                <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaclientes">
+                    <caption>Lista de Produtos</caption>
+                    <tr>
+                    <th>Código</th>
+                    <th>Empresa</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Fornecedor</th>
+                    <th>Categoria</th>
+                    <th>Preço de Compra</th>
+                    <th>Preço de Venda</th>
+                    <th>Estoque</th>
+                    </tr>
+                    <c:forEach items="${ListaProdutos}" var="produto">
+                            <tr>
+                                <td><c:out value="${produto.codigo}"  /></td>
+                                <td><c:set var="empresa" scope="session" value="${produto.getCodigoempresa()}"/>
+                                <c:if test = "${empresa == 1}">
+                                    <c:out value="Made in Astec - Filial" />
+                                </c:if>
+                                <c:if test = "${empresa == 2}">
+                                <c:out value="Made in Astec - Porto Alegre" />
+                                </c:if>
+                                <c:if test = "${empresa == 3}">
+                                <c:out value="Made in Astec - Recife" />
+                                </c:if>
+                                </td>
+                                <td><c:out value="${produto.nome}" /></td>
+                                <td><c:out value="${produto.descricao}" /></td>
+                                <td><c:forEach items="${ListaFornecedores}" var="f">
+                                        <c:if test="${produto.fornecedor} == ${f.getCodigo()}">
+                                            <c:out value="${f.getNome()}" />
+                                        </c:if>
+                                    </c:forEach>
+                                </td>
+                                <td><c:out value="${produto.categoria}" /></td>
+                                <td><c:out value="${produto.precocompra}" /></td>
+                                <td><c:out value="${produto.precovenda}" /></td>
+                                <td><c:out value="${produto.estoque}"/></td>
+                                <td>
+                                    <div>
+                                    <form class="form-control-static" action="${pageContext.request.contextPath}/alterarProduto" method="post" >
+                                        <div class="form-group">
+                                        <button type="submit" name="cpfcliente" value="${produto.codigo}" 
+                                                class="btn btn-success center-block">Alterar/ Visualizar</button>
+                                        </div>
+                                    </form>
+                              
+                                    <form class="form-control-static" action="${pageContext.request.contextPath}/excluirProduto" method="post" >
+                                        <div class="form-group">
+                                        <button type="submit" name="cpfcliente" value="${produto.codigo}" 
+                                                class="btn btn-danger center-block">Excluir</button> 
+                                        </div>
+                                    </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    
             </table>
+            </div>
         </div>
-        </div>
-    </div>  
     <jsp:include page="rodape.jsp"/>
     </body>
 </html>

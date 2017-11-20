@@ -12,6 +12,15 @@ public class Produto {
     private Double precovenda;
     private Integer estoque;
 
+    public Integer getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Integer fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+    
+    
     public Integer getCodigo() {
         return codigo;
     }
