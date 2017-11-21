@@ -217,4 +217,4 @@ INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigoca
 
 INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('ADMIN', 'ADMIN', 'admin', 1, 1);
 
-Select * from Fornecedor
+

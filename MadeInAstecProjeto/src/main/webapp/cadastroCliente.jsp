@@ -193,7 +193,7 @@
                             <div class="form-group">
                                 <form method="post" action="" onSubmit="return (verifica())" name="frmEnvia"/>
                                 <label for="desc" id="cpf">CPF*</label>
-                                <input class="form-control" type="text" name="cpf" id="cpf" onblur="checarCPF()();" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00">
+                                <input class="form-control" type="text" name="cpf" id="cpf" onblur="checarCPF()();" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00" required>
                             </div>
 
                             <div class="form-group">

@@ -17,6 +17,27 @@
                 margin-bottom: 0;
             }
         </style>
+        
+        <script>
+            
+            function fMasc(objeto, mascara) {
+                obj = objeto
+                masc = mascara
+                setTimeout("fMascEx()", 1)
+            }
+            function fMascEx() {
+                obj.value = masc(obj.value)
+            }
+            
+            function mCPF(cpf) {
+                cpf = cpf.replace(/\D/g, "")
+                cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+                cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+                cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+                return cpf
+            }
+            
+        </script>
         <title>Venda</title>
     </head>
     <body>        
@@ -27,7 +48,7 @@
             <form class="form-control-static" action="${pageContext.request.contextPath}/ConsultaClientesVendaServlet" method="post">
                 <div class="form-group" id="cliente">
                     <label for="CPF">Cliente</label>
-                    <input type="text" class="form-control" name="cpfCliente" placeholder="Digite o CPF do Cliente"><br><br>
+                    <input type="text" class="form-control" name="cpfCliente" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00"><br><br>
 
                 </div>
                 <button type="submit" class="btn btn-success center-block">Pesquisar</button>
@@ -71,7 +92,7 @@
 
         <div class="container" align="center">
 
-            <form class="form-control-static" action="${pageContext.request.contextPath}/(nome da servlet de consultar produto)" method="post">
+            <form class="form-control-static" action="${pageContext.request.contextPath}/ConsultaProdutosVendaServlet" method="post">
                 <div class="form-group" id="produto">
                     <label for="Prod">Produdo</label>
                     <input type="text" class="form-control" name="nomeProd" placeholder="Digite o nome do Produto"><br><br>
