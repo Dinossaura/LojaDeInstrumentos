@@ -24,8 +24,9 @@
                     <label for="nome">Produto: </label>
                     <input type="text" class="form-control" name="produto" placeholder="Digite nome Produto">
                 </div>
-                <button type="submit" class="btn btn-default">Pesquisar</button>
-            </form>
+                <button type="submit" class="btn btn-default" action="">Pesquisar</button>
+            </form >     
+        
             <div class="tabela">
                 <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaclientes">
                     <caption>Lista de Produtos</caption>
@@ -39,6 +40,7 @@
                     <th>Preço de Compra</th>
                     <th>Preço de Venda</th>
                     <th>Estoque</th>
+                    <th>Ação</th>
                     </tr>
                     <c:forEach items="${ListaProdutos}" var="produto">
                             <tr>
@@ -56,13 +58,32 @@
                                 </td>
                                 <td><c:out value="${produto.nome}" /></td>
                                 <td><c:out value="${produto.descricao}" /></td>
-                                <td><c:forEach items="${ListaFornecedores}" var="f">
-                                        <c:if test="${produto.fornecedor} == ${f.getCodigo()}">
+                                <td>
+                                   <c:forEach items="${ListaFornecedores}" var="f">
+                                        <c:if test="${produto.fornecedor eq f.getCodigo()}">
                                             <c:out value="${f.getNome()}" />
                                         </c:if>
                                     </c:forEach>
                                 </td>
-                                <td><c:out value="${produto.categoria}" /></td>
+                                <td><c:set var="categoria" scope="session" value="${produto.categoria}"/>
+                                    <c:if test = "${categoria == 1}">
+                                        <c:out value="Audio Profissional" />
+                                    </c:if>
+                                    <c:if test = "${categoria == 2}">
+                                        <c:out value="Bateria & Percussão" />
+                                    </c:if>
+                                    <c:if test = "${categoria == 3}">
+                                        <c:out value="Cordas & Acessórios" />
+                                    </c:if>
+                                    <c:if test = "${categoria == 4}">
+                                        <c:out value="Pianos e Teclados" />
+                                    </c:if>
+                                    <c:if test = "${categoria == 5}">
+                                        <c:out value="Sopro"/>
+                                    </c:if>
+                                </td>        
+                                 
+                                   
                                 <td><c:out value="${produto.precocompra}" /></td>
                                 <td><c:out value="${produto.precovenda}" /></td>
                                 <td><c:out value="${produto.estoque}"/></td>

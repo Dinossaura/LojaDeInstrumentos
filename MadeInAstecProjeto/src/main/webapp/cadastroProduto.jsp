@@ -5,7 +5,15 @@
     <head>
         <title>Cadastro de Produtos</title>
         <link href="css/cadastroProduto.css" rel="stylesheet">
-
+        <!-- Variável Altera é um Atributo vindo do Servlet de Alteração para possível alteração do jsp de cadastro -->
+        <c:choose>
+            <c:when test="${empty Altera}">
+                <title>Cadastro de Produtos</title>
+            </c:when>
+            <c:otherwise>
+                <title>Alteração de Produtos</title>
+            </c:otherwise>
+        </c:choose>
         <script type="text/javascript">
             function fMasc(objeto, mascara) {
                 obj = objeto
@@ -212,81 +220,172 @@
 
     <body>
         <jsp:include page="menu.jsp"/>
-        <div class="container">
-            <h1 id="pro">Cadastro de Produtos</h1>
-            <div class="well">
-                <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-produto" method="post">
+        <c:choose>
+            <c:when test = "${empty Altera}">
+                <div class="container">
+                    <h1 id="pro">Cadastro de Produtos</h1>
+                    <div class="well">
+                        <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-produto" method="post">
 
-                    <div class="form-group">
-                        <label for="nome">Produto*</label>
-                        <input type="text" class="form-control" name="prod" id="produto"/>
+                        <div class="form-group">
+                            <label for="nome">Produto*</label>
+                            <input type="text" class="form-control" name="prod" id="produto"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Descrição*</label>
+                            <textarea class="form-control" rows="1" name="descProd" id="descricao"></textarea>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="empresa">Categoria*</label>
+                            <select class="form-control" name="categ" id="categoria">
+                                <option value="1">Audio Profissional</option>
+                                <option value="2">Bateria & Percussão</option>
+                                <option value="3">Cordas & Acessórios</option>
+                                <option value="4">Pianos & Teclados</option>
+                                <option value="5">Sopro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="empresa" id="perfilLab">Empresa*</label>
+                            <select class="form-control" name="empresa" id="perfilProduto">
+                                <option value="1">Matriz - São Paulo</option>
+                                <option value="2">Filial - Porto Alegre</option>
+                                <option value="3">Filial - Recife</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Cod.Fornecedor*</label>
+                            <input class="form-control" name="codF" id="codF" onkeydown="javascript: fMasc(this, mNum)" maxlength="4"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Estoque*</label>
+                            <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="6"/>
+                        </div>
+
+                        <hr id="linha"> <!--Linha de separação-->                       
+
+                        </br><div class="form-group" id="preco">
+                            <label for="desc">Preços*</label>
+                        </div></br>
+
+                        <div class="form-group">
+                            <label for="desc" id="labCom">Compra</label>
+                            <input class="form-control" name="compra" id="compra" onkeypress="reais(this, event)" onkeydown="backspace(this, event)" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Venda</label>
+                            <input class="form-control"  name="venda" id="venda" onkeypress="reais(this, event)" onkeydown="backspace(this, event)"/>
+                        </div>
+
+                        <button type="submit" class="btn btn-default" id="botao">Cadastrar</button>
+                        <label id="mensagem">(*)Campos Obrigatórios</label>
+                        
+                        <!--Variáveis vem do Servlet para verificação de campos -->
+                        <c:if test="${not empty mensagemErroCampos}">
+                        <label><c:out value="${mensagemErroCampos}"/></label>
+                        </c:if>
+                        <c:if test="${empty mensagemErroCampos}">
+                        <label><c:out value="${mensagemErroCampos}"/></label>
+                        </c:if>
+                        <c:if test="${not empty produtoexiste}">
+                        <label><c:out value="${produtoexiste}"/></label>
+                        </c:if>
+                        <c:if test="${empty produtoexiste}">
+                        <label><c:out value="${produtoexiste}"/></label>
+                        </c:if>
+                        </form>
                     </div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="container">
+                    <h1 id="pro">Alteração de Produtos</h1>
+                    <div class="well">
+                        <form class="form-inline" action="${pageContext.request.contextPath}/alterarProduto" method="post">
 
-                    <div class="form-group">
-                        <label for="desc">Descrição*</label>
-                        <textarea class="form-control" rows="1" name="descProd" id="descricao"></textarea>
+                        <div class="form-group">
+                            <label for="nome">Produto*</label>
+                            <input type="text" class="form-control" name="prod" id="produto"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Descrição*</label>
+                            <textarea class="form-control" rows="1" name="descProd" id="descricao"></textarea>
+                        </div>
+                            
+                        <div class="form-group">
+                            <label for="empresa">Categoria*</label>
+                            <select class="form-control" name="categ" id="categoria">
+                                <option value="1">Audio Profissional</option>
+                                <option value="2">Bateria & Percussão</option>
+                                <option value="3">Cordas & Acessórios</option>
+                                <option value="4">Pianos & Teclados</option>
+                                <option value="5">Sopro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="empresa" id="perfilLab">Perfil*</label>
+                            <select class="form-control" name="empresa" id="perfilProduto">
+                                <option value="1">Matriz - São Paulo</option>
+                                <option value="2">Filial - Porto Alegre</option>
+                                <option value="3">Filial - Recife</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Cod.Fornecedor*</label>
+                            <input class="form-control" name="codF" id="codF" onkeydown="javascript: fMasc(this, mNum)" maxlength="4"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Estoque*</label>
+                            <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="6"/>
+                        </div>
+
+                        <hr id="linha"> <!--Linha de separação-->                       
+
+                        </br><div class="form-group" id="preco">
+                            <label for="desc">Preços*</label>
+                        </div></br>
+
+                        <div class="form-group">
+                            <label for="desc" id="labCom">Compra</label>
+                            <input class="form-control" name="compra" id="compra" onkeypress="reais(this, event)" onkeydown="backspace(this, event)" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="desc">Venda</label>
+                            <input class="form-control"  name="venda" id="venda" onkeypress="reais(this, event)" onkeydown="backspace(this, event)"/>
+                        </div>
+
+                        <button type="submit" class="btn btn-default" id="botao">Salvar</button>
+                        <label id="mensagem">(*)Campos Obrigatórios</label>
+                        
+                        <!--Variáveis vem do Servlet para verificação de campos -->
+                        <c:if test="${not empty mensagemErroCampos}">
+                        <label><c:out value="${mensagemErroCampos}"/></label>
+                        </c:if>
+                        <c:if test="${empty mensagemErroCampos}">
+                        <label><c:out value="${mensagemErroCampos}"/></label>
+                        </c:if>
+                        <c:if test="${not empty produtoexiste}">
+                        <label><c:out value="${produtoexiste}"/></label>
+                        </c:if>
+                        <c:if test="${empty produtoexiste}">
+                        <label><c:out value="${produtoexiste}"/></label>
+                        </c:if>
+                        </form>
                     </div>
-
-
-                    <div class="form-group">
-                        <label for="empresa">Categoria*</label>
-                        <select class="form-control" name="categ" id="categoria">
-                            <option value="1">Cordas</option>
-                            <option value="2">Sopro</option>
-                            <option value="3">Percussão</option>
-                            <option value="4">Áudio</option>
-                            <option value="5">Teclas</option>
-                            <option value="6">Acessórios</option>
-                            <option value="7">Outros</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="empresa" id="perfilLab">Perfil*</label>
-                        <select class="form-control" name="empresa" id="perfilProduto">
-                            <option value="1">Matriz - São Paulo</option>
-                            <option value="2">Filial - Porto Alegre</option>
-                            <option value="3">Filial - Recife</option>
-                        </select>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label for="desc">Cod.Fornecedor*</label>
-                        <input class="form-control" name="codF" id="codF" onkeydown="javascript: fMasc(this, mNum)" maxlength="4"/>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="desc">Estoque*</label>
-                        <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="6"/>
-                    </div>
-
-                    <hr id="linha"> <!--Linha de separação-->                       
-
-                    </br><div class="form-group" id="preco">
-                        <label for="desc">Preços*</label>
-                    </div></br>
-
-                    <div class="form-group">
-                        <label for="desc" id="labCom">Compra</label>
-                        <input class="form-control" name="compra" id="compra" onkeypress="reais(this, event)" onkeydown="backspace(this, event)" />
-                    </div>
-
-                    <div class="form-group">
-                        <label for="desc">Venda</label>
-                        <input class="form-control"  name="venda" id="venda" onkeypress="reais(this, event)" onkeydown="backspace(this, event)"/>
-                    </div>
-
-                    <button type="submit" class="btn btn-default" id="botao">Cadastrar</button>
-                    <label id="mensagem">(*)Campos Obrigatórios</label>
-
-                </form>
-            </div>
-
-
-
-        </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
         <div class="footer">
             <jsp:include page="rodape.jsp"/>
         </div>

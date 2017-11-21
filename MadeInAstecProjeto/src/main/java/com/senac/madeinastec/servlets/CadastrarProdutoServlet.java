@@ -7,6 +7,7 @@ package com.senac.madeinastec.servlets;
 
 import com.senac.madeinastec.dao.ProdutoDAO;
 import com.senac.madeinastec.model.Produto;
+import com.senac.madeinastec.service.ServicoProduto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -33,7 +34,9 @@ public class CadastrarProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
+        HttpSession sessao = request.getSession();
+                
         String produto = request.getParameter("prod");
         String desc = request.getParameter("descProd");
         String cat = request.getParameter("categ");
@@ -41,25 +44,65 @@ public class CadastrarProdutoServlet extends HttpServlet {
         String codF = request.getParameter("codF");
         String estoque = request.getParameter("estoque");
         String compra = request.getParameter("compra");
+        compra = compra.replaceAll(",", ".");
         String venda = request.getParameter("venda");
-
-        Produto p = new Produto();
-        p.setNome(produto);
-        p.setDescricao(desc);
-        p.setCategoria(Integer.parseInt(cat));
-        p.setCodigoempresa(Integer.parseInt(codE));
-        p.setCodigoFornecedor(Integer.parseInt(codF));
-        p.setEstoque(Integer.parseInt(estoque));
-        p.setPrecocompra(Double.parseDouble(compra));
-        p.setPrecovenda(Double.parseDouble(venda));
-
-        ProdutoDAO pDao = new ProdutoDAO();
-        pDao.inserirProduto(p);
-
-        HttpSession sessao = request.getSession();
-        sessao.setAttribute("produto", p);
-
-        response.sendRedirect(request.getContextPath() + "/cadastroProduto.jsp");
+        venda = venda.replaceAll(",", ".");
+        String codigoempresa = (String) sessao.getAttribute("Empresa");
+        //Verifica campos obrigatórios
+            if((produto.length() == 0)||(desc.length() == 0)||
+                    (cat.length() == 0)||(codF.length() == 0)||(estoque.length() == 0)||(compra.length() == 0)||
+                    (venda.length() == 0)){
+                sessao.setAttribute("mensagemErroCampos", "Verifique campos obrigatórios!");
+                RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/cadastroProduto.jsp");
+                dispatcher.forward(request, response);
+            }else{
+                 ServicoProduto sp = new ServicoProduto();
+                 boolean proexiste = false;
+                 try {
+                proexiste = sp.encontrarProdutoCadastro(produto, Integer.parseInt(codigoempresa));
+                } catch (Exception e) {
+                    
+                }
+                 if(!proexiste){
+                     sessao.setAttribute("mensagemErroCampos", "");
+                     
+                     Produto p = new Produto();
+                     p.setNome(produto);
+                     p.setDescricao(desc);
+                     p.setCategoria(Integer.parseInt(cat));
+                     p.setCodigoempresa(Integer.parseInt(codE));
+                     p.setCodigoFornecedor(Integer.parseInt(codF));
+                     p.setEstoque(Integer.parseInt(estoque));
+                     p.setPrecocompra(Double.parseDouble(compra));
+                     p.setPrecovenda(Double.parseDouble(venda));
+                     
+                     //Cadastra novo fornecedor na tabela
+                    try {
+                        sp.cadastrarProduto(p);
+                        sessao.setAttribute("Produto", p);
+                        sessao.setAttribute("produtoexiste", "");
+                        response.sendRedirect(request.getContextPath() + "/cadastroProduto.jsp");
+                        System.out.println("Produto Inserido com sucesso!");
+            
+                    } catch (Exception e) {
+                        request.setAttribute("mensagemErro", "Produto não cadastrado");
+                        sessao.setAttribute("produtoexiste", "");
+                        RequestDispatcher dispatcher
+                        = request.getRequestDispatcher("/cadastroProduto.jsp");
+                        dispatcher.forward(request, response);
+                        System.out.println("Erro na inserção de novo produto!");
+                    }   
+                }else{
+                     sessao.setAttribute("produtoexiste", "Produto já existe!");
+                     request.setAttribute("produtoexiste", "Produto já existe!");
+                     RequestDispatcher dispatcher
+                     = request.getRequestDispatcher("/cadastroFornecedor.jsp");
+                     dispatcher.forward(request, response);
+                    System.out.println("Erro na inserção de novo Produto!");
+                 }
+            }
+                
 
     }
 }

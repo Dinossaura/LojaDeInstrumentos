@@ -55,10 +55,10 @@ public class CadastrarUsuarioServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
         
-        String nome = request.getParameter("name").toUpperCase();
+        String nome = request.getParameter("name");
         String codigoEmpresa = request.getParameter("empresa");
         String codigoperfil = request.getParameter("perfil");
-        String login= request.getParameter("login").toUpperCase();
+        String login= request.getParameter("login");
         String senha= request.getParameter("senha");
         
         //if para verificação de campos obrigatórios

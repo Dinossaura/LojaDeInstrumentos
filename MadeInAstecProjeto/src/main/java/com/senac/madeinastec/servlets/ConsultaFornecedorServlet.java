@@ -49,7 +49,7 @@ public class ConsultaFornecedorServlet extends HttpServlet {
           
           RequestDispatcher dispatcher
 	    = request.getRequestDispatcher("/consultarFornecedor.jsp");
-    dispatcher.forward(request, response);
+    dispatcher.forward(request, response); 
     }
 
     @Override
@@ -78,7 +78,6 @@ public class ConsultaFornecedorServlet extends HttpServlet {
         
         sessao.setAttribute("ListaFornecedores", Lista);
         response.sendRedirect(request.getContextPath() + "/consultarFornecedor.jsp");   
-        
     }
 
 }

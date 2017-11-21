@@ -57,13 +57,19 @@ public class ServicoProduto {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
-    
-    
 
-
-    public Produto encontrarProdutoPorCodigo(int codigo) throws ProdutoException, DataSourceException {
+    public Produto encontrarProdutoPorNome(String nome, int codigoempresa) throws ProdutoException, DataSourceException {
         try {
-            return produtoDAO.encontrarProduto(codigo);
+            return produtoDAO.encontrarProduto(nome, codigoempresa);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+    
+    public boolean encontrarProdutoCadastro(String nome, int codigoempresa) throws ProdutoException, DataSourceException {
+        try {
+            return produtoDAO.encontrarProdutoCadastro(nome, codigoempresa);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);

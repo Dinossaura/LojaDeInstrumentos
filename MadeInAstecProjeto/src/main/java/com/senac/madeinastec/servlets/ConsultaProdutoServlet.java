@@ -6,7 +6,9 @@
  */
 package com.senac.madeinastec.servlets;
 
+import com.senac.madeinastec.model.Fornecedor;
 import com.senac.madeinastec.model.Produto;
+import com.senac.madeinastec.service.ServicoFornecedor;
 import com.senac.madeinastec.service.ServicoProduto;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,13 +33,14 @@ public class ConsultaProdutoServlet extends HttpServlet {
           HttpSession sessao = request.getSession();  
           ArrayList<Produto> Lista = new ArrayList();
           ServicoProduto sp = new ServicoProduto();
+          ServicoFornecedor sf = new ServicoFornecedor();
           String codigoempresa = (String) sessao.getAttribute("Empresa");
           
           try {
             Lista = (ArrayList<Produto>) sp.procurarProduto("", Integer.parseInt(codigoempresa));
         } catch (Exception e) {
         }
-        
+       
           sessao.setAttribute("ListaProdutos", Lista);
           
           RequestDispatcher dispatcher
@@ -49,6 +52,8 @@ public class ConsultaProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //Instância Objeto Fornecedor
+        ArrayList<Fornecedor> ListaF = new ArrayList();
+        ServicoFornecedor sf = new ServicoFornecedor();
         Produto c = new Produto();
         
         //Instância de ArrayList para acumular fornecedores
@@ -69,6 +74,12 @@ public class ConsultaProdutoServlet extends HttpServlet {
         } catch (Exception e) {
         }
         
+        try {
+            ListaF = (ArrayList<Fornecedor>) sf.listarFornecedor("", Integer.parseInt(codigoempresa));
+        } catch (Exception e) {
+        }
+        
+        sessao.setAttribute("ListaFornecedores", ListaF);
         sessao.setAttribute("ListaProdutos", Lista);
         response.sendRedirect(request.getContextPath() + "/consultarProduto.jsp");   
         

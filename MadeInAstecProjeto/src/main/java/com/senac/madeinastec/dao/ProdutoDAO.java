@@ -141,26 +141,31 @@ public class ProdutoDAO {
     
     }
     
-    //encontra produto por código
-    public Produto encontrarProduto(int codigo){//retorna um item
-        List<Produto> lista = new ArrayList<>();
+    //encontra produto por nome
+    public Produto encontrarProduto(String nome, int codigoempresa){//retorna um item
         Produto produto = new Produto();
         System.out.println("Buscando produto na base de dados...");
-        String query = "SELECT * FROM produtos WHERE codigo=?";//addicionar o % %
+        String query = "SELECT * FROM produtos WHERE nome=? and codigoempresa=?";//addicionar o % %
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setInt(1,codigo);
-            
+            preparedStatement.setString(1,nome);
+            preparedStatement.setInt(2,codigoempresa);
                         
             ResultSet rs = preparedStatement.executeQuery();
             
             while (rs.next()){
-
-                produto.setEstoque(rs.getInt(11));
-                lista.add(produto);
+                produto.setCodigo(rs.getInt(1));
+                produto.setCodigoempresa(rs.getInt(2));
+                produto.setNome(rs.getString(3));
+                produto.setDescricao(rs.getString(4));
+                produto.setCodigoFornecedor(rs.getInt(5));
+                produto.setCategoria(rs.getInt(6));
+                produto.setPrecocompra(rs.getDouble(7));
+                produto.setPrecovenda(rs.getDouble(8));
+                produto.setEstoque(rs.getInt(9));
             }
             
             System.out.println("Busca efetuada com sucesso");
@@ -168,6 +173,42 @@ public class ProdutoDAO {
             System.out.println("Erro ao buscar produto"+ex);
         }        
         return produto;
+    
+    }
+    
+    //encontra produto por nome
+    public boolean encontrarProdutoCadastro(String nome, int codigoempresa){//retorna um item
+        Produto produto = new Produto();
+        System.out.println("Buscando produto na base de dados...");
+        String query = "SELECT * FROM produtos WHERE nome=? and codigoempresa=?";//addicionar o % %
+        boolean encontra = false;
+        
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            
+            preparedStatement.setString(1,nome);
+            preparedStatement.setInt(2,codigoempresa);
+                        
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            while (rs.next()){
+                encontra = true;
+                produto.setCodigo(rs.getInt(1));
+                produto.setCodigoempresa(rs.getInt(2));
+                produto.setNome(rs.getString(3));
+                produto.setDescricao(rs.getString(4));
+                produto.setCodigoFornecedor(rs.getInt(5));
+                produto.setCategoria(rs.getInt(6));
+                produto.setPrecocompra(rs.getDouble(7));
+                produto.setPrecovenda(rs.getDouble(8));
+                produto.setEstoque(rs.getInt(9));
+            }
+            
+            System.out.println("Busca efetuada com sucesso");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao buscar produto"+ex);
+        }        
+        return encontra;
     
     }
     //
