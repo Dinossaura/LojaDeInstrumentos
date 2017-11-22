@@ -57,9 +57,9 @@ public class ProdutoDAO {
             preparedStatement.setInt(4, produto.getCodigoFornecedor());
             preparedStatement.setInt(5, produto.getCategoria());
             preparedStatement.setDouble(6, produto.getPrecocompra());
-            preparedStatement.setDouble(9, produto.getPrecovenda());
-            preparedStatement.setInt(9, produto.getEstoque());
-            preparedStatement.setInt(10, produto.getCodigo());
+            preparedStatement.setDouble(7, produto.getPrecovenda());
+            preparedStatement.setInt(8, produto.getEstoque());
+            preparedStatement.setInt(9, produto.getCodigo());
             
             preparedStatement.executeUpdate();
             preparedStatement.close();
@@ -145,15 +145,63 @@ public class ProdutoDAO {
     public Produto encontrarProduto(String nome, int codigoempresa){//retorna um item
         Produto produto = new Produto();
         System.out.println("Buscando produto na base de dados...");
-        String query = "SELECT * FROM produtos WHERE nome=? and codigoempresa=?";//addicionar o % %
+        String query = "";
+        boolean vazio = false;
         
+        if(nome.length() == 0){
+            vazio = true;
+            query = "SELECT * FROM produtos WHERE codigoempresa=?";//addicionar o % %
+        }else{
+            query = "SELECT * FROM produtos WHERE nome=? and codigoempresa=?";//addicionar o % %
+        }
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1,nome);
-            preparedStatement.setInt(2,codigoempresa);
+            if(vazio = false){
+                preparedStatement.setString(1,nome);
+                preparedStatement.setInt(2,codigoempresa);
+            }else{
+                preparedStatement.setInt(1,codigoempresa);
+            }
+            
                         
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            while (rs.next()){
+                produto.setCodigo(rs.getInt(1));
+                produto.setCodigoempresa(rs.getInt(2));
+                produto.setNome(rs.getString(3));
+                produto.setDescricao(rs.getString(4));
+                produto.setCodigoFornecedor(rs.getInt(5));
+                produto.setCategoria(rs.getInt(6));
+                produto.setPrecocompra(rs.getDouble(7));
+                produto.setPrecovenda(rs.getDouble(8));
+                produto.setEstoque(rs.getInt(9));
+            }
+            
+            System.out.println("Busca efetuada com sucesso");
+        } catch (SQLException ex) {
+            System.out.println("Erro ao buscar produto"+ex);
+        }        
+        return produto;
+    
+    }
+    
+    //encontra produto por nome
+    public Produto encontrarProdutoCodigo(int codigo, int codigoempresa){//retorna um item
+        Produto produto = new Produto();
+        System.out.println("Buscando produto na base de dados...");
+        String query = "";
+        query = "SELECT * FROM produtos WHERE codigo=? and codigoempresa=?";//addicionar o % %
+
+        
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            
+            preparedStatement.setInt(1,codigo);
+            preparedStatement.setInt(2,codigoempresa);
+            
             ResultSet rs = preparedStatement.executeQuery();
             
             while (rs.next()){
@@ -212,15 +260,15 @@ public class ProdutoDAO {
     
     }
     //
-    public void deletarProduto(int codigo) throws Exception{
+    public void deletarProduto(int codigo, int codigoempresa) throws Exception{
         System.out.println("Deletando produto de codigo: "+codigo);
-        String query = "DELETE FROM produtos WHERE codigo=?";
-        
+        String query = "DELETE FROM produtos WHERE codigo=? and codigoempresa=?";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             
-            preparedStatement.setInt(1, codigo);            
+            preparedStatement.setInt(1, codigo);
+            preparedStatement.setInt(2, codigoempresa);   
             preparedStatement.execute();
             
             System.out.println("Produto deletado");

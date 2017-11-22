@@ -59,12 +59,12 @@ public class AlterarProdutoServlet extends HttpServlet {
         
         if ((alteracao == null)||(alteracao.length() == 0)){
               //Atribuição de valores digitados na tela de fornecedor e código da empresa
-            String nomeproduto = request.getParameter("produto");
+            String codigoproduto = request.getParameter("codigoproduto");
             String codigoempresa = (String) sessao.getAttribute("Empresa");
             
             
             try {
-            produto = sp.encontrarProdutoPorNome(nomeproduto, Integer.parseInt(codigoempresa));
+            produto = sp.encontrarProdutoPorCodigo(Integer.parseInt(codigoproduto), Integer.parseInt(codigoempresa));
             } catch (Exception e) {
             }
         
@@ -80,7 +80,7 @@ public class AlterarProdutoServlet extends HttpServlet {
             String desc = request.getParameter("descProd");
             String cat = request.getParameter("categ");
             String codE = request.getParameter("empresa");
-            String codF = request.getParameter("codF");
+            String codF = request.getParameter("fornecedor");
             String estoque = request.getParameter("estoque");
             String compra = request.getParameter("compra");
             String venda = request.getParameter("venda");

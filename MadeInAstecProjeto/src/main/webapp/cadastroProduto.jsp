@@ -316,43 +316,99 @@
                         <form class="form-inline" action="${pageContext.request.contextPath}/alterarProduto" method="post">
 
                         <div class="form-group">
-                            <label for="nome">Produto*</label>
-                            <input type="text" class="form-control" name="prod" id="produto"/>
+                            <label for="produto">Produto*</label>
+                            <input type="text" class="form-control" name="prod" value="${pro.nome}" id="produto"/>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Descrição*</label>
-                            <textarea class="form-control" rows="1" name="descProd" id="descricao"></textarea>
+                            <textarea class="form-control" rows="1" name="descProd" id="descricao">${pro.descricao}</textarea>
                         </div>
                             
                         <div class="form-group">
                             <label for="empresa">Categoria*</label>
+                            <c:set var="categoria" value="${pro.getCategoria()}"/>
                             <select class="form-control" name="categ" id="categoria">
-                                <option value="1">Audio Profissional</option>
-                                <option value="2">Bateria & Percussão</option>
-                                <option value="3">Cordas & Acessórios</option>
-                                <option value="4">Pianos & Teclados</option>
-                                <option value="5">Sopro</option>
+                                <c:if test="${categoria == 1}">
+                                    <option value="1">Audio Profissional</option>
+                                    <option value="2">Bateria & Percussão</option>
+                                    <option value="3">Cordas & Acessórios</option>
+                                    <option value="4">Pianos & Teclados</option>
+                                    <option value="5">Sopro</option>
+                                </c:if>
+                                <c:if test="${categoria == 2}">
+                                    <option value="2">Bateria & Percussão</option>
+                                    <option value="1">Audio Profissional</option>
+                                    <option value="3">Cordas & Acessórios</option>
+                                    <option value="4">Pianos & Teclados</option>
+                                    <option value="5">Sopro</option>
+                                </c:if>
+                                <c:if test="${categoria == 3}">
+                                    <option value="3">Cordas & Acessórios</option>
+                                    <option value="1">Audio Profissional</option>
+                                    <option value="2">Bateria & Percussão</option>
+                                    <option value="4">Pianos & Teclados</option>
+                                    <option value="5">Sopro</option>
+                                </c:if>
+                                <c:if test="${categoria == 4}">
+                                    <option value="4">Pianos & Teclados</option>
+                                    <option value="1">Audio Profissional</option>
+                                    <option value="2">Bateria & Percussão</option>
+                                    <option value="3">Cordas & Acessórios</option>
+                                    <option value="5">Sopro</option>
+                                </c:if>
+                                <c:if test="${categoria == 5}">
+                                    <option value="5">Sopro</option>
+                                    <option value="1">Audio Profissional</option>
+                                    <option value="2">Bateria & Percussão</option>
+                                    <option value="3">Cordas & Acessórios</option>
+                                    <option value="4">Pianos & Teclados</option>
+                                </c:if> 
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="empresa" id="perfilLab">Perfil*</label>
-                            <select class="form-control" name="empresa" id="perfilProduto">
-                                <option value="1">Matriz - São Paulo</option>
-                                <option value="2">Filial - Porto Alegre</option>
-                                <option value="3">Filial - Recife</option>
-                            </select>
+                            <label for="empresa" id="perfilLab">Empresa*</label>
+                            <c:set var="codigoempresa" value="${pro.getCodigoempresa()}"/>
+
+                                <c:if test="${codigoempresa == 1}">
+                                    <c:set var="nomeempresa" value="Matriz - São Paulo"/>
+                                </c:if>
+                                <c:if test="${codigoempresa == 2}">
+                                    <c:set var="nomeempresa" value="Filial - Porto Alegre"/>
+                                </c:if>
+                                <c:if test="${codigoempresa == 3}">
+                                    <c:set var="nomeempresa" value="Matriz - Recife"/>
+                                </c:if>
+                                
+                                <label for="empresa" id="perfilCliLab">Empresa*</label>
+                                <select class="form-control" name="empresa" id="perfilCli">
+                                    <option><c:out value="${nomeempresa}"/></option>
+                                </select>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Cod.Fornecedor*</label>
-                            <input class="form-control" name="codF" id="codF" onkeydown="javascript: fMasc(this, mNum)" maxlength="4"/>
+                            <select class="form-control" name="fornecedor" id="fornecedorproduto">
+                                <c:set var="codigofornecedor" value="${pro.getCodigoFornecedor()}"/>
+                                <c:forEach items="${ListaFornecedores}" var="f">
+                                    <c:if test="${codigofornecedor eq f.getCodigo()}">
+                                        <option value="${f.getCodigo()}">
+                                        <c:out value ="${f.getNome()}" />
+                                        </option>
+                                    </c:if>
+                                </c:forEach>
+                                <c:forEach items="${ListaFornecedores}" var="f">
+                                    <option value="${f.getCodigo()}">
+                                        <c:out value ="${f.getNome()}" />
+                                    </option>
+                                </c:forEach>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Estoque*</label>
-                            <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="6"/>
+                            <input class="form-control" name="estoque" id="estoque" value="${pro.estoque}" onkeydown="javascript: fMasc(this, mNum)" maxlength="6"/>
                         </div>
 
                         <hr id="linha"> <!--Linha de separação-->                       
@@ -363,12 +419,12 @@
 
                         <div class="form-group">
                             <label for="desc" id="labCom">Compra</label>
-                            <input class="form-control" name="compra" id="compra" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)" />
+                            <input class="form-control" name="compra" id="compra" value="${pro.precocompra}" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)" />
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Venda</label>
-                            <input class="form-control"  name="venda" id="venda" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)"/>
+                            <input class="form-control"  name="venda" id="venda" value="${pro.precovenda}" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)"/>
                         </div>
 
                         <button type="submit" class="btn btn-default" id="botao">Salvar</button>

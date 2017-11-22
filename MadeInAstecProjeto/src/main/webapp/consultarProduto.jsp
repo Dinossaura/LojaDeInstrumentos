@@ -91,14 +91,14 @@
                                     <div>
                                     <form class="form-control-static" action="${pageContext.request.contextPath}/alterarProduto" method="post" >
                                         <div class="form-group">
-                                        <button type="submit" name="cpfcliente" value="${produto.codigo}" 
+                                        <button type="submit" name="codigoproduto" value="${produto.codigo}" 
                                                 class="btn btn-success center-block">Alterar</button>
                                         </div>
                                     </form>
                               
                                     <form class="form-control-static" action="${pageContext.request.contextPath}/excluirProduto" method="post" >
                                         <div class="form-group">
-                                        <button type="submit" name="cpfcliente" value="${produto.codigo}" 
+                                        <button type="submit" name="codigoproduto" value="${produto.codigo}" 
                                                 class="btn btn-danger center-block">Excluir</button> 
                                         </div>
                                     </form>
