@@ -22,12 +22,14 @@
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="consultarCliente.jsp">Consultar/Alterar</a></li>
                                 </ul>  
                             </li>
+               
                             <li class="col-md-2 text-center dropdown">
-                                <a style="font-size: 20px" class="dropdown-toggle" data-toggle="dropdown" href="#">Produtos</a>
+                                <a style="font-size: 20px" class="dropdown-toggle" data-toggle="dropdown" href="3">Produtos</a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="cadastroProduto.jsp">Cadastrar</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="${pageContext.request.contextPath}/consultafornecedorprod?acao=doGet">Cadastrar</a></li>
                                     <li role="presentation"><a role="menuitem" tabindex="-1" href="consultarProduto.jsp">Consultar/Alterar</a></li>
-                                </ul>  
+                                </ul> 
+                                
                             </li>
                             <li style="font-size: 20px" class="col-md-2 text-center"><a href="venda.jsp">Vendas</a></li>
                             <li style="font-size: 20px" class="col-md-2 text-center"><a href="relatorio.jsp">Relatórios</a></li>

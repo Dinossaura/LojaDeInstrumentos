@@ -41,16 +41,18 @@ public class CadastrarProdutoServlet extends HttpServlet {
         String desc = request.getParameter("descProd");
         String cat = request.getParameter("categ");
         String codE = request.getParameter("empresa");
-        String codF = request.getParameter("codF");
+        String fornecedor = request.getParameter("fornecedor");
         String estoque = request.getParameter("estoque");
         String compra = request.getParameter("compra");
-        compra = compra.replaceAll(",", ".");
+        compra = compra.replace(".", "");
+        compra = compra.replace(",", ".");
         String venda = request.getParameter("venda");
-        venda = venda.replaceAll(",", ".");
+        venda = venda.replace(".", "");
+        venda = venda.replace(",", ".");
         String codigoempresa = (String) sessao.getAttribute("Empresa");
         //Verifica campos obrigatórios
             if((produto.length() == 0)||(desc.length() == 0)||
-                    (cat.length() == 0)||(codF.length() == 0)||(estoque.length() == 0)||(compra.length() == 0)||
+                    (cat.length() == 0)||(fornecedor.length() == 0)||(estoque.length() == 0)||(compra.length() == 0)||
                     (venda.length() == 0)){
                 sessao.setAttribute("mensagemErroCampos", "Verifique campos obrigatórios!");
                 RequestDispatcher dispatcher
@@ -72,7 +74,7 @@ public class CadastrarProdutoServlet extends HttpServlet {
                      p.setDescricao(desc);
                      p.setCategoria(Integer.parseInt(cat));
                      p.setCodigoempresa(Integer.parseInt(codE));
-                     p.setCodigoFornecedor(Integer.parseInt(codF));
+                     p.setCodigoFornecedor(Integer.parseInt(fornecedor));
                      p.setEstoque(Integer.parseInt(estoque));
                      p.setPrecocompra(Double.parseDouble(compra));
                      p.setPrecovenda(Double.parseDouble(venda));

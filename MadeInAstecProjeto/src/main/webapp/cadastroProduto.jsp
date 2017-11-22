@@ -258,8 +258,14 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="desc">Cod.Fornecedor*</label>
-                            <input class="form-control" name="codF" id="codF" onkeydown="javascript: fMasc(this, mNum)" maxlength="4"/>
+                            <label for="desc">Fornecedor*</label>
+                            <select class="form-control" name="fornecedor" id="fornecedorproduto">
+                                <c:forEach items="${ListaFornecedoresProd}" var="f">
+                                    <option value="${f.getCodigo()}">
+                                        <c:out value ="${f.getNome()}" />
+                                    </option>
+                                </c:forEach>
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -357,12 +363,12 @@
 
                         <div class="form-group">
                             <label for="desc" id="labCom">Compra</label>
-                            <input class="form-control" name="compra" id="compra" onkeypress="reais(this, event)" onkeydown="backspace(this, event)" />
+                            <input class="form-control" name="compra" id="compra" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)" />
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Venda</label>
-                            <input class="form-control"  name="venda" id="venda" onkeypress="reais(this, event)" onkeydown="backspace(this, event)"/>
+                            <input class="form-control"  name="venda" id="venda" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)"/>
                         </div>
 
                         <button type="submit" class="btn btn-default" id="botao">Salvar</button>
