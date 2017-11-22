@@ -30,7 +30,8 @@ public class ConsultaProdutoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-          HttpSession sessao = request.getSession();  
+          HttpSession sessao = request.getSession();
+          ArrayList<Fornecedor> ListaF = new ArrayList();
           ArrayList<Produto> Lista = new ArrayList();
           ServicoProduto sp = new ServicoProduto();
           ServicoFornecedor sf = new ServicoFornecedor();
@@ -40,7 +41,13 @@ public class ConsultaProdutoServlet extends HttpServlet {
             Lista = (ArrayList<Produto>) sp.procurarProduto("", Integer.parseInt(codigoempresa));
         } catch (Exception e) {
         }
-       
+          
+          try {
+            ListaF = (ArrayList<Fornecedor>) sf.listarFornecedor("", Integer.parseInt(codigoempresa));
+        } catch (Exception e) {
+        }
+        
+          sessao.setAttribute("ListaFornecedores", ListaF);       
           sessao.setAttribute("ListaProdutos", Lista);
           
           RequestDispatcher dispatcher

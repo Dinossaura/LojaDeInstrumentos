@@ -3,14 +3,14 @@
     
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    height: 200px;
+    height: 120px;
     margin-top: 0;
     position: relative;
 }
 
 .container.text-center {
-    width: 400px;
-    height: 70px;
+    width: 300px;
+    height: 80px;
     border: 1px solid;
     background-color: gray;
     border-radius: 10px;

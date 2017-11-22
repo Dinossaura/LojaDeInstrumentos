@@ -24,7 +24,7 @@
                     <label for="nome">Produto: </label>
                     <input type="text" class="form-control" name="produto" placeholder="Digite nome Produto">
                 </div>
-                <button type="submit" class="btn btn-default" action="">Pesquisar</button>
+                <button type="submit" class="btn btn-success center-block" action="">Pesquisar</button>
             </form >     
         
             <div class="tabela">
@@ -92,7 +92,7 @@
                                     <form class="form-control-static" action="${pageContext.request.contextPath}/alterarProduto" method="post" >
                                         <div class="form-group">
                                         <button type="submit" name="cpfcliente" value="${produto.codigo}" 
-                                                class="btn btn-success center-block">Alterar/ Visualizar</button>
+                                                class="btn btn-success center-block">Alterar</button>
                                         </div>
                                     </form>
                               
