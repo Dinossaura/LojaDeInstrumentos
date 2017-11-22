@@ -1,4 +1,3 @@
-
 package com.senac.madeinastec.servlets;
 
 import com.senac.madeinastec.model.Produto;
@@ -18,40 +17,57 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ConsultaProdutosVendaServlet", urlPatterns = {"/ConsultaProdutosVendaServlet"})
 public class ConsultaProdutosVendaServlet extends HttpServlet {
 
-    
-
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         HttpSession sessao = request.getSession();  
-          ArrayList<Produto> Lista = new ArrayList();
-          ServicoProduto sc = new ServicoProduto();
-          String codigoempresa = (String) sessao.getAttribute("Empresa");
-          
-          try {
+
+        HttpSession sessao = request.getSession();
+        ArrayList<Produto> Lista = new ArrayList();
+        ServicoProduto sc = new ServicoProduto();
+        String codigoempresa = (String) sessao.getAttribute("Empresa");
+
+        try {
             Lista = (ArrayList<Produto>) sc.procurarProduto(codigoempresa, Integer.parseInt(codigoempresa));
         } catch (Exception e) {
-            
+
         }
-        
-          sessao.setAttribute("ListaCProdutos", Lista);
-          
-          RequestDispatcher dispatcher
-	    = request.getRequestDispatcher("/venda.jsp");
-    dispatcher.forward(request, response);
-        
+
+        sessao.setAttribute("ListaProduto", Lista);
+
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("/venda.jsp");
+        dispatcher.forward(request, response);
+
     }
 
-   
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     
+
+        Produto p = new Produto();
+
+        ArrayList<Produto> Lista = new ArrayList();
+
+        ServicoProduto sc = new ServicoProduto();
+
+        HttpSession sessao = request.getSession();
+
+        String produto = request.getParameter("nomeProd");
+        String codigoempresa = (String) sessao.getAttribute("Empresa");
+
+        try {
+
+            Lista = (ArrayList<Produto>) sc.procurarProduto(produto, Integer.parseInt(codigoempresa));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        sessao.setAttribute("ListaProduto", Lista);
+        response.sendRedirect(request.getContextPath() + "/venda.jsp");
+
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

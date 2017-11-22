@@ -112,10 +112,10 @@
                 </thead>
                 <c:forEach items="${ListaProduto}" var="produto">
                     <tr>
-                        <td><c:out value="${produto.produto}" /></td>
+                        <td><c:out value="${produto.nome}" /></td>
                         <td><c:out value="${produto.categoria}" /></td>
                         <td><c:out value="${produto.estoque}" /></td>
-                        <td><c:out value="${produto.preco}" /></td>
+                        <td><c:out value="${produto.precovenda}" /></td>
 
                         <td>
                             <div>
