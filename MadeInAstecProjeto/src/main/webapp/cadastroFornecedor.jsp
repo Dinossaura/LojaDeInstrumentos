@@ -95,11 +95,11 @@
                                     <c:choose>
                                         <c:when test = "${empty Altera}">
                                             <label for="fornecedor">Fornecedor*</label>
-                                            <input type="text" name="fornecedor" class="form-control" id="fornecedor" required oninvalid="this.setCustomValidity('Preencha o Fornecedor')" oninput="setCustomValidity('')"/> 
+                                            <input type="text" name="fornecedor" class="form-control" id="fornecedor" required oninvalid="this.setCustomValidity('Preencha o Fornecedor')" oninput="setCustomValidity('')" maxlength="30"/> 
                                         </c:when>
                                         <c:otherwise>
                                             <label for="fornecedor">Fornecedor*</label>
-                                            <input type="text" name="fornecedor" class="form-control" value="${for.nome}" id="fornecedor" required oninvalid="this.setCustomValidity('Preencha o Fornecedor')" oninput="setCustomValidity('')"/> 
+                                            <input type="text" name="fornecedor" class="form-control" value="${for.nome}" id="fornecedor" required oninvalid="this.setCustomValidity('Preencha o Fornecedor')" oninput="setCustomValidity('')" maxlength="30"/> 
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
@@ -138,22 +138,22 @@
 
                                             <div class="form-group">
                                                 <label for="endereco">Endereço*</label>
-                                                <input type="text" name="endereco" class="form-control" value="${for.endereco}" id="enderecoFor" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Endereço')" oninput="setCustomValidity('')"/>
+                                                <input type="text" name="endereco" class="form-control" value="${for.endereco}" id="enderecoFor" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Endereço')" oninput="setCustomValidity('')" maxlength="60"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="numero">Número*</label>
-                                                <input type="text" name="numero" class="form-control" value="${for.numero}" id="numeroFor" onkeydown="javascript: fMasc(this, mNum)" maxlength="6" required oninvalid="this.setCustomValidity('Preencha o Número')" oninput="setCustomValidity('')"/>
+                                                <input type="text" name="numero" class="form-control" value="${for.numero}" id="numeroFor" maxlength="10" required oninvalid="this.setCustomValidity('Preencha o Número')" oninput="setCustomValidity('')"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="complemento">Complemento</label>
-                                                <input type="text" name="complemento" class="form-control" value="${for.complemento}" id="complementoFor" onkeydown="javascript: fMasc(this, soLetras);">
+                                                <input type="text" name="complemento" class="form-control" value="${for.complemento}" id="complementoFor" maxlength="60">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="cidade">Cidade*</label>
-                                                <input type="text" name="cidade" class="form-control" value="${for.cidade}" id="cidadeFor" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha a Cidade')" oninput="setCustomValidity('')"/>
+                                                <input type="text" name="cidade" class="form-control" value="${for.cidade}" id="cidadeFor" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha a Cidade')" oninput="setCustomValidity('')" maxlength="30"/>
                                             </div>
 
                                             <div class="form-group"> 
@@ -173,22 +173,22 @@
 
                                             <div class="form-group">
                                                 <label for="endereco">Endereço*</label>
-                                                <input type="text" name="endereco" class="form-control" id="enderecoFor" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Endereço')" oninput="setCustomValidity('')"/>
+                                                <input type="text" name="endereco" class="form-control" id="enderecoFor" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Endereço')" oninput="setCustomValidity('')" maxlength="60"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="numero">Número*</label>
-                                                <input type="text" name="numero" class="form-control" id="numeroFor" onkeydown="javascript: fMasc(this, mNum)" maxlength="6" required oninvalid="this.setCustomValidity('Preencha o Número')" oninput="setCustomValidity('')"/>
+                                                <input type="text" name="numero" class="form-control" id="numeroFor" maxlength="10" required oninvalid="this.setCustomValidity('Preencha o Número')" oninput="setCustomValidity('')"/>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="complemento">Complemento</label>
-                                                <input type="text" name="complemento" class="form-control" id="complementoFor" onkeydown="javascript: fMasc(this, soLetras);">
+                                                <input type="text" name="complemento" class="form-control" id="complementoFor" maxlength="60">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="cidade">Cidade*</label>
-                                                <input type="text" name="cidade" class="form-control" id="cidadeFor" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha a Cidade')" oninput="setCustomValidity('')"/>
+                                                <input type="text" name="cidade" class="form-control" id="cidadeFor" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha a Cidade')" oninput="setCustomValidity('')" maxlength="30"/>
                                             </div>
 
                                             <div class="form-group"> 

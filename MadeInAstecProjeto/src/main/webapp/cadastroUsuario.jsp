@@ -51,17 +51,17 @@
                             <c:when test = "${empty Altera}">
                                 <div class="form-group">
                                     <label for="nome">Nome*</label>
-                                    <input type="text" class="form-control" name="name" id="nomeUsu" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Nome')" oninput="setCustomValidity('')"/>
+                                    <input type="text" class="form-control" name="name" id="nomeUsu" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Nome')" oninput="setCustomValidity('')" maxlength="30"/>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="login">Login*</label>
-                                    <input class="form-control" rows="1" name="login" id="loginUsu" required oninvalid="this.setCustomValidity('Preencha o Login')" oninput="setCustomValidity('')"/>
+                                    <input class="form-control" rows="1" name="login" id="loginUsu" required oninvalid="this.setCustomValidity('Preencha o Login')" oninput="setCustomValidity('')" maxlength="20"/>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="senha">Senha*</label>
-                                    <input type="password" class="form-control" rows="1" name="senha" id="senha" required oninvalid="this.setCustomValidity('Preencha a Senha')" oninput="setCustomValidity('')"/>
+                                    <input type="password" class="form-control" rows="1" name="senha" id="senha" required oninvalid="this.setCustomValidity('Preencha a Senha')" oninput="setCustomValidity('')" maxlength="20"/>
                                 </div>
 
                                 <div class="form-group">
@@ -90,17 +90,17 @@
                             <c:otherwise>
                                 <div class="form-group">
                                     <label for="nome">Nome*</label>
-                                    <input type="text" class="form-control" name="nomeUsuario" value="${usu.getNome()}" id="nomeUsu" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Nome')" oninput="setCustomValidity('')"/>
+                                    <input type="text" class="form-control" name="nomeUsuario" value="${usu.getNome()}" id="nomeUsu" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Nome')" oninput="setCustomValidity('')" maxlength="30"/>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="login">Login*</label>
-                                    <input class="form-control" rows="1" name="loginUsuario" value="${usu.getLogin()}" id="loginUsu" required oninvalid="this.setCustomValidity('Preencha o Login')" oninput="setCustomValidity('')"/>
+                                    <input class="form-control" rows="1" name="loginUsuario" value="${usu.getLogin()}" id="loginUsu" required oninvalid="this.setCustomValidity('Preencha o Login')" oninput="setCustomValidity('')" maxlength="20"/>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="senha">Senha*</label>
-                                    <input type="password" class="form-control" rows="1" name="senhaUsuario" value="${usu.getSenha()}" id="senha" required oninvalid="this.setCustomValidity('Preencha a Senha')" oninput="setCustomValidity('')"/>
+                                    <input type="password" class="form-control" rows="1" name="senhaUsuario" value="${usu.getSenha()}" id="senha" required oninvalid="this.setCustomValidity('Preencha a Senha')" oninput="setCustomValidity('')" maxlength="20"/>
                                 </div>
 
                                 <div class="form-group">

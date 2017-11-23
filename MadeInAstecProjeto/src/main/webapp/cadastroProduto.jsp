@@ -229,12 +229,12 @@
 
                         <div class="form-group">
                             <label for="nome">Produto*</label>
-                            <input type="text" class="form-control" name="prod" id="produto" required oninvalid="this.setCustomValidity('Preencha o Produto')" oninput="setCustomValidity('')"/>
+                            <input type="text" class="form-control" name="prod" id="produto" required oninvalid="this.setCustomValidity('Preencha o Produto')" oninput="setCustomValidity('')" maxlength="70"/>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Descrição*</label>
-                            <textarea class="form-control" rows="1" name="descProd" id="descricao" required oninvalid="this.setCustomValidity('Preencha a Descrição')" oninput="setCustomValidity('')"/></textarea>
+                            <textarea class="form-control" rows="1" name="descProd" id="descricao" required oninvalid="this.setCustomValidity('Preencha a Descrição')" oninput="setCustomValidity('')" maxlength="200"/></textarea>
                         </div>
                             
                         <div class="form-group">
@@ -270,7 +270,7 @@
 
                         <div class="form-group">
                             <label for="desc">Estoque*</label>
-                            <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="6" required oninvalid="this.setCustomValidity('Preencha o Estoque')" oninput="setCustomValidity('')"/>
+                            <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="10" required oninvalid="this.setCustomValidity('Preencha o Estoque')" oninput="setCustomValidity('')"/>
                         </div>
 
                         <hr id="linha"> <!--Linha de separação-->                       
@@ -281,12 +281,12 @@
 
                         <div class="form-group">
                             <label for="desc" id="labCom">Compra</label>
-                            <input class="form-control" name="compra" id="compra" onkeypress="reais(this, event)" onkeydown="backspace(this, event)"/>
+                            <input class="form-control" name="compra" id="compra" onkeypress="reais(this, event)" onkeydown="backspace(this, event)" maxlength="11"/>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Venda</label>
-                            <input class="form-control"  name="venda" id="venda" onkeypress="reais(this, event)" onkeydown="backspace(this, event)"/>
+                            <input class="form-control"  name="venda" id="venda" onkeypress="reais(this, event)" onkeydown="backspace(this, event)" maxlength="11"/>
                         </div>
 
                         <button type="submit" class="btn btn-default" id="botao">Cadastrar</button>
@@ -317,12 +317,12 @@
 
                         <div class="form-group">
                             <label for="produto">Produto*</label>
-                            <input type="text" class="form-control" name="prod" value="${pro.nome}" id="produto" required oninvalid="this.setCustomValidity('Preencha o Produto')" oninput="setCustomValidity('')"/>
+                            <input type="text" class="form-control" name="prod" value="${pro.nome}" id="produto" required oninvalid="this.setCustomValidity('Preencha o Produto')" oninput="setCustomValidity('')" maxlength="70"/>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Descrição*</label>
-                            <textarea class="form-control" rows="1" name="descProd" id="descricao" required oninvalid="this.setCustomValidity('Preencha a Descrição')" oninput="setCustomValidity('')"/>${pro.descricao}</textarea>
+                            <textarea class="form-control" rows="1" name="descProd" id="descricao" required oninvalid="this.setCustomValidity('Preencha a Descrição')" oninput="setCustomValidity('')" maxlength="200"/>${pro.descricao}</textarea>
                         </div>
                             
                         <div class="form-group">
@@ -408,7 +408,7 @@
 
                         <div class="form-group">
                             <label for="desc">Estoque*</label>
-                            <input class="form-control" name="estoque" id="estoque" value="${pro.estoque}" onkeydown="javascript: fMasc(this, mNum)" maxlength="6" required oninvalid="this.setCustomValidity('Preencha o Estoque')" oninput="setCustomValidity('')"/>
+                            <input class="form-control" name="estoque" id="estoque" value="${pro.estoque}" onkeydown="javascript: fMasc(this, mNum)" maxlength="10" required oninvalid="this.setCustomValidity('Preencha o Estoque')" oninput="setCustomValidity('')"/>
                         </div>
 
                         <hr id="linha"> <!--Linha de separação-->                       
@@ -419,12 +419,12 @@
 
                         <div class="form-group">
                             <label for="desc" id="labCom">Compra</label>
-                            <input class="form-control" name="compra" id="compra" value="${pro.precocompra}" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)"/>
+                            <input class="form-control" name="compra" id="compra" value="${pro.precocompra}" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)" maxlength="11"/>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Venda</label>
-                            <input class="form-control"  name="venda" id="venda" value="${pro.precovenda}" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)"/>
+                            <input class="form-control"  name="venda" id="venda" value="${pro.precovenda}" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)" maxlength="11"/>
                         </div>
 
                         <button type="submit" class="btn btn-default" id="botao">Salvar</button>
