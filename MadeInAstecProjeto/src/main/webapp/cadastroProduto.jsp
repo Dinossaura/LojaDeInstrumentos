@@ -229,12 +229,12 @@
 
                         <div class="form-group">
                             <label for="nome">Produto*</label>
-                            <input type="text" class="form-control" name="prod" id="produto"/>
+                            <input type="text" class="form-control" name="prod" id="produto" required oninvalid="this.setCustomValidity('Preencha o Produto')" oninput="setCustomValidity('')"/>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Descrição*</label>
-                            <textarea class="form-control" rows="1" name="descProd" id="descricao"></textarea>
+                            <textarea class="form-control" rows="1" name="descProd" id="descricao" required oninvalid="this.setCustomValidity('Preencha a Descrição')" oninput="setCustomValidity('')"/></textarea>
                         </div>
                             
                         <div class="form-group">
@@ -270,7 +270,7 @@
 
                         <div class="form-group">
                             <label for="desc">Estoque*</label>
-                            <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="6"/>
+                            <input class="form-control" name="estoque" id="estoque" onkeydown="javascript: fMasc(this, mNum)" maxlength="6" required oninvalid="this.setCustomValidity('Preencha o Estoque')" oninput="setCustomValidity('')"/>
                         </div>
 
                         <hr id="linha"> <!--Linha de separação-->                       
@@ -281,7 +281,7 @@
 
                         <div class="form-group">
                             <label for="desc" id="labCom">Compra</label>
-                            <input class="form-control" name="compra" id="compra" onkeypress="reais(this, event)" onkeydown="backspace(this, event)" />
+                            <input class="form-control" name="compra" id="compra" onkeypress="reais(this, event)" onkeydown="backspace(this, event)"/>
                         </div>
 
                         <div class="form-group">
@@ -317,12 +317,12 @@
 
                         <div class="form-group">
                             <label for="produto">Produto*</label>
-                            <input type="text" class="form-control" name="prod" value="${pro.nome}" id="produto"/>
+                            <input type="text" class="form-control" name="prod" value="${pro.nome}" id="produto" required oninvalid="this.setCustomValidity('Preencha o Produto')" oninput="setCustomValidity('')"/>
                         </div>
 
                         <div class="form-group">
                             <label for="desc">Descrição*</label>
-                            <textarea class="form-control" rows="1" name="descProd" id="descricao">${pro.descricao}</textarea>
+                            <textarea class="form-control" rows="1" name="descProd" id="descricao" required oninvalid="this.setCustomValidity('Preencha a Descrição')" oninput="setCustomValidity('')"/>${pro.descricao}</textarea>
                         </div>
                             
                         <div class="form-group">
@@ -381,14 +381,14 @@
                                     <c:set var="nomeempresa" value="Matriz - Recife"/>
                                 </c:if>
                                 
-                                <label for="empresa" id="perfilCliLab">Empresa*</label>
+                                <label for="empresa" id="perfilCliLab"><!--Empresa*--></label>
                                 <select class="form-control" name="empresa" id="perfilCli">
                                     <option><c:out value="${nomeempresa}"/></option>
                                 </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="desc">Cod.Fornecedor*</label>
+                            <label for="desc">Fornecedor*</label>
                             <select class="form-control" name="fornecedor" id="fornecedorproduto">
                                 <c:set var="codigofornecedor" value="${pro.getCodigoFornecedor()}"/>
                                 <c:forEach items="${ListaFornecedores}" var="f">
@@ -408,7 +408,7 @@
 
                         <div class="form-group">
                             <label for="desc">Estoque*</label>
-                            <input class="form-control" name="estoque" id="estoque" value="${pro.estoque}" onkeydown="javascript: fMasc(this, mNum)" maxlength="6"/>
+                            <input class="form-control" name="estoque" id="estoque" value="${pro.estoque}" onkeydown="javascript: fMasc(this, mNum)" maxlength="6" required oninvalid="this.setCustomValidity('Preencha o Estoque')" oninput="setCustomValidity('')"/>
                         </div>
 
                         <hr id="linha"> <!--Linha de separação-->                       
@@ -419,7 +419,7 @@
 
                         <div class="form-group">
                             <label for="desc" id="labCom">Compra</label>
-                            <input class="form-control" name="compra" id="compra" value="${pro.precocompra}" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)" />
+                            <input class="form-control" name="compra" id="compra" value="${pro.precocompra}" onkeypress="javascript: fMasc(this, mNum)" onkeydown="javascript: fMasc(this, mNum)"/>
                         </div>
 
                         <div class="form-group">

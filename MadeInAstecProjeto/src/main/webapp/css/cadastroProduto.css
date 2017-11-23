@@ -39,7 +39,7 @@ label{
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 21px;
+    margin-left: 22px;
 }
 
 #coE{
@@ -63,7 +63,7 @@ label{
 }
 
 #estoque{
-    width: 270px;
+    width: 262px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
@@ -105,23 +105,15 @@ label{
 }
 
 #perfilProduto{
-    width: 215px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    margin-left: 40px;
-}
-
-#perfilPro{
     width: 200px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
-    margin-left: 35px;
+    margin-left: 23px;
 }
 
 #perfilLab{
-    margin-left: 25px;
+    margin-left: 15px;
 }
 
 #produtoLab{
@@ -130,4 +122,12 @@ label{
 
 #botao{
     margin-left: 1000px;
+}
+
+#fornecedorproduto{
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 23px;
 }

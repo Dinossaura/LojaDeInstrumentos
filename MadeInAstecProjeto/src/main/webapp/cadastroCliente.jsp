@@ -11,12 +11,13 @@
             <c:otherwise>
                 <title>Alteração de Clientes</title>
             </c:otherwise>
-        </c:choose>
+        </c:choose>       
+        <link href="css/cadastroCliente.css" rel="stylesheet">
 
         <script type="text/javascript">
             function fMasc(objeto, mascara) {
-                obj = objeto
-                masc = mascara
+                obj = objeto;
+                masc = mascara;
                 setTimeout("fMascEx()", 1)
             }
             function fMascEx() {
@@ -33,7 +34,7 @@
                 tel = tel.replace(/\D/g, "")
                 tel = tel.replace(/^(\d)/, "($1")
                 tel = tel.replace(/(.{3})(\d)/, "$1)$2")
-                if (tel.length == 9) {
+                if (tel.length === 9) {
                     tel = tel.replace(/(.{1})$/, "-$1")
                 } else if (tel.length == 10) {
                     tel = tel.replace(/(.{2})$/, "-$1")
@@ -149,11 +150,8 @@
                 return v.replace(/\d/g, "") //Remove tudo o que não é Letra
             }
 
-
-
         </script>
 
-        <link href="css/cadastroCliente.css" rel="stylesheet">
     </head>
 
     <body>
@@ -168,12 +166,12 @@
                             <div class="form-group">
                                 <form method="post" action="" onSubmit="return (verifica())" name="frmEnvia"/>
                                 <label for="nome">Nome*</label>
-                                <input type="text" class="form-control" name="name" id="nome" onblur="checarNome();" onkeydown="javascript: fMasc(this, soLetras);" >
+                                <input type="text" class="form-control" name="name" id="nome" onblur="checarNome();" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Nome')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Sobrenome*</label>
-                                <input class="form-control" name="sobrenome" id="sobrenome" onkeydown="javascript: fMasc(this, soLetras);">
+                                <input class="form-control" name="sobrenome" id="sobrenome" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Sobrenome')" oninput="setCustomValidity('')"/>
                             </div>                   
 
                             <div class="form-group">
@@ -193,13 +191,13 @@
                             <div class="form-group">
                                 <form method="post" action="" onSubmit="return (verifica())" name="frmEnvia"/>
                                 <label for="desc" id="cpf">CPF*</label>
-                                <input class="form-control" type="text" name="cpf" id="cpf" onblur="checarCPF()();" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00" required>
+                                <input class="form-control" type="text" name="cpf" id="cpf" onblur="checarCPF()();" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00" required oninvalid="this.setCustomValidity('Preencha o CPF')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
                                 <form method="post" action="" onSubmit="return (verifica())" name="frmEnvia"/>
                                 <label for="desc" id="rgl">RG*</label>
-                                <input class="form-control" type="text" name="rg" id="rg" onblur="checarRG()();" onkeydown="javascript: fMasc(this, mRG);" maxlength="12" placeholder="Ex 00.000.000-0">
+                                <input class="form-control" type="text" name="rg" id="rg" onblur="checarRG()();" onkeydown="javascript: fMasc(this, mRG);" maxlength="12" placeholder="Ex 00.000.000-0" required oninvalid="this.setCustomValidity('Preencha o RG')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
@@ -222,12 +220,12 @@
 
                             <div class="form-group">
                                 <label for="desc" >End*</label>
-                                <input class="form-control" name="endereco" id="endereco" onkeydown="javascript: fMasc(this, soLetras);">
+                                <input class="form-control" name="endereco" id="endereco" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Endereço')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Número*</label>
-                                <input class="form-control" name="numCasa" id="numero" onkeydown="javascript: fMasc(this, mNum)" maxlength="6">
+                                <input class="form-control" name="numCasa" id="numero" onkeydown="javascript: fMasc(this, mNum)" maxlength="6" required oninvalid="this.setCustomValidity('Preencha o Número')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
@@ -237,12 +235,12 @@
 
                             <div class="form-group" >
                                 <label for="desc">CEP*</label>
-                                <input class="form-control" name="cep" id="cep" onblur="checarCEP();" onkeypress="return MM_formtCep(event, this, '#####-###');" maxlength="9" placeholder="Ex 00000-000">
+                                <input class="form-control" name="cep" id="cep" onblur="checarCEP();" onkeypress="return MM_formtCep(event, this, '#####-###');" maxlength="9" placeholder="Ex 00000-000" required oninvalid="this.setCustomValidity('Preencha o CEP')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Cidade*</label>
-                                <input class="form-control" name="cidade" id="cidade" onkeydown="javascript: fMasc(this, soLetras);">
+                                <input class="form-control" name="cidade" id="cidade" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha a Cidade')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
@@ -287,7 +285,7 @@
                                     <option value="3">Filial - Recife</option>
                                 </select>
                             </div>
-                            
+
                             <label id="mensagem">(*)Campos Obrigatórios</label>
 
                             <button type="submit" class="btn btn-default" name="submit" id="botaoSalvarCli">Cadastrar</button><br>
@@ -304,12 +302,12 @@
 
                             <div class="form-group">
                                 <label for="nome">Nome*</label>
-                                <input type="text" class="form-control" value="${cli.nome}" name="nome" id="nome" onblur="checarNome();" onkeydown="javascript: fMasc(this, soLetras);">
+                                <input type="text" class="form-control" value="${cli.nome}" name="nome" id="nome" onblur="checarNome();" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Nome')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Sobrenome*</label>
-                                <input class="form-control" name="sobrenome" value="${cli.sobrenome}" id="sobrenome" onkeydown="javascript: fMasc(this, soLetras);">
+                                <input class="form-control" name="sobrenome" value="${cli.sobrenome}" id="sobrenome" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Sobrenome')" oninput="setCustomValidity('')"/>
                             </div>                   
 
                             <div class="form-group">
@@ -334,12 +332,12 @@
 
                             <div class="form-group">
                                 <label for="desc" id="cpf">CPF*</label>
-                                <input class="form-control" type="text" name="cpf" value="${cli.cpf}" id="cpf" onblur="checarCPF()();" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00">
+                                <input class="form-control" type="text" name="cpf" value="${cli.cpf}" id="cpf" onblur="checarCPF();" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00" required oninvalid="this.setCustomValidity('Preencha o CPF')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="desc" id="rgl">RG*</label>
-                                <input class="form-control" type="text" name="rg" value="${cli.rg}" id="rg" onblur="checarRG()();" onkeydown="javascript: fMasc(this, mRG);" maxlength="12" placeholder="Ex 00.000.000-0">
+                                <input class="form-control" type="text" name="rg" value="${cli.rg}" id="rg" onblur="checarRG();" onkeydown="javascript: fMasc(this, mRG);" maxlength="12" placeholder="Ex 00.000.000-0" required oninvalid="this.setCustomValidity('Preencha o RG')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
@@ -359,12 +357,12 @@
 
                             <div class="form-group">
                                 <label for="desc" >End*</label>
-                                <input class="form-control" name="endereco" value="${cli.endereco}" id="endereco" onkeydown="javascript: fMasc(this, soLetras);">
+                                <input class="form-control" name="endereco" value="${cli.endereco}" id="endereco" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Endereço')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Número*</label>
-                                <input class="form-control" name="numCasa" value="${cli.numero}" id="numero" onkeydown="javascript: fMasc(this, mNum)" maxlength="6">
+                                <input class="form-control" name="numCasa" value="${cli.numero}" id="numero" onkeydown="javascript: fMasc(this, mNum)" maxlength="6" required oninvalid="this.setCustomValidity('Preencha o Número')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
@@ -374,12 +372,12 @@
 
                             <div class="form-group" >
                                 <label for="desc">CEP*</label>
-                                <input class="form-control" name="cep" value="${cli.cep}" id="cep" onblur="checarCEP();" onkeypress="return MM_formtCep(event, this, '#####-###');" maxlength="9" placeholder="Ex 00000-000">
+                                <input class="form-control" name="cep" value="${cli.cep}" id="cep" onblur="checarCEP();" onkeypress="return MM_formtCep(event, this, '#####-###');" maxlength="9" placeholder="Ex 00000-000" required oninvalid="this.setCustomValidity('Preencha o CEP')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="desc">Cidade*</label>
-                                <input class="form-control" name="cidade" value="${cli.cidade}" id="cidade" onkeydown="javascript: fMasc(this, soLetras);">
+                                <input class="form-control" name="cidade" value="${cli.cidade}" id="cidade" onkeydown="javascript: fMasc(this, soLetras);" required oninvalid="this.setCustomValidity('Preencha o Nome')" oninput="setCustomValidity('')"/>
                             </div>
 
                             <div class="form-group">
@@ -402,17 +400,17 @@
                                 <c:if test="${codigoempresa == 3}">
                                     <c:set var="nomeempresa" value="Matriz - Recife"/>
                                 </c:if>
-                                
+
                                 <label for="empresa" id="perfilCliLab">Empresa*</label>
                                 <select class="form-control" name="empresa" id="perfilCli">
                                     <option><c:out value="${nomeempresa}"/></option>
                                 </select>
-                                
+
                                 <label id="mensagem">(*)Campos Obrigatórios</label>
                             </div>
 
                             <button type="submit" class="btn btn-default">Salvar</button><br>
-                            
+
                         </form>
                     </div>
                 </div>        
