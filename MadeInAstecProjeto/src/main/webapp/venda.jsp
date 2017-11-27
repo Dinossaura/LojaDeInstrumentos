@@ -17,9 +17,9 @@
                 margin-bottom: 0;
             }
         </style>
-        
+
         <script>
-            
+
             function fMasc(objeto, mascara) {
                 obj = objeto
                 masc = mascara
@@ -28,7 +28,7 @@
             function fMascEx() {
                 obj.value = masc(obj.value)
             }
-            
+
             function mCPF(cpf) {
                 cpf = cpf.replace(/\D/g, "")
                 cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2")
@@ -36,7 +36,7 @@
                 cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
                 return cpf
             }
-            
+
         </script>
         <title>Venda</title>
     </head>
@@ -108,6 +108,8 @@
                         <th>Categoria</th>
                         <th>Estoque</th>
                         <th>Preço</th>
+                        <th>ID</th>
+
                     </tr>
                 </thead>
                 <c:forEach items="${ListaProduto}" var="produto">
@@ -116,12 +118,14 @@
                         <td><c:out value="${produto.categoria}" /></td>
                         <td><c:out value="${produto.estoque}" /></td>
                         <td><c:out value="${produto.precovenda}" /></td>
+                        <td><c:out value="${produto.codigo}" /></td>
 
                         <td>
+
                             <div>
-                                <form class="form-control-static" action="${pageContext.request.contextPath}/FazerFuncaoDoBotao" method="post" >
+                                <form class="form-control-static" action="${pageContext.request.contextPath}/ListagemDeCarrinhoServlet" method="post" >
                                     <div class="form-group">
-                                        <button type="submit" name="nomeproduto" value="${cliente.cpf}" 
+                                        <button type="submit" name="nomeproduto" value="${produto.nome}" 
                                                 class="btn btn-success center-block">Adicionar</button>
                                     </div>
                                 </form>                              
@@ -134,29 +138,6 @@
         </div>
 
 
-        <div>
-            <button type="submit" class="btn btn-success center-block">Adicionar</button>
-        </div><br><br>
-        <div>
-            <button type="submit" class="btn btn-success center-block">Retirar</button>
-        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <jsp:include page="rodape.jsp"/>
     </body>
-
 </html>
