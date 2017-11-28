@@ -17,17 +17,14 @@ import java.util.List;
  *
  * @author Magno
  */
-public class ServicoCarrinho {
-        CarrinhoDAO carrinhoDAO = new CarrinhoDAO();
-        ItemCarrinhoDAO itemVendaDAO = new ItemCarrinhoDAO();
+public class ServicoItemCarrinho {
+        ItemCarrinhoDAO itemCarrinhoDAO = new ItemCarrinhoDAO();
     
        //Insere um Produto na fonte de dados Carrinho
-    public Integer cadastrarCarrinho(Carrinho carrinho) throws CarrinhoException, DataSourceException, ItemCarrinhoException, Exception{
-
-        ValidadorCarrinho.validar(carrinho);
+    public void cadastraritemCarrinho(int codigocarrinho, int codigoproduto, int quantidade) throws CarrinhoException, DataSourceException, ItemCarrinhoException, Exception{
 
         try {
-            return carrinhoDAO.inserirCarrinho(carrinho);
+            itemCarrinhoDAO.cadastrarItemCarrinho(codigocarrinho, codigoproduto, quantidade);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
@@ -39,33 +36,22 @@ public class ServicoCarrinho {
 
 
         try {
-            carrinhoDAO.deletarCarrinho(codigocarrinho);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new DataSourceException("Erro na fonte de dados", e);
-        }
-    }
-   //Exclui carrinho e dados do topo do carrinho
-    public void alteraValorCarrinho(Double valor) throws CarrinhoException, DataSourceException, ItemCarrinhoException, Exception{
-
-
-        try {
-            carrinhoDAO.alterarValor(valor);
+            itemCarrinhoDAO.deletarItemCarrinho(codigocarrinho);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
     
-    //Retorna Carrinho
-   public Carrinho retornaCarrinho(int codigocarrinho) throws CarrinhoException, DataSourceException, ItemCarrinhoException, Exception{
-
-
+    //Realiza a pesquisa de um cliente por nome na fonte de dados
+    public List<ItemCarrinho> listarItensCarrinho(int codigocarrinho) throws DataSourceException, Exception {
         try {
-            return carrinhoDAO.retornaCarrinho(codigocarrinho);
+            return itemCarrinhoDAO.listarItensCarrinho(codigocarrinho);
+            
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
+            
         }
     }
 }

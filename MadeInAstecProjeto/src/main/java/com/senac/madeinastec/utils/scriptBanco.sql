@@ -51,10 +51,12 @@ CREATE TABLE Clientes (
 CREATE TABLE Carrinho (
     codigo INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     codigocliente INTEGER NOT NULL,
-    datacarrinho TIMESTAMP NOT NULL,
+    datacarrinho VARCHAR(10) NOT NULL,
     valortotal DECIMAL(5,2) NOT NULL,
+    codigoempresa INTEGER NOT NULL,
     CONSTRAINT primary_keycar PRIMARY KEY (codigo),
-    CONSTRAINT foreign_keycar FOREIGN KEY (codigocliente) REFERENCES Clientes(id)
+    CONSTRAINT foreign_keycar FOREIGN KEY (codigocliente) REFERENCES Clientes(id),
+    CONSTRAINT foreign_keyvenempcar FOREIGN KEY (codigoempresa) REFERENCES Empresas(codigo)
 );
 
 CREATE TABLE Fornecedor (
@@ -98,8 +100,10 @@ CREATE TABLE Venda(
     codigocliente INTEGER NOT NULL,
     datavenda TIMESTAMP NOT NULL,
     valortotal DECIMAL(5,2) NOT NULL,
+    codigoempresa INTEGER NOT NULL,
     CONSTRAINT primary_keyven PRIMARY KEY (codigo),
-    CONSTRAINT foreign_keyvencli FOREIGN KEY (codigocliente) REFERENCES Clientes(id)
+    CONSTRAINT foreign_keyvencli FOREIGN KEY (codigocliente) REFERENCES Clientes(id),
+    CONSTRAINT foreign_keyvenemp FOREIGN KEY (codigoempresa) REFERENCES Empresas(codigo)
 );
 
 CREATE TABLE Itemvenda (

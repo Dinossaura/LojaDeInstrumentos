@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -29,8 +30,8 @@ public class CarrinhoDAO {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setInt(1, carrinho.getCliente().getId());
-            preparedStatement.setTimestamp(2, carrinho.getData());
+            preparedStatement.setInt(1, carrinho.getCodigoCliente());
+            preparedStatement.setString(2, carrinho.getData());
             preparedStatement.setDouble(3, carrinho.getValorTotal());
             preparedStatement.setInt(4, carrinho.getCodigoempresa());
             
@@ -62,5 +63,47 @@ public class CarrinhoDAO {
         throw new Exception("Erro ao deletar o carrinho", ex);
         
     }
+    }
+    
+    //Altera valor total do carrinho
+    public void alterarValor(double valor) throws Exception{
+        String query = "UPDATE carrinho SET valortotal= ?";
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setDouble(1, valor);
+
+            preparedStatement.execute();
+            System.out.println("Valor Alterado");
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao deletar o carrinho", ex);
+        
+        }
+    }
+    
+    public Carrinho retornaCarrinho(int codigocarrinho) throws Exception{
+         String query = " Select * from carrinho WHERE codigo = ?";
+         Carrinho carrinho = new Carrinho();
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            
+            preparedStatement.setInt(1, codigocarrinho);
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            while (rs.next()){
+                carrinho.setCodigo(rs.getInt(1));
+                carrinho.setCliente(rs.getInt(2));
+                carrinho.setData(rs.getString(3));
+                carrinho.setValorTotal(rs.getDouble(4));
+                carrinho.setCodigoempresa(rs.getInt(5));            
+            }
+            
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao listar carrinho", ex);
+        }
+          
+        return carrinho;
+       
     }
 }

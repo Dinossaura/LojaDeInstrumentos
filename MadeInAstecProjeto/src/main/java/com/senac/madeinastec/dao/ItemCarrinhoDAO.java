@@ -26,34 +26,34 @@ public class ItemCarrinhoDAO {
         Connection conn = conexaoBanco.createConnection();
     
     //Cadastra item em determinado carrinho
-    public void cadastrarItemCarrinho(ItemCarrinho itemcarrinho, int codigo){
+    public void cadastrarItemCarrinho(int codigocarrinho, int codigoproduto, int quantidade){
                  String query = " insert into itemcarrinho (codigocarrinho, codigoproduto, quantidade )"
         + " values (?, ?, ?)";
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setInt(1, codigo);
-            preparedStatement.setInt(2, itemcarrinho.getProduto());
-            preparedStatement.setInt(3, itemcarrinho.getQuantidade());
+            preparedStatement.setInt(1, codigocarrinho);
+            preparedStatement.setInt(2, codigoproduto);
+            preparedStatement.setInt(3, quantidade);
 
             preparedStatement.execute();
             preparedStatement.close();
         } catch (SQLException ex) {
-            System.out.println("Erro ao salvar carrinho");
+            System.out.println("Erro ao salvar item no carrinho");
         }
     }
     
     //Deleta item de determinado carrinho
-    public void deletarItemCarrinho(int codigo) throws Exception{
-            System.out.println("Deletando itemCarrinho codigo: "+codigo);
-            String query = "DELETE FROM itemcarrinho WHERE codigo=?";
+    public void deletarItemCarrinho(int codigocarrinho) throws Exception{
+            System.out.println("Deletando carrinho codigo: "+codigocarrinho);
+            String query = "DELETE FROM itemcarrinho WHERE codigocarrinho=?";
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             
-            preparedStatement.setInt(1, codigo);            
+            preparedStatement.setInt(1, codigocarrinho);            
             preparedStatement.execute();
             
             System.out.println("ItemCarrinho deletado");
@@ -71,7 +71,7 @@ public class ItemCarrinhoDAO {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1,"%"+codigocarrinho+"%");
+            preparedStatement.setInt(1, codigocarrinho);
             
             ResultSet rs = preparedStatement.executeQuery();
 

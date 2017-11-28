@@ -13,8 +13,8 @@ import java.util.Date;
  */
 public class Carrinho {
      private Integer codigo;
-     private Cliente cliente;
-     private Timestamp data;
+     private Integer codigoCliente;
+     private String data;
      private Double valorTotal;
      private Integer codigoempresa;
      
@@ -34,19 +34,19 @@ public class Carrinho {
         this.codigo = codigo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Integer getCodigoCliente() {
+        return codigoCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(int codigoCliente) {
+        this.codigoCliente = codigoCliente;
     }
 
-    public Timestamp getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Timestamp data) {
+    public void setData(String data) {
         this.data = data;
     }
 

@@ -199,6 +199,49 @@ public class ClienteDAO {
         
         return cliente;
     }
+        public Cliente encontrarClientePorIdCarrinho(int id, int codigoempresa) throws Exception{
+        System.out.println("Iniciando listagem de cliente...");
+        
+        Cliente cliente = new Cliente();
+        String query = "SELECT * FROM clientes WHERE id=? and codigoempresa = ?";
+
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1,String.valueOf(id));
+            preparedStatement.setString(2,String.valueOf(codigoempresa));
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            System.out.println("Busca efetuada com sucesso");
+            
+            while (rs.next()){
+                cliente.setId(rs.getInt(1));
+                cliente.setNome(rs.getString(2));
+                cliente.setSobrenome(rs.getString(3));
+                cliente.setSexo(rs.getString(4));
+                cliente.setCpf(rs.getString(5));
+                cliente.setRg(rs.getString(6));            
+                cliente.setIdade(rs.getString(7));                
+                cliente.setTelefone(rs.getString(8));
+                cliente.setTelefone2(rs.getString(9));
+                cliente.setEmail(rs.getString(10));
+                cliente.setEndereco(rs.getString(11));
+                cliente.setNumero(rs.getString(12));
+                cliente.setComplemento(rs.getString(13));
+                cliente.setCidade(rs.getString(14));
+                cliente.setEstado(rs.getString(15));
+                cliente.setEmpresa(rs.getInt(16));
+                cliente.setCep(rs.getString(17));
+            }
+            
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao listar cliente", ex);
+        }
+
+        
+        return cliente;
+    }
+        
         public Cliente encontrarClientePorId(int id) throws Exception{
         System.out.println("Iniciando listagem de cliente...");
         
@@ -208,7 +251,7 @@ public class ClienteDAO {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,String.valueOf(id));
-         
+            
             ResultSet rs = preparedStatement.executeQuery();
             
             System.out.println("Busca efetuada com sucesso");

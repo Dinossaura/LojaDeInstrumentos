@@ -72,6 +72,19 @@ public class ServicoCliente {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
+    
+    //Realiza a pesquisa de um cliente por nome na fonte de dados
+    public Cliente obterClientePorCodigo(int codigo, int codigoempresa) throws ClienteException, DataSourceException, Exception {
+        try {
+          
+                return clienteDAO.encontrarClientePorIdCarrinho(codigo, codigoempresa);
+         
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+
 
     //Exclui o cliente com ID informado do mock
     public void excluirCliente(String cpf, int codigoempresa) throws ClienteException, DataSourceException, Exception {
