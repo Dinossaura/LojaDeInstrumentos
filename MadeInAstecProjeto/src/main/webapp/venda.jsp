@@ -3,15 +3,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <style>
             .jumbotron {
                 margin-bottom: 0;
@@ -48,14 +39,11 @@
             <form class="form-control-static" action="${pageContext.request.contextPath}/ConsultaClientesVendaServlet" method="post">
                 <div class="form-group" id="cliente">
                     <label for="CPF">Cliente</label>
-                    <input type="text" class="form-control" name="cpfCliente" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00"><br><br>
-
+                    <input type="text" class="form-control" name="cpfCliente" onkeydown="javascript: fMasc(this, mCPF);" maxlength="14" placeholder="Ex 000.000.000-00">
                 </div>
                 <button type="submit" class="btn btn-success center-block">Pesquisar</button>
             </form>
-
-
-
+                
             <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaClientes">
                 <thead>
                     <tr>
@@ -63,6 +51,7 @@
                         <th>Nome</th>
                         <th>Sobrenome</th>
                         <th>Telefone</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <c:forEach items="${ListaClientes}" var="cliente">
@@ -88,15 +77,14 @@
 
 
             </table>
-        </div><br><br><br><br><br><br>
-
+        </div> 
+        <hr class="btn-default">
         <div class="container" align="center">
 
             <form class="form-control-static" action="${pageContext.request.contextPath}/ConsultaProdutosVendaServlet" method="post">
                 <div class="form-group" id="produto">
-                    <label for="Prod">Produdo</label>
-                    <input type="text" class="form-control" name="nomeProd" placeholder="Digite o nome do Produto"><br><br>
-
+                    <label for="Prod">Produtos</label>
+                    <input type="text" class="form-control" name="nomeProd" placeholder="Digite o nome do Produto">
                 </div>
                 <button type="submit" class="btn btn-success center-block">Pesquisar</button>
             </form>
@@ -109,7 +97,7 @@
                         <th>Estoque</th>
                         <th>Preço</th>
                         <th>ID</th>
-
+                        <th>Carrinho</th>
                     </tr>
                 </thead>
                 <c:forEach items="${ListaProduto}" var="produto">
@@ -120,14 +108,15 @@
                         <td><c:out value="${produto.precovenda}" /></td>
                         <td><c:out value="${produto.codigo}" /></td>
 
-                        <td>
-
+                        <td class="col-sm-1">
                             <div>
                                 <form class="form-control-static" action="${pageContext.request.contextPath}/ListagemDeCarrinhoServlet" method="post" >
-                                    <div class="form-group">
-                                        <button type="submit" name="nomeproduto" value="${produto.nome}" 
+                                        <div class="form-group">
+                                          <input type="number" class="form-control center-block" maxlength="4" name="qtdProd" placeholder="Qtd">    
+                                          
+                                        </div>
+                                        <button type="submit" name="nomeproduto" value="${produto.codigo}" 
                                                 class="btn btn-success center-block">Adicionar</button>
-                                    </div>
                                 </form>                              
 
                             </div>
@@ -136,8 +125,11 @@
                 </c:forEach>
             </table>
         </div>
-
-
-
+        <div class="container" align="center">
+            <form class="form-control-static" action="${pageContext.request.contextPath}/ConsultaCarrinhoServlet" method="post">
+                <button type="submit" class="btn btn-info center-block">Ir para Carrinho</button>
+            </form>
+        </div>
+    <jsp:include page="rodape.jsp"/>           
     </body>
 </html>
