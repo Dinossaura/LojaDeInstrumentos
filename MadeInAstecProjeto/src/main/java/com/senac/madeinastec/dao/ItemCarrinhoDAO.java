@@ -45,7 +45,7 @@ public class ItemCarrinhoDAO {
     }
     
     //Deleta item de determinado carrinho
-    public void deletarItemCarrinho(int codigocarrinho) throws Exception{
+    public void deletarItensCarrinho(int codigocarrinho) throws Exception{
             System.out.println("Deletando carrinho codigo: "+codigocarrinho);
             String query = "DELETE FROM itemcarrinho WHERE codigocarrinho=?";
         
@@ -54,6 +54,25 @@ public class ItemCarrinhoDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(query);
             
             preparedStatement.setInt(1, codigocarrinho);            
+            preparedStatement.execute();
+            
+            System.out.println("ItemCarrinho deletado");
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao deletar Item do carrinho", ex);
+        }
+    }
+    
+    //Deleta item de determinado carrinho
+    public void deletarItemCarrinho(int codigocarrinho, int codigoitem) throws Exception{
+            System.out.println("Deletando item codigo: "+codigoitem);
+            String query = "DELETE FROM itemcarrinho WHERE codigocarrinho=? and codigo=?";
+        
+        
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            
+            preparedStatement.setInt(1, codigocarrinho); 
+             preparedStatement.setInt(2, codigoitem); 
             preparedStatement.execute();
             
             System.out.println("ItemCarrinho deletado");

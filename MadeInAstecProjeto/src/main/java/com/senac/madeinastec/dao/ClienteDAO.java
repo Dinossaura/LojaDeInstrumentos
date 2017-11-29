@@ -116,13 +116,60 @@ public class ClienteDAO {
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-//          
+            
             if(vazio != true){
                 preparedStatement.setString(1,"%"+nome+"%");
                 preparedStatement.setInt(2,codigoempresa);
             }else{
                 preparedStatement.setInt(1,codigoempresa);
             }
+            
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                Cliente cliente = new Cliente();
+                
+                cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setSobrenome(rs.getString("sobrenome"));
+                cliente.setSexo(rs.getString("sexo"));
+                cliente.setCpf(rs.getString("cpf"));
+                cliente.setRg(rs.getString("rg"));            
+                cliente.setIdade(rs.getString("datanasc"));                
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setTelefone2(rs.getString("telefone2"));
+                cliente.setEmail(rs.getString("email"));
+                cliente.setEndereco(rs.getString("endereco"));
+                cliente.setNumero(rs.getString("numero"));
+                cliente.setComplemento(rs.getString("complemento"));
+                cliente.setCidade(rs.getString("cidade"));
+                cliente.setEstado(rs.getString("estado"));
+                cliente.setEmpresa(rs.getInt("codigoempresa"));
+                cliente.setCep(rs.getString("cep"));
+                lista.add(cliente);
+            }
+            
+        } catch (SQLException ex) {
+            throw new Exception("Erro ao listar cliente", ex);
+        }
+
+        
+        return lista;
+    
+    }
+    
+    public List<Cliente> listarClientes(int codigoempresa) throws Exception{
+        System.out.println("Iniciando listagem de cliente...");
+        List<Cliente> lista = new ArrayList<>();
+        String query = "";
+        
+        boolean vazio = true;
+              
+        query = "SELECT * FROM clientes WHERE codigoempresa=?";
+        
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+
+            preparedStatement.setInt(1,codigoempresa);
             
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){

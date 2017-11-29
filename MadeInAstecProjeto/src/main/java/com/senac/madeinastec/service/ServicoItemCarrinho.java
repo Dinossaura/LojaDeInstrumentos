@@ -36,14 +36,25 @@ public class ServicoItemCarrinho {
 
 
         try {
-            itemCarrinhoDAO.deletarItemCarrinho(codigocarrinho);
+            itemCarrinhoDAO.deletarItensCarrinho(codigocarrinho);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
     
-    //Realiza a pesquisa de um cliente por nome na fonte de dados
+    //Exclui carrinho e dados do topo do carrinho
+    public void excluiritemCarrinho(int codigocarrinho, int codigoitem) throws CarrinhoException, DataSourceException, ItemCarrinhoException, Exception{
+
+        try {
+            itemCarrinhoDAO.deletarItemCarrinho(codigocarrinho, codigoitem);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+    
+    //Realiza a pesquisa e retorna todos os produtos da fonte de dados
     public List<ItemCarrinho> listarItensCarrinho(int codigocarrinho) throws DataSourceException, Exception {
         try {
             return itemCarrinhoDAO.listarItensCarrinho(codigocarrinho);

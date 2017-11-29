@@ -155,7 +155,8 @@
                     </table>
         </div>
         <div class="container" align="center">
-            <form class="form-control-static" action="${pageContext.request.contextPath}/ConsultaCarrinhoServlet" method="post">
+            <form class="form-control-static" action="${pageContext.request.contextPath}/listagemcarrinho" method="post">
+                <input type="hidden" name="codigocarrinho" value="${codigocarrinho}">
                 <button type="submit" class="btn btn-info center-block">Ir para Carrinho</button>
             </form>
         </div>

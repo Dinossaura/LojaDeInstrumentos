@@ -98,4 +98,16 @@ public class ServicoCliente {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
     }
+    
+    //Lista produtos de determinada empresa
+    public List<Cliente> listarClientes(int codigoempresa) throws DataSourceException, Exception {
+        try {
+            return clienteDAO.listarClientes(codigoempresa);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+            
+        }
+    }
 }

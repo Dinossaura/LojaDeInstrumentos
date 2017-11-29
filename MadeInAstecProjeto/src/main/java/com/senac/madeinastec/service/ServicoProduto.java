@@ -98,5 +98,17 @@ public class ServicoProduto {
         } catch (Exception e) {
             throw new DataSourceException("Erro na fonte de dados", e);
         }
-}
+    }
+    
+    //Lista produtos de determinada empresa
+    public List<Produto> listarProdutos(int codigoempresa) throws DataSourceException, Exception {
+        try {
+            return produtoDAO.listarProdutos(codigoempresa);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+            
+        }
+    }
 }
