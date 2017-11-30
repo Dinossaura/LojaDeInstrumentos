@@ -79,6 +79,12 @@ public class CadastrarItemCarrinhoServlet extends HttpServlet {
                 
             } catch (Exception e) {
             }
+            Produto p = new Produto();
+            produto = p;
+            codigocarrinho = "";
+            codigoproduto = "";
+            quantidade = "";
+            
             response.sendRedirect(request.getContextPath() + "/venda.jsp");
         
         }
