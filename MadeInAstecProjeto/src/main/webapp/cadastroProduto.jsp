@@ -251,9 +251,15 @@
                         <div class="form-group">
                             <label for="empresa" id="perfilLab">Empresa*</label>
                             <select class="form-control" name="empresa" id="perfilProduto">
-                                <option value="1">Matriz - São Paulo</option>
-                                <option value="2">Filial - Porto Alegre</option>
-                                <option value="3">Filial - Recife</option>
+                                    <c:if test="${Empresa == 1}">
+                                        <option value="1">Matriz - São Paulo</option>
+                                    </c:if>
+                                    <c:if test="${Empresa == 2}">
+                                        <option value="2">Filial - Porto Alegre</option>
+                                    </c:if>
+                                    <c:if test="${Empresa == 3}">
+                                      <option value="3">Filial - Recife</option>
+                                    </c:if>
                             </select>
                         </div>
 
