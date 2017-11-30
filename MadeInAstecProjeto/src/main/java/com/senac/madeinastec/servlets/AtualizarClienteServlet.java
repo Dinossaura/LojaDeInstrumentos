@@ -39,7 +39,7 @@ public class AtualizarClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         String id = request.getParameter("idEscondido");
         System.out.println(request.getParameter("idEscondido"));
-        String nome = request.getParameter("name");
+        String nome = request.getParameter("name").toLowerCase();
         String sobrenome = request.getParameter("sobrenome");
         String sexo = request.getParameter("sexo");
         String dataNasc = request.getParameter("dataNasc");

@@ -37,7 +37,7 @@ public class CadastrarFornecedorServlet extends HttpServlet {
           request.setCharacterEncoding("UTF-8");
           HttpSession sessao = request.getSession();
         
-        String fornecedor = request.getParameter("fornecedor");
+        String fornecedor = request.getParameter("fornecedor").toLowerCase();
         String empresa = request.getParameter("empresa");
         String endereco = request.getParameter("endereco");
         String numero = request.getParameter("numero");

@@ -21,7 +21,7 @@ public class FornecedorDAO {
     public void inserirFornecedor(Fornecedor fornecedor){
         System.out.println("Iniciando processo de inserção de fornecedor...");
         String query = "insert into fornecedor (nome, codigoempresa, endereco, numero, complemento, " +
-                                              " cidade, estado, telefone) values (?, ?, ?, ?, ?, ?, ?)";
+                                              " cidade, estado, telefone) values (?, ?, ?, ?, ?, ?, ?, ?)";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -95,7 +95,7 @@ public class FornecedorDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             if(vazio != true){
-                preparedStatement.setString(1,"%"+nome+"%");
+                preparedStatement.setString(1, nome+"%");
                 preparedStatement.setInt(2,codigoempresa);
             }else{
                 preparedStatement.setInt(1,codigoempresa);

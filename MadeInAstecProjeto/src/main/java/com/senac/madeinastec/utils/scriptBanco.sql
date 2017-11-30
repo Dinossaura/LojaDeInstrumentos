@@ -140,59 +140,59 @@ INSERT INTO Perfil (perfil) VALUES ('Funcionário Retaguarda');
 INSERT INTO Perfil (perfil) VALUES ('Vendedor');
 INSERT INTO Perfil (perfil) VALUES ('Suporte Técnico');
 
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('DAddarío', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 1
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Fender', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 2
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Gibson', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 3
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Roland', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 4
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Martin e Co', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 5
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Casio', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); --6
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('|BlackStar', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 7
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Mark Bass', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 8
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('IK MultiMedia', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 9
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Boss', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 10
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Korg', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 11
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Tagina', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 12
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Ibanez', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 13
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Sigma Guitars', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 14
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Shure', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 15
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Eletro-Harmonix', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 16
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('On-Stage', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 17
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('daddarío', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 1
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('fender', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 2
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('gibson', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 3
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('roland', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 4
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('martin e co', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 5
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('casio', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); --6
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('blackStar', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 7
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('mark bass', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 8
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('ik multimedia', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 9
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('boss', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 10
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('korg', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 11
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('tagina', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 12
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('ibanez', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 13
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('sigma guitars', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 14
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('shure', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 15
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('eletro-harmonix', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 16
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('on-stage', 1, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 17
 
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('DAddarío', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 18
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Fender', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 19
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Gibson', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 20
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Roland', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 21
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Martin e Co', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 22
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Casio', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 23
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('BlackStar', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 24
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Mark Bass', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 25
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('IK MultiMedia', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); --26
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Boss', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 27
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Korg', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 28
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Tagina', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 29
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Ibanez', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 30
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Sigma Guitars', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 31
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Shure', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 32
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Eletro-Harmonix', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); --33
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('On-Stage', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 34
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('daddarío', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 18
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('fender', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 19
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('gibson', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 20
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('roland', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 21
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('martin e co', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 22
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('casio', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 23
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('blackstar', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 24
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('mark bass', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 25
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('ik multimedia', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); --26
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('boss', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 27
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('korg', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 28
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('tagina', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 29
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('ibanez', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 30
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('sigma guitars', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 31
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('shure', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 32
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('eletro-harmonix', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); --33
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('on-stage', 2, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 34
 
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('DAddarío', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 35
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Fender', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 36
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Gibson', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 37
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Roland', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 38
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Martin e Co', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 39
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Casio', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 40
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('BlackStar', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 41
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Mark Bass', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 42
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('IK MultiMedia', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 43
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Boss', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 44
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Korg', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 45
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Tagina', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 46
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Ibanez', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 47
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Sigma Guitars', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 48
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Shure', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 49
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('Eletro-Harmonix', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 50
-INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('On-Stage', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 51
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('daddarío', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 35
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('fender', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 36
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('gibson', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 37
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('roland', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 38
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('martin e co', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 39
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('casio', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 40
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('blackstar', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 41
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('mark bass', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 42
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('ik multimedia', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 43
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('boss', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 44
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('korg', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 45
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('tagina', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 46
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('ibanez', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 47
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('sigma guitars', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 48
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('shure', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 49
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('eletro-harmonix', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 50
+INSERT INTO FORNECEDOR (nome, codigoempresa, endereco, numero, cidade, estado, telefone) VALUES ('on-stage', 3, 'Avenida Luiz Carlos Berrini', '19199', 'São Paulo', 'SP', '(11)5555-8888'); -- 51
 
 -- Categorias e Códigos
 INSERT INTO CATEGORIA (nome) VALUES ('Audio Profissional'); -- 1
@@ -204,29 +204,29 @@ INSERT INTO CATEGORIA (nome) VALUES ('Sopro');
 
 -- 3 produtos para Categoria 1 e empresa 1
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'Pedestal para Microfone Euro Boom', 'Pedestal para Microfone feito de liga de Metal híbrida, com pernas retráteis e excelente qualidade', 17, 1, 100.00, 159.00, 20);
+            VALUES   (1, 'pedestal para microfone euro boom', 'Pedestal para Microfone feito de liga de Metal híbrida, com pernas retráteis e excelente qualidade', 17, 1, 100.00, 159.00, 20);
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'Pedestal para Microfone com Base Redonda', 'Pedestal com base redonda e embreagem de bloqueio de meio ponto em aço', 17, 1, 120.00, 189.00, 20);
+            VALUES   (1, 'pedestal para microfone com base redonda', 'Pedestal com base redonda e embreagem de bloqueio de meio ponto em aço', 17, 1, 120.00, 189.00, 20);
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'Cachimbo para Microfone', 'Cachimbo para Microfone Dinâmico My100', 17, 1, 20.00, 39.00, 20);
+            VALUES   (1, 'cachimbo para microfone', 'Cachimbo para Microfone Dinâmico My100', 17, 1, 20.00, 39.00, 20);
 
 -- 3 Produtos para Categoria 2 e empresa 1
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'Bateria Acústica Garage Rock', 'Bateria Acústica Garage Rock com Bumbo 22", caixa 14", Surdo 16" e toms 10" e 12" Nagano', 1, 2, 1500.00, 2499.00, 20);
+            VALUES   (1, 'bateria acústica garage rock', 'Bateria Acústica Garage Rock com Bumbo 22", caixa 14", Surdo 16" e toms 10" e 12" Nagano', 1, 2, 1500.00, 2499.00, 20);
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'Caixa para Bateria Armory', 'Caixa para Bateria Armory 14x6,5" aço Martelad', 1, 2, 500.00, 1389.00, 20);
+            VALUES   (1, 'caixa para bateria armory', 'Caixa para Bateria Armory 14x6,5" aço Martelad', 1, 2, 500.00, 1389.00, 20);
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'Caixa pra Bateria 14x8"', 'Caixa pra Bateria 14x8" Mpx Mpml4800c Maple Natural Mapex', 1, 2, 200.00, 719.00, 20);
+            VALUES   (1, 'caixa para bateria 14x8"', 'Caixa pra Bateria 14x8" Mpx Mpml4800c Maple Natural Mapex', 1, 2, 200.00, 719.00, 20);
 
 
 INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('admin1', 'admin1', 'admin1', 1, 1);
 INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('admin2', 'admin2', 'admin2', 1, 2);
 INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('admin3', 'admin3', 'admin3', 1, 3);
-INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Gerente Produtos e Serviços', 'gprodutos', 'gprodutos', 2, 1);
-INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Gerente Venda', 'gvendas', 'gvendas', 3, 1);
-INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Gerente TI', 'gti', 'gti', 4, 1);
-INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Funcionario Retaguarda', 'retaguarda', 'retaguarda', 5, 1);
-INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Vendedor', 'vendedor', 'vendedor', 6, 1);
-INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Suporte', 'suporte', 'suporte', 7, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('gerente produtos e serviços', 'gprodutos', 'gprodutos', 2, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('gerente venda', 'gvendas', 'gvendas', 3, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('gerente ti', 'gti', 'gti', 4, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('funcionario retaguarda', 'retaguarda', 'retaguarda', 5, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('vendedor', 'vendedor', 'vendedor', 6, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('suporte', 'suporte', 'suporte', 7, 1);
 
 

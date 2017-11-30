@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
         ServicoUsuario su = new ServicoUsuario();
         HttpSession sessao = request.getSession();
         
-        String usuario = request.getParameter("usuario");
+        String usuario = request.getParameter("usuario").toLowerCase();
         String senha = request.getParameter("senha");
         String empresa = request.getParameter("empresa");
         

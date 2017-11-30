@@ -59,7 +59,7 @@ public class ConsultaUsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         Usuario u = new Usuario();
         
-        String login = request.getParameter("usuario").toUpperCase();
+        String login = request.getParameter("usuario").toLowerCase();
         String senha = request.getParameter("senha");
         String empresa = request.getParameter("empresa");
      

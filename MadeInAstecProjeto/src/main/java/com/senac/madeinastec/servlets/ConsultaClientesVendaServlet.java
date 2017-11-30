@@ -62,7 +62,7 @@ public class ConsultaClientesVendaServlet extends HttpServlet {
         Cliente c = new Cliente();
         
        
-        ArrayList<Cliente> Lista = new ArrayList();
+        List<Cliente> Lista = new ArrayList();
         
        
         ServicoCliente sc = new ServicoCliente();
@@ -75,9 +75,13 @@ public class ConsultaClientesVendaServlet extends HttpServlet {
         String codigoempresa = (String) sessao.getAttribute("Empresa");
         
         try {
-           
-            c = sc.obterClientePorCpf(cliente, Integer.parseInt(codigoempresa));
-            Lista.add(c);
+            if(cliente.length() != 0){
+               c = sc.obterClientePorCpf(cliente, Integer.parseInt(codigoempresa));
+                Lista.add(c); 
+            }else{
+                Lista = sc.listarClientes(Integer.parseInt(codigoempresa));
+            }
+            
            
         } catch (Exception e) {
             e.printStackTrace();

@@ -57,8 +57,8 @@ public class CadastrarClienteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        String nome = request.getParameter("name");
-        String sobrenome = request.getParameter("sobrenome");
+        String nome = request.getParameter("name").toLowerCase();
+        String sobrenome = request.getParameter("sobrenome").toLowerCase();
         String sexo = request.getParameter("sexo");
         String dataNasc = request.getParameter("dataNasc");
         System.out.println(request.getParameter("dataNasc"));
@@ -66,11 +66,11 @@ public class CadastrarClienteServlet extends HttpServlet {
         String rg = request.getParameter("rg");
         String tel1 = request.getParameter("tel1");
         String tel2 = request.getParameter("tel2");
-        String email = request.getParameter("email");
+        String email = request.getParameter("email").toLowerCase();
         String numCasa = request.getParameter("numCasa");
-        String complemento = request.getParameter("complemento");
-        String end = request.getParameter("endereco");
-        String cidade = request.getParameter("cidade");
+        String complemento = request.getParameter("complemento").toLowerCase();
+        String end = request.getParameter("endereco").toLowerCase();
+        String cidade = request.getParameter("cidade").toLowerCase();
         String cep = request.getParameter("cep");
         String estado = request.getParameter("estados");
         String empresa = request.getParameter("empresa");

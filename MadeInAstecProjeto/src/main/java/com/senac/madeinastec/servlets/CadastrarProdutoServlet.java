@@ -37,8 +37,8 @@ public class CadastrarProdutoServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
                 
-        String produto = request.getParameter("prod");
-        String desc = request.getParameter("descProd");
+        String produto = request.getParameter("prod").toLowerCase();
+        String desc = request.getParameter("descProd").toLowerCase();
         String cat = request.getParameter("categ");
         String codE = request.getParameter("empresa");
         String fornecedor = request.getParameter("fornecedor");

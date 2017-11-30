@@ -76,7 +76,7 @@ public class AlterarClienteServlet extends HttpServlet {
             Cliente c = new Cliente();
             c = (Cliente) sessao.getAttribute("cli");
             request.setCharacterEncoding("UTF-8");
-            String nome = request.getParameter("nome");
+            String nome = request.getParameter("nome").toLowerCase();
             String sobrenome = request.getParameter("sobrenome");
             String sexo = request.getParameter("sexo");
             String dataNasc = request.getParameter("dataNasc");

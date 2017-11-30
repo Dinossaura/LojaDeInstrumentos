@@ -73,7 +73,7 @@ public class ConsultaProdutoServlet extends HttpServlet {
         HttpSession sessao = request.getSession();
         
         //Atribuição de valores digitados na tela de fornecedor e código da empresa
-        String produto = request.getParameter("produto").toUpperCase();
+        String produto = request.getParameter("produto").toLowerCase();
         String codigoempresa = (String) sessao.getAttribute("Empresa");
         
         try {

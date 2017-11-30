@@ -83,7 +83,7 @@ public class UsuarioDAO extends ConexaoBanco{
             if(vazio == true){
                 preparedStatement.setInt(1,codigoempresa);
             }else{
-                preparedStatement.setString(1,"%"+nome+"%");
+                preparedStatement.setString(1, nome+"%");
                 preparedStatement.setInt(2,codigoempresa);
             }
             

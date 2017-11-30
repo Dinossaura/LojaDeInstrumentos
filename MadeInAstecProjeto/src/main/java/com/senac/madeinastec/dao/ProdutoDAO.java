@@ -110,7 +110,7 @@ public class ProdutoDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             if(vazio != true){
-                preparedStatement.setString(1,"%"+nome+"%");
+                preparedStatement.setString(1, nome+"%");
                 preparedStatement.setInt(2,codigoempresa);
             }else{
                 preparedStatement.setInt(1,codigoempresa);

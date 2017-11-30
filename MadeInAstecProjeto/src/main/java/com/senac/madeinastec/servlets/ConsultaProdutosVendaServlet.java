@@ -52,7 +52,7 @@ public class ConsultaProdutosVendaServlet extends HttpServlet {
 
         HttpSession sessao = request.getSession();
 
-        String produto = request.getParameter("nomeProd");
+        String produto = request.getParameter("nomeProd").toLowerCase();
         String codigoempresa = (String) sessao.getAttribute("Empresa");
 
         try {

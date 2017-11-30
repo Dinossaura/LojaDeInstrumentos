@@ -76,7 +76,7 @@ public class AlterarProdutoServlet extends HttpServlet {
             Produto p = new Produto();
             p = (Produto) sessao.getAttribute("pro");
             request.setCharacterEncoding("UTF-8");
-            String nomeproduto = request.getParameter("prod");
+            String nomeproduto = request.getParameter("prod").toLowerCase();
             String desc = request.getParameter("descProd");
             String cat = request.getParameter("categ");
             String codE = request.getParameter("empresa");

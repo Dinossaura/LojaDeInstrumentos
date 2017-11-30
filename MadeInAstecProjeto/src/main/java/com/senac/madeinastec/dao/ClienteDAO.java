@@ -118,7 +118,7 @@ public class ClienteDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             if(vazio != true){
-                preparedStatement.setString(1,"%"+nome+"%");
+                preparedStatement.setString(1, nome+"%");
                 preparedStatement.setInt(2,codigoempresa);
             }else{
                 preparedStatement.setInt(1,codigoempresa);
@@ -208,11 +208,11 @@ public class ClienteDAO {
         System.out.println("Iniciando listagem de cliente...");
         
         Cliente cliente = new Cliente();
-        String query = "SELECT * FROM clientes WHERE cpf=? and codigoempresa=?";
+        String query = "SELECT * FROM clientes WHERE cpf LIKE ? and codigoempresa=?";
 
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1,cpf);
+            preparedStatement.setString(1,cpf + "%");
             preparedStatement.setInt(2,codigoempresa);
             
             ResultSet rs = preparedStatement.executeQuery();
