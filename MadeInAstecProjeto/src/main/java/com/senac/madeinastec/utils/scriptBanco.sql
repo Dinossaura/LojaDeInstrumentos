@@ -98,7 +98,7 @@ CREATE TABLE Produtos (
 CREATE TABLE Venda(
     codigo INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     codigocliente INTEGER NOT NULL,
-    datavenda TIMESTAMP NOT NULL,
+    datavenda VARCHAR(10) NOT NULL,
     valortotal DECIMAL(8,2) NOT NULL,
     codigoempresa INTEGER NOT NULL,
     CONSTRAINT primary_keyven PRIMARY KEY (codigo),

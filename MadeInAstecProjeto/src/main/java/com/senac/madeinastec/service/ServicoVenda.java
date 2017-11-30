@@ -27,21 +27,8 @@ public class ServicoVenda {
     
     //Insere um Produto na fonte de dados
     public Integer cadastrarVenda(Venda venda) throws VendaException, DataSourceException, ItemVendaException {
-
-        ValidadorVenda.validar(venda);
-
         try {
             return vendaDAO.cadastrarVenda(venda);
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new DataSourceException("Erro na fonte de dados", e);
-        }
-    }
-    
-        public void cadastrarItemVenda(ItemVenda itemVenda, int codigo) throws DataSourceException, ItemVendaException {
-            
-        try {
-            itemVendaDAO.cadastrarItemVenda(itemVenda, codigo);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);

@@ -73,6 +73,9 @@ public class ListagemDeCarrinhoServlet extends HttpServlet {
         sessao.setAttribute("itenscarrinho", listaitens);
         sessao.setAttribute("listaprodutos", listaprodutos);
         sessao.setAttribute("listaclientes", listaclientes);
+        
+        //Remove venda feita anteriormente
+        sessao.removeAttribute("venda");
         response.sendRedirect(request.getContextPath() + "/finalizarVenda.jsp");   
         
         

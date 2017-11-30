@@ -19,7 +19,7 @@ public class ItemVenda {
     }
 
     public int getCodigoVenda() {
-        return codigoproduto;
+        return codigovenda;
     }
 
     public void setCodigoVenda(int codigovenda) {

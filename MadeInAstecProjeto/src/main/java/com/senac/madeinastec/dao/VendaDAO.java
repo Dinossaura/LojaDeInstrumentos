@@ -23,14 +23,15 @@ public class VendaDAO {
         Connection conn = conexaoBanco.createConnection();
         
     public Integer cadastrarVenda(Venda venda){
-                 String query = " insert into venda (codigocliente, datavenda, valortotal )"
-        + " values (?, ?, ?)";
+                 String query = " insert into venda (codigocliente, datavenda, valortotal, codigoempresa)"
+        + " values (?, ?, ?, ?)";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, venda.getCliente().getId());
-            preparedStatement.setObject(2,venda.getData());
+            preparedStatement.setInt(1, venda.getCliente());
+            preparedStatement.setString(2,venda.getData());
             preparedStatement.setDouble(3,venda.getValorTotal());
+            preparedStatement.setInt(4,venda.getEmpresa());
             
             preparedStatement.executeUpdate();            
             ResultSet  rs = preparedStatement.getGeneratedKeys();

@@ -28,16 +28,16 @@ public class ItemVendaDAO {
         Connection conn = conexaoBanco.createConnection();
     
     //Cadastra um novo item na venda
-    public void cadastrarItemVenda(ItemVenda itemVenda, int codigo){
+    public void cadastrarItemVenda(int codigovenda, int codigoproduto, int quantidade){
                  String query = " insert into itemvenda (codigovenda, codigoproduto, quantidade )"
         + " values (?, ?, ?)";
         
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setInt(1, codigo);
-            preparedStatement.setInt(2, itemVenda.getCodigoProduto());
-            preparedStatement.setInt(3, itemVenda.getQuantidade());
+            preparedStatement.setInt(1, codigovenda);
+            preparedStatement.setInt(2, codigoproduto);
+            preparedStatement.setInt(3, quantidade);
 
             preparedStatement.execute();
             preparedStatement.close();

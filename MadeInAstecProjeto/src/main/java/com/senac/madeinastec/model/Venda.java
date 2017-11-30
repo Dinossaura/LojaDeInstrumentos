@@ -15,18 +15,18 @@ import java.util.List;
  */
 public class Venda {
     private Integer codigo;
-    private Cliente cliente;
-    private Date data;
+    private Integer codigoCliente;
+    private String data;
     private Double valorTotal;
-    private Empresa empresa; //crud >> insert getCodigo();
+    private Integer codigoEmpresa; //crud >> insert getCodigo();
 
     
-    public Empresa getEmpresa() {
-        return empresa;
+    public int getEmpresa() {
+        return codigoEmpresa;
     }
 
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
+    public void setEmpresa(int empresa) {
+        this.codigoEmpresa = empresa;
     }
     
     public Integer getCodigo() {
@@ -37,19 +37,19 @@ public class Venda {
         this.codigo = codigo;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getCliente() {
+        return codigoCliente;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(int cliente) {
+        this.codigoCliente = cliente;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

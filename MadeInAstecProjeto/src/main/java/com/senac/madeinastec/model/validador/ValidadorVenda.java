@@ -15,13 +15,7 @@ import com.senac.madeinastec.model.Venda;
 public class ValidadorVenda {
     
     public static void validar(Venda venda) throws VendaException{
-        
-         if(venda.getCliente().getCpf()== null){
-            throw new VendaException("Não foi informado um cliente ou ele não está cadastrado");
-        }
-        if(venda.getCliente().getNome()== null){
-            throw new VendaException("Não foi informado um cliente  ou ele não está cadastrado");
-        }
+
            
          
         
