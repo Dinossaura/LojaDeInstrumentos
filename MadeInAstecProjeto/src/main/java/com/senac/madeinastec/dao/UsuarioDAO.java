@@ -124,7 +124,6 @@ public class UsuarioDAO extends ConexaoBanco{
             
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
-               while (rs.next()){
                 usuario.setCodigo(rs.getInt(1));
                 usuario.setNome(rs.getString(2));
                 usuario.setLogin(rs.getString(3));
@@ -132,7 +131,6 @@ public class UsuarioDAO extends ConexaoBanco{
                 usuario.setcodigoPerfil(rs.getInt(5));
                 usuario.setCodigoEmpresa(rs.getInt(6));
                 lista.add(usuario);
-                } 
             }else{
                 return null;
             }

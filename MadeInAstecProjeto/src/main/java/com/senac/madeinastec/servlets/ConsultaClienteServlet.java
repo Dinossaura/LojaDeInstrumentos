@@ -64,7 +64,7 @@ public class ConsultaClienteServlet extends HttpServlet {
         String cliente = request.getParameter("cliente");
         
         String codigoempresa = (String) sessao.getAttribute("Empresa");
-        
+       
         try {
             Lista = (ArrayList<Cliente>) sc.procurarCliente(cliente, Integer.parseInt(codigoempresa));
         } catch (Exception e) {

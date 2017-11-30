@@ -219,6 +219,14 @@ INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigoca
             VALUES   (1, 'Caixa pra Bateria 14x8"', 'Caixa pra Bateria 14x8" Mpx Mpml4800c Maple Natural Mapex', 1, 2, 200.00, 719.00, 20);
 
 
-INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('ADMIN', 'ADMIN', 'admin', 1, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('admin1', 'admin1', 'admin1', 1, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('admin2', 'admin2', 'admin2', 1, 2);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('admin3', 'admin3', 'admin3', 1, 3);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Gerente Produtos e Serviços', 'gprodutos', 'gprodutos', 2, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Gerente Venda', 'gvendas', 'gvendas', 3, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Gerente TI', 'gti', 'gti', 4, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Funcionario Retaguarda', 'retaguarda', 'retaguarda', 5, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Vendedor', 'vendedor', 'vendedor', 6, 1);
+INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('Suporte', 'suporte', 'suporte', 7, 1);
 
 

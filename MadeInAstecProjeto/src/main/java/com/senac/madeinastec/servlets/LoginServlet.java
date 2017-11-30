@@ -43,10 +43,11 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         Usuario u = new Usuario();
         Usuario verifica = new Usuario();
+        Usuario usuarioperil = new Usuario();
         ServicoUsuario su = new ServicoUsuario();
         HttpSession sessao = request.getSession();
         
-        String usuario = request.getParameter("usuario").toUpperCase();
+        String usuario = request.getParameter("usuario");
         String senha = request.getParameter("senha");
         String empresa = request.getParameter("empresa");
         
@@ -63,7 +64,10 @@ public class LoginServlet extends HttpServlet {
                 dispatcher.forward(request, response);
         }else{
             try {
-                verifica = su.retornaUsuarioLogin(u.getLogin(), u.getSenha(), u.getCodigoEmpresa()); 
+                verifica = su.retornaUsuarioLogin(u.getLogin(), u.getSenha(), u.getCodigoEmpresa());
+                
+                //Retorna usuário completo para verificar perfil do mesmo
+                usuarioperil = su.retornaUsuarioLogin(u.getLogin(), u.getSenha(), u.getCodigoEmpresa());
             } catch (Exception e) {
                 
             
@@ -72,6 +76,9 @@ public class LoginServlet extends HttpServlet {
             if (verifica != null) {
                 sessao.setAttribute("Usuario", usuario);
                 sessao.setAttribute("Empresa", empresa);
+                
+                //Envia perfil de usuário para as páginas
+                sessao.setAttribute("perfilusuario", usuarioperil.getcodigoPerfil());
                 response.sendRedirect(request.getContextPath() + "/menu.jsp");
                 System.out.println("Nome " + verifica.getNome() + "/n" + "Senha " + verifica.getSenha());
                 sessao.setAttribute("erro", "");

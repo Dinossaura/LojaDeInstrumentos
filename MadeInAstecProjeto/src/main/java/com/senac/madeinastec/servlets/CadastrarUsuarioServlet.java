@@ -58,7 +58,7 @@ public class CadastrarUsuarioServlet extends HttpServlet {
         String nome = request.getParameter("name");
         String codigoEmpresa = request.getParameter("empresa");
         String codigoperfil = request.getParameter("perfil");
-        String login= request.getParameter("login");
+        String login = request.getParameter("login").toLowerCase();
         String senha= request.getParameter("senha");
         
         //if para verificação de campos obrigatórios
