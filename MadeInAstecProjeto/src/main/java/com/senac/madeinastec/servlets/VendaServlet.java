@@ -22,6 +22,7 @@ import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -79,12 +80,12 @@ public class VendaServlet extends HttpServlet {
             //Lista todos os produtos da empresa
             listaprodutos = sp.listarProdutos(Integer.parseInt(codigoempresa));
             
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-            String date = new SimpleDateFormat("dd/MM/yyyy").format(timestamp.getTime());
+            Date data = new Date();
+            java.sql.Date datasql = new java.sql.Date(data.getTime());
             
             //Atribuindo valores do carrinho para a venda
             venda.setCliente(carrinho.getCodigoCliente());
-            venda.setData(date);
+            venda.setData(datasql);
             venda.setValorTotal(carrinho.getValorTotal());
             venda.setEmpresa(Integer.parseInt(codigoempresa));
             

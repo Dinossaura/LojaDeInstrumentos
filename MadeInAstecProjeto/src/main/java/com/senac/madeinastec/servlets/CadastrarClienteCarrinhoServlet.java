@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -57,16 +58,15 @@ public class CadastrarClienteCarrinhoServlet extends HttpServlet {
          
         String codigoCliente = request.getParameter("codigoCliente");
         
+        Date data = new Date();
+        java.sql.Date datasql = new java.sql.Date(data.getTime());
         
-        
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String date = new SimpleDateFormat("dd/MM/yyyy").format(timestamp.getTime());
         String codigoempresa = (String) sessao.getAttribute("Empresa");
         
         
         
         carrinho.setCliente(Integer.parseInt(codigoCliente));
-        carrinho.setData(date);
+        carrinho.setData(datasql);
         carrinho.setCodigoempresa(Integer.parseInt(codigoempresa));
         carrinho.setValorTotal(0.0);
         

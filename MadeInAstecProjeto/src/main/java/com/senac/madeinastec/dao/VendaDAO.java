@@ -29,7 +29,7 @@ public class VendaDAO {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, venda.getCliente());
-            preparedStatement.setString(2,venda.getData());
+            preparedStatement.setDate(2, (Date) venda.getData());
             preparedStatement.setDouble(3,venda.getValorTotal());
             preparedStatement.setInt(4,venda.getEmpresa());
             

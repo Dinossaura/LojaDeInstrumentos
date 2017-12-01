@@ -8,6 +8,7 @@ package com.senac.madeinastec.dao;
 import com.senac.madeinastec.model.Carrinho;
 import com.senac.madeinastec.utils.ConexaoBanco; 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,7 +32,7 @@ public class CarrinhoDAO {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
             preparedStatement.setInt(1, carrinho.getCodigoCliente());
-            preparedStatement.setString(2, carrinho.getData());
+            preparedStatement.setDate(2, (Date) carrinho.getData());
             preparedStatement.setDouble(3, carrinho.getValorTotal());
             preparedStatement.setInt(4, carrinho.getCodigoempresa());
             
@@ -94,7 +95,7 @@ public class CarrinhoDAO {
             while (rs.next()){
                 carrinho.setCodigo(rs.getInt(1));
                 carrinho.setCliente(rs.getInt(2));
-                carrinho.setData(rs.getString(3));
+                carrinho.setData(rs.getDate(3));
                 carrinho.setValorTotal(rs.getDouble(4));
                 carrinho.setCodigoempresa(rs.getInt(5));            
             }

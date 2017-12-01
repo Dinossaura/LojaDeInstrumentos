@@ -16,7 +16,7 @@ import java.util.List;
 public class Venda {
     private Integer codigo;
     private Integer codigoCliente;
-    private String data;
+    private Date data;
     private Double valorTotal;
     private Integer codigoEmpresa; //crud >> insert getCodigo();
 
@@ -45,11 +45,11 @@ public class Venda {
         this.codigoCliente = cliente;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

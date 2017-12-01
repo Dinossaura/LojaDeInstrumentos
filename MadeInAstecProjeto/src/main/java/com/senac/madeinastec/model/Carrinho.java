@@ -14,7 +14,7 @@ import java.util.Date;
 public class Carrinho {
      private Integer codigo;
      private Integer codigoCliente;
-     private String data;
+     private Date data;
      private Double valorTotal;
      private Integer codigoempresa;
      
@@ -42,11 +42,11 @@ public class Carrinho {
         this.codigoCliente = codigoCliente;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

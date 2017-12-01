@@ -51,7 +51,7 @@ CREATE TABLE Clientes (
 CREATE TABLE Carrinho (
     codigo INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     codigocliente INTEGER NOT NULL,
-    datacarrinho VARCHAR(10) NOT NULL,
+    datacarrinho DATE NOT NULL,
     valortotal DECIMAL(8,2) NOT NULL,
     codigoempresa INTEGER NOT NULL,
     CONSTRAINT primary_keycar PRIMARY KEY (codigo),
@@ -98,7 +98,7 @@ CREATE TABLE Produtos (
 CREATE TABLE Venda(
     codigo INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
     codigocliente INTEGER NOT NULL,
-    datavenda VARCHAR(10) NOT NULL,
+    datavenda DATE NOT NULL,
     valortotal DECIMAL(8,2) NOT NULL,
     codigoempresa INTEGER NOT NULL,
     CONSTRAINT primary_keyven PRIMARY KEY (codigo),
