@@ -40,99 +40,142 @@
         </style>
     </head>
 
-    <body align="center"> 
-        <jsp:include page="menu.jsp"/>
-        <div class="container" align="center">
-            <h1>Relatórios</h1>
-            <div class="well">
-
-            <form class="form-inline" action="${pageContext.request.contextPath}/cadastro-usuario" method="post">
-                <div class="form-group">
-                    <label for="nome">Empresa: </label>
-                    <input type="text" class="form-control" name="Empresa"><br></br>
-                    <label for="nome">De: </label>
-                    <input type="text" class="form-control" name="de">
-                    <label for="nome">Até: </label>
-                    <input type="text" class="form-control" name="ate">
-                    <button type="submit" class="btn btn-default">Gerar</button>
+    <body> 
+    <jsp:include page="menu.jsp"/>
+    <div class="container" align="center">
+    <h3>Relatório de Vendas</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    <form class="form-group-md" action="${pageContext.request.contextPath}/ConsultaClientesVendaServlet" method="post">
+                           
+                    <label for="datainicial">Data Inicial</label>
+                    <input type="date" class="form-control-static" name="datainicial">
+                            
+                    <label for="datainicial">Data Final</label>
+                    <input type="date" class="form-control-static" name="datainicial">
+                    
+                    <label for="empresa">Empresa*</label>
+                    <select class="form-control-static" name="empresa" id="perfilFor">
+                        <option value="1"><c:out value="Matriz - São Paulo"/></option>
+                        <option value="2"><c:out value="Filial - Porto Alegre"/></option>
+                        <option value="3"><c:out value="Filial - Recife"/></option>
+                        <option value="todos"><c:out value="Todas Empresas"/></option>
+                    </select>
                 </div>
-            </form><br/>
-            <div class="tabelas"style="width:800px"align="center">
-                <table class="tabela1" >
-                    <tr>
-                        <th class="com" style="width:50px">Código</th>
-                        <th class="com" style="width:150px">Cliente</th>
-                        <th class="com"style="width:150px">Empresa</th>
-                        <th class="com"style="width:50px">Valor Nota</th>
-                    </tr>
-                    <tr>
-                        <td class="com">0001</td>
-                        <td class="com">Vinícius</td>
-                        <td class="com">viniciusCorp</td>
-                        <td class="com">2000,00</td>
-                    </tr>
-                    <%-- EXEMPLO--%>
-                    <tr >
-                        <td class="com">0002</td>
-                        <td class="com">Maria</td>
-                        <td class="com">Fornecedor.Inc</td>
-                        <td class="com">9000,00</td>
-                    </tr>
-                    <%-- EXEMPLO--%>
-                    <tr>
-                        <td class="com">0003</td>
-                        <td class="com">João</td>
-                        <td class="com">Palhetas.TM</td>
-                        <td class="com">1500,00</td>
-                    </tr>
-                    <tr>
-                        <td class="sem"></td>
-                        <td class="sem"></td>
-                        <td class="sem"></td>
-                        <td class="sem"><button type="exportar" class="btn btn-default">Exportar</button></td>
-                    </tr>
-                    <%-- EXEMPLO--%>
-                </table>
-                <br></br>
-                <table class="tabela2">
-                    <tr>
-                        <th class="com" style="width:150px">Produto</th>
-                        <th class="com"style="width:80px">Qtd</th>
-                        <th class="com" style="width:100px">Valor Unid.</th>
-                        <th class="com"style="width:100px">Valor Total</th>
-                    </tr>
-                    <tr>
-                        <td class="com">Flauta Transversal</td>
-                        <td class="com">2</td>
-                        <td class="com">5799,00</td>
-                        <td class="com">11598,00</td>
-                    </tr>
-                    <%-- EXEMPLO--%>
-                    <tr>
-                        <td class="com">Violão Elétrico</td>
-                        <td class="com">1</td>
-                        <td class="com">1250,00</td>
-                        <td class="com">2500,00</td>
-                    </tr>
-                    <tr>
-                        <td class="com">Viola de arco</td>
-                        <td class="com">5</td>
-                        <td class="com">750,00</td>
-                        <td class="com">3750,00</td>
-                    </tr>
-                    <%-- EXEMPLO--%>
-                    <tr>
-                        <td class="sem"></td>
-                        <td class="sem"></td>
-                        <td class="sem"></td>
-                        <td class="sem"><button type="exportar" class="btn btn-default">Exportar</button></td>
-                    </tr>
-                </table>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-success center-block">Pesquisar</button>
+                    </form>
+                </div>
+            </div>    
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelavendas">
+                        <caption>Lista de Vendas</caption>
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Cliente</th>
+                                <th>Data Venda</th>
+                                <th>Valor Total</th>
+                                <th>Empresa</th>
+                                <th>Itens</th>
+                            </tr>
+                        </thead>
+                        <c:forEach items="${ListaVenda}" var="venda">
+                        <tbody>
+                            <tr>
+                                <td><c:out value="${venda.codigo}" /></td>
+                                <td><c:out value="${clientevenda.nome} ${clientevenda.sobrenome}"/></td>
+                                <td><c:out value="${venda.datavenda}" /></td>
+                                <td><c:set var="empresa" scope="session" value="${venda.codigoempresa}"/>
+                                    <c:if test = "${empresa == 1}">
+                                        <c:out value="Made in Astec - Filial" />
+                                    </c:if>
+                                    <c:if test = "${empresa == 2}">
+                                        <c:out value="Made in Astec - Porto Alegre" />
+                                    </c:if>
+                                    <c:if test = "${empresa == 3}">
+                                        <c:out value="Made in Astec - Recife" />
+                                    </c:if>
+                                </td>
+
+                                <td>
+                                    <div>
+                                        <form class="form-control-static" action="${pageContext.request.contextPath}/listaritens" method="post" >
+                                            <div class="form-group">
+                                                <button type="submit" name="codigobenda" value="${venda.codigo}" 
+                                                    class="btn btn-success center-block">Listar Itens</button>
+                                            </div>
+                                        </form>                              
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </c:forEach>
+                    </table>
+                </div>
             </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class = "col-md-12">
+                    <form class="form-control-static" action="${pageContext.request.contextPath}/exportarvenda" method="post">
+                        <input type="hidden" name="listavendas" value="${listavendas}">
+                        <button type="submit" class="btn btn-info center-block">Exportar</button>
+                    </form>
+                </div>
             </div>
-        </div>            
+        </div>
+        <hr class="btn-default">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaProdutos">
+                        <caption>Lista de Itens</caption>
+                        <thead>
+                            <tr>
+                                <th>Código Produto</th>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Categoria</th>
+                                <th>Quantidade</th>
+                                <th>Valor Venda</th>
+                            </tr>
+                        </thead>
+                
+                        <c:forEach items="${ListaItens}" var="itens">
+                        <tbody>
+                            <tr>
+                                <td><c:out value="${itens.codigoproduto}" /></td>
+                                <td><c:out value="${produto.nome}" /></td>
+                                <td><c:out value="${produto.descricao}" /></td>
+                                <td><c:out value="${produto.categoria}" /></td>
+                                <td><c:out value="${itens.quantidade}" /></td>
+                                <td><c:out value="${produto.valorvenda}" /></td>
+                            </tr>
+                        </tbody>
+                        </c:forEach>
+                    </table>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container">
+            <div class ="row">
+                <div class="col-md-12">
+                    <form class="form-control-static" action="${pageContext.request.contextPath}/exportarvenda" method="post">
+                        <input type="hidden" name="codigovendaitens" value="${codigovenda}">
+                        <button type="submit" class="btn btn-info center-block">Exportar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <jsp:include page="rodape.jsp"/>                
     </body>
-
 </html>
 
