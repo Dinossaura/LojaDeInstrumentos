@@ -101,7 +101,7 @@
                                 <td><c:out value="${venda.valorTotal}"/></td>
                                 <td>
                                     <div>
-                                        <form class="form-control-static" action="${pageContext.request.contextPath}/listaritens" method="post" >
+                                        <form class="form-control-static" action="${pageContext.request.contextPath}/listaritens" method="post">
                                             <div class="form-group">
                                                 <button type="submit" name="codigovenda" value="${venda.codigo}"
                                                     class="btn btn-success center-block">Listar Itens</button>
@@ -111,7 +111,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                        </c:forEach>>
+                        </c:forEach>
                     </table>
                 </div>
             </div>
