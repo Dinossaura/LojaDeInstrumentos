@@ -9,7 +9,55 @@ public class ItemVenda {
     private int codigovenda;
     private int codigoproduto; 
     private int quantidade;
+    private String nomecategoria;
+    private String nomeproduto;
+    private String descricaoproduto;
+    private Double prevovenda;
 
+    public String getDescricaoproduto() {
+        return descricaoproduto;
+    }
+
+    public void setDescricaoproduto(String descricaoproduto) {
+        this.descricaoproduto = descricaoproduto;
+    }
+    
+    
+    public int getCodigovenda() {
+        return codigovenda;
+    }
+
+    public void setCodigovenda(int codigovenda) {
+        this.codigovenda = codigovenda;
+    }
+    
+    
+    
+    public String getNomecategoria() {
+        return nomecategoria;
+    }
+
+    public void setNomecategoria(String nomecategoria) {
+        this.nomecategoria = nomecategoria;
+    }
+
+    public String getNomeproduto() {
+        return nomeproduto;
+    }
+
+    public void setNomeproduto(String nomeproduto) {
+        this.nomeproduto = nomeproduto;
+    }
+
+    public Double getPrevovenda() {
+        return prevovenda;
+    }
+
+    public void setPrevovenda(Double prevovenda) {
+        this.prevovenda = prevovenda;
+    }
+    
+    
     public int getIditemvenda() {
         return iditemvenda;
     }

@@ -97,8 +97,8 @@
                                 <td><c:out value="${venda.codigo}" /></td>
                                 <td><c:out value="${venda.nomecliente}"/></td>
                                 <td><c:out value="${venda.data}" /></td>
-                                <td><c:out value="${venda.nomeempresa}"/></td>
                                 <td><c:out value="${venda.valorTotal}"/></td>
+                                <td><c:out value="${venda.nomeempresa}"/></td>
                                 <td>
                                     <div>
                                         <form class="form-control-static" action="${pageContext.request.contextPath}/listaritens" method="post">
@@ -134,24 +134,26 @@
                         <caption>Lista de Itens</caption>
                         <thead>
                             <tr>
+                                <th>Código Venda</th>
                                 <th>Código Produto</th>
                                 <th>Nome</th>
                                 <th>Descrição</th>
                                 <th>Categoria</th>
                                 <th>Quantidade</th>
-                                <th>Valor Venda</th>
+                                <th>Preço Venda</th>
                             </tr>
                         </thead>
                 
-                        <c:forEach items="${ListaItens}" var="itens">
+                        <c:forEach items="${itensvenda}" var="itens">
                         <tbody>
                             <tr>
-                                <td><c:out value="${itens.codigoproduto}" /></td>
-                                <td><c:out value="${produto.nome}" /></td>
-                                <td><c:out value="${produto.descricao}" /></td>
-                                <td><c:out value="${produto.categoria}" /></td>
+                                <td><c:out value="${itens.codigovenda}" /></td>
+                                <td><c:out value="${itens.getCodigoProduto()}" /></td>
+                                <td><c:out value="${itens.nomeproduto}" /></td>
+                                <td><c:out value="${itens.descricaoproduto}" /></td>
+                                <td><c:out value="${itens.nomecategoria}" /></td>
                                 <td><c:out value="${itens.quantidade}" /></td>
-                                <td><c:out value="${produto.valorvenda}" /></td>
+                                <td><c:out value="${itens.prevovenda}" /></td>
                             </tr>
                         </tbody>
                         </c:forEach>

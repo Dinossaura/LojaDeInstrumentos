@@ -50,22 +50,29 @@ public class ItemVendaDAO {
     public List<ItemVenda> listarItemVenda(int codigovenda){ //retorna todos itens
         List<ItemVenda> lista = new ArrayList<>();
         System.out.println("Buscando produto na base de dados...");
-        String query = "SELECT * FROM itemvenda WHERE codigovenda=?";
+        String query = "Select v.codigovenda as codigovenda, p.codigo as codigoproduto,p.nome, p.descricao as descricao,\n" +
+                       "       c.nome as categoria, v.quantidade, p.precovenda from itemvenda as v\n" +
+                       "       inner join produtos p on p.CODIGO = v.CODIGOPRODUTO\n" +
+                       "       inner join categoria c on c.CODIGO = p.CODIGOCATEGORIA\n" +
+                       "where codigovenda = ?";
         
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             
-            preparedStatement.setString(1,"%"+codigovenda+"%");
+            preparedStatement.setInt(1, codigovenda);
             
             ResultSet rs = preparedStatement.executeQuery();
 
             
                 while (rs.next()){
                     ItemVenda itemvenda = new ItemVenda();
-                    itemvenda.setIditemvenda(rs.getInt(1));
-                    itemvenda.setCodigoVenda(rs.getInt(2));
-                    itemvenda.setCodigoProduto(rs.getInt(3));
-                    itemvenda.setQuantidade(rs.getInt(4));
+                    itemvenda.setCodigoVenda(rs.getInt(1));
+                    itemvenda.setCodigoProduto(rs.getInt(2));
+                    itemvenda.setNomeproduto(rs.getString(3));
+                    itemvenda.setDescricaoproduto(rs.getString(4));
+                    itemvenda.setNomecategoria(rs.getString(5));
+                    itemvenda.setQuantidade(rs.getInt(6));
+                    itemvenda.setPrevovenda(rs.getDouble(7));
                     lista.add(itemvenda);
                 }
 
