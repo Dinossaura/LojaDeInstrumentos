@@ -119,10 +119,7 @@
         <div class="container">
             <div class="row">
                 <div class = "col-md-12">
-                    <form class="form-control-static" action="${pageContext.request.contextPath}/exportarvenda" method="post">
-                        <input type="hidden" name="listavendas" value="${listavendas}">
-                        <button type="submit" class="btn btn-info center-block">Exportar</button>
-                    </form>
+                        <button class="btn btn-info center-block" id="exportavendas">Exportar</button>   
                 </div>
             </div>
         </div>
@@ -130,7 +127,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table table-selectable table-bordered table-hover col-md-8" id="tabelaProdutos">
+                    <table class="table table-selectable table-bordered table-hover col-md-8" id="itensvenda">
                         <caption>Lista de Itens</caption>
                         <thead>
                             <tr>
@@ -165,14 +162,37 @@
         <div class="container">
             <div class ="row">
                 <div class="col-md-12">
-                    <form class="form-control-static" action="${pageContext.request.contextPath}/exportarvenda" method="post">
-                        <input type="hidden" name="codigovendaitens" value="${codigovenda}">
-                        <button type="submit" class="btn btn-info center-block">Exportar</button>
-                    </form>
+                        <button id="exportaitensvenda" class="btn btn-info center-block">Exportar</button>
                 </div>
             </div>
         </div>
     </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="js/jquery.btechco.excelexport.js"></script>
+    <script src="js/jquery.base64.js"></script>
+    
+    <script>
+    $(document).ready(function () {
+        $("#exportavendas").click(function () {
+            $("#tabelavendas").btechco_excelexport({
+                containerid: "tabelavendas"
+               , datatype: $datatype.Table
+               , filename: 'Planilha de Vendas'
+            });
+        });
+    });
+    </script>
+    <script>
+    $(document).ready(function () {
+        $("#exportaitensvenda").click(function () {
+            $("#itensvenda").btechco_excelexport({
+                containerid: "itensvenda"
+               , datatype: $datatype.Table
+               , filename: 'Planilha de ItensVenda'
+            });
+        });
+    });
+    </script>
     <jsp:include page="rodape.jsp"/>                
     </body>
 </html>
