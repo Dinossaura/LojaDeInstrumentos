@@ -47,13 +47,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
-                    <form class="form-group-md" action="${pageContext.request.contextPath}/ConsultaClientesVendaServlet" method="post">
+                    <form class="form-group-md" action="${pageContext.request.contextPath}/listagemvendas" method="post">
                            
                     <label for="datainicial">Data Inicial</label>
                     <input type="date" class="form-control-static" name="datainicial">
-                            
+                    
                     <label for="datainicial">Data Final</label>
-                    <input type="date" class="form-control-static" name="datainicial">
+                    <input type="date" class="form-control-static" name="datafinal">
+                    <c:if test="${not empty datasvazias}">
+                        <label><c:out value="${datasvazias}"/></label>
+                    </c:if>
+                    <c:if test="${not empty datamaior}">
+                        <label><c:out value="${datamaior}"/></label>
+                    </c:if>
                     
                     <label for="empresa">Empresa*</label>
                     <select class="form-control-static" name="empresa" id="perfilFor">
@@ -85,29 +91,19 @@
                                 <th>Itens</th>
                             </tr>
                         </thead>
-                        <c:forEach items="${ListaVenda}" var="venda">
+                        <c:forEach items="${listavendas}" var="venda">
                         <tbody>
                             <tr>
                                 <td><c:out value="${venda.codigo}" /></td>
-                                <td><c:out value="${clientevenda.nome} ${clientevenda.sobrenome}"/></td>
-                                <td><c:out value="${venda.datavenda}" /></td>
-                                <td><c:set var="empresa" scope="session" value="${venda.codigoempresa}"/>
-                                    <c:if test = "${empresa == 1}">
-                                        <c:out value="Made in Astec - Filial" />
-                                    </c:if>
-                                    <c:if test = "${empresa == 2}">
-                                        <c:out value="Made in Astec - Porto Alegre" />
-                                    </c:if>
-                                    <c:if test = "${empresa == 3}">
-                                        <c:out value="Made in Astec - Recife" />
-                                    </c:if>
-                                </td>
-
+                                <td><c:out value="${venda.nomecliente}"/></td>
+                                <td><c:out value="${venda.data}" /></td>
+                                <td><c:out value="${venda.nomeempresa}"/></td>
+                                <td><c:out value="${venda.valorTotal}"/></td>
                                 <td>
                                     <div>
                                         <form class="form-control-static" action="${pageContext.request.contextPath}/listaritens" method="post" >
                                             <div class="form-group">
-                                                <button type="submit" name="codigobenda" value="${venda.codigo}" 
+                                                <button type="submit" name="codigovenda" value="${venda.codigo}"
                                                     class="btn btn-success center-block">Listar Itens</button>
                                             </div>
                                         </form>                              
@@ -115,7 +111,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                        </c:forEach>
+                        </c:forEach>>
                     </table>
                 </div>
             </div>

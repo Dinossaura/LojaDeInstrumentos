@@ -111,4 +111,15 @@ public class ServicoProduto {
             
         }
     }
+    
+    //Lista produtos Totais
+    public List<Produto> listarProdutostotais() throws DataSourceException, Exception {
+        try {
+            return produtoDAO.listarProdutostotais();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
 }

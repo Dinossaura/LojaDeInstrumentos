@@ -13,6 +13,7 @@ import com.senac.madeinastec.exceptions.VendaException;
 import com.senac.madeinastec.model.ItemVenda;
 import com.senac.madeinastec.model.validador.ValidadorVenda;
 import com.senac.madeinastec.model.Venda;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,18 @@ public class ServicoVenda {
     public Integer cadastrarVenda(Venda venda) throws VendaException, DataSourceException, ItemVendaException {
         try {
             return vendaDAO.cadastrarVenda(venda);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new DataSourceException("Erro na fonte de dados", e);
+        }
+    }
+    
+        //Retorna Carrinho
+   public List<Venda> listavendas(String codigoempresa, Date datainicial, Date datafinal) throws VendaException, DataSourceException, ItemVendaException, Exception{
+        
+        try {
+            return vendaDAO.listavendas(codigoempresa, datainicial, datafinal);
+            //return vendaDAO.(codigocarrinho);
         } catch (Exception e) {
             e.printStackTrace();
             throw new DataSourceException("Erro na fonte de dados", e);

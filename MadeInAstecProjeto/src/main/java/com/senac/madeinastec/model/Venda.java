@@ -19,7 +19,26 @@ public class Venda {
     private Date data;
     private Double valorTotal;
     private Integer codigoEmpresa; //crud >> insert getCodigo();
+    private String nomecliente;
+    private String nomeempresa;
 
+    public String getNomeempresa() {
+        return nomeempresa;
+    }
+
+    public void setNomeempresa(String nomeempresa) {
+        this.nomeempresa = nomeempresa;
+    }
+    
+    
+    public String getNomecliente() {
+        return nomecliente;
+    }
+
+    public void setNomecliente(String nomecliente) {
+        this.nomecliente = nomecliente;
+    }
+    
     
     public int getEmpresa() {
         return codigoEmpresa;
