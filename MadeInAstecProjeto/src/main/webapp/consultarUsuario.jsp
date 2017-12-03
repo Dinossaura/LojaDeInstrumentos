@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-10">
                         <form class="form-group-md" action="${pageContext.request.contextPath}/consultausuariostotais" method="post">
-                            <input type="text" class="form-control" name="usuarios" placeholder="Digite nome Usuário">
+                            <input type="text" class="form-control" name="usuarios" placeholder="Digite nome Usuário" maxlength="30"/>
                     </div>
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-success center-block">Pesquisar</button>

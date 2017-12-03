@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col-md-10">
                         <form class="form-group-md" action="${pageContext.request.contextPath}/consultaprodutos" method="post">
-                                <input type="text" class="form-control" name="produto" placeholder="Digite nome Produto">
+                                <input type="text" class="form-control" name="produto" placeholder="Digite nome Produto" maxlength="70"/>
                     </div>
                     <div class="col-md-2">
                             <button type="submit" class="btn btn-success center-block" action="">Pesquisar</button>

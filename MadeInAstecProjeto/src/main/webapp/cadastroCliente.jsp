@@ -82,7 +82,7 @@
                 return v;
             }
 
-            function verifica() {
+            /*function verifica() {
                 if (document.forms[0].email.value.length == 0) {
                     alert('Por favor, informe o seu EMAIL.');
                     document.frmEnvia.email.focus();
@@ -144,7 +144,7 @@
                     alert("Por favor, informe um CEP válido!");
                     return false;
                 }
-            }
+            }*/
 
             function soLetras(v) {
                 return v.replace(/\d/g, "") //Remove tudo o que não é Letra

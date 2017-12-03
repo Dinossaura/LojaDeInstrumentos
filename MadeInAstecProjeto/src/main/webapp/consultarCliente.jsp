@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="col-md-10">
                     <form class="form-group-md" action="${pageContext.request.contextPath}/consultacliente" method="post">
-                        <input type="text" class="form-control" name="cliente" placeholder="Digite nome Cliente">
+                        <input type="text" class="form-control" name="cliente" placeholder="Digite nome Cliente" maxlength="30"/>
                     </div>
                     <div class="col-md-2">
                        <button type="submit" class="btn btn-success center-block">Pesquisar</button>    

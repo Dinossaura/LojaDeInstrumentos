@@ -120,7 +120,7 @@
                 <div class="row">
                     <div class="col-md-10">
                         <form class="form-group-md" action="${pageContext.request.contextPath}/ConsultaProdutosVendaServlet" method="post">
-                            <input type="text" class="form-control" name="nomeProd" placeholder="Digite o nome do Produto">
+                            <input type="text" class="form-control" name="nomeProd" placeholder="Digite o nome do Produto" maxlength="70">
                     </div>
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-success center-block">Pesquisar</button>        

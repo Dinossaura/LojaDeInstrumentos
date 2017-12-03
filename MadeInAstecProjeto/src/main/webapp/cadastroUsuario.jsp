@@ -20,7 +20,7 @@
             function soLetras(v) {
                 return v.replace(/\d/g, "") //Remove tudo o que não é Letra
             }
-
+            
         </script>
     </head>
 
@@ -63,7 +63,7 @@
                                     <label for="senha">Senha*</label>
                                     <input type="password" class="form-control" rows="1" name="senha" id="senha" required oninvalid="this.setCustomValidity('Preencha a Senha')" oninput="setCustomValidity('')" maxlength="20"/>
                                 </div>
-
+                                
                                 <div class="form-group">
                                     <label for="perfil">Perfil*</label>
                                     <select class="form-control" name="perfil" id="perfilUsu">
@@ -147,7 +147,7 @@
 
                             </c:otherwise>
                         </c:choose>
-                        <button type="submit" class="btn btn-default" id="botaoUsu">Salvar</button>
+                                <button type="submit" class="btn btn-default" id="botaoUsu">Salvar</button>
                         <c:if test="${not empty mensagemErroCampos}">
                             <label><c:out value="${mensagemErroCampos}"/></label>
                         </c:if>
