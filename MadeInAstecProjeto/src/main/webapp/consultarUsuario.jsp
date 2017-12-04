@@ -7,7 +7,7 @@
         <title>Consulta de Usuários</title>
     </head>
 
-    <body align="center">
+    <body>
         <jsp:include page="menu.jsp"/>
         <div class="container" align="center">
             <h3>Usuários</h3>

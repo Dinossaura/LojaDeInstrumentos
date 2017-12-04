@@ -63,7 +63,8 @@ public class ListagemDeVendasServlet extends HttpServlet {
         String empresa = request.getParameter("empresa");
         boolean vempresa = true;
         
-        if((datainicial.length() == 0)||(datafinal.length() == 0)){
+        if(sessao.getAttribute("Usuario") != null){
+           if((datainicial.length() == 0)||(datafinal.length() == 0)){
             sessao.setAttribute("datasvazias", "Verifique Datas!");
             sessao.removeAttribute("datamaior");
             response.sendRedirect(request.getContextPath() + "/relatorio.jsp"); 
@@ -96,11 +97,9 @@ public class ListagemDeVendasServlet extends HttpServlet {
         
         
             response.sendRedirect(request.getContextPath() + "/relatorio.jsp");   
+        } 
         }
-        
-        
-        
-        
+        response.sendRedirect(request.getContextPath() + "/relatorio.jsp"); 
     }
 
 }

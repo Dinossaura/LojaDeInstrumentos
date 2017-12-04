@@ -40,7 +40,7 @@
                 </style>-->
     </head>
 
-    <body align="center">
+    <body>
         <jsp:include page="menu.jsp"/>
         <div class="container" align="center">
             <h3>Consulta de Cliente</h3>

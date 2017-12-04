@@ -12,23 +12,33 @@
 <html>
     <body>
         <jsp:include page="topo.jsp"/>
-        <div>
-            <label>
-                <c:if test = "${Empresa == 1}">
-                    <c:out value="Made in Astec - Filial" />
-                </c:if>
-                <c:if test = "${Empresa == 2}">
-                    <c:out value="Made in Astec - Porto Alegre" />
-                </c:if>
-                <c:if test = "${Empresa == 3}">
-                    <c:out value="Made in Astec - Recife" />
-                </c:if>
-            </label>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-control-static">
+                    <c:if test = "${Empresa == 1}">
+                        <c:out value="Made in Astec - Filial" />
+                    </c:if>
+                    <c:if test = "${Empresa == 2}">
+                        <c:out value="Made in Astec - Porto Alegre" />
+                    </c:if>
+                    <c:if test = "${Empresa == 3}">
+                        <c:out value="Made in Astec - Recife" />
+                    </c:if>
+                    </label>
+                    <form action="${pageContext.request.contextPath}/logout" method="get">
+                       
+                </div>
+                <div class="col-md-1">
+                     <button class="btn-default form-group" type="submit">Logout</button>
+                    </form>
+                </div>
+            </div>
         </div>
         <nav class="navbar navbar-default">
                 <div class="container">
                     <div class="row">
-                        <ul class="nav navbar-btn menu col-md-8">
+                        <ul class="nav navbar-btn menu col-md-10">
                             <c:if test="${(perfilusuario == 1) || (perfilusuario == 3) ||(perfilusuario == 6)}">
                             <li class="col-md-2 text-center dropdown">
                                 <a style="font-size: 20px" class="dropdown-toggle" data-toggle="dropdown" href="#">Clientes</a>

@@ -14,7 +14,7 @@
         <script src="js/programa.js" type="text/javascript"></script>
     </head>
 
-    <body align="center">
+    <body>
     <jsp:include page="menu.jsp"/> 
     <div class="container" align="center">
         <h3>Fornecedores</h3>
