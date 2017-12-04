@@ -50,10 +50,10 @@
                     <form class="form-group-md" action="${pageContext.request.contextPath}/listagemvendas" method="post">
                            
                     <label for="datainicial">Data Inicial</label>
-                    <input type="date" class="form-control-static" name="datainicial">
+                    <input type="date" class="form-control-static" name="datainicial" >
                     
                     <label for="datainicial">Data Final</label>
-                    <input type="date" class="form-control-static" name="datafinal">
+                    <input type="date" class="form-control-static" name="datafinal" >
                     <c:if test="${not empty datasvazias}">
                         <label><c:out value="${datasvazias}"/></label>
                     </c:if>

@@ -67,37 +67,37 @@ public class ListagemDeVendasServlet extends HttpServlet {
            if((datainicial.length() == 0)||(datafinal.length() == 0)){
             sessao.setAttribute("datasvazias", "Verifique Datas!");
             sessao.removeAttribute("datamaior");
-            response.sendRedirect(request.getContextPath() + "/relatorio.jsp"); 
             
-        }else{
-            java.sql.Date datasqlinicial = new java.sql.Date(Date.valueOf(datainicial).getTime());
-            java.sql.Date datasqlfinal = new java.sql.Date(Date.valueOf(datafinal).getTime());
-        
-            if ((empresa != "1")||(empresa != "2")||(empresa != "3")){
-                vempresa = false;
-            }
-        
-            try {
-                if (datasqlinicial.after(datasqlfinal)){
-                    sessao.setAttribute("datamaior", "Datas não conferem!"); 
-                    sessao.removeAttribute("datasvazias");
-                }else{
-                //Lista de vendas
-                vendas = sv.listavendas(empresa, datasqlinicial, datasqlfinal);
-                
-                
-                sessao.removeAttribute("datamaior");
+            }else if((datainicial.length() > 10)||(datafinal.length() > 10)){
+                sessao.setAttribute("datamaior", "Datas não conferem!"); 
                 sessao.removeAttribute("datasvazias");
-                sessao.setAttribute("listavendas", vendas); 
+            }else{
+                java.sql.Date datasqlinicial = new java.sql.Date(Date.valueOf(datainicial).getTime());
+                java.sql.Date datasqlfinal = new java.sql.Date(Date.valueOf(datafinal).getTime());
+        
+                if ((empresa != "1")||(empresa != "2")||(empresa != "3")){
+                    vempresa = false;
                 }
-            
-            } catch (Exception e) {
-            
-            }
         
-        
-            response.sendRedirect(request.getContextPath() + "/relatorio.jsp");   
-        } 
+                try {
+                    if (datasqlinicial.after(datasqlfinal)){
+                        sessao.setAttribute("datamaior", "Datas não conferem!"); 
+                        sessao.removeAttribute("datasvazias");
+                    }else{
+                    //Lista de vendas
+                    vendas = sv.listavendas(empresa, datasqlinicial, datasqlfinal);
+                
+                
+                    sessao.removeAttribute("datamaior");
+                    sessao.removeAttribute("datasvazias");
+                    sessao.setAttribute("listavendas", vendas); 
+                    }
+            
+                } catch (Exception e) {
+            
+                }
+  
+            } 
         }
         response.sendRedirect(request.getContextPath() + "/relatorio.jsp"); 
     }
