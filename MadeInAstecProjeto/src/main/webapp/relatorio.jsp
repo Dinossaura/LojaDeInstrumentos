@@ -112,6 +112,11 @@
                             </tr>
                         </tbody>
                         </c:forEach>
+                        <tr>
+                            <td>
+                                <label>Total: <c:out value="${totalvendido}"/></label>
+                            </td>
+                        </tr>
                     </table>
                 </div>
             </div>

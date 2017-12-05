@@ -86,11 +86,19 @@ public class ListagemDeVendasServlet extends HttpServlet {
                     }else{
                     //Lista de vendas
                     vendas = sv.listavendas(empresa, datasqlinicial, datasqlfinal);
-                
-                
+                    
+                    //Devolve total das vendas
+                    double totalvendas = 0;
+                    for(int i = 0; i < vendas.size(); i++){
+                        totalvendas += vendas.get(i).getValorTotal();
+                    }
+                    
+                    
                     sessao.removeAttribute("datamaior");
                     sessao.removeAttribute("datasvazias");
                     sessao.setAttribute("listavendas", vendas); 
+                    sessao.setAttribute("totalvendido", totalvendas); 
+                    
                     }
             
                 } catch (Exception e) {
