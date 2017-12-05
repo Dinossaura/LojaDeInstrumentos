@@ -17,7 +17,7 @@ CREATE TABLE Usuarios (
     codigo INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, 
     INCREMENT BY 1),
     nome VARCHAR(30) NOT NULL,
-    login VARCHAR(20) NOT NULL,
+    login VARCHAR(20) NOT NULL UNIQUE,
     senha VARCHAR(20) NOT NULL,
     codigoperfil INTEGER NOT NULL,
     codigoempresa INTEGER NOT NULL,
@@ -212,11 +212,19 @@ INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigoca
 
 -- 3 Produtos para Categoria 2 e empresa 1
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'bateria acústica garage rock', 'Bateria Acústica Garage Rock com Bumbo 22", caixa 14", Surdo 16" e toms 10" e 12" Nagano', 1, 2, 1500.00, 2499.00, 20);
+            VALUES   (2, 'bateria acústica garage rock', 'Bateria Acústica Garage Rock com Bumbo 22", caixa 14", Surdo 16" e toms 10" e 12" Nagano', 1, 2, 1500.00, 2499.00, 20);
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'caixa para bateria armory', 'Caixa para Bateria Armory 14x6,5" aço Martelad', 1, 2, 500.00, 1389.00, 20);
+            VALUES   (2, 'caixa para bateria armory', 'Caixa para Bateria Armory 14x6,5" aço Martelad', 1, 2, 500.00, 1389.00, 20);
 INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
-            VALUES   (1, 'caixa para bateria 14x8"', 'Caixa pra Bateria 14x8" Mpx Mpml4800c Maple Natural Mapex', 1, 2, 200.00, 719.00, 20);
+            VALUES   (2, 'caixa para bateria 14x8"', 'Caixa pra Bateria 14x8" Mpx Mpml4800c Maple Natural Mapex', 1, 2, 200.00, 719.00, 20);
+
+-- 3 produtos para Categoria 1 e empresa 1
+INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
+            VALUES   (3, 'pedestal para microfone euro boom', 'Pedestal para Microfone feito de liga de Metal híbrida, com pernas retráteis e excelente qualidade', 17, 1, 100.00, 159.00, 20);
+INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
+            VALUES   (3, 'pedestal para microfone com base redonda', 'Pedestal com base redonda e embreagem de bloqueio de meio ponto em aço', 17, 1, 120.00, 189.00, 20);
+INSERT INTO PRODUTOS (codigoempresa, nome, descricao, codigofornecedor, codigocategoria, precocompra, precovenda, estoque)
+            VALUES   (3, 'cachimbo para microfone', 'Cachimbo para Microfone Dinâmico My100', 17, 1, 20.00, 39.00, 20);
 
 
 INSERT INTO USUARIOS (nome, login, senha, codigoperfil, codigoempresa) VALUES ('admin1', 'admin1', 'admin1', 1, 1);

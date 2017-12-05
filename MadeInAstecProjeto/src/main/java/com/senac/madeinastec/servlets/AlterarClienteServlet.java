@@ -49,6 +49,7 @@ public class AlterarClienteServlet extends HttpServlet {
         //Criação se sessão para retorno em tela
         request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
+        sessao.removeAttribute("cpfexiste");    
         
         //Para verificação se é alteração
         String alteracao = "";

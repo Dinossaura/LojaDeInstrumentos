@@ -160,6 +160,9 @@
             <c:when test = "${empty Altera}">
                 <div class="container">
                     <h1 id="cli">Cadastro de Clientes</h1>
+                    <c:if test="${not empty cpfexiste}">
+                        <label style="color: red"><c:out value="${cpfexiste}" /></label>
+                    </c:if>
                     <div class="well">
                         <form class="form-inline" action="${pageContext.request.contextPath}/cadastrar-cliente" method="post">
 
@@ -303,6 +306,9 @@
             <c:otherwise>
                 <div class="container">
                     <h1 id="cli">Alteração de Clientes</h1>
+                    <c:if test="${not empty cpfexiste}">
+                        <label style="color: red"><c:out value="${cpfexiste}" /></label>
+                    </c:if>
                     <div class="well">
                         <form class="form-inline" action="${pageContext.request.contextPath}/alterarCliente" method="post">
 

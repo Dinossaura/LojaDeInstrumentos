@@ -7,6 +7,7 @@ package com.senac.madeinastec.servlets;
 
 import com.senac.madeinastec.dao.ClienteDAO;
 import com.senac.madeinastec.model.Cliente;
+import com.senac.madeinastec.service.ServicoCliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -76,34 +77,50 @@ public class CadastrarClienteServlet extends HttpServlet {
         String empresa = request.getParameter("empresa");
         
         Cliente novoCliente = new Cliente();
-         
-         int s = Integer.parseInt(sexo);
-         if(s == 1){
-          novoCliente.setSexo("Masculino");  
-        }else{
-             novoCliente.setSexo("Feminino");
-         }
-        novoCliente.setNome(nome);
-        novoCliente.setSobrenome(sobrenome);
-        novoCliente.setCpf(cpf);
-        novoCliente.setIdade(dataNasc);
-        novoCliente.setRg(rg);
-        novoCliente.setTelefone(tel1);
-        novoCliente.setTelefone2(tel2);
-        novoCliente.setEmail(email);
-        novoCliente.setNumero(numCasa);
-        novoCliente.setEndereco(end);
-        novoCliente.setComplemento(complemento);
-        novoCliente.setCidade(cidade);
-        novoCliente.setCep(cep);
-        novoCliente.setEstado(estado);
-        novoCliente.setEmpresa(Integer.parseInt(empresa));
-        
-        ClienteDAO clientedao = new ClienteDAO();
-        clientedao.inserirCliente(novoCliente);
-        
+        Cliente clienteexiste = new Cliente();
+        ServicoCliente sc = new ServicoCliente();
         HttpSession sessao = request.getSession();
-        sessao.setAttribute("cliente", novoCliente);
+        
+        try {
+            clienteexiste = sc.obterClientePorCpf(cpf, Integer.parseInt(empresa));
+        } catch (Exception e) {
+        }
+        
+        if(clienteexiste.getCpf() != null){
+            sessao.setAttribute("cpfexiste", "CPF já cadastrado!");
+        }else{
+            int s = Integer.parseInt(sexo);
+            if(s == 1){
+                novoCliente.setSexo("Masculino");  
+            }else{
+                novoCliente.setSexo("Feminino");
+            }
+         
+        
+            novoCliente.setNome(nome);
+            novoCliente.setSobrenome(sobrenome);
+            novoCliente.setCpf(cpf);
+            novoCliente.setIdade(dataNasc);
+            novoCliente.setRg(rg);
+            novoCliente.setTelefone(tel1);
+            novoCliente.setTelefone2(tel2);
+            novoCliente.setEmail(email);
+            novoCliente.setNumero(numCasa);
+            novoCliente.setEndereco(end);
+            novoCliente.setComplemento(complemento);
+            novoCliente.setCidade(cidade);
+            novoCliente.setCep(cep);
+            novoCliente.setEstado(estado);
+            novoCliente.setEmpresa(Integer.parseInt(empresa));
+        
+            ClienteDAO clientedao = new ClienteDAO();
+            clientedao.inserirCliente(novoCliente);
+        
+            sessao.removeAttribute("cpfexiste");
+            sessao.setAttribute("cliente", novoCliente);
+        }
+         
+         
         
         response.sendRedirect(request.getContextPath() + "/cadastrar-cliente");
         
